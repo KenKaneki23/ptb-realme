@@ -33,14 +33,14 @@ def help(update, context):
 
 def staff(update, context):
     """Send a message when the command /staff is issued."""
-    update.message.reply_text('Group\'s staff' +
+    """  update.message.reply_text('Group\'s staff' +
                               '\n\nOrganization ⚜' +
                               '\n@aakaah00001' +
                               '\n@Prashant_Choudhary' +
                               '\n@PacificPC' +
                               '\n\nModerators 👮🏼' +
                               '\n@pentexnyx' +
-                              '\n@Abhishek2376')
+                              '\n@Abhishek2376') """
     update.message.dice()
 
 
