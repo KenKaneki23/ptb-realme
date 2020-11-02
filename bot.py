@@ -5,8 +5,9 @@ Author: liuhh02 https://medium.com/@liuhh02
 """
 
 import logging
-from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 import os
+
+from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 
 PORT = int(os.environ.get('PORT', 5000))
 
@@ -33,13 +34,14 @@ def help(update, context):
 def staff(update, context):
     """Send a message when the command /staff is issued."""
     update.message.reply_text('Group\'s staff' +
-                              '\n\n⚜️Organization' +
+                              '\n\nOrganization ⚜' +
                               '\n@aakaah00001' +
                               '\n@Prashant_Choudhary' +
                               '\n@PacificPC' +
-                              '\n\n👮🏼 Moderators' +
+                              '\n\nModerators 👮🏼' +
                               '\n@pentexnyx' +
                               '\n@Abhishek2376')
+    update.message.dice()
 
 
 def echo(update, context):
