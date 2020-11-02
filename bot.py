@@ -34,13 +34,13 @@ def staff(update, context):
     """Send a message when the command /staff is issued."""
     update.message.reply_text('GROUP STAFF' +
                               '\n👑 FOUNDER and VICE ⚜' +
-                              '\n👑 @aakaah00001 (http://t.me/aakaah00001)' +
-                              '\n⚜️ @Prashant_Choudhary (http://t.me/Prashant_Choudhary)' +
-                              '\n⚜️ @PacificPC (http://t.me/PacificPC)' +
+                              '\n👑 @aakaah00001' +
+                              '\n⚜️ @Prashant_Choudhary' +
+                              '\n⚜️ @PacificPC' +
 
-                              '\n👮🏼 ADMINS' +
-                              '\n👮🏼 @pentexnyx (http://t.me/pentexnyx) » Moderator' +
-                              '\n👮🏼 @Abhishek2376 (http://t.me/Abhishek2376) » Moderator')
+                              '\n\n**👮🏼 Moderators**' +
+                              '\n· @pentexnyx' +
+                              '\n· @Abhishek2376')
 
 
 def echo(update, context):
