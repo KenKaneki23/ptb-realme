@@ -81,9 +81,16 @@ def gcam(update, context):
 def rules(update, context):
     """Send a message when the command /admins is issued."""
     group(update.message, "<u>Group's rules</u>"
-                          "\n\n<b>Latest Release</b>"
-                          "\n<a href='https://t.me/realme_support/47467'>Urnyx05-v2.4</a>"
-                          "\n\n<b>Configurations</b>")
+                          "\n\n<b>1. Language</b>"
+                          "\nPlease use English primarly or Hindi as an alternative."
+                          "\n\n<b>2. Links</b>"
+                          "\nSending links is permitted."
+                          "\n\n<b>3. Forwarding</b>"
+                          "\nForwarding messages from other cahnnels is permitted"
+                          "\n\n<b>4. Respect</b>"
+                          "\nWe're all one big community. Don't be rude."
+                          "\n\n<b>5. Spam</b>"
+                          "\nAvoid sending stuff multiple times. Flooding the chat won't give you more attention.")
 
 
 def echo(update, context):
