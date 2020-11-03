@@ -28,7 +28,7 @@ def help(update):
            "\n\n*/staff*" + \
            " \nShow the support group\'s staff" + \
            "\n\n*/experts*" + \
-           "\nList all experts for different segments"
+           "\nList experts for different segments"
 
     markdown(update, text)
 
@@ -38,7 +38,7 @@ def admins(update, context):
     text = "*Group's staff*\n\nOrganization ⚜\n@aakaah00001\n@Prashant_Choudhary\n@PacificPC\n\nModerators " \
            "👮🏼\n@pentexnyx\n@Abhishek2376 "
 
-    check_send(update, text)
+    check(update.message, text)
 
 
 def echo(update, context):
@@ -46,15 +46,15 @@ def echo(update, context):
     update.message.reply_text(update.message.text)
 
 
-def markdown(update, text):
-    update.message.reply_text(text=text, parse_mode=telegram.ParseMode.MARKDOWN_V2)
+def markdown(message, text):
+    message.reply_text(text=text, parse_mode=telegram.ParseMode.MARKDOWN_V2)
 
 
-def check_send(update, text):
-    if update.message.chat_id == -1001374176745:
-        markdown(update, text)
+def check(message, text):
+    if message.chat_id == -1001374176745:
+        markdown(message, text)
     else:
-        update.message.reply_text('Please join the group.')
+        message.reply_text('Please join the group.')
 
 
 def error(update, context):
