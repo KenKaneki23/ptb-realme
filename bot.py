@@ -22,21 +22,17 @@ def start(update, context):
                             "\nI will guide you through finding a solution."
                             "\n\nIf you face any issues with this bot, contact @pentexnyx")
 
-    #   update.message.reply_text(text="I will ask you a few things now to find out which issue you're facing.",
-    #                             reply_markup=InlineKeyboardButton(text="Proceed ➡", callback_data="0"))
-
-    keyboard = [
-        [
-            InlineKeyboardButton("Option 1", callback_data='1'),
-            InlineKeyboardButton("Option 2", callback_data='2'),
-        ],
-        [InlineKeyboardButton("Option 3", callback_data='3')],
-    ]
-
-    reply_markup = InlineKeyboardMarkup.from_button(InlineKeyboardButton("Option 3", callback_data='3'))
+    #  keyboard = [
+    #       [
+    #          InlineKeyboardButton("Option 1", callback_data='1'),
+    #          InlineKeyboardButton("Option 2", callback_data='2'),
+    #      ],
+    #      [InlineKeyboardButton("Option 3", callback_data='3')],
+    #  ]
 
     update.message.reply_text("I will ask you a few things now to find out which issue you're facing.",
-                              reply_markup=reply_markup)
+                              reply_markup=InlineKeyboardMarkup.from_button(
+                                  InlineKeyboardButton("Proceed ➡", callback_data='0')))
 
 
 def button(update: Update, context: CallbackContext) -> None:
