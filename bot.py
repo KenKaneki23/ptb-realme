@@ -50,18 +50,14 @@ def button(update: Update, context: CallbackContext) -> None:
     if position == 0:
         text = "Which device are you using?" \
                "\n\nWhich software update is installed?"
-
     elif position == 1:
         text = "What do you want do?" \
                "\n\nWhat have you tried already?"
-
     elif position == 2:
         text = "Why do you want to do that?" \
                "\n\nWhat benefits do you expect?"
-
     elif position == 3:
         text = "What output did you get?"
-
     else:
         text = "That's been it. Thanks for your time. 🤖" \
                "\nI will inform our experts now."
