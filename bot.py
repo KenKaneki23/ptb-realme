@@ -17,9 +17,9 @@ logger = logging.getLogger(__name__)
 # context. Error handlers also receive the raised TelegramError object in error.
 def start(update, context):
     """Send a message when the command /start is issued."""
-    update.message.reply_text("Hello, human 🤖"
-                              "\nI will guide you through finding a solution."
-                              "\n\n<i>If you face any issues with this bot, contact @pentexnyx</i>")
+    private(update, "Hello, human 🤖"
+                    "\nI will guide you through finding a solution."
+                    "\n\n<i>If you face any issues with this bot, contact @pentexnyx</i>")
 
 
 def help(update, context):
@@ -37,7 +37,7 @@ def help(update, context):
 
 def admins(update, context):
     """Send a message when the command /admins is issued."""
-    check(update.message, "<u>Group's staff</u>"
+    group(update.message, "<u>Group's staff</u>"
                           "\n\n<b>Organization</b>"
                           "\n@aakaah00001"
                           "\n@Prashant_Choudhary"
@@ -49,7 +49,7 @@ def admins(update, context):
 
 def experts(update, context):
     """Send a message when the command /admins is issued."""
-    check(update.message, "<u>Community experts</u>"
+    group(update.message, "<u>Community experts</u>"
                           "\n\n<b>Software issues</b>"
                           "\n@Abhishek2376"
                           "\n@Dhairya3391"
@@ -72,7 +72,7 @@ def experts(update, context):
 
 def gcam(update, context):
     """Send a message when the command /admins is issued."""
-    check(update.message, "<u>Google Camera</u>"
+    group(update.message, "<u>Google Camera</u>"
                           "\n\n<b>Latest Release</b>"
                           "\n<a href='https://t.me/realme_support/47467'>Urnyx05-v2.4</a>"
                           "\n\n<b>Configurations</b>")
@@ -91,12 +91,20 @@ def html(message, text):
 # message.reply_text(text=text, parse_mode=telegram.ParseMode.MARKDOWN_V2)
 
 
-def check(message, text):
+def private(message, text):
+    if message.chat_id > 0:
+        html(message, text)
+    else:
+        message.reply_text("I'm shy. Please talk to me alone."
+                           "\n@realme_community_support_bot")
+
+
+def group(message, text):
     if message.chat_id == -1001374176745:
         html(message, text)
     else:
         message.reply_text("Please join the group:"
-                           "\nhttps://t.me/realme_support")
+                           "\n@realme_support")
 
 
 def error(update, context):
