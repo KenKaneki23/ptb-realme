@@ -25,7 +25,7 @@ def help(update, context):
     text = "*Commands*" + \
            "\n\n*/help*" + \
            "\nDisplay this menu" + \
-           "\n\n*/staff*" + \
+           "\n\n*/admins*" + \
            " \nShow the support group\'s staff" + \
            "\n\n*/experts*" + \
            "\nList experts for different segments"
@@ -35,8 +35,14 @@ def help(update, context):
 
 def admins(update, context):
     """Send a message when the command /admins is issued."""
-    text = "*Group's staff*\n\nOrganization ⚜\n@aakaah00001\n@Prashant_Choudhary\n@PacificPC\n\nModerators " \
-           "👮🏼\n@pentexnyx\n@Abhishek2376 "
+    text = "*Group's staff*" + \
+           "\n\nOrganization ⚜" + \
+           "\n@aakaah00001" + \
+           "\n@Prashant_Choudhary" + \
+           "\n@PacificPC" + \
+           "\n\nModerators " + \
+           "👮🏼\n@pentexnyx" + \
+           "\n@Abhishek2376 "
 
     check(update.message, text)
 
