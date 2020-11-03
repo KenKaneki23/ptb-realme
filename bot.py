@@ -2,8 +2,8 @@ import logging
 import os
 
 import telegram
-from telegram import InlineKeyboardButton
-from telegram.ext import Updater, CommandHandler
+from telegram import InlineKeyboardButton, InlineKeyboardMarkup, Update
+from telegram.ext import Updater, CommandHandler, CallbackContext
 
 PORT = int(os.environ.get('PORT', 5000))
 TOKEN = '1415969330:AAGEnSGxjYl-hd3VTkpS4uY017Wag5dDsDQ'
@@ -22,8 +22,31 @@ def start(update, context):
                             "\nI will guide you through finding a solution."
                             "\n\nIf you face any issues with this bot, contact @pentexnyx")
 
-    update.message.reply_text(text="I will ask you a few things now to find out which issue you're facing.",
-                              reply_markup=InlineKeyboardButton(text="Proceed ➡", callback_data="0"))
+    #   update.message.reply_text(text="I will ask you a few things now to find out which issue you're facing.",
+    #                          reply_markup=InlineKeyboardButton(text="Proceed ➡", callback_data="0"))
+
+    keyboard = [
+        [
+            InlineKeyboardButton("Option 1", callback_data='1'),
+            InlineKeyboardButton("Option 2", callback_data='2'),
+        ],
+        [InlineKeyboardButton("Option 3", callback_data='3')],
+    ]
+
+    reply_markup = InlineKeyboardMarkup(keyboard)
+
+    update.message.reply_text("I will ask you a few things now to find out which issue you're facing.",
+                              reply_markup=reply_markup)
+
+
+def button(update: Update, context: CallbackContext) -> None:
+    query = update.callback_query
+
+    # CallbackQueries need to be answered, even if no notification to the user is needed
+    # Some clients may have trouble otherwise. See https://core.telegram.org/bots/api#callbackquery
+    query.answer()
+
+    query.edit_message_text(text="Selected option: {}".format(query.data))
 
 
 def help(update, context):
