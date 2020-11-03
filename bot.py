@@ -26,14 +26,14 @@ def start(update, context):
                               reply_markup=InlineKeyboardButton(text="Proceed ➡", callback_data="0"))
 
     keyboard = [
-        #   [
-        #       InlineKeyboardButton("Option 1", callback_data='1'),
-        #       InlineKeyboardButton("Option 2", callback_data='2'),
-        #   ],
+        [
+            InlineKeyboardButton("Option 1", callback_data='1'),
+            InlineKeyboardButton("Option 2", callback_data='2'),
+        ],
         [InlineKeyboardButton("Option 3", callback_data='3')],
     ]
 
-    reply_markup = InlineKeyboardMarkup(keyboard)
+    reply_markup = InlineKeyboardMarkup([[InlineKeyboardButton("Option 3", callback_data='3')]])
 
     update.message.reply_text("I will ask you a few things now to find out which issue you're facing.",
                               reply_markup=reply_markup)
