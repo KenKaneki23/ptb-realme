@@ -92,7 +92,7 @@ def ask(update, context):
     """Send a message when the command /help is issued."""
     group_button_html(update.message, "<u>How to ask</u>"
                                       "\n\n<b>1. Formulate the question</b>"
-                                      "\nWhile providing as many details as possible make sure to include:"
+                                      "\nMake sure to include:"
                                       "\n· Which device you are using"
                                       "\n· Which software update is installed"
                                       "\n· What you want to do"
