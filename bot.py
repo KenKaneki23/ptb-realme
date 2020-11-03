@@ -25,23 +25,16 @@ def start(update, context):
     private(update.message, "I will ask you a few things now to find out which issue you're facing."
                             "\n\nType /next to proceed")
 
-    list_of_cities = ['Erode', 'Coimbatore', 'London', 'Thunder Bay', 'California']
-    button_list = []
-    for each in list_of_cities:
-        button_list.append(InlineKeyboardButton(each, callback_data=each))
-    reply_markup = InlineKeyboardMarkup(
-        build_menu(button_list, n_cols=1))  # n_cols = 1 is for single column and mutliple rows
-    update.message.reply_text(chat_id=update.message.chat_id, text='Choose from the following',
-                              reply_markup=reply_markup)
+    dice = {"Name": "John", "Language": "Python", "API": "pyTelegramBotAPI"}
+    buttons = []
+    for key, value in dice.items():
+        buttons.append(
+            [InlineKeyboardButton(text=key, url='google.com')]
+        )
+    keyboard = InlineKeyboardMarkup(buttons)
 
-
-def build_menu(buttons, n_cols, header_buttons=None, footer_buttons=None):
-    menu = [buttons[i:i + n_cols] for i in range(0, len(buttons), n_cols)]
-    if header_buttons:
-        menu.insert(0, header_buttons)
-    if footer_buttons:
-        menu.append(footer_buttons)
-    return menu
+    update.message.reply_text(text='Choose from the following',
+                              reply_markup=keyboard)
 
 
 def help(update, context):
