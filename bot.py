@@ -67,8 +67,8 @@ def experts(update, context):
            "\n\n<b>Android development</b>" \
            "\n@pentexnyx" \
            "\n\n<b>Realme ecosystem</b>" \
-           "\n- no expert yet -" \
- \
+           "\n- no expert yet -"
+
     check(update.message, text)
 
 
