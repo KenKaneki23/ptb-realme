@@ -36,14 +36,16 @@ def help(update, context):
 def admins(update, context):
     """Send a message when the command /admins is issued."""
 
-    text = '*Group\'s staff*' + \
-           '\n\nOrganization' + \
-           '\n@aakaah00001' + \
-           '\n@Prashant_Choudhary' + \
-           '\n@PacificPC' + \
-           '\n\nModerators' + \
-           '\n@pentexnyx' + \
-           '\n@Abhishek2376 '
+    #  text = '*Group\'s staff*' + \
+    #        '\n\nOrganization' + \
+    #        '\n@aakaah00001' + \
+    #        '\n@Prashant_Choudhary' + \
+    #         '\n@PacificPC' + \
+    #        '\n\nModerators' + \
+    #         '\n@pentexnyx' + \
+    #         '\n@Abhishek2376 '
+
+    text = "*Group's staff*\n\nOrganization\n"
 
     if update.message.chat_id == -337823911:
         update.message.reply_text(text=text, parse_mode=telegram.ParseMode.MARKDOWN_V2)
