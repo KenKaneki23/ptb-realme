@@ -17,9 +17,9 @@ logger = logging.getLogger(__name__)
 # context. Error handlers also receive the raised TelegramError object in error.
 def start(update, context):
     """Send a message when the command /start is issued."""
-    private(update, "Hello, human 🤖"
-                    "\nI will guide you through finding a solution."
-                    "\n\n<i>If you face any issues with this bot, contact @pentexnyx</i>")
+    private(update.message, "Hello, human 🤖"
+                            "\nI will guide you through finding a solution."
+                            "\n\n<i>If you face any issues with this bot, contact @pentexnyx</i>")
 
 
 def help(update, context):
@@ -78,6 +78,14 @@ def gcam(update, context):
                           "\n\n<b>Configurations</b>")
 
 
+def rules(update, context):
+    """Send a message when the command /admins is issued."""
+    group(update.message, "<u>Group's rules</u>"
+                          "\n\n<b>Latest Release</b>"
+                          "\n<a href='https://t.me/realme_support/47467'>Urnyx05-v2.4</a>"
+                          "\n\n<b>Configurations</b>")
+
+
 def echo(update, context):
     """Echo the user message."""
     update.message.reply_text(update.message.text)
@@ -128,6 +136,7 @@ def main():
     dp.add_handler(CommandHandler("admins", admins))
     dp.add_handler(CommandHandler("gcam", gcam))
     dp.add_handler(CommandHandler("experts", experts))
+    dp.add_handler(CommandHandler("rules", rules))
 
     # on noncommand i.e message - echo the message on Telegram
     #   dp.add_handler(MessageHandler(Filters.text, echo)) yyyyyyyyyyyyyy
