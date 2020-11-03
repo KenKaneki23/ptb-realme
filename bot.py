@@ -17,9 +17,9 @@ logger = logging.getLogger(__name__)
 # context. Error handlers also receive the raised TelegramError object in error.
 def start(update, context):
     """Send a message when the command /start is issued."""
-    private(update.message, "Hello, human 🤖"
-                            "\nI will guide you through finding a solution."
-                            "\n\n<i>If you face any issues with this bot, contact @pentexnyx</i>")
+    private(update.message, "Hey, " + update.message.from_user + " 🤖"
+                                                                 "\nI will guide you through finding a solution."
+                                                                 "\n\nIf you face any issues with this bot, contact @pentexnyx")
 
 
 def help(update, context):
