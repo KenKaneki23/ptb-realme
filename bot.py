@@ -7,6 +7,7 @@ Author: liuhh02 https://medium.com/@liuhh02
 import logging
 import os
 
+import telegram
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 
 PORT = int(os.environ.get('PORT', 5000))
@@ -28,14 +29,9 @@ def start(update, context):
 
 def help(update, context):
     """Send a message when the command /help is issued."""
-    update.message.reply_text('Commands' +
-                              '\n\n/help'
-                              '\ndisplay this menu' +
-                              '\n\n/staff' +
-                              '\nshow group\'s staff' +
-                              '\n\n/expert' +
-                              '\nlist all experts for different segments' +
-                              '')
+    text = 'Commands' + '\n\n/help''\ndisplay this menu' + '\n\n/staff' + '\nshow group\'s staff' + '\n\n/experts' + '\nlist all experts for different segments'
+
+    update.message.reply_text(text=text, parse_mode=telegram.ParseMode.MARKDOWN_V2)
 
 
 def staff(update, context):
