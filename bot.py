@@ -17,7 +17,7 @@ logger = logging.getLogger(__name__)
 # context. Error handlers also receive the raised TelegramError object in error.
 def start(update, context):
     """Send a message when the command /start is issued."""
-    update.message.reply_text('Hi!')
+    update.message.reply_text('Hi! 1')
 
 
 def help(update, context):
@@ -33,7 +33,7 @@ def help(update, context):
     markdown(update, text)
 
 
-def adminss(update, context):
+def admins(update, context):
     """Send a message when the command /admins is issued."""
     text_admins = "*Group\'s staff*" + \
                   "\n\nOrganization ⚜" + \
@@ -84,7 +84,7 @@ def main():
     # on different commands - answer in Telegram
     dp.add_handler(CommandHandler("start", start))
     dp.add_handler(CommandHandler("help", help))
-    dp.add_handler(CommandHandler("adminss", adminss))
+    dp.add_handler(CommandHandler("admins", admins))
 
     # on noncommand i.e message - echo the message on Telegram
     dp.add_handler(MessageHandler(Filters.text, echo))
