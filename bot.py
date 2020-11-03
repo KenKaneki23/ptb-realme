@@ -17,8 +17,6 @@ logger = logging.getLogger(__name__)
 # context. Error handlers also receive the raised TelegramError object in error.
 def start(update, context):
     """Send a message when the command /start is issued."""
-    username = update.message.from_user
-
     private(update.message, "Hey, human 🤖"
                             "\nI will guide you through finding a solution."
                             "\n\nIf you face any issues with this bot, contact @pentexnyx")
@@ -102,12 +100,12 @@ def html(message, text):
 
 
 def private(message, text):
-    # if message.chat_id > 0:
-    html(message, text)
-    # else:
-    message.reply_text("I'm shy 🤖"
-                       "\n\nPlease talk to me in private chat:"
-                       "\n@realme_community_support_bot")
+    if message.chat_id > 0:
+        html(message, text)
+    else:
+        message.reply_text("I'm shy 🤖"
+                           "\nPlease talk to me in private chat:"
+                           "\n@realme_community_support_bot")
 
 
 def group(message, text):
