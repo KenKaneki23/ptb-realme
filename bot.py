@@ -49,17 +49,19 @@ def button(update: Update, context: CallbackContext) -> None:
 
 def howtoask(update, context):
     """Send a message when the command /help is issued."""
-    html(update.message, "<u>How to ask</u>"
-                         "\n\n<b>1. Formulate</b>"
-                         "\nMake sure to include:"
-                         "\n· What you want to achieve"
-                         "\n· Why you want it"
-                         "\n\nProvide as many details as possible."
-                         "\n\n\n<b>2. Waiting for a response</b>"
-                         "\n\nGive the community 48h to answer your question. The experts not available 24/7, "
-                         "so receiving an answer might take a bit. "
-                         "\n\n\n<b>3. No answer yet</b>"
-                         "\n\nUse /experts and tag the ones, which fit to your issue.")
+    group(update.message, "<u>How to ask</u>"
+                          "\n\n<b>1. Formulate the question</b>"
+                          "\nMake sure to include:"
+                          "\n· What you want to achieve"
+                          "\n· Why you want it"
+                          "\n\nProvide as many details as possible."
+                          "\n\n<b>2. Waiting for a response</b>"
+                          "\nGive the community 48h to answer your question. The experts not available 24/7, "
+                          "so receiving an answer might take a bit. "
+                          "\n\n<b>3. No answer yet</b>"
+                          "\nUse /experts and tag the experts, which fit to your issue."
+                          "\n\n\nThese suggestions will enable us to provide you with better answers quicker. Thank "
+                          "you in advance☺")
 
 
 def offtopic(update, context):
