@@ -46,19 +46,19 @@ def button(update: Update, context: CallbackContext) -> None:
 
     button_text = "Proceed ➡"
 
-    if position == 0:
+    if position == '0':
         text = "Which device are you using? Which software update is installed?"
 
-    elif position == 1:
+    elif position == '1':
         text = "What do you want do? What did you try already?"
 
-    elif position == 2:
+    elif position == '2':
         text = "Why do you want to do that? What benefits do you expect?"
 
-    elif position == 3:
+    elif position == '3':
         text = "What output did you get?"
 
-    elif position == 4:
+    elif position == '4':
         text = "That's been it."
         button_text = "Submit answers"
 
