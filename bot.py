@@ -88,7 +88,7 @@ def button(update: Update, context: CallbackContext) -> None:
     query.edit_message_text(text=message_text, reply_markup=buttons)
 
 
-def howtoask(update, context):
+def ask(update, context):
     """Send a message when the command /help is issued."""
     group_button_html(update.message, "<u>How to ask</u>"
                                       "\n\n<b>1. Formulate the question</b>"
@@ -278,7 +278,7 @@ def main():
     dp.add_handler(CommandHandler("gcam", gcam))
     dp.add_handler(CommandHandler("experts", experts))
     dp.add_handler(CommandHandler("rules", rules))
-    dp.add_handler(CommandHandler("howtoask", howtoask))
+    dp.add_handler(CommandHandler("ask", ask))
     dp.add_handler(CommandHandler("offtopic", offtopic))
 
     # on noncommand i.e message - echo the message on Telegram
