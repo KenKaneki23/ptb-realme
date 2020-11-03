@@ -1,9 +1,3 @@
-"""
-Simple Bot to reply to Telegram messages taken from the python-telegram-bot examples.
-Deployed using heroku.
-Author: liuhh02 https://medium.com/@liuhh02
-"""
-
 import logging
 import os
 
@@ -11,13 +5,12 @@ import telegram
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 
 PORT = int(os.environ.get('PORT', 5000))
+TOKEN = '1415969330:AAGEnSGxjYl-hd3VTkpS4uY017Wag5dDsDQ'
 
 # Enable logging
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
                     level=logging.INFO)
-
 logger = logging.getLogger(__name__)
-TOKEN = '1415969330:AAGEnSGxjYl-hd3VTkpS4uY017Wag5dDsDQ'
 
 
 # Define a few command handlers. These usually take the two arguments update and
@@ -27,7 +20,7 @@ def start(update, context):
     update.message.reply_text('Hi!')
 
 
-def help(update, context):
+def help(update):
     """Send a message when the command /help is issued."""
     text = "*Commands*" + \
            "\n\n*/help*" + \
@@ -40,19 +33,12 @@ def help(update, context):
     markdown(update, text)
 
 
-def staff(update, context):
-    """Send a message when the command /staff is issued."""
-    if update.message.chat_id == -1001374176745:
-        update.message.reply_text('Organization ⚜' +
-                                  '\n@aakaah00001' +
-                                  '\n@Prashant_Choudhary' +
-                                  '\n@PacificPC' +
-                                  '\n\nModerators 👮🏼' +
-                                  '\n@pentexnyx' +
-                                  '\n@Abhishek2376')
+def admins(update):
+    """Send a message when the command /admins is issued."""
+    text = "*Group's staff*\n\nOrganization ⚜\n@aakaah00001\n@Prashant_Choudhary\n@PacificPC\n\nModerators " \
+           "👮🏼\n@pentexnyx\n@Abhishek2376 "
 
-    else:
-        update.message.reply_text('Please join the group.')
+    check_send(update, text)
 
 
 def echo(update, context):
@@ -62,6 +48,13 @@ def echo(update, context):
 
 def markdown(update, text):
     update.message.reply_text(text=text, parse_mode=telegram.ParseMode.MARKDOWN_V2)
+
+
+def check_send(update, text):
+    if update.message.chat_id == -1001374176745:
+        markdown(update, text)
+    else:
+        update.message.reply_text('Please join the group.')
 
 
 def error(update, context):
@@ -83,7 +76,7 @@ def main():
     dp.add_handler(CommandHandler("start", start))
     dp.add_handler(CommandHandler("help", help))
 
-    dp.add_handler(CommandHandler("staff", staff))
+    dp.add_handler(CommandHandler("admins", admins))
 
     # on noncommand i.e message - echo the message on Telegram
     dp.add_handler(MessageHandler(Filters.text, echo))
@@ -92,9 +85,7 @@ def main():
     dp.add_error_handler(error)
 
     # Start the Bot
-    updater.start_webhook(listen="0.0.0.0",
-                          port=int(PORT),
-                          url_path=TOKEN)
+    updater.start_webhook(listen="0.0.0.0", port=int(PORT), url_path=TOKEN)
     updater.bot.setWebhook('https://pxnx-tg-bot-test.herokuapp.com/' + TOKEN)
 
     # Run the bot until you press Ctrl-C or the process receives SIGINT,
