@@ -7,7 +7,6 @@ Author: liuhh02 https://medium.com/@liuhh02
 import logging
 import os
 
-import telegram
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 
 PORT = int(os.environ.get('PORT', 5000))
@@ -33,7 +32,7 @@ def help(update, context):
            "\n\n*/help*" + \
            "\nDisplay this menu" + \
            "\n\n*/staff*" + \
-           " \nShow group\'s staff" + \
+           " \nShow the support group\'s staff" + \
            "\n\n*/experts*" + \
            "\nList all experts for different segments"
 
@@ -42,13 +41,14 @@ def help(update, context):
 
 def staff(update, context):
     """Send a message when the command /staff is issued."""
-    update.message.reply_text('Organization ⚜' +
-                              '\n@aakaah00001' +
-                              '\n@Prashant_Choudhary' +
-                              '\n@PacificPC' +
-                              '\n\nModerators 👮🏼' +
-                              '\n@pentexnyx' +
-                              '\n@Abhishek2376')
+    if id == -1001374176745:
+        update.message.reply_text('Organization ⚜' +
+                                  '\n@aakaah00001' +
+                                  '\n@Prashant_Choudhary' +
+                                  '\n@PacificPC' +
+                                  '\n\nModerators 👮🏼' +
+                                  '\n@pentexnyx' +
+                                  '\n@Abhishek2376')
 
 
 def echo(update, context):
