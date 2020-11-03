@@ -31,7 +31,8 @@ def start(update, context):
         button_list.append(InlineKeyboardButton(each, callback_data=each))
     reply_markup = InlineKeyboardMarkup(
         build_menu(button_list, n_cols=1))  # n_cols = 1 is for single column and mutliple rows
-    update.send_message(chat_id=update.message.chat_id, text='Choose from the following', reply_markup=reply_markup)
+    update.message.reply_text(chat_id=update.message.chat_id, text='Choose from the following',
+                              reply_markup=reply_markup)
 
 
 def build_menu(buttons, n_cols, header_buttons=None, footer_buttons=None):
