@@ -47,21 +47,21 @@ def button(update: Update, context: CallbackContext) -> None:
 
     button_text = "Proceed ➡"
 
-    if position == 0:
+    if position == '0':
         text = "Which device are you using?" \
                "\n\nWhich software update is installed?"
-    elif position == 1:
-        text = "What do you want do?" \
-               "\n\nWhat have you tried already?"
-    elif position == 2:
-        text = "Why do you want to do that?" \
-               "\n\nWhat benefits do you expect?"
-    elif position == 3:
-        text = "What output did you get?"
-    else:
-        text = "That's been it. Thanks for your time. 🤖" \
-               "\nI will inform our experts now."
-        button_text = "Submit answers"
+    #   elif position == 1:
+    #       text = "What do you want do?" \
+    #             "\n\nWhat have you tried already?"
+    #  elif position == 2:
+    #      text = "Why do you want to do that?" \
+    #             "\n\nWhat benefits do you expect?"
+    #   elif position == 3:
+    #      text = "What output did you get?"
+    #   else:
+    #       text = "That's been it. Thanks for your time. 🤖" \
+    ##              "\nI will inform our experts now."
+    ##       button_text = "Submit answers"
 
     position += 1
     proceed_button = InlineKeyboardMarkup.from_button(InlineKeyboardButton(button_text, callback_data=str(position)))
