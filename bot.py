@@ -30,21 +30,22 @@ def help(update, context):
            "\n\n*/experts*" + \
            "\nList experts for different segments"
 
-    markdown(update.message, text)
+    markdown(update, text)
 
 
 def adminss(update, context):
     """Send a message when the command /admins is issued."""
-    text = "*Group\'s staff*" + \
-           "\n\nOrganization ⚜" + \
-           "\n@aakaah00001" + \
-           "\n@Prashant_Choudhary" + \
-           "\n@PacificPC" + \
-           "\n\nModerators " + \
-           "👮🏼\n@pentexnyx" + \
-           "\n@Abhishek2376 "
+    text_admins = "*Group\'s staff*" + \
+                  "\n\nOrganization ⚜" + \
+                  "\n@aakaah00001" + \
+                  "\n@Prashant_Choudhary" + \
+                  "\n@PacificPC" + \
+                  "\n\nModerators " + \
+                  "👮🏼\n@pentexnyx" + \
+                  "\n@Abhishek2376 "
+
     if update.message.chat_id == -337823911:
-        update.message.reply_text(text=text, parse_mode=telegram.ParseMode.MARKDOWN_V2)
+        update.message.reply_text(text=text_admins, parse_mode=telegram.ParseMode.MARKDOWN_V2)
     else:
         update.message.reply_text('Please join the group.')
 
