@@ -42,27 +42,27 @@ def button(update: Update, context: CallbackContext) -> None:
     # Some clients may have trouble otherwise. See https://core.telegram.org/bots/api#callbackquery
     query.answer()
 
-    position = query.data
+    position = int(query.data)
 
     button_text = "Proceed ➡"
 
-    if position == '0':
+    if position == 0:
         message_text = "Which device are you using?" \
                        "\n\nWhich software update is installed?"
-    elif position == '1':
+    elif position == 1:
         message_text = "What do you want do?" \
                        "\n\nWhat have you tried already?"
-    #  elif position == 2:
-    #      text = "Why do you want to do that?" \
-    #             "\n\nWhat benefits do you expect?"
-    #   elif position == 3:
-    #      text = "What output did you get?"
-    #   else:
-    #       text = "That's been it. Thanks for your time. 🤖" \
-    #              "\nI will inform our experts now."
-    #       button_text = "Submit answers"
+    elif position == 2:
+        message_text = "Why do you want to do that?" \
+                       "\n\nWhat benefits do you expect?"
+    elif position == 3:
+        message_text = "What output did you get?"
+    else:
+        message_text = "That's been it. Thanks for your time. 🤖" \
+                       "\nI will inform our experts now."
+        button_text = "Submit answers"
 
-    position = str(int(position) + 1)
+    position = str(position + 1)
     proceed_button = InlineKeyboardMarkup.from_button(InlineKeyboardButton(button_text, callback_data=str(position)))
 
     query.edit_message_text(text=message_text,
