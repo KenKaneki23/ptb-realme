@@ -35,12 +35,12 @@ def help(update, context):
 
 def admins(update, context):
     """Send a message when the command /admins is issued."""
-    text = "*Group's staff*" \
-           "\n\n*Organization ⚜*" \
+    text = "<u>Group's staff</u>" \
+           "\n<b>Organization ⚜</b>" \
            "\n@aakaah00001" \
            "\n@Prashant\_Choudhary" \
            "\n@PacificPC" \
-           "\n\n*Moderators 👮*" \
+           "\n\n<b>Moderators 👮</b>" \
            "\n@pentexnyx" \
            "\n@Abhishek2376"
 
@@ -53,7 +53,10 @@ def echo(update, context):
 
 
 def markdown(message, text):
-    message.reply_text(text=text, parse_mode=telegram.ParseMode.MARKDOWN_V2)
+    message.reply_text(text=text, parse_mode=telegram.ParseMode.HTML)
+
+
+# message.reply_text(text=text, parse_mode=telegram.ParseMode.MARKDOWN_V2)
 
 
 def check(message, text):
