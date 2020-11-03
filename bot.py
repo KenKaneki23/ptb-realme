@@ -20,7 +20,7 @@ def start(update, context):
     update.message.reply_text('Hi!')
 
 
-def help(update):
+def help(update, context):
     """Send a message when the command /help is issued."""
     text = "*Commands*" + \
            "\n\n*/help*" + \
