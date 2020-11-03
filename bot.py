@@ -21,7 +21,8 @@ def start(update, context):
     private_next(update.message,
                  "Hey, human 🤖"
                  "\nI will guide you through finding a solution."
-                 "\n\nPlease provide as many details as possible for every step to make it easier for me to understand your question and give you a better answer quicker."
+                 "\n\nPlease provide as many details as possible for every step to make it easier for me to "
+                 "understand your question and give you a better answer quicker. "
                  "\n\nIf you face any issues with this bot, contact @pentexnyx",
                  InlineKeyboardButton("Proceed ➡", callback_data='0'))
 
@@ -47,13 +48,16 @@ def button(update: Update, context: CallbackContext) -> None:
     button_text = "Proceed ➡"
 
     if position == '0':
-        text = "Which device are you using? Which software update is installed?"
+        text = "Which device are you using?" \
+               "\n\nWhich software update is installed?"
 
     elif position == '1':
-        text = "What do you want do? What did you try already?"
+        text = "What do you want do?" \
+               "\n\nWhat have you tried already?"
 
     elif position == '2':
-        text = "Why do you want to do that? What benefits do you expect?"
+        text = "Why do you want to do that?" \
+               "\n\nWhat benefits do you expect?"
 
     elif position == '3':
         text = "What output did you get?"
