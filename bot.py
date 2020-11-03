@@ -17,7 +17,7 @@ logger = logging.getLogger(__name__)
 # context. Error handlers also receive the raised TelegramError object in error.
 def start(update, context):
     """Send a message when the command /start is issued."""
-    update.message.reply_text('Hi! 1')
+    update.message.reply_text('Hi! 2')
 
 
 def help(update, context):
@@ -44,8 +44,16 @@ def admins(update, context):
                   "👮🏼\n@pentexnyx" + \
                   "\n@Abhishek2376 "
 
+    text = "*Commands*" + \
+           "\n\n*/help*" + \
+           "\nDisplay this menu" + \
+           "\n\n*/admins*" + \
+           " \nShow the support group\'s staff" + \
+           "\n\n*/experts*" + \
+           "\nList experts for different segments"
+
     if update.message.chat_id == -337823911:
-        update.message.reply_text(text=text_admins, parse_mode=telegram.ParseMode.MARKDOWN_V2)
+        update.message.reply_text(text=text, parse_mode=telegram.ParseMode.MARKDOWN_V2)
     else:
         update.message.reply_text('Please join the group.')
 
