@@ -69,13 +69,11 @@ def button(update: Update, context: CallbackContext) -> None:
         query.edit_message_text(text=message_text, reply_markup=proceed_button)
         return
 
-    position += 1
-    proceed_button = InlineKeyboardMarkup.from_button(InlineKeyboardButton(button_text, callback_data=str(position)))
+    #   position += 1
+    back_button = InlineKeyboardMarkup.from_button(InlineKeyboardButton(button_text, callback_data=str(position - 1)))
+    proceed_button = InlineKeyboardMarkup.from_button(InlineKeyboardButton("Back", callback_data=str(position + 1)))
 
-    update.message.reply_text(text=message_text, reply_markup=proceed_button)
-
-
-#  query.edit_message_text(text=message_text, reply_markup=proceed_button)
+    query.edit_message_text(text=message_text, reply_markup=[proceed_button, back_button])
 
 
 # query.edit_message_text(text="Selected option: {}".format(query.data))
