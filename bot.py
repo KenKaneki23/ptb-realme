@@ -28,7 +28,14 @@ def start(update, context):
 
 def help(update, context):
     """Send a message when the command /help is issued."""
-    update.message.reply_text('Help!')
+    update.message.reply_text('Commands' +
+                              '\n\n/help'
+                              '\ndisplay this menu' +
+                              '\n\n/staff' +
+                              '\nshow group\'s staff' +
+                              '\n\n/expert' +
+                              '\nlist all experts for different segments' +
+                              '')
 
 
 def staff(update, context):
