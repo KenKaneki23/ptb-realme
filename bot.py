@@ -18,9 +18,11 @@ logger = logging.getLogger(__name__)
 # context. Error handlers also receive the raised TelegramError object in error.
 def start(update, context):
     """Send a message when the command /start is issued."""
-    private(update.message, "Hey, human 🤖"
-                            "\nI will guide you through finding a solution."
-                            "\n\nIf you face any issues with this bot, contact @pentexnyx")
+    private_next(update.message,
+                 "Hey, human 🤖"
+                 "\nI will guide you through finding a solution."
+                 "\n\nIf you face any issues with this bot, contact @pentexnyx",
+                 InlineKeyboardButton("Proceed ➡", callback_data='0'))
 
     #  keyboard = [
     #       [
@@ -29,10 +31,6 @@ def start(update, context):
     #      ],
     #      [InlineKeyboardButton("Option 3", callback_data='3')],
     #  ]
-
-    update.message.reply_text("I will ask you a few things now to find out which issue you're facing.",
-                              reply_markup=InlineKeyboardMarkup.from_button(
-                                  InlineKeyboardButton("Proceed ➡", callback_data='0')))
 
 
 def button(update: Update, context: CallbackContext) -> None:
@@ -137,13 +135,9 @@ def markdown(message, text):
     message.reply_text(text=text, parse_mode=telegram.ParseMode.MARKDOWN_V2)
 
 
-def html_next(message, text, button):
-    message.reply_text(text=text, reply_markup=button)
-
-
-def private_next(message, text, button):
+def private_next(message, text, message_button):
     if message.chat_id > 0:
-        html_next(message, text, button)
+        message.reply_text(text, reply_markup=InlineKeyboardMarkup.from_button(message_button))
     else:
         message.reply_text("I'm shy 🤖"
                            "\nPlease talk to me in private chat:"
