@@ -78,7 +78,7 @@ def experts(update, context):
                           "\n@Dhairya3391"
                           "\n@pentexnyx"
                           "\n\n<b>Hardware issues</b>"
-                          "\n- no expert yet -"
+                          "\n@Abhishek2376"
                           "\n\n<b>Updates and apps</b>"
                           "\n@Abhishek2376"
                           "\n@Dhairya3391"
@@ -186,6 +186,8 @@ def main():
 
     # on noncommand i.e message - echo the message on Telegram
     #   dp.add_handler(MessageHandler(Filters.text, echo)) yyyyyyyyyyyyyy
+
+    dp.add_handler(telegram.ext.CallbackQueryHandler(button))
 
     # log all errors
     dp.add_error_handler(error)
