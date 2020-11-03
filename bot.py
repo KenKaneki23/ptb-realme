@@ -24,7 +24,7 @@ def start(update, context):
                  "\n\nPlease provide as many details as possible for every question to make it easier for the "
                  "community to understand your problem and give you a better answer quicker. "
                  "\n\nIf you face any issues with this bot, contact @pentexnyx",
-                 InlineKeyboardButton("Proceed ➡", callback_data='0'))
+                 InlineKeyboardButton("Proceed ➡", callback_data='1'))
 
 
 def button(update: Update, context: CallbackContext) -> None:
@@ -35,51 +35,41 @@ def button(update: Update, context: CallbackContext) -> None:
     query.answer()
 
     position = int(query.data)
+    proceed_button = InlineKeyboardButton("Proceed ➡", callback_data=str(position + 1))
 
-    button_text = "Proceed ➡"
-
-    if position == 0:
+    if position == 1:
         message_text = "Question 1:" \
                        "\nWhich device are you using?"
-    elif position == 1:
+    elif position == 2:
         message_text = "Question 2:" \
                        "\nWhich software update is installed?"
-    elif position == 2:
+    elif position == 3:
         message_text = "Question 3:" \
                        "\nWhat do you want do?"
-    elif position == 3:
+    elif position == 4:
         message_text = "Question 4:" \
                        "\nWhat have you tried already?"
-    elif position == 4:
+    elif position == 5:
         message_text = "Question 5:" \
                        "\nWhy do you want to do that?"
-    elif position == 5:
+    elif position == 6:
         message_text = "Question 6:" \
                        "\nWhat benefits do you expect?"
-    elif position == 6:
+    elif position == 7:
         message_text = "Question 7:" \
                        "\nWhat output did you get?"
     else:
         message_text = "That's been it. Thanks for your time. 🤖" \
                        "\nNow share your messages with the commmunity support group."
-        button_text = "Join »"
 
         proceed_button = InlineKeyboardMarkup.from_button(
-            InlineKeyboardButton(button_text, url="https://t.me/realme_support"))
-        query.edit_message_text(text=message_text, reply_markup=proceed_button)
-        return
+            InlineKeyboardButton("Join »", url="https://t.me/realme_support"))
 
-    #   position += 1
-    #  back_button = InlineKeyboardMarkup.from_button()
-    #  proceed_button = InlineKeyboardMarkup.from_button()
-
-    buttons = InlineKeyboardMarkup.from_row([InlineKeyboardButton(button_text, callback_data=str(position - 1)),
-                                             InlineKeyboardButton("Back", callback_data=str(position + 1))])
+    buttons = InlineKeyboardMarkup.from_row(
+        [InlineKeyboardButton("Back", callback_data=str(position - 1)), proceed_button])
 
     query.edit_message_text(text=message_text, reply_markup=buttons)
 
-
-# query.edit_message_text(text="Selected option: {}".format(query.data))
 
 def howtoask(update, context):
     """Send a message when the command /help is issued."""
