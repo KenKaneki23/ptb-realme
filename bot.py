@@ -19,9 +19,9 @@ def start(update, context):
     """Send a message when the command /start is issued."""
     username = update.message.from_user
 
-    private(update.message, "Hey, " + username + " 🤖"
-                                                 "\nI will guide you through finding a solution."
-                                                 "\n\nIf you face any issues with this bot, contact @pentexnyx")
+    private(update.message, "Hey, human 🤖"
+                            "\nI will guide you through finding a solution."
+                            "\n\nIf you face any issues with this bot, contact @pentexnyx")
 
 
 def help(update, context):
