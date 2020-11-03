@@ -36,11 +36,11 @@ def help(update, context):
 def admins(update, context):
     """Send a message when the command /admins is issued."""
     text = "<u>Group's staff</u>" \
-           "\n\n<b>Organization ⚜</b>" \
+           "\n\n<b>Organization</b>" \
            "\n@aakaah00001" \
            "\n@Prashant_Choudhary" \
            "\n@PacificPC" \
-           "\n\n<b>Moderators 👮</b>" \
+           "\n\n<b>Moderators</b>" \
            "\n@pentexnyx" \
            "\n@Abhishek2376"
 
@@ -50,7 +50,7 @@ def admins(update, context):
 def experts(update, context):
     """Send a message when the command /admins is issued."""
     text = "<u>Community experts</u>" \
-           "\n\n<b>Device recommendation</b>" \
+           "\n\n<b>Device recommendations</b>" \
            "\n@Abhishek2376" \
            "\n@pentexnyx"
 
@@ -61,7 +61,7 @@ def gcam(update, context):
     """Send a message when the command /admins is issued."""
     text = "<u>Latest Gcam release</u>" \
            "\n\n<b>Gcam Apk</b>" \
-           "\n<a href=https://t.me/realme_support/47467>Urnyx05-v2.4()</a>" \
+           "\n<a href='https://t.me/realme_support/47467'>Urnyx05-v2.4()</a>" \
            "\n\n<b>Configurations</b>"
 
     check(update.message, text)
