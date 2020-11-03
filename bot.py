@@ -50,6 +50,8 @@ def staff(update, context):
                                   '\n@pentexnyx' +
                                   '\n@Abhishek2376')
 
+    else:
+        update.message.reply_text('Please join the group.')
 
 def echo(update, context):
     """Echo the user message."""
