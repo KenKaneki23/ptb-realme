@@ -30,7 +30,7 @@ def help(update, context):
            "\n\n*/experts*" + \
            "\nList experts for different segments"
 
-    markdown(update, text)
+    markdown(update.message, text)
 
 
 def admins(update, context):
