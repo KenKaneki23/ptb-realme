@@ -35,7 +35,7 @@ def help(update, context):
 
 def admins(update, context):
     """Send a message when the command /admins is issued."""
-    text = "*Group's staff*" + \
+    text = "*Group\'s staff*" + \
            "\n\nOrganization ⚜" + \
            "\n@aakaah00001" + \
            "\n@Prashant_Choudhary" + \
