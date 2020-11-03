@@ -40,7 +40,12 @@ def button(update: Update, context: CallbackContext) -> None:
     # Some clients may have trouble otherwise. See https://core.telegram.org/bots/api#callbackquery
     query.answer()
 
-    query.edit_message_text(text="Selected option: {}".format(query.data))
+    query.edit_message_text(text="Selected option: {}".format(query.data),
+                            reply_markup=InlineKeyboardMarkup.from_button(
+                                InlineKeyboardButton("Proceed ➡", callback_data='1')))
+
+
+# query.edit_message_text(text="Selected option: {}".format(query.data))
 
 
 def help(update, context):
