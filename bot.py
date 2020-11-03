@@ -96,7 +96,7 @@ def html(message, text):
 
 
 def check(message, text):
-    if message.chat_id == -337823911:
+    if message.chat_id == -1001374176745:
         html(message, text)
     else:
         message.reply_text('Please join the group.')
