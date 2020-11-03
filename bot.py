@@ -38,43 +38,43 @@ def button(update: Update, context: CallbackContext) -> None:
     proceed_button = InlineKeyboardButton("Next ➡", callback_data=str(position + 1))
 
     if position == 0:
-        message_text = "Hey, human 🤖"
-        "\nI will guide you through finding a solution."
-        "\n\nPlease provide as many details as possible for every question to make it easier for the "
-        "community to understand your problem and give you a better answer quicker. "
-        "\n\nIf you face any issues with this bot, contact @pentexnyx"
+        message_text = "Hey, human 🤖" \
+                       "\nI will guide you through finding a solution." \
+                       "\n\nPlease provide as many details as possible for every question to make it easier for the " \
+                       "community to understand your problem and give you a better answer quicker." \
+                       "\n\nIf you face any issues with this bot, contact @pentexnyx"
 
         query.edit_message_text(text=message_text, reply_markup=InlineKeyboardMarkup.from_button(
             InlineKeyboardButton("Proceed ➡", callback_data='1')))
         return
 
     elif position == 1:
-        message_text = "Question 1:" \
-                       "\nWhich device are you using?"
+        message_text = "Question 1" \
+                       "\n\nWhich device are you using?"
 
     elif position == 2:
-        message_text = "Question 2:" \
-                       "\nWhich software update is installed?"
+        message_text = "Question 2" \
+                       "\n\nWhich software update is installed?"
 
     elif position == 3:
-        message_text = "Question 3:" \
-                       "\nWhat do you want do?"
+        message_text = "Question 3" \
+                       "\n\nWhat do you want do?"
 
     elif position == 4:
-        message_text = "Question 4:" \
-                       "\nWhat have you tried already?"
+        message_text = "Question 4" \
+                       "\n\nWhat have you tried already?"
 
     elif position == 5:
-        message_text = "Question 5:" \
-                       "\nWhy do you want to do that?"
+        message_text = "Question 5" \
+                       "\n\nWhy do you want to do that?"
 
     elif position == 6:
-        message_text = "Question 6:" \
+        message_text = "Question 6" \
                        "\nWhat benefits do you expect?"
 
     elif position == 7:
-        message_text = "Question 7:" \
-                       "\nWhat output did you get?"
+        message_text = "Question 7" \
+                       "\n\nWhat output did you get?"
 
     else:
         message_text = "That's been it. Thanks for your time. 🤖" \
