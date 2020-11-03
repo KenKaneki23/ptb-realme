@@ -167,8 +167,10 @@ def group(message, text):
     if message.chat_id == -1001374176745:
         html(message, text)
     else:
-        message.reply_text("Please join the group:"
-                           "\n@realme_support")
+        url_button(message,
+                   "Command can only be used in the community support group.",
+                   "Join »",
+                   "https://t.me/realme_support")
 
 
 def error(update, context):
