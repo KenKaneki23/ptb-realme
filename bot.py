@@ -22,8 +22,8 @@ def start(update, context):
                             "\nI will guide you through finding a solution."
                             "\n\nIf you face any issues with this bot, contact @pentexnyx")
 
-    private_next(update.message, "I will ask you a few things now to find out which issue you're facing."
-                                 "", InlineKeyboardButton(text="Proceed ➡", callback_data="0"))
+    html_next(update.message, "I will ask you a few things now to find out which issue you're facing.",
+              InlineKeyboardButton(text="Proceed ➡", callback_data="0"))
 
 
 def help(update, context):
