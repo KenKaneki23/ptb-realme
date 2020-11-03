@@ -2,7 +2,7 @@ import logging
 import os
 
 import telegram
-from telegram import InlineKeyboardButton, InlineKeyboardMarkup
+from telegram import InlineKeyboardButton
 from telegram.ext import Updater, CommandHandler
 
 PORT = int(os.environ.get('PORT', 5000))
@@ -22,19 +22,8 @@ def start(update, context):
                             "\nI will guide you through finding a solution."
                             "\n\nIf you face any issues with this bot, contact @pentexnyx")
 
-    private(update.message, "I will ask you a few things now to find out which issue you're facing."
-                            "\n\nType /next to proceed")
-
-    dice = {"Name": "John", "Language": "Python", "API": "pyTelegramBotAPI"}
-    buttons = []
-    for key, value in dice.items():
-        buttons.append(
-            [InlineKeyboardButton(text=key, url='google.com')]
-        )
-    keyboard = InlineKeyboardMarkup(buttons)
-
-    update.message.reply_text(text='Choose from the following',
-                              reply_markup=keyboard)
+    private_next(update.message, "I will ask you a few things now to find out which issue you're facing."
+                                 "\n\nType /next to proceed", InlineKeyboardButton(text="Proceed ➡", callback_data=0))
 
 
 def help(update, context):
@@ -127,6 +116,19 @@ def html(message, text):
 
 def markdown(message, text):
     message.reply_text(text=text, parse_mode=telegram.ParseMode.MARKDOWN_V2)
+
+
+def html_next(message, text, button):
+    message.reply_text(text=text, reply_markup=button, parse_mode=telegram.ParseMode.HTML)
+
+
+def private_next(message, text, button):
+    if message.chat_id > 0:
+        html_next(message, text, button)
+    else:
+        message.reply_text("I'm shy 🤖"
+                           "\nPlease talk to me in private chat:"
+                           "\n@realme_community_support_bot")
 
 
 def private(message, text):
