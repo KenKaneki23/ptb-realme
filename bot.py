@@ -17,7 +17,9 @@ logger = logging.getLogger(__name__)
 # context. Error handlers also receive the raised TelegramError object in error.
 def start(update, context):
     """Send a message when the command /start is issued."""
-    update.message.reply_text('Hi! 5')
+    update.message.reply_text("Hello, human 🤖"
+                              "\nI will guide you through finding a solution."
+                              "\n\n<i>If you face any issues with this bot, contact @pentexnyx</i>")
 
 
 def help(update, context):
@@ -28,7 +30,9 @@ def help(update, context):
                          "\n\n<b>/admins</b>"
                          " \nShow the support group\'s staff"
                          "\n\n<b>/experts</b>"
-                         "\nList experts for different segments")
+                         "\nList experts for different segments"
+                         "\n\n<b>/gcam</b>"
+                         "\nLatest Gcam release and configurations")
 
 
 def admins(update, context):
