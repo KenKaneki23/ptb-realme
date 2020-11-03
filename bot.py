@@ -7,6 +7,7 @@ Author: liuhh02 https://medium.com/@liuhh02
 import logging
 import os
 
+import telegram
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 
 PORT = int(os.environ.get('PORT', 5000))
@@ -52,6 +53,7 @@ def staff(update, context):
 
     else:
         update.message.reply_text('Please join the group.')
+
 
 def echo(update, context):
     """Echo the user message."""
