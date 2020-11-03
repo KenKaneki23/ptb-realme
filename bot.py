@@ -103,7 +103,7 @@ def howtoask(update, context):
                                       "\nUse /experts and tag the experts, which fit to your issue."
                                       "\n\nThese suggestions enable us to provide you with better answers quicker and keep this "
                                       "chat more focused. Thank you in advance☺", InlineKeyboardMarkup.from_button(
-        InlineKeyboardButton(text="Message me",
+        InlineKeyboardButton(text="Message me 💬",
                              url="https://t.me/realme_community_support_bot?start=0")))
 
 
@@ -223,14 +223,14 @@ def private_next(message, text, message_button):
     if message.chat_id > 0:
         message.reply_text(text, reply_markup=InlineKeyboardMarkup.from_button(message_button))
     else:
-        url_button(message, "I'm shy 🤖", "Message me", "https://t.me/realme_community_support_bot?start=0")
+        url_button(message, "I'm shy 🤖", "Message me 💬", "https://t.me/realme_community_support_bot?start=0")
 
 
 def private(message, text):
     if message.chat_id > 0:
         html(message, text)
     else:
-        url_button(message, "I'm shy 🤖", "Message me", "https://t.me/realme_community_support_bot?start=0")
+        url_button(message, "I'm shy 🤖", "Message me 💬", "https://t.me/realme_community_support_bot?start=0")
 
 
 # "\nPlease talk to me in private chat:"
