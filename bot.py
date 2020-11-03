@@ -44,7 +44,10 @@ def admins(update, context):
            "👮🏼\n@pentexnyx" + \
            "\n@Abhishek2376 "
 
-    check(update, text)
+    if update.message.chat_id == -337823911:
+        markdown(update.message, text)
+    else:
+        update.message.reply_text('Please join the group.')
 
 
 def echo(update, context):
