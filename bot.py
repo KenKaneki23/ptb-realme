@@ -2,7 +2,7 @@ import logging
 import os
 
 import telegram
-from telegram import InlineKeyboardButton, Update
+from telegram import InlineKeyboardButton, InlineKeyboardMarkup, Update
 from telegram.ext import Updater, CommandHandler, CallbackContext
 
 PORT = int(os.environ.get('PORT', 5000))
@@ -22,19 +22,18 @@ def start(update, context):
                             "\nI will guide you through finding a solution."
                             "\n\nIf you face any issues with this bot, contact @pentexnyx")
 
-    #   update.message.reply_text(text="I will ask you a few things now to find out which issue you're facing.",
-    #                          reply_markup=InlineKeyboardButton(text="Proceed ➡", callback_data="0"))
+    update.message.reply_text(text="I will ask you a few things now to find out which issue you're facing.",
+                              reply_markup=InlineKeyboardButton(text="Proceed ➡", callback_data="0"))
 
     keyboard = [
-        [
-            InlineKeyboardButton("Option 1", callback_data='1'),
-            InlineKeyboardButton("Option 2", callback_data='2'),
-        ],
+        #   [
+        #       InlineKeyboardButton("Option 1", callback_data='1'),
+        #       InlineKeyboardButton("Option 2", callback_data='2'),
+        #   ],
         [InlineKeyboardButton("Option 3", callback_data='3')],
     ]
 
-    reply_markup = InlineKeyboardButton("Option 3", callback_data='3')
-    # InlineKeyboardMarkup(keyboard)
+    reply_markup = InlineKeyboardMarkup(keyboard)
 
     update.message.reply_text("I will ask you a few things now to find out which issue you're facing.",
                               reply_markup=reply_markup)
