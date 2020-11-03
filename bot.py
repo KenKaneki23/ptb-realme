@@ -33,7 +33,7 @@ def help(update, context):
     markdown(update.message, text)
 
 
-def admins(update, context):
+def adminss(update, context):
     """Send a message when the command /admins is issued."""
     text = "*Group\'s staff*" + \
            "\n\nOrganization ⚜" + \
@@ -43,10 +43,8 @@ def admins(update, context):
            "\n\nModerators " + \
            "👮🏼\n@pentexnyx" + \
            "\n@Abhishek2376 "
-
     if update.message.chat_id == -337823911:
-        markdown(update, text)
-
+        update.message.reply_text(text=text, parse_mode=telegram.ParseMode.MARKDOWN_V2)
     else:
         update.message.reply_text('Please join the group.')
 
@@ -86,7 +84,7 @@ def main():
     dp.add_handler(CommandHandler("start", start))
     dp.add_handler(CommandHandler("help", help))
 
-    dp.add_handler(CommandHandler("admins", admins))
+    dp.add_handler(CommandHandler("adminss", adminss))
 
     # on noncommand i.e message - echo the message on Telegram
     dp.add_handler(MessageHandler(Filters.text, echo))
