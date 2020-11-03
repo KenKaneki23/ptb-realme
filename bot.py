@@ -84,13 +84,19 @@ def rules(update, context):
                           "\n\n<b>1. Language</b>"
                           "\nPlease use English primarly or Hindi as an alternative."
                           "\n\n<b>2. Links</b>"
-                          "\nSending links is permitted."
+                          "\nSending links is not permitted."
                           "\n\n<b>3. Forwarding</b>"
-                          "\nForwarding messages from other cahnnels is permitted"
+                          "\nForwarding messages from other channels is not permitted"
                           "\n\n<b>4. Respect</b>"
                           "\nWe're all one big community. Don't be rude."
                           "\n\n<b>5. Spam</b>"
-                          "\nAvoid sending stuff multiple times. Flooding the chat won't give you more attention.")
+                          "\nAvoid sending stuff multiple times. Flooding the chat won't give you more attention."
+                          "\n\n<b>6. Files</b>"
+                          "\nAvoid sending files over 50Mb, if not ultimately needed."
+                          "\n\n<b>7. Advertisements</b>"
+                          "\nSelf-promotion is not permitted."
+                          "\n\n<b>8. Content</b>"
+                          "\nGore, porn and anything alike is absolutely prohibited.")
 
 
 def echo(update, context):
