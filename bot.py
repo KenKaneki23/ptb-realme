@@ -137,7 +137,8 @@ def markdown(message, text):
 
 def url_button(message, text, button_text, button_url):
     message.reply_text(text,
-                       reply_markup=InlineKeyboardMarkup.from_button(InlineKeyboardButton(button_text, url=button_url)))
+                       reply_markup=InlineKeyboardMarkup.from_button(
+                           InlineKeyboardButton(text=button_text, url=button_url)))
 
 
 def private_next(message, text, message_button):
