@@ -21,18 +21,10 @@ def start(update, context):
     private_next(update.message,
                  "Hey, human 🤖"
                  "\nI will guide you through finding a solution."
-                 "\n\nPlease provide as many details as possible for every step to make it easier for the community "
-                 "to understand your question and give you a better answer quicker. "
+                 "\n\nPlease provide as many details as possible for every question to make it easier for the "
+                 "community to understand your problem and give you a better answer quicker. "
                  "\n\nIf you face any issues with this bot, contact @pentexnyx",
                  InlineKeyboardButton("Proceed ➡", callback_data='0'))
-
-    #  keyboard = [
-    #       [
-    #          InlineKeyboardButton("Option 1", callback_data='1'),
-    #          InlineKeyboardButton("Option 2", callback_data='2'),
-    #      ],
-    #      [InlineKeyboardButton("Option 3", callback_data='3')],
-    #  ]
 
 
 def button(update: Update, context: CallbackContext) -> None:
