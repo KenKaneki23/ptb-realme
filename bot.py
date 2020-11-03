@@ -45,7 +45,8 @@ def admins(update, context):
            "\n@Abhishek2376 "
 
     if update.message.chat_id == -337823911:
-        markdown(update.message, text)
+        markdown(update, text)
+
     else:
         update.message.reply_text('Please join the group.')
 
@@ -55,13 +56,13 @@ def echo(update, context):
     update.message.reply_text(update.message.text)
 
 
-def markdown(message, text):
-    message.reply_text(text=text, parse_mode=telegram.ParseMode.MARKDOWN_V2)
+def markdown(update, text):
+    update.message.reply_text(text=text, parse_mode=telegram.ParseMode.MARKDOWN_V2)
 
 
 def check(update, text):
     if update.message.chat_id == -337823911:
-        markdown(message=update.message, text=text)
+        markdown(update, text)
     else:
         update.message.reply_text('Please join the group.')
 
