@@ -47,9 +47,10 @@ def admins(update, context):
 
     text = "*Group's staff*" \
            "\n\nOrganization" \
-        #    "\n@aakaah00001" \
-    #   "\n@Prashant_Choudhary" \
-    #  "\n@PacificPC" \
+           "\n@aakaah00001" \
+           "\n@PacificPC" \
+        #   "\n@Prashant_Choudhary" \
+
     #    "\n\nModerators" \
     #  "\n@pentexnyx" \
     #  "\n@Abhishek2376"
