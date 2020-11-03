@@ -47,6 +47,26 @@ def admins(update, context):
     check(update.message, text)
 
 
+def experts(update, context):
+    """Send a message when the command /admins is issued."""
+    text = "<u>Community experts</u>" \
+           "\n\n<b>Device recommendation</b>" \
+           "\n@Abhishek2376" \
+           "\n@pentexnyx"
+
+    check(update.message, text)
+
+
+def gcam(update, context):
+    """Send a message when the command /admins is issued."""
+    text = "<u>Latest Gcam release</u>" \
+           "\n\n<b>Gcam Apk</b>" \
+           "\nUrnyx05-v2.4(https://t.me/realme_support/47467)" \
+           "\n\n<b>Configurations</b>"
+
+    check(update.message, text)
+
+
 def echo(update, context):
     """Echo the user message."""
     update.message.reply_text(update.message.text)
@@ -86,6 +106,8 @@ def main():
     dp.add_handler(CommandHandler("start", start))
     dp.add_handler(CommandHandler("help", help))
     dp.add_handler(CommandHandler("admins", admins))
+    dp.add_handler(CommandHandler("gcam", gcam))
+    dp.add_handler(CommandHandler("experts", experts))
 
     # on noncommand i.e message - echo the message on Telegram
     dp.add_handler(MessageHandler(Filters.text, echo))
