@@ -119,7 +119,7 @@ def markdown(message, text):
 
 
 def html_next(message, text, button):
-    message.reply_text(text=text, reply_markup=button, parse_mode=telegram.ParseMode.HTML)
+    message.reply_text(text=text, reply_markup=button)
 
 
 def private_next(message, text, button):
