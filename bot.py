@@ -58,8 +58,9 @@ def button(update: Update, context: CallbackContext) -> None:
     elif position == '3':
         text = "What output did you get?"
 
-    elif position == '4':
-        text = "That's been it."
+    else:
+        text = "That's been it. Thanks for your time. 🤖" \
+               "\nI will inform our experts now."
         button_text = "Submit answers"
 
     position += 1
