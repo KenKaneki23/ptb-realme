@@ -23,7 +23,7 @@ def start(update, context):
                             "\n\nIf you face any issues with this bot, contact @pentexnyx")
 
     private_next(update.message, "I will ask you a few things now to find out which issue you're facing."
-                                 "\n\nType /next to proceed", InlineKeyboardButton(text="Proceed ➡", callback_data=0))
+                                 "", InlineKeyboardButton(text="Proceed ➡", callback_data="0"))
 
 
 def help(update, context):
