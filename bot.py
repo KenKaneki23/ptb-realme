@@ -41,7 +41,7 @@ def help(update, context):
 
 def staff(update, context):
     """Send a message when the command /staff is issued."""
-    if id == -1001374176745:
+    if update.message.chat_id == -1001374176745:
         update.message.reply_text('Organization ⚜' +
                                   '\n@aakaah00001' +
                                   '\n@Prashant_Choudhary' +
