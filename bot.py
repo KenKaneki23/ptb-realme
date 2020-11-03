@@ -33,7 +33,7 @@ def help(update):
     markdown(update, text)
 
 
-def admins(update):
+def admins(update, context):
     """Send a message when the command /admins is issued."""
     text = "*Group's staff*\n\nOrganization ⚜\n@aakaah00001\n@Prashant_Choudhary\n@PacificPC\n\nModerators " \
            "👮🏼\n@pentexnyx\n@Abhishek2376 "
