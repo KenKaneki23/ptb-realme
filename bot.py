@@ -78,7 +78,7 @@ def button(update: Update, context: CallbackContext) -> None:
 
     else:
         message_text = "Thanks for your time. 🤖" \
-                       "\n\nNow share ask in the community support group."
+                       "\n\nNow ask in the community support group."
 
         proceed_button = InlineKeyboardButton("Join »", url="https://t.me/realme_support")
 
@@ -90,19 +90,21 @@ def button(update: Update, context: CallbackContext) -> None:
 
 def howtoask(update, context):
     """Send a message when the command /help is issued."""
-    group(update.message, "<u>How to ask</u>"
-                          "\n\n<b>1. Formulate the question</b>"
-                          "\nMake sure to include:"
-                          "\n· What you want to achieve"
-                          "\n· Why you want it"
-                          "\n\nProvide as many details as possible."
-                          "\n\n<b>2. Waiting for a response</b>"
-                          "\nGive the community 48h to answer your question. The experts not available 24/7, "
-                          "so receiving an answer might take a bit. "
-                          "\n\n<b>3. No answer yet</b>"
-                          "\nUse /experts and tag the experts, which fit to your issue."
-                          "\n\nThese suggestions enable us to provide you with better answers quicker and keep this "
-                          "chat more focused. Thank you in advance☺")
+    group_button_html(update.message, "<u>How to ask</u>"
+                                      "\n\n<b>1. Formulate the question</b>"
+                                      "\nMake sure to include:"
+                                      "\n· What you want to achieve"
+                                      "\n· Why you want it"
+                                      "\n\nProvide as many details as possible."
+                                      "\n\n<b>2. Waiting for a response</b>"
+                                      "\nGive the community 48h to answer your question. The experts not available 24/7, "
+                                      "so receiving an answer might take a bit. "
+                                      "\n\n<b>3. No answer yet</b>"
+                                      "\nUse /experts and tag the experts, which fit to your issue."
+                                      "\n\nThese suggestions enable us to provide you with better answers quicker and keep this "
+                                      "chat more focused. Thank you in advance☺", InlineKeyboardMarkup.from_button(
+        InlineKeyboardButton(text="Message me",
+                             url="https://t.me/realme_community_support_bot?start=0")))
 
 
 def offtopic(update, context):
@@ -237,6 +239,16 @@ def private(message, text):
 def group(message, text):
     if message.chat_id == -1001374176745:
         html(message, text)
+    else:
+        url_button(message,
+                   "Command can only be used in the community support group.",
+                   "Join »",
+                   "https://t.me/realme_support")
+
+
+def group_button_html(message, text, reply_markup):
+    if message.chat_id == -1001374176745:
+        message.reply_text(text=text, parse_mode=telegram.ParseMode.HTML, reply_markup=reply_markup)
     else:
         url_button(message,
                    "Command can only be used in the community support group.",
