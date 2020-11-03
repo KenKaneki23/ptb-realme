@@ -29,9 +29,15 @@ def start(update, context):
 
 def help(update, context):
     """Send a message when the command /help is issued."""
-    text = '*Commands*' + '\n\n/help''\ndisplay this menu' + '\n\n/staff' + '\nshow group\'s staff' + '\n\n/experts' + '\nlist all experts for different segments'
+    text = "*Commands*" + \
+           "\n\n*/help*" + \
+           "\nDisplay this menu" + \
+           "\n\n*/staff*" + \
+           " \nShow group\'s staff" + \
+           "\n\n*/experts*" + \
+           "\nList all experts for different segments"
 
-    update.message.reply_text(text=text, parse_mode=telegram.ParseMode.MARKDOWN_V2)
+    markdown(update, text)
 
 
 def staff(update, context):
@@ -48,6 +54,10 @@ def staff(update, context):
 def echo(update, context):
     """Echo the user message."""
     update.message.reply_text(update.message.text)
+
+
+def markdown(update, text):
+    update.message.reply_text(text=text, parse_mode=telegram.ParseMode.MARKDOWN_V2)
 
 
 def error(update, context):
