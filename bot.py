@@ -103,7 +103,8 @@ def private(message, text):
     # if message.chat_id > 0:
     html(message, text)
     # else:
-    message.reply_text("I'm shy. Please talk to me alone."
+    message.reply_text("I'm shy 🤖"
+                       "\n\nPlease talk to me in private chat:"
                        "\n@realme_community_support_bot")
 
 
