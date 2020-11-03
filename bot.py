@@ -145,14 +145,14 @@ def private_next(message, text, message_button):
     if message.chat_id > 0:
         message.reply_text(text, reply_markup=InlineKeyboardMarkup.from_button(message_button))
     else:
-        url_button(message, "I'm shy 🤖", "Message me", "https://t.me/realme_community_support_bot?start")
+        url_button(message, "I'm shy 🤖", "Message me", "https://t.me/realme_community_support_bot?start=")
 
 
 def private(message, text):
     if message.chat_id > 0:
         html(message, text)
     else:
-        url_button(message, "I'm shy 🤖", "Message me", "https://t.me/realme_community_support_bot?start")
+        url_button(message, "I'm shy 🤖", "Message me", "https://t.me/realme_community_support_bot?start=")
 
 
 # "\nPlease talk to me in private chat:"
