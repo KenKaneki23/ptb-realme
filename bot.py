@@ -45,7 +45,8 @@ def admins(update, context):
     #         '\n@pentexnyx' + \
     #         '\n@Abhishek2376 '
 
-    text = "*Group's staff*\n\nOrganization\n@pentexnyx"
+    text = "*Group's staff*\n\nOrganization" + \
+           "\n@pentexnyx"
 
     if update.message.chat_id == -337823911:
         update.message.reply_text(text=text, parse_mode=telegram.ParseMode.MARKDOWN_V2)
