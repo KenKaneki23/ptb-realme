@@ -58,7 +58,7 @@ def markdown(message, text):
 
 def check(message, text):
     if message.chat_id == -337823911:
-        markdown(message, text)
+        markdown(message=message, text=text)
     else:
         message.reply_text('Please join the group.')
 
