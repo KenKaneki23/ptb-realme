@@ -47,13 +47,26 @@ def button(update: Update, context: CallbackContext) -> None:
     button_text = "Proceed ➡"
 
     if position == 0:
-        message_text = "Which device are you using and which software update is installed?"
+        message_text = "Question 1:" \
+                       "\nWhich device are you using?"
     elif position == 1:
-        message_text = "What do you want do and what have you tried already?"
+        message_text = "Question 2:" \
+                       "\nWhich software update is installed?"
     elif position == 2:
-        message_text = "Why do you want to do that and what benefits do you expect?"
+        message_text = "Question 3:" \
+                       "\nWhat do you want do?"
     elif position == 3:
-        message_text = "What output did you get?"
+        message_text = "Question 4:" \
+                       "\nWhat have you tried already?"
+    elif position == 4:
+        message_text = "Question 5:" \
+                       "\nWhy do you want to do that?"
+    elif position == 5:
+        message_text = "Question 6:" \
+                       "\nWhat benefits do you expect?"
+    elif position == 6:
+        message_text = "Question 7:" \
+                       "\nWhat output did you get?"
     else:
         message_text = "That's been it. Thanks for your time. 🤖" \
                        "\nNow share your messages with the commmunity support group."
