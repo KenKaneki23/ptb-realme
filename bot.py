@@ -70,15 +70,15 @@ def button(update: Update, context: CallbackContext) -> None:
 
     elif position == 6:
         message_text = "Question 6" \
-                       "\nWhat benefits do you expect?"
+                       "\n\nWhat benefits do you expect?"
 
     elif position == 7:
         message_text = "Question 7" \
                        "\n\nWhat output did you get?"
 
     else:
-        message_text = "That's been it. Thanks for your time. 🤖" \
-                       "\nNow share your messages with the community support group."
+        message_text = "Thanks for your time. 🤖" \
+                       "\n\nNow share ask in the community support group."
 
         proceed_button = InlineKeyboardButton("Join »", url="https://t.me/realme_support")
 
