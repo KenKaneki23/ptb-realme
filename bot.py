@@ -66,7 +66,7 @@ def button(update: Update, context: CallbackContext) -> None:
     position += 1
     proceed_button = InlineKeyboardMarkup.from_button(InlineKeyboardButton(button_text, callback_data=str(position)))
 
-    query.edit_message_text(text=text,
+    query.edit_message_text(text=message_text,
                             reply_markup=proceed_button)
 
 
