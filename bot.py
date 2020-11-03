@@ -123,13 +123,15 @@ def help(update, context):
                          "\n\n<b>/help</b>"
                          "\nDisplay this message"
                          "\n\n<b>/admins</b>"
-                         "\nShow the support group\'s staff"
+                         "\nShow this group\'s staff"
                          "\n\n<b>/rules</b>"
-                         "\nShow the support group\'s rules"
+                         "\nShow this group\'s rules"
                          "\n\n<b>/experts</b>"
                          "\nList experts for different segments"
                          "\n\n<b>/gcam</b>"
-                         "\nLatest GCam release and configurations")
+                         "\nLatest GCam release and configurations"
+                         "\n\n<b>/ask</b>"
+                         "\nHow to ask questions properly")
 
 
 def admins(update, context):
