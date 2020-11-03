@@ -58,7 +58,7 @@ def button(update: Update, context: CallbackContext) -> None:
 
     elif position == 3:
         message_text = "Question 3" \
-                       "\n\nWhat do you want do?"
+                       "\n\nWhat do you want to do?"
 
     elif position == 4:
         message_text = "Question 4" \
@@ -93,18 +93,24 @@ def ask(update, context):
     group_button_html(update.message, "<u>How to ask</u>"
                                       "\n\n<b>1. Formulate the question</b>"
                                       "\nMake sure to include:"
-                                      "\n· What you want to achieve"
-                                      "\n· Why you want it"
+                                      "\n· Which device you are using"
+                                      "\n· Which software update is installed"
+                                      "\n· What you want to do"
+                                      "\n· What you have tried already"
+                                      "\n· Why you want to do that"
+                                      "\n· What benefits you expect from it"
+                                      "\n· What output you got"
                                       "\n\nProvide as many details as possible."
                                       "\n\n<b>2. Waiting for a response</b>"
-                                      "\nGive the community 48h to answer your question. The experts not available 24/7, "
-                                      "so receiving an answer might take a bit. "
+                                      "\nGive the community 48h to answer your question. The experts not available "
+                                      "24/7, so receiving an answer might take a bit. "
                                       "\n\n<b>3. No answer yet</b>"
                                       "\nUse /experts and tag the experts, which fit to your issue."
-                                      "\n\nThese suggestions enable us to provide you with better answers quicker and keep this "
-                                      "chat more focused. Thank you in advance☺", InlineKeyboardMarkup.from_button(
-        InlineKeyboardButton(text="Message me 💬",
-                             url="https://t.me/realme_community_support_bot?start=0")))
+                                      "\n\nThese suggestions enable us to provide you with better answers quicker and "
+                                      "keep this chat more focused. Thank you in advance☺",
+                      InlineKeyboardMarkup.from_button(
+                          InlineKeyboardButton(text="Message me 💬",
+                                               url="https://t.me/realme_community_support_bot?start=0")))
 
 
 def offtopic(update, context):
