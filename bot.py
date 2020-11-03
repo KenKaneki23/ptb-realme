@@ -21,6 +21,9 @@ def start(update, context):
                             "\nI will guide you through finding a solution."
                             "\n\nIf you face any issues with this bot, contact @pentexnyx")
 
+    private(update.message, "I will ask you a few things now to find out which issue you're facing."
+                            "\n\nType /next to proceed")
+
 
 def help(update, context):
     """Send a message when the command /help is issued."""
@@ -28,7 +31,9 @@ def help(update, context):
                          "\n\n<b>/help</b>"
                          "\nDisplay this menu"
                          "\n\n<b>/admins</b>"
-                         " \nShow the support group\'s staff"
+                         "\nShow the support group\'s staff"
+                         "\n\n<b>/rules</b>"
+                         "\nShow the support group\'s rules"
                          "\n\n<b>/experts</b>"
                          "\nList experts for different segments"
                          "\n\n<b>/gcam</b>"
@@ -82,7 +87,7 @@ def rules(update, context):
     """Send a message when the command /admins is issued."""
     group(update.message, "<u>Group's rules</u>"
                           "\n\n<b>1. Language</b>"
-                          "\nPlease use English primarly or Hindi as an alternative."
+                          "\nPlease use English or Hindi as an alternative."
                           "\n\n<b>2. Links</b>"
                           "\nSending links is not permitted."
                           "\n\n<b>3. Forwarding</b>"
