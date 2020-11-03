@@ -46,9 +46,9 @@ def button(update: Update, context: CallbackContext) -> None:
 
     button_text = "Proceed ➡"
 
-    # if position == '0':
-    message_text = "Which device are you using?" \
-                   "\n\nWhich software update is installed?"
+    if position == '0':
+        message_text = "Which device are you using?" \
+                       "\n\nWhich software update is installed?"
     #   elif position == 1:
     #       text = "What do you want do?" \
     #             "\n\nWhat have you tried already?"
