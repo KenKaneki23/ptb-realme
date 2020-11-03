@@ -92,11 +92,11 @@ def html(message, text):
 
 
 def private(message, text):
-    if message.chat_id > 0:
-        html(message, text)
-    else:
-        message.reply_text("I'm shy. Please talk to me alone."
-                           "\n@realme_community_support_bot")
+    # if message.chat_id > 0:
+    html(message, text)
+    # else:
+    message.reply_text("I'm shy. Please talk to me alone."
+                       "\n@realme_community_support_bot")
 
 
 def group(message, text):
