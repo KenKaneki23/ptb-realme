@@ -44,8 +44,8 @@ def button(update: Update, context: CallbackContext) -> None:
         "community to understand your problem and give you a better answer quicker. "
         "\n\nIf you face any issues with this bot, contact @pentexnyx"
 
-        query.edit_message_text(text=message_text,
-                                reply_markup=InlineKeyboardMarkup.from_button("Proceed ➡", callback_data='1'))
+        query.edit_message_text(text=message_text, reply_markup=InlineKeyboardMarkup.from_button(
+            InlineKeyboardButton("Proceed ➡", callback_data='1')))
         return
 
     elif position == 1:
@@ -78,12 +78,12 @@ def button(update: Update, context: CallbackContext) -> None:
 
     else:
         message_text = "That's been it. Thanks for your time. 🤖" \
-                       "\nNow share your messages with the commmunity support group."
+                       "\nNow share your messages with the community support group."
 
         proceed_button = InlineKeyboardButton("Join »", url="https://t.me/realme_support")
 
     buttons = InlineKeyboardMarkup.from_row(
-        [InlineKeyboardButton("⬅️Back", callback_data=str(position - 1)), proceed_button])
+        [InlineKeyboardButton("⬅ Back", callback_data=str(position - 1)), proceed_button])
 
     query.edit_message_text(text=message_text, reply_markup=buttons)
 
