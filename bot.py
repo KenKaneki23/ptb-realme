@@ -21,8 +21,8 @@ def start(update, context):
     private_next(update.message,
                  "Hey, human 🤖"
                  "\nI will guide you through finding a solution."
-                 "\n\nPlease provide as many details as possible for every step to make it easier for me to "
-                 "understand your question and give you a better answer quicker. "
+                 "\n\nPlease provide as many details as possible for every step to make it easier for the community "
+                 "to understand your question and give you a better answer quicker. "
                  "\n\nIf you face any issues with this bot, contact @pentexnyx",
                  InlineKeyboardButton("Proceed ➡", callback_data='0'))
 
@@ -47,26 +47,27 @@ def button(update: Update, context: CallbackContext) -> None:
     button_text = "Proceed ➡"
 
     if position == 0:
-        message_text = "Which device are you using?" \
-                       "\n\nWhich software update is installed?"
+        message_text = "Which device are you using and which software update is installed?"
     elif position == 1:
-        message_text = "What do you want do?" \
-                       "\n\nWhat have you tried already?"
+        message_text = "What do you want do and what have you tried already?"
     elif position == 2:
-        message_text = "Why do you want to do that?" \
-                       "\n\nWhat benefits do you expect?"
+        message_text = "Why do you want to do that and what benefits do you expect?"
     elif position == 3:
         message_text = "What output did you get?"
     else:
         message_text = "That's been it. Thanks for your time. 🤖" \
-                       "\nI will inform our experts now."
-        button_text = "Submit answers"
+                       "\nNow share your messages with the commmunity support group."
+        button_text = "Join »"
+
+        proceed_button = InlineKeyboardMarkup.from_button(
+            InlineKeyboardButton(button_text, url="https://t.me/realme_support"))
+        query.edit_message_text(text=message_text, reply_markup=proceed_button)
+        return
 
     position += 1
     proceed_button = InlineKeyboardMarkup.from_button(InlineKeyboardButton(button_text, callback_data=str(position)))
 
-    query.edit_message_text(text=message_text,
-                            reply_markup=proceed_button)
+    query.edit_message_text(text=message_text, reply_markup=proceed_button)
 
 
 # query.edit_message_text(text="Selected option: {}".format(query.data))
