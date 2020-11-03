@@ -40,8 +40,8 @@ def admins(update, context):
                   "\n@aakaah00001" + \
                   "\n@Prashant_Choudhary" + \
                   "\n@PacificPC" + \
-                  "\n\nModerators " + \
-                  "👮🏼\n@pentexnyx" + \
+                  "\n\nModerators 👮🏼" + \
+                  "\n@pentexnyx" + \
                   "\n@Abhishek2376 "
 
     text = "*Commands*" + \
@@ -53,7 +53,7 @@ def admins(update, context):
            "\nList experts for different segments"
 
     if update.message.chat_id == -337823911:
-        update.message.reply_text(text=text, parse_mode=telegram.ParseMode.MARKDOWN_V2)
+        update.message.reply_text(text=text_admins, parse_mode=telegram.ParseMode.MARKDOWN_V2)
     else:
         update.message.reply_text('Please join the group.')
 
