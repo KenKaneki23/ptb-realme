@@ -47,12 +47,31 @@ def button(update: Update, context: CallbackContext) -> None:
 
 # query.edit_message_text(text="Selected option: {}".format(query.data))
 
+def howtoask(update, context):
+    """Send a message when the command /help is issued."""
+    html(update.message, "<u>How to ask</u>"
+                         "\n\n<b>1. Formulate</b>"
+                         "\nMake sure to include:"
+                         "\n· What you want to achieve"
+                         "\n· Why you want it"
+                         "\n\nProvide as many details as possible."
+                         "\n\n\n<b>2. Waiting for a response</b>"
+                         "\n\nGive the community 48h to answer your question. The experts not available 24/7, "
+                         "so receiving an answer might take a bit. "
+                         "\n\n\n<b>3. No answer yet</b>"
+                         "\n\nUse /experts and tag the ones, which fit to your issue.")
+
+
+def offtopic(update, context):
+    """Send a message when the command /help is issued."""
+    html(update.message, "Will reply to continue in offtopic group and move message to it")
+
 
 def help(update, context):
     """Send a message when the command /help is issued."""
     html(update.message, "<u>Commands</u>"
                          "\n\n<b>/help</b>"
-                         "\nDisplay this menu"
+                         "\nDisplay this message"
                          "\n\n<b>/admins</b>"
                          "\nShow the support group\'s staff"
                          "\n\n<b>/rules</b>"
@@ -105,7 +124,7 @@ def gcam(update, context):
                           "\n· <a href='https://t.me/realme_support/47467'>Urnyx05-v2.4</a>"
                           "\n\nUrnyx05's releases work best for most Realme devices. Take at look at "
                           "@googlecameraport for other releases."
-                          "\n\n<b>Configurations</b>"
+                          "\n\n\n<b>Configurations</b>"
                           "\n· <a href='https://t.me/realme_support/20129'>new-natural</a>"
                           "\n· <a href='https://t.me/realme_support/20127'>X2 Pro terev</a>"
                           "\n\nTo enable these configurations, place them in <b>Internal Storage > GCam > Configs7</b>."
@@ -204,6 +223,8 @@ def main():
     dp.add_handler(CommandHandler("gcam", gcam))
     dp.add_handler(CommandHandler("experts", experts))
     dp.add_handler(CommandHandler("rules", rules))
+    dp.add_handler(CommandHandler("howtoask", howtoask))
+    dp.add_handler(CommandHandler("offtopic", offtopic))
 
     # on noncommand i.e message - echo the message on Telegram
     #   dp.add_handler(MessageHandler(Filters.text, echo)) yyyyyyyyyyyyyy
