@@ -33,10 +33,11 @@ def start(update, context):
         [InlineKeyboardButton("Option 3", callback_data='3')],
     ]
 
-    reply_markup = InlineKeyboardMarkup([[InlineKeyboardButton("Option 3", callback_data='3')]])
+    reply_markup = InlineKeyboardMarkup.from_button(InlineKeyboardButton("Option 3", callback_data='3'))
 
     update.message.reply_text("I will ask you a few things now to find out which issue you're facing.",
-                              reply_markup=reply_markup)
+                              reply_markup=InlineKeyboardMarkup.from_button(
+                                  InlineKeyboardButton("Option 3", callback_data='3')))
 
 
 def button(update: Update, context: CallbackContext) -> None:
