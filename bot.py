@@ -22,7 +22,7 @@ def start(update, context):
 
 def help(update, context):
     """Send a message when the command /help is issued."""
-    text = "\n<u>Commands</u>" + \
+    text = " \n<u>Commands</u>" + \
            "\n\n<b>/help</b>" + \
            "\nDisplay this menu" + \
            "\n\n<b>/admins</b>" + \
@@ -35,7 +35,7 @@ def help(update, context):
 
 def admins(update, context):
     """Send a message when the command /admins is issued."""
-    text = "\n<u>Group's staff</u>" \
+    text = " \n<u>Group's staff</u>" \
            "\n\n<b>Organization</b>" \
            "\n@aakaah00001" \
            "\n@Prashant_Choudhary" \
@@ -49,7 +49,7 @@ def admins(update, context):
 
 def experts(update, context):
     """Send a message when the command /admins is issued."""
-    text = "\n<u>Community experts</u>" \
+    text = " \n<u>Community experts</u>" \
            "\n\n<b>Software issues</b>" \
            "\n@Abhishek2376" \
            "\n@Dhairya3391" \
@@ -74,7 +74,7 @@ def experts(update, context):
 
 def gcam(update, context):
     """Send a message when the command /admins is issued."""
-    text = "\n<u>Google Camera</u>" \
+    text = " \n<u>Google Camera</u>" \
            "\n\n<b>Latest Release</b>" \
            "\n<a href='https://t.me/realme_support/47467'>Urnyx05-v2.4</a>" \
            "\n\n<b>Configurations</b>"
