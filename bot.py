@@ -2,7 +2,7 @@ import logging
 import os
 
 import telegram
-from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
+from telegram.ext import Updater, CommandHandler
 
 PORT = int(os.environ.get('PORT', 5000))
 TOKEN = '1415969330:AAGEnSGxjYl-hd3VTkpS4uY017Wag5dDsDQ'
@@ -22,64 +22,56 @@ def start(update, context):
 
 def help(update, context):
     """Send a message when the command /help is issued."""
-    text = " \n<u>Commands</u>" + \
-           "\n\n<b>/help</b>" + \
-           "\nDisplay this menu" + \
-           "\n\n<b>/admins</b>" + \
-           " \nShow the support group\'s staff" + \
-           "\n\n<b>/experts</b>" + \
-           "\nList experts for different segments"
-
-    html(update.message, text)
+    html(update.message, "<u>Commands</u>"
+                         "\n\n<b>/help</b>"
+                         "\nDisplay this menu"
+                         "\n\n<b>/admins</b>"
+                         " \nShow the support group\'s staff"
+                         "\n\n<b>/experts</b>"
+                         "\nList experts for different segments")
 
 
 def admins(update, context):
     """Send a message when the command /admins is issued."""
-    text = " \n<u>Group's staff</u>" \
-           "\n\n<b>Organization</b>" \
-           "\n@aakaah00001" \
-           "\n@Prashant_Choudhary" \
-           "\n@PacificPC" \
-           "\n\n<b>Moderators</b>" \
-           "\n@pentexnyx" \
-           "\n@Abhishek2376"
-
-    check(update.message, text)
+    check(update.message, "<u>Group's staff</u>"
+                          "\n\n<b>Organization</b>"
+                          "\n@aakaah00001"
+                          "\n@Prashant_Choudhary"
+                          "\n@PacificPC"
+                          "\n\n<b>Moderators</b>"
+                          "\n@pentexnyx"
+                          "\n@Abhishek2376")
 
 
 def experts(update, context):
     """Send a message when the command /admins is issued."""
-    text = " \n<u>Community experts</u>" \
-           "\n\n<b>Software issues</b>" \
-           "\n@Abhishek2376" \
-           "\n@Dhairya3391" \
-           "\n@pentexnyx" \
-           "\n\n<b>Hardware issues</b>" \
-           "\n- no expert yet -" \
-           "\n\n<b>Updates and apps</b>" \
-           "\n@Abhishek2376" \
-           "\n@Dhairya3391" \
-           "\n\n<b>Phone recommendations</b>" \
-           "\n@Abhishek2376" \
-           "\n@pentexnyx" \
-           "\n\n<b>Flashing</b>" \
-           "\n- no expert yet -" \
-           "\n\n<b>Android development</b>" \
-           "\n@pentexnyx" \
-           "\n\n<b>Realme ecosystem</b>" \
-           "\n- no expert yet -"
-
-    check(update.message, text)
+    check(update.message, "<u>Community experts</u>"
+                          "\n\n<b>Software issues</b>"
+                          "\n@Abhishek2376"
+                          "\n@Dhairya3391"
+                          "\n@pentexnyx"
+                          "\n\n<b>Hardware issues</b>"
+                          "\n- no expert yet -"
+                          "\n\n<b>Updates and apps</b>"
+                          "\n@Abhishek2376"
+                          "\n@Dhairya3391"
+                          "\n\n<b>Phone recommendations</b>"
+                          "\n@Abhishek2376"
+                          "\n@pentexnyx"
+                          "\n\n<b>Flashing</b>"
+                          "\n- no expert yet -"
+                          "\n\n<b>Android development</b>"
+                          "\n@pentexnyx"
+                          "\n\n<b>Realme ecosystem</b>"
+                          "\n- no expert yet -")
 
 
 def gcam(update, context):
     """Send a message when the command /admins is issued."""
-    text = " \n<u>Google Camera</u>" \
-           "\n\n<b>Latest Release</b>" \
-           "\n<a href='https://t.me/realme_support/47467'>Urnyx05-v2.4</a>" \
-           "\n\n<b>Configurations</b>"
-
-    check(update.message, text)
+    check(update.message, "<u>Google Camera</u>"
+                          "\n\n<b>Latest Release</b>"
+                          "\n<a href='https://t.me/realme_support/47467'>Urnyx05-v2.4</a>"
+                          "\n\n<b>Configurations</b>")
 
 
 def echo(update, context):
@@ -99,7 +91,8 @@ def check(message, text):
     if message.chat_id == -1001374176745:
         html(message, text)
     else:
-        message.reply_text('Please join the group.')
+        message.reply_text("Please join the group:"
+                           "\nhttps://t.me/realme_support")
 
 
 def error(update, context):
@@ -125,7 +118,7 @@ def main():
     dp.add_handler(CommandHandler("experts", experts))
 
     # on noncommand i.e message - echo the message on Telegram
-    dp.add_handler(MessageHandler(Filters.text, echo))
+    #   dp.add_handler(MessageHandler(Filters.text, echo)) yyyyyyyyyyyyyy
 
     # log all errors
     dp.add_error_handler(error)
