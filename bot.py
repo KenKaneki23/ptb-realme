@@ -35,31 +35,16 @@ def help(update, context):
 
 def admins(update, context):
     """Send a message when the command /admins is issued."""
-
-    #  text = '*Group\'s staff*' + \
-    #        '\n\nOrganization' + \
-    #        '\n@aakaah00001' + \
-    #        '\n@Prashant_Choudhary' + \
-    #         '\n@PacificPC' + \
-    #        '\n\nModerators' + \
-    #         '\n@pentexnyx' + \
-    #         '\n@Abhishek2376 '
-
     text = "*Group's staff*" \
-           "\n\nOrganization ⚜" \
+           "\n\n*Organization ⚜*" \
            "\n@aakaah00001" \
            "\n@Prashant\_Choudhary" \
            "\n@PacificPC" \
-           "\n\nModerators 👮" \
+           "\n\n*Moderators 👮*" \
            "\n@pentexnyx" \
            "\n@Abhishek2376"
 
-    #  "\n@Prashant_Choudhary" \
-
-    if update.message.chat_id == -337823911:
-        update.message.reply_text(text=text, parse_mode=telegram.ParseMode.MARKDOWN_V2)
-    else:
-        update.message.reply_text('Please join the group.')
+    check(update.message, text)
 
 
 def echo(update, context):
@@ -67,15 +52,15 @@ def echo(update, context):
     update.message.reply_text(update.message.text)
 
 
-def markdown(update, text):
-    update.message.reply_text(text=text, parse_mode=telegram.ParseMode.MARKDOWN_V2)
+def markdown(message, text):
+    message.reply_text(text=text, parse_mode=telegram.ParseMode.MARKDOWN_V2)
 
 
-def check(update, text):
-    if update.message.chat_id == -337823911:
-        markdown(update, text)
+def check(message, text):
+    if message.chat_id == -337823911:
+        markdown(message, text)
     else:
-        update.message.reply_text('Please join the group.')
+        message.reply_text('Please join the group.')
 
 
 def error(update, context):
