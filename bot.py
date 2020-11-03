@@ -21,6 +21,7 @@ def start(update, context):
     private_next(update.message,
                  "Hey, human 🤖"
                  "\nI will guide you through finding a solution."
+                 "\n\nPlease provide as many details as possible for every step to make it easier for me to understand your question and give you a better answer quicker."
                  "\n\nIf you face any issues with this bot, contact @pentexnyx",
                  InlineKeyboardButton("Proceed ➡", callback_data='0'))
 
@@ -34,16 +35,38 @@ def start(update, context):
 
 
 def button(update: Update, context: CallbackContext) -> None:
+    global text
     query = update.callback_query
 
     # CallbackQueries need to be answered, even if no notification to the user is needed
     # Some clients may have trouble otherwise. See https://core.telegram.org/bots/api#callbackquery
     query.answer()
 
-    query.edit_message_text(text="Selected option: {}".format(query.data),
-                            reply_markup=InlineKeyboardMarkup.from_button(
-                                InlineKeyboardButton("Proceed ➡", callback_data='1')))
+    position = query.data
 
+    button_text = "Proceed ➡"
+
+    if position == 0:
+        text = "Which device are you using? Which software update is installed?"
+
+    elif position == 1:
+        text = "What do you want do? What did you try already?"
+
+    elif position == 2:
+        text = "Why do you want to do that? What benefits do you expect?"
+
+    elif position == 3:
+        text = "What output did you get?"
+
+    elif position == 4:
+        text = "That's been it."
+        button_text = "Submit answers"
+
+    position += 1
+    proceed_button = InlineKeyboardMarkup.from_button(InlineKeyboardButton(button_text, callback_data=str(position)))
+
+    query.edit_message_text(text=text,
+                            reply_markup=proceed_button)
 
 # query.edit_message_text(text="Selected option: {}".format(query.data))
 
@@ -60,8 +83,8 @@ def howtoask(update, context):
                           "so receiving an answer might take a bit. "
                           "\n\n<b>3. No answer yet</b>"
                           "\nUse /experts and tag the experts, which fit to your issue."
-                          "\n\n\nThese suggestions will enable us to provide you with better answers quicker. Thank "
-                          "you in advance☺")
+                          "\n\nThese suggestions enable us to provide you with better answers quicker and keep this "
+                          "chat more focused. Thank you in advance☺")
 
 
 def offtopic(update, context):
@@ -124,8 +147,8 @@ def gcam(update, context):
     group(update.message, "<u>Google Camera</u>"
                           "\n\n<b>Latest Release</b>"
                           "\n· <a href='https://t.me/realme_support/47467'>Urnyx05-v2.4</a>"
-                          "\n\nUrnyx05's releases work best for most Realme devices. Take at look at "
-                          "@googlecameraport for other releases."
+                          "\n\nUrnyx05's releases work well on most Realme devices. Take a look at @googlecameraport "
+                          "for other releases. "
                           "\n\n\n<b>Configurations</b>"
                           "\n· <a href='https://t.me/realme_support/20129'>new-natural</a>"
                           "\n· <a href='https://t.me/realme_support/20127'>X2 Pro terev</a>"
