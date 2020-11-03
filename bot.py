@@ -36,7 +36,7 @@ def start(update, context):
 
 
 def button(update: Update, context: CallbackContext) -> None:
-    global text
+    text: str
     query = update.callback_query
 
     # CallbackQueries need to be answered, even if no notification to the user is needed
@@ -72,6 +72,7 @@ def button(update: Update, context: CallbackContext) -> None:
 
     query.edit_message_text(text=text,
                             reply_markup=proceed_button)
+
 
 # query.edit_message_text(text="Selected option: {}".format(query.data))
 
