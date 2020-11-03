@@ -22,23 +22,23 @@ def start(update, context):
 
 def help(update, context):
     """Send a message when the command /help is issued."""
-    text = "*Commands*" + \
-           "\n\n*/help*" + \
+    text = "<u>Commands</u>" + \
+           "\n\n<b>/help</b>" + \
            "\nDisplay this menu" + \
-           "\n\n*/admins*" + \
+           "\n\n<b>/admins</b>" + \
            " \nShow the support group\'s staff" + \
-           "\n\n*/experts*" + \
+           "\n\n<b>/experts</b>" + \
            "\nList experts for different segments"
 
-    markdown(update, text)
+    html(update.message, text)
 
 
 def admins(update, context):
     """Send a message when the command /admins is issued."""
     text = "<u>Group's staff</u>" \
-           "\n<b>Organization ⚜</b>" \
+           "\n\n<b>Organization ⚜</b>" \
            "\n@aakaah00001" \
-           "\n@Prashant\_Choudhary" \
+           "\n@Prashant_Choudhary" \
            "\n@PacificPC" \
            "\n\n<b>Moderators 👮</b>" \
            "\n@pentexnyx" \
@@ -52,16 +52,17 @@ def echo(update, context):
     update.message.reply_text(update.message.text)
 
 
-def markdown(message, text):
+def html(message, text):
     message.reply_text(text=text, parse_mode=telegram.ParseMode.HTML)
 
 
+# def markdown(message, text):
 # message.reply_text(text=text, parse_mode=telegram.ParseMode.MARKDOWN_V2)
 
 
 def check(message, text):
     if message.chat_id == -337823911:
-        markdown(message, text)
+        html(message, text)
     else:
         message.reply_text('Please join the group.')
 
