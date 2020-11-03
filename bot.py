@@ -22,7 +22,7 @@ def start(update, context):
 
 def help(update, context):
     """Send a message when the command /help is issued."""
-    text = "<u>Commands</u>" + \
+    text = "\n<u>Commands</u>" + \
            "\n\n<b>/help</b>" + \
            "\nDisplay this menu" + \
            "\n\n<b>/admins</b>" + \
@@ -35,7 +35,7 @@ def help(update, context):
 
 def admins(update, context):
     """Send a message when the command /admins is issued."""
-    text = "<u>Group's staff</u>" \
+    text = "\n<u>Group's staff</u>" \
            "\n\n<b>Organization</b>" \
            "\n@aakaah00001" \
            "\n@Prashant_Choudhary" \
@@ -49,19 +49,34 @@ def admins(update, context):
 
 def experts(update, context):
     """Send a message when the command /admins is issued."""
-    text = "<u>Community experts</u>" \
-           "\n\n<b>Device recommendations</b>" \
+    text = "\n<u>Community experts</u>" \
+           "\n\n<b>Software issues</b>" \
            "\n@Abhishek2376" \
-           "\n@pentexnyx"
-
+           "\n@Dhairya3391" \
+           "\n@pentexnyx" \
+           "\n\n<b>Hardware issues</b>" \
+           "\n- no expert yet -" \
+           "\n\n<b>Updates and apps</b>" \
+           "\n@Abhishek2376" \
+           "\n@Dhairya3391" \
+           "\n\n<b>Phone recommendations</b>" \
+           "\n@Abhishek2376" \
+           "\n@pentexnyx" \
+           "\n\n<b>Flashing</b>" \
+           "\n- no expert yet -" \
+           "\n\n<b>Android development</b>" \
+           "\n@pentexnyx" \
+           "\n\n<b>Realme ecosystem</b>" \
+           "\n- no expert yet -" \
+ \
     check(update.message, text)
 
 
 def gcam(update, context):
     """Send a message when the command /admins is issued."""
-    text = "<u>Latest Gcam release</u>" \
-           "\n\n<b>Gcam Apk</b>" \
-           "\n<a href='https://t.me/realme_support/47467'>Urnyx05-v2.4()</a>" \
+    text = "\n<u>Google Camera</u>" \
+           "\n\n<b>Latest Release</b>" \
+           "\n<a href='https://t.me/realme_support/47467'>Urnyx05-v2.4</a>" \
            "\n\n<b>Configurations</b>"
 
     check(update.message, text)
