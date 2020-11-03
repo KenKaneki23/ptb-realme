@@ -49,11 +49,11 @@ def admins(update, context):
            "\n\nOrganization" \
            "\n@aakaah00001" \
            "\n@PacificPC" \
-        #   "\n@Prashant_Choudhary" \
+           "\n\nModerators" \
+           "\n@pentexnyx" \
+           "\n@Abhishek2376"
 
-    #    "\n\nModerators" \
-    #  "\n@pentexnyx" \
-    #  "\n@Abhishek2376"
+    #  "\n@Prashant_Choudhary" \
 
     if update.message.chat_id == -337823911:
         update.message.reply_text(text=text, parse_mode=telegram.ParseMode.MARKDOWN_V2)
