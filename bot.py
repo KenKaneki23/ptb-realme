@@ -36,7 +36,6 @@ def start(update, context):
 
 
 def button(update: Update, context: CallbackContext) -> None:
-    message_text: str
     query = update.callback_query
 
     # CallbackQueries need to be answered, even if no notification to the user is needed
@@ -47,9 +46,9 @@ def button(update: Update, context: CallbackContext) -> None:
 
     button_text = "Proceed ➡"
 
-    if position == '0':
-        message_text = "Which device are you using?" \
-                       "\n\nWhich software update is installed?"
+    # if position == '0':
+    message_text = "Which device are you using?" \
+                   "\n\nWhich software update is installed?"
     #   elif position == 1:
     #       text = "What do you want do?" \
     #             "\n\nWhat have you tried already?"
@@ -63,7 +62,7 @@ def button(update: Update, context: CallbackContext) -> None:
     #              "\nI will inform our experts now."
     #       button_text = "Submit answers"
 
-    position += 1
+    # position += 1
     proceed_button = InlineKeyboardMarkup.from_button(InlineKeyboardButton(button_text, callback_data=str(position)))
 
     query.edit_message_text(text=message_text,
