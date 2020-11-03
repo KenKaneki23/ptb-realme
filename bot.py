@@ -22,8 +22,8 @@ def start(update, context):
                             "\nI will guide you through finding a solution."
                             "\n\nIf you face any issues with this bot, contact @pentexnyx")
 
-    update.message.reply_text(text="I will ask you a few things now to find out which issue you're facing.",
-                              reply_markup=InlineKeyboardButton(text="Proceed ➡", callback_data="0"))
+    #   update.message.reply_text(text="I will ask you a few things now to find out which issue you're facing.",
+    #                             reply_markup=InlineKeyboardButton(text="Proceed ➡", callback_data="0"))
 
     keyboard = [
         [
