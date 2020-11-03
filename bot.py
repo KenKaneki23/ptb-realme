@@ -61,7 +61,7 @@ def gcam(update, context):
     """Send a message when the command /admins is issued."""
     text = "<u>Latest Gcam release</u>" \
            "\n\n<b>Gcam Apk</b>" \
-           "\nUrnyx05-v2.4(https://t.me/realme_support/47467)" \
+           "\n<a href=https://t.me/realme_support/47467>Urnyx05-v2.4()</a>" \
            "\n\n<b>Configurations</b>"
 
     check(update.message, text)
