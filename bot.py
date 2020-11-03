@@ -60,7 +60,7 @@ def help(update, context):
                          "\n\n<b>/experts</b>"
                          "\nList experts for different segments"
                          "\n\n<b>/gcam</b>"
-                         "\nLatest Gcam release and configurations")
+                         "\nLatest GCam release and configurations")
 
 
 def admins(update, context):
@@ -102,14 +102,16 @@ def gcam(update, context):
     """Send a message when the command /admins is issued."""
     group(update.message, "<u>Google Camera</u>"
                           "\n\n<b>Latest Release</b>"
-                          "\n<a href='https://t.me/realme_support/47467'>Urnyx05-v2.4</a>"
+                          "\n· <a href='https://t.me/realme_support/47467'>Urnyx05-v2.4</a>"
+                          "\n\nUrnyx05's releases work best for most Realme devices. Take at look at "
+                          "@googlecameraport for other releases."
                           "\n\n<b>Configurations</b>"
-                          "\n<a href='https://t.me/realme_support/20129'>new-natural</a>"
-                          "\n<a href='https://t.me/realme_support/20127'>X2 Pro terev</a>"
+                          "\n· <a href='https://t.me/realme_support/20129'>new-natural</a>"
+                          "\n· <a href='https://t.me/realme_support/20127'>X2 Pro terev</a>"
                           "\n\nTo enable these configurations, place them in <b>Internal Storage > GCam > Configs7</b>."
                           "\n\nThen go to your GCam and press on the bottom left (next to the camera switch button) a "
                           "few times. A dialog should appear where your can select the desired configuration. "
-                          "\n\nAfterwards you can try to play around with LibPatcher (in GCam's settings) a little to "
+                          "\n\nFeel free to fiddle around with LibPatcher (in GCam's settings) a little to "
                           "shape the image output so that it fits your needs.")
 
 
