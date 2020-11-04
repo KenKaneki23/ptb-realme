@@ -262,8 +262,8 @@ def when_update(update, context):
 
     # might require bot to be admin
     # update.message.delete()
-
-    reply_message = update.message.reply_text("Just wait a few days 😊")
+    update.message.delete()
+    reply_message = update.message.text("Just wait a few days 😊")
     replied_message = update.message.message_id
 
     chat_id = update.message.chat_id
@@ -291,7 +291,6 @@ def alarm(context):
     #  context.bot.delete_message(context=job.context, message_id=reply_message.message_id)
 
     context.bot.delete_message(chat_id=-1001327617858, message_id=job.name)
-    context.bot.delete_message(chat_id=-1001327617858, message_id=str(int(job.name) + 1))
 
 
 # context.bot.delete_message(message_id=)
