@@ -214,7 +214,7 @@ def echo(update, context):
 
 def when_update(update, context):
     """Echo the user message."""
-    update.message.reply_text("Just wait a few days :)")
+    update.message.reply_text("Just wait a few days 😊")
 
 
 def html(message, text):
