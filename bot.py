@@ -269,7 +269,7 @@ def when_update(update, context):
 
 # ,name=str(chat_id)
 
-def alarm(replied_message, reply_message, context):
+def alarm(replied_message, reply_message, context) -> None:
     """Send the alarm message."""
     #  job = context.job
     #  context.bot.delete_message(job.context)
