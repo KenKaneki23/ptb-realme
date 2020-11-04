@@ -232,7 +232,7 @@ def when_update(update, context):
     # j.run_once(callback_30(update.message, context), 10)
 
     chat_id = update.message.chat_id
-    context.job_queue.run_once(alarm, 30, context=chat_id, name=str(chat_id))
+    context.job_queue.run_once(alarm, 300, context=chat_id, name=str(chat_id))
 
 
 def alarm(context):
