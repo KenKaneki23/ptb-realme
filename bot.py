@@ -248,10 +248,6 @@ def nice(update, context):
     update.message.reply_text("nice")
 
 
-global reply_message
-global replied_message
-
-
 def when_update(update, context):
     """Echo the user message."""
     #  update.message.reply_text("Just wait a few days 😊")
@@ -263,14 +259,15 @@ def when_update(update, context):
     # might require bot to be admin
     # update.message.delete()
     update.message.delete()
-    reply_message = update.message.text("Just wait a few days 😊")
-    replied_message = update.message.message_id
+
+    reply_message: telegram.Message
+    reply_message = context.bot.send_message("TEST")
 
     chat_id = update.message.chat_id
     context.job_queue.run_once(
         alarm,
         when=10,
-        context=chat_id, name=str(update.message.message_id))
+        context=chat_id, name=str(reply_message.message_id))
 
 
 # (reply_message=update.message, replied_message=reply, context=context)
