@@ -227,6 +227,14 @@ def form(update, context):
                "https://docs.google.com/forms/d/e/1FAIpQLSceGI9ZaNOIb4NN-3UdJ-mbzvbRwulAh2-VGJasy8VU_BLsFA/viewform")
 
 
+def android11(update, context):
+    """Echo the user message."""
+    html(update.message,
+         "<u>Realme UI 2.0</u>"
+         "\n\n<a href='https://static.c.realme.com/IN/wm-thread/1323470129358438400.jpg'>official Roadmap</a>"
+         "\n\nPlease don't panic around. Relax and wait what happens.")
+
+
 def echo(update, context):
     """Echo the user message."""
     update.message.reply_text(update.message.text)
@@ -340,6 +348,7 @@ def main():
     dp.add_handler(CommandHandler("experts", experts))
     dp.add_handler(CommandHandler("rules", rules))
     dp.add_handler(CommandHandler("ask", ask))
+    dp.add_handler(CommandHandler("android11", android11))
     dp.add_handler(CommandHandler("offtopic", offtopic))
     dp.add_handler(CommandHandler("form", form))
 
