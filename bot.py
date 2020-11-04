@@ -269,7 +269,7 @@ def when_update(update, context):
     chat_id = update.message.chat_id
     context.job_queue.run_once(alarm,
                                10,
-                               context=chat_id, name=update.message.message_id)
+                               context=chat_id, name=str(update.message.message_id))
 
 
 # (reply_message=update.message, replied_message=reply, context=context)
@@ -289,8 +289,8 @@ def alarm(context):
     #  context.bot.delete_message(context=job.context, message_id=replied_message.message_id)
     #  context.bot.delete_message(context=job.context, message_id=reply_message.message_id)
 
-    context.bot.delete_message(context=job.context, message_id=job.name)
-    context.bot.delete_message(context=job.context, message_id=job.name + 1)
+    context.bot.delete_message(context=job.context, message_id=int(job.name))
+    context.bot.delete_message(context=job.context, message_id=int(job.name) + 1)
 
 
 # context.bot.delete_message(message_id=)
