@@ -105,8 +105,10 @@ def ask(update, context):
                                       "available all the time, so receiving an answer might take a bit. "
                                       "\n\n<b>3. No answer yet</b>"
                                       "\nUse /experts and tag the experts, whose segment fits your issue."
-                                      "\n\nThese suggestions enable us to provide you with better answers quicker and "
-                                      "keep this chat more focused.",
+                                      "\n\nIf you didn't receive an answer after a week, use /form and fill out the "
+                                      "linked form. "
+                                      "\n\n<i>These suggestions enable us to provide you with better answers quicker "
+                                      "and keep this chat more focused.</i>",
                       InlineKeyboardMarkup.from_button(
                           InlineKeyboardButton(text="Message me 💬",
                                                url="https://t.me/realme_community_support_bot?start=0")))
