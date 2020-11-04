@@ -262,7 +262,8 @@ def when_update(update, context):
     reply = update.message.reply_text("Just wait a few days 😊")
 
     chat_id = update.message.chat_id
-    context.job_queue.run_once(alarm(update.message, reply, context), 30, context=chat_id, name=str(chat_id))
+    context.job_queue.run_once(alarm(reply_message=update.message, replied_message=reply), 10, context=chat_id,
+                               name=str(chat_id))
 
 
 def alarm(replied_message, reply_message, context):
