@@ -123,19 +123,19 @@ def offtopic(update, context):
 
 def help(update, context):
     """Send a message when the command /help is issued."""
-    html(update.message, "<u>Commands</u>"
-                         "\n\n<b>/help</b>"
-                         "\nDisplay this message"
-                         "\n\n<b>/admins</b>"
-                         "\nShow this group\'s staff"
-                         "\n\n<b>/rules</b>"
-                         "\nShow this group\'s rules"
-                         "\n\n<b>/experts</b>"
-                         "\nList experts for different segments"
-                         "\n\n<b>/gcam</b>"
-                         "\nLatest GCam release and configurations"
-                         "\n\n<b>/ask</b>"
-                         "\nHow to ask questions properly")
+    delay_delete_html("<u>Commands</u>"
+                      "\n\n<b>/help</b>"
+                      "\nDisplay this message"
+                      "\n\n<b>/admins</b>"
+                      "\nShow this group\'s staff"
+                      "\n\n<b>/rules</b>"
+                      "\nShow this group\'s rules"
+                      "\n\n<b>/experts</b>"
+                      "\nList experts for different segments"
+                      "\n\n<b>/gcam</b>"
+                      "\nLatest GCam release and configurations"
+                      "\n\n<b>/ask</b>"
+                      "\nHow to ask questions properly", update, context)
 
 
 def admins(update, context):
