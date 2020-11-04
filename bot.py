@@ -259,17 +259,18 @@ def when_update(update, context):
     # might require bot to be admin
     # update.message.delete()
 
-    update.message.reply_text("Just wait a few days 😊")
+    reply = update.message.reply_text("Just wait a few days 😊")
 
     chat_id = update.message.chat_id
-    context.job_queue.run_once(alarm(update.message, context), 30, context=chat_id, name=str(chat_id))
+    context.job_queue.run_once(alarm(update.message, reply, context), 30, context=chat_id, name=str(chat_id))
 
 
-def alarm(message, context):
+def alarm(replied_message, reply_message, context):
     """Send the alarm message."""
-    job = context.job
-    context.bot.delete_message(job.context)
-    message.delete()
+    # job = context.job
+    # context.bot.delete_message(job.context)
+    replied_message.delete()
+    reply_message.delete()
 
 
 #  context.bot.delete_message(chat_id=message.chat_id,message_id=message.message_id)
