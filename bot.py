@@ -136,7 +136,7 @@ def help(update, context):
                       "\nLatest GCam release and configurations"
                       "\n\n<b>/ask</b>"
                       "\nHow to ask questions properly"
-                      "\n\nContact @pentexnyx if you face any issues.", update, context)
+                      "\n\nContact @pentexnyx if you face any issues with me 🤖", update, context)
 
 
 def admins(update, context):
@@ -259,8 +259,10 @@ def delay_delete_html(text, update, context):
 
     reply_message: telegram.Message
     reply_message = context.bot.send_message(chat_id=GROUP, text=text, parse_mode=telegram.ParseMode.HTML)
-    context.job_queue.run_once(delete, when=10, context=GROUP, name=str(reply_message.message_id))
+    context.job_queue.run_once(delete, 20, context=GROUP, name=str(reply_message.message_id))
 
+
+# set to 300 (5mins)
 
 def delete(context):
     context.bot.delete_message(chat_id=GROUP, message_id=context.job.name)
