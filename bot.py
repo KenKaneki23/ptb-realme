@@ -268,7 +268,7 @@ def when_update(update, context):
 
     chat_id = update.message.chat_id
     context.job_queue.run_once(
-        function=context.bot.delete_message(chat_id=-1001327617858, message_id=update.message.message_id),
+        alarm,
         when=10,
         context=chat_id, name=str(update.message.message_id))
 
