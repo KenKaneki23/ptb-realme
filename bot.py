@@ -229,12 +229,11 @@ def when_update(update, context):
 
     #  u = Updater(TOKEN, use_context=True)
     j = update.job_queue
-    j.run_once(callback_30, 10)
+    j.run_once(callback_30(update.message, context), 10)
 
 
-def callback_30(context: CallbackContext):
-    context.bot.send_message(chat_id='@pentexnyx',
-                             text='A single message with 30s delay')
+def callback_30(message, context: CallbackContext):
+    message.reply_text('Lol NEVER xDDDDD')
 
 
 ###
