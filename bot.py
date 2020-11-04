@@ -1,6 +1,7 @@
 import logging
 import os
 import re
+import time
 
 import telegram
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, Update
@@ -269,6 +270,7 @@ def alarm(replied_message, reply_message, context):
     """Send the alarm message."""
     # job = context.job
     # context.bot.delete_message(job.context)
+    time.sleep(10)
     replied_message.delete()
     reply_message.delete()
 
