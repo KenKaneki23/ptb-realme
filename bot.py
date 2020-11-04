@@ -261,7 +261,7 @@ def when_update(update, context):
     update.message.delete()
 
     reply_message: telegram.Message
-    reply_message = context.bot.send_message(text="TEST")
+    reply_message = context.bot.send_message(chat_id=-1001327617858, text="TEST")
 
     chat_id = update.message.chat_id
     context.job_queue.run_once(
