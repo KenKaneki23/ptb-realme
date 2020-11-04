@@ -192,8 +192,8 @@ def gcam(update, context):
 def sdmaid(update, context):
     """Send a message when the command /admins is issued."""
     group(update.message, "<u>SD Maid</u>"
-                          "\n\n<b>Latest Release</b>"
-                          "\n· <a href='https://t.me/realme_support/47467'>actually a placeholder lol</a>"
+                          "\n\n<b>Latest Release - AVAILABLE SOON</b>"
+                          "\n· <a href='https://t.me/realme_support/47467'>- placeholder -</a>"
                           "\n\nSD Maid is an excellent cleaning app, which also takes care of Databases, "
                           "duplicates, caches and enables you to freeze the apps you don't need.")
 
@@ -245,6 +245,8 @@ def when_update(update, context):
     #  j = update.job_queue
     # j.run_once(callback_30(update.message, context), 10)
 
+    update.message.delete()
+    #  context.bot..delete_message(message_id=update.message.message_id)
     chat_id = update.message.chat_id
     context.job_queue.run_once(alarm, 300, context=chat_id, name=str(chat_id))
 
@@ -254,6 +256,9 @@ def alarm(context):
     job = context.job
     context.bot.send_message(job.context, text='Beep! 🤖'
                                                'this message should have taken 5mins to appear.')
+
+
+#  context.bot.delete_message(chat_id=message.chat_id,message_id=message.message_id)
 
 
 ###
