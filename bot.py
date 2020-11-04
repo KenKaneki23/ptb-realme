@@ -231,8 +231,11 @@ def android11(update, context):
     """Echo the user message."""
     html(update.message,
          "<u>Realme UI 2.0</u>"
-         "\n\n<a href='https://static.c.realme.com/IN/wm-thread/1323470129358438400.jpg'>official Roadmap</a>"
-         "\n\nPlease don't panic around. Relax and wait what happens.")
+         "\n\n<a href='https://static.c.realme.com/IN/wm-thread/1323470129358438400.jpg'>Official Roadmap</a>"
+         "\n\nPlease note that the timeline is for the first wave of early access rollout only. The Early Access "
+         "version for the corresponding model will be released within the above mentioned month in batches, "
+         "not at the beginning of the month. The stable version will be pushed to all users over a period of time."
+         "\n\nRelax and wait what happens 😎")
 
 
 def echo(update, context):
@@ -256,15 +259,17 @@ def when_update(update, context):
     # might require bot to be admin
     # update.message.delete()
     context.bot.delete_message(message_id=update.message.message_id)
+
+    update.message.reply_text("Just wait a few days 😊")
+
     chat_id = update.message.chat_id
-    context.job_queue.run_once(alarm, 300, context=chat_id, name=str(chat_id))
+    context.job_queue.run_once(alarm, 30, context=chat_id, name=str(chat_id))
 
 
 def alarm(context):
     """Send the alarm message."""
     job = context.job
-    context.bot.send_message(job.context, text='Beep! 🤖'
-                                               'this message should have taken 5mins to appear.')
+    context.bot.delete_message(job.context)
 
 
 #  context.bot.delete_message(chat_id=message.chat_id,message_id=message.message_id)
