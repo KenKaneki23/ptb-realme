@@ -1,5 +1,6 @@
 import logging
 import os
+import re
 
 import telegram
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, Update
@@ -226,8 +227,8 @@ def when_update(update, context):
     """Echo the user message."""
     update.message.reply_text("Just wait a few days 😊")
 
-    u = Updater(TOKEN, use_context=True)
-    j = u.job_queue
+    #  u = Updater(TOKEN, use_context=True)
+    j = update.job_queue
     j.run_once(callback_30, 10)
 
 
@@ -319,7 +320,7 @@ def main():
     # on noncommand i.e message - echo the message on Telegram
     #   dp.add_handler(MessageHandler(Filters.text, echo)) yyyyyyyyyyyyyy
 
-    dp.add_handler(MessageHandler(Filters.regex("when(.*?)update"), when_update))
+    dp.add_handler(MessageHandler(Filters.regex(re.compile("when(.*?)update", re.IGNORECASE)), when_update))
 
     dp.add_handler(telegram.ext.CallbackQueryHandler(button))
 
