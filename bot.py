@@ -259,7 +259,7 @@ def when_update(update, context):
     # might require bot to be admin
     # update.message.delete()
 
-    context.bot.delete_message(message_id=update.message.message_id)
+    update.message.delete()
 
     update.message.reply_text("Just wait a few days 😊")
 
