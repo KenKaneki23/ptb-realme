@@ -264,7 +264,7 @@ def when_update(update, context):
     chat_id = update.message.chat_id
     context.job_queue.run_once(alarm(reply_message=update.message, replied_message=reply, context=context),
                                10,
-                               context=chat_id)
+                               context=chat_id, name=str(chat_id))
 
 
 # ,name=str(chat_id)
