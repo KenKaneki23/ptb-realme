@@ -228,11 +228,12 @@ def when_update(update, context):
 
     u = Updater(TOKEN, use_context=True)
     j = u.job_queue
-    j.run_once(callback_60, 10)
+    j.run_once(callback_30, 10)
 
 
-def callback_60(context: CallbackContext):
-    context.bot.send_message(text='A single message with delay')
+def callback_30(context: telegram.ext.CallbackContext):
+    context.bot.send_message(chat_id='@pentexnyx',
+                             text='A single message with 30s delay')
 
 
 ###
