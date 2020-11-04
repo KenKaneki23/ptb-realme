@@ -119,7 +119,7 @@ def offtopic(update, context):
     html(update.message, "Will reply to continue in offtopic group and move message to it")
 
 
-def help(update, context):
+def help(update):
     """Send a message when the command /help is issued."""
     html(update.message, "<u>Commands</u>"
                          "\n\n<b>/help</b>"
