@@ -270,7 +270,9 @@ def when_update(update, context):
 # (reply_message=update.message, replied_message=reply, context=context)
 # ,name=str(chat_id)
 
-def alarm(replied_message, reply_message, context):
+def alarm(context):
+    # replied_message, reply_message,
+
     """Send the alarm message."""
     #  job = context.job
     #  context.bot.delete_message(job.context)
@@ -283,6 +285,7 @@ def alarm(replied_message, reply_message, context):
     #  context.bot.delete_message(context=job.context, message_id=reply_message.message_id)
 
     context.bot.delete_message(job.context)
+
 
 # context.bot.delete_message(message_id=)
 
