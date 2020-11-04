@@ -259,8 +259,6 @@ def when_update(update, context):
     # might require bot to be admin
     # update.message.delete()
 
-    # update.message.delete()
-
     update.message.reply_text("Just wait a few days 😊")
 
     chat_id = update.message.chat_id
