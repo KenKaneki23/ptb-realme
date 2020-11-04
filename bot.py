@@ -232,13 +232,14 @@ def when_update(update, context):
     # j.run_once(callback_30(update.message, context), 10)
 
     chat_id = update.message.chat_id
-    context.job_queue.run_once(alarm, 10, context=chat_id, name=str(chat_id))
+    context.job_queue.run_once(alarm, 30, context=chat_id, name=str(chat_id))
 
 
 def alarm(context):
     """Send the alarm message."""
     job = context.job
-    context.bot.send_message(job.context, text='Beep!')
+    context.bot.send_message(job.context, text='Beep! 🤖'
+                                               'this message should have taken 5mins to appear.')
 
 
 ###
