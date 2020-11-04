@@ -258,9 +258,7 @@ def delay_delete_html(text, update, context):
 
     reply_message: telegram.Message
     reply_message = context.bot.send_message(chat_id=GROUP, text=text, parse_mode=telegram.ParseMode.HTML)
-
-    chat_id = update.message.chat_id
-    context.job_queue.run_once(delete, when=10, context=chat_id, name=str(reply_message.message_id))
+    context.job_queue.run_once(delete, when=10, context=GROUP, name=str(reply_message.message_id))
 
 
 def delete(context):
