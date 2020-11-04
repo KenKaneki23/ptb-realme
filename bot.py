@@ -225,11 +225,12 @@ def echo(update, context):
 def when_update(update, context):
     """Echo the user message."""
     update.message.reply_text("Just wait a few days 😊")
+
+    u = Updater('TOKEN', use_context=True)
+    j = u.job_queue
     j.run_once(callback_60, 30)
 
 
-u = Updater('TOKEN', use_context=True)
-j = u.job_queue
 
 
 def callback_60(context: telegram.ext.CallbackContext):
