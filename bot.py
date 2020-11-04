@@ -8,7 +8,7 @@ from telegram.ext import Updater, CommandHandler, CallbackContext, MessageHandle
 
 PORT = int(os.environ.get('PORT', 5000))
 TOKEN = '1415969330:AAGEnSGxjYl-hd3VTkpS4uY017Wag5dDsDQ'
-GROUP = -1001374176745
+GROUP = -1001327617858  # -1001374176745
 
 # Enable logging
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
