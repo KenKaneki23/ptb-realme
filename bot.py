@@ -226,7 +226,7 @@ def when_update(update, context):
     """Echo the user message."""
     update.message.reply_text("Just wait a few days 😊")
 
-    u = Updater('TOKEN', use_context=True)
+    u = Updater(TOKEN, use_context=True)
     j = u.job_queue
     j.run_once(callback_60, 10)
 
