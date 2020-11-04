@@ -289,8 +289,8 @@ def alarm(context):
     #  context.bot.delete_message(context=job.context, message_id=replied_message.message_id)
     #  context.bot.delete_message(context=job.context, message_id=reply_message.message_id)
 
-    context.bot.delete_message(message_id=job.name)
-    context.bot.delete_message(message_id=str(int(job.name) + 1))
+    context.bot.delete_message(chat_id=-337823911, message_id=job.name)
+    context.bot.delete_message(chat_id=-337823911, message_id=str(int(job.name) + 1))
 
 
 # context.bot.delete_message(message_id=)
