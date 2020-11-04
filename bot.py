@@ -231,7 +231,7 @@ def when_update(update, context):
     j.run_once(callback_60, 10)
 
 
-def callback_60(context: telegram.ext.CallbackContext):
+def callback_60(context: CallbackContext):
     context.bot.send_message(text='A single message with delay')
 
 
