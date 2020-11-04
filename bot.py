@@ -4,7 +4,7 @@ import re
 
 import telegram
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, Update
-from telegram.ext import Updater, CommandHandler, CallbackContext, MessageHandler, Filters
+from telegram.ext import Updater, CommandHandler, CallbackContext, MessageHandler, Filters, CallbackQueryHandler
 
 PORT = int(os.environ.get('PORT', 5000))
 TOKEN = '1415969330:AAGEnSGxjYl-hd3VTkpS4uY017Wag5dDsDQ'
@@ -225,14 +225,14 @@ def echo(update, context):
 
 def when_update(update, context):
     """Echo the user message."""
-    update.message.reply_text("Just wait a few days 😊")
+    #  update.message.reply_text("Just wait a few days 😊")
 
     #  u = Updater(TOKEN, use_context=True)
     j = update.job_queue
     j.run_once(callback_30, 10)
 
 
-def callback_30(context: telegram.ext.CallbackContext):
+def callback_30(context: CallbackContext):
     context.bot.send_message(chat_id='@pentexnyx',
                              text='A single message with 30s delay')
 
@@ -322,7 +322,7 @@ def main():
 
     dp.add_handler(MessageHandler(Filters.regex(re.compile("when(.*?)update", re.IGNORECASE)), when_update))
 
-    dp.add_handler(telegram.ext.CallbackQueryHandler(button))
+    dp.add_handler(CallbackQueryHandler(button))
 
     # log all errors
     dp.add_error_handler(error)
