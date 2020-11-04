@@ -207,12 +207,12 @@ def rules(update, context):
                           "\nGore, porn and anything alike is absolutely prohibited.")
 
 
-def when_update(update, context):
+def echo(update, context):
     """Echo the user message."""
     update.message.reply_text(update.message.text)
 
 
-def echo(update, context):
+def when_update(update, context):
     """Echo the user message."""
     update.message.reply_text("Just wait a few days :)")
 
