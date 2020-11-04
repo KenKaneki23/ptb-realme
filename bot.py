@@ -267,9 +267,9 @@ def when_update(update, context):
 
 def alarm(message, context):
     """Send the alarm message."""
-    message.delete()
     job = context.job
     context.bot.delete_message(job.context)
+    message.delete()
 
 
 #  context.bot.delete_message(chat_id=message.chat_id,message_id=message.message_id)
