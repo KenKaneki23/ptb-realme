@@ -207,9 +207,9 @@ def rules(update, context):
                           "\nGore, porn and anything alike is absolutely prohibited.")
 
 
-def dev(update, context):
+def form(update, context):
     url_button(update.message,
-               "If your issue is not resolved by the community after one week, you can also contact the developers."
+               "If your issue is not resolved by the community after a week, you can also contact the developers."
                "\n\nPlease don't abuse this possibility, so that Realme developers can focus on developing.",
                "Access form 📝",
                "https://docs.google.com/forms/d/e/1FAIpQLSceGI9ZaNOIb4NN-3UdJ-mbzvbRwulAh2-VGJasy8VU_BLsFA/viewform")
@@ -300,7 +300,7 @@ def main():
     dp.add_handler(CommandHandler("rules", rules))
     dp.add_handler(CommandHandler("ask", ask))
     dp.add_handler(CommandHandler("offtopic", offtopic))
-    dp.add_handler(CommandHandler("dev", dev))
+    dp.add_handler(CommandHandler("form", form))
 
     # on noncommand i.e message - echo the message on Telegram
     #   dp.add_handler(MessageHandler(Filters.text, echo)) yyyyyyyyyyyyyy
