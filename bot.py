@@ -223,6 +223,11 @@ def echo(update, context):
     update.message.reply_text(update.message.text)
 
 
+def nice(update, context):
+    """Echo the user message."""
+    update.message.reply_text("nice")
+
+
 def when_update(update, context):
     """Echo the user message."""
     #  update.message.reply_text("Just wait a few days 😊")
@@ -326,6 +331,8 @@ def main():
     #   dp.add_handler(MessageHandler(Filters.text, echo)) yyyyyyyyyyyyyy
 
     dp.add_handler(MessageHandler(Filters.regex(re.compile("when(.*?)update", re.IGNORECASE)), when_update))
+
+    dp.add_handler(MessageHandler(Filters.regex("69"), nice))
 
     dp.add_handler(CallbackQueryHandler(button))
 
