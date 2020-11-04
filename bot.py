@@ -248,6 +248,10 @@ def nice(update, context):
     update.message.reply_text("nice")
 
 
+reply_message: telegram.Message
+replied_message: telegram.Message
+
+
 def when_update(update, context):
     """Echo the user message."""
     #  update.message.reply_text("Just wait a few days 😊")
@@ -259,10 +263,11 @@ def when_update(update, context):
     # might require bot to be admin
     # update.message.delete()
 
-    reply = update.message.reply_text("Just wait a few days 😊")
+    reply_message = update.message.reply_text("Just wait a few days 😊")
+    replied_message = update.message
 
     chat_id = update.message.chat_id
-    context.job_queue.run_once(alarm(context, msg_id=update.message.message_id),
+    context.job_queue.run_once(alarm,
                                10,
                                context=chat_id)
 
@@ -270,7 +275,7 @@ def when_update(update, context):
 # (reply_message=update.message, replied_message=reply, context=context)
 # ,name=str(chat_id)
 
-def alarm(context, msg_id):
+def alarm(context):
     # replied_message, reply_message,
 
     """Send the alarm message."""
@@ -281,11 +286,11 @@ def alarm(context, msg_id):
 
     job = context.job
 
-
     #  context.bot.delete_message(context=job.context, message_id=replied_message.message_id)
     #  context.bot.delete_message(context=job.context, message_id=reply_message.message_id)
 
-    context.bot.delete_message(context=job.context, message_id=msg_id)
+    context.bot.delete_message(context=job.context, message_id=reply_message.message_id)
+    context.bot.delete_message(context=job.context, message_id=replied_message.message_id)
 
 
 # context.bot.delete_message(message_id=)
