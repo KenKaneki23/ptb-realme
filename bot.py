@@ -228,9 +228,7 @@ def when_update(update, context):
 
     u = Updater('TOKEN', use_context=True)
     j = u.job_queue
-    j.run_once(callback_60, 30)
-
-
+    j.run_once(callback_60, 10)
 
 
 def callback_60(context: telegram.ext.CallbackContext):
