@@ -189,6 +189,15 @@ def gcam(update, context):
                           "shape the image output so that it fits your needs.")
 
 
+def sdmaid(update, context):
+    """Send a message when the command /admins is issued."""
+    group(update.message, "<u>SD Maid</u>"
+                          "\n\n<b>Latest Release</b>"
+                          "\n· <a href='https://t.me/realme_support/47467'>actually a placeholder lol</a>"
+                          "\n\nSD Maid is an excellent cleaning app, which also takes care of Databases, "
+                          "duplicates, caches and enables you to freeze the apps you don't need.")
+
+
 def rules(update, context):
     """Send a message when the command /admins is issued."""
     group(update.message, "<u>Group's rules</u>"
@@ -321,6 +330,7 @@ def main():
     dp.add_handler(CommandHandler("help", help))
     dp.add_handler(CommandHandler("admins", admins))
     dp.add_handler(CommandHandler("gcam", gcam))
+    dp.add_handler(CommandHandler("sdmaid", sdmaid))
     dp.add_handler(CommandHandler("experts", experts))
     dp.add_handler(CommandHandler("rules", rules))
     dp.add_handler(CommandHandler("ask", ask))
