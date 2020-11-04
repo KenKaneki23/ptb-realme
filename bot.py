@@ -264,9 +264,10 @@ def when_update(update, context):
     chat_id = update.message.chat_id
     context.job_queue.run_once(callback=alarm(reply_message=update.message, replied_message=reply, context=context),
                                when=10,
-                               context=chat_id,
-                               name=str(chat_id))
+                               context=chat_id)
 
+
+# ,name=str(chat_id)
 
 def alarm(replied_message, reply_message, context):
     """Send the alarm message."""
