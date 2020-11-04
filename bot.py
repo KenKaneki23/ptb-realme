@@ -3,7 +3,7 @@ import os
 
 import telegram
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, Update
-from telegram.ext import Updater, CommandHandler, CallbackContext
+from telegram.ext import Updater, CommandHandler, CallbackContext, MessageHandler, Filters
 
 PORT = int(os.environ.get('PORT', 5000))
 TOKEN = '1415969330:AAGEnSGxjYl-hd3VTkpS4uY017Wag5dDsDQ'
@@ -100,13 +100,13 @@ def ask(update, context):
                                       "\n· Why you want to do that"
                                       "\n· What benefits you expect from it"
                                       "\n· What output you got"
-                                      "\n\n<b>2. Waiting for a response</b>"
-                                      "\nGive the community 48h to answer your question. The experts not available "
-                                      "24/7, so receiving an answer might take a bit. "
+                                      "\n\n<b>2. Wait for a response</b>"
+                                      "\nGive the community 48h to answer your question. The needed expert might not "
+                                      "available all the time, so receiving an answer might take a bit. "
                                       "\n\n<b>3. No answer yet</b>"
-                                      "\nUse /experts and tag the experts, which fit to your issue."
+                                      "\nUse /experts and tag the experts, whose segment fits your issue."
                                       "\n\nThese suggestions enable us to provide you with better answers quicker and "
-                                      "keep this chat more focused. Thank you in advance☺",
+                                      "keep this chat more focused.",
                       InlineKeyboardMarkup.from_button(
                           InlineKeyboardButton(text="Message me 💬",
                                                url="https://t.me/realme_community_support_bot?start=0")))
@@ -212,6 +212,11 @@ def echo(update, context):
     update.message.reply_text(update.message.text)
 
 
+def echo(update, context):
+    """Echo the user message."""
+    update.message.reply_text("Just wait a few days :)")
+
+
 def html(message, text):
     message.reply_text(text=text, parse_mode=telegram.ParseMode.HTML)
 
@@ -290,6 +295,8 @@ def main():
 
     # on noncommand i.e message - echo the message on Telegram
     #   dp.add_handler(MessageHandler(Filters.text, echo)) yyyyyyyyyyyyyy
+
+    dp.add_handler(MessageHandler(Filters.regex("/when(.*?)update/gi"), when_update))
 
     dp.add_handler(telegram.ext.CallbackQueryHandler(button))
 
