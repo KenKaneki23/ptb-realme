@@ -262,14 +262,15 @@ def when_update(update, context):
     reply = update.message.reply_text("Just wait a few days 😊")
 
     chat_id = update.message.chat_id
-    context.job_queue.run_once(alarm(reply_message=update.message, replied_message=reply), 10, context=chat_id,
+    context.job_queue.run_once(alarm(reply_message=update.message, replied_message=reply, context=context), 10,
+                               context=chat_id,
                                name=str(chat_id))
 
 
 def alarm(replied_message, reply_message, context):
     """Send the alarm message."""
-    job = context.job
-    context.bot.delete_message(job.context)
+    #  job = context.job
+    #  context.bot.delete_message(job.context)
 
     # time.sleep(10)
 
