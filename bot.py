@@ -228,12 +228,17 @@ def when_update(update, context):
     #  update.message.reply_text("Just wait a few days 😊")
 
     #  u = Updater(TOKEN, use_context=True)
-    j = update.job_queue
-    j.run_once(callback_30(update.message, context), 10)
+    #  j = update.job_queue
+    # j.run_once(callback_30(update.message, context), 10)
+
+    chat_id = update.message.chat_id
+    context.job_queue.run_once(alarm, 10, context=chat_id, name=str(chat_id))
 
 
-def callback_30(message, context: CallbackContext):
-    message.reply_text('Lol NEVER xDDDDD')
+def alarm(context):
+    """Send the alarm message."""
+    job = context.job
+    context.bot.send_message(job.context, text='Beep!')
 
 
 ###
