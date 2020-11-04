@@ -296,7 +296,7 @@ def main():
     # on noncommand i.e message - echo the message on Telegram
     #   dp.add_handler(MessageHandler(Filters.text, echo)) yyyyyyyyyyyyyy
 
-    dp.add_handler(MessageHandler(Filters.regex("when(.*?)update"), when_update))
+    dp.add_handler(MessageHandler(Filters.regex("/when(.*?)update/g"), when_update))
 
     dp.add_handler(telegram.ext.CallbackQueryHandler(button))
 
