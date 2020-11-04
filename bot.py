@@ -8,6 +8,7 @@ from telegram.ext import Updater, CommandHandler, CallbackContext, MessageHandle
 
 PORT = int(os.environ.get('PORT', 5000))
 TOKEN = '1415969330:AAGEnSGxjYl-hd3VTkpS4uY017Wag5dDsDQ'
+GROUP = -1001374176745
 
 # Enable logging
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
@@ -249,57 +250,21 @@ def nice(update, context):
 
 
 def when_update(update, context):
-    """Echo the user message."""
-    #  update.message.reply_text("Just wait a few days 😊")
+    delay_delete_html("Just wait a bit ;)", update, context)
 
-    #  u = Updater(TOKEN, use_context=True)
-    #  j = update.job_queue
-    # j.run_once(callback_30(update.message, context), 10)
 
-    # might require bot to be admin
-    # update.message.delete()
+def delay_delete_html(text, update, context):
     update.message.delete()
 
     reply_message: telegram.Message
-    reply_message = context.bot.send_message(chat_id=-1001327617858, text="TEST")
+    reply_message = context.bot.send_message(chat_id=GROUP, text=text, parse_mode=telegram.ParseMode.HTML)
 
     chat_id = update.message.chat_id
-    context.job_queue.run_once(
-        alarm,
-        when=10,
-        context=chat_id, name=str(reply_message.message_id))
+    context.job_queue.run_once(delete, when=10, context=chat_id, name=str(reply_message.message_id))
 
 
-# (reply_message=update.message, replied_message=reply, context=context)
-# ,name=str(chat_id)
-
-def alarm(context):
-    # replied_message, reply_message,
-
-    """Send the alarm message."""
-    #  job = context.job
-    #  context.bot.delete_message(job.context)
-
-    # time.sleep(10)
-
-    job = context.job
-
-    #  context.bot.delete_message(context=job.context, message_id=replied_message.message_id)
-    #  context.bot.delete_message(context=job.context, message_id=reply_message.message_id)
-
-    context.bot.delete_message(chat_id=-1001327617858, message_id=job.name)
-
-
-# context.bot.delete_message(message_id=)
-
-# replied_message.delete()
-# reply_message.delete()
-
-
-#  context.bot.delete_message(chat_id=message.chat_id,message_id=message.message_id)
-
-
-###
+def delete(context):
+    context.bot.delete_message(chat_id=GROUP, message_id=context.job.name)
 
 
 def html(message, text):
