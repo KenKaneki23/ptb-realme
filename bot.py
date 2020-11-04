@@ -135,7 +135,8 @@ def help(update, context):
                       "\n\n<b>/gcam</b>"
                       "\nLatest GCam release and configurations"
                       "\n\n<b>/ask</b>"
-                      "\nHow to ask questions properly", update, context)
+                      "\nHow to ask questions properly"
+                      "\n\nContact @pentexnyx if you face any issues.", update, context)
 
 
 def admins(update, context):
