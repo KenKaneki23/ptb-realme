@@ -245,8 +245,9 @@ def when_update(update, context):
     #  j = update.job_queue
     # j.run_once(callback_30(update.message, context), 10)
 
-    update.message.delete()
-    #  context.bot..delete_message(message_id=update.message.message_id)
+    # might require bot to be admin
+    # update.message.delete()
+    context.bot.delete_message(message_id=update.message.message_id)
     chat_id = update.message.chat_id
     context.job_queue.run_once(alarm, 300, context=chat_id, name=str(chat_id))
 
