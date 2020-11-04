@@ -108,7 +108,7 @@ def ask(update, context):
                                       "\nIf you didn't receive an answer after a week, use /form and fill out the "
                                       "linked form. "
                                       "\n\nThese suggestions enable us to provide you with better answers quicker and "
-                                      "keep this chat more focused.",
+                                      "will keep this chat more focused.",
                       InlineKeyboardMarkup.from_button(
                           InlineKeyboardButton(text="Message me 💬",
                                                url="https://t.me/realme_community_support_bot?start=0")))
