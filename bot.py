@@ -250,7 +250,7 @@ def kotlin(update, context):
 
 def vidtest(update, context):
     #  update.message.reply_text("hm")
-    update.message.reply_document('https://t.me/girlsupply/35041')
+    update.message.reply_document('https://t.me/girlsupply/35041.mp4')
 
 
 def echo(update, context):
