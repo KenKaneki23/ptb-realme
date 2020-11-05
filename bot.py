@@ -244,9 +244,9 @@ def android11(update, context):
 
 
 def kotlin(update, context):
-    update.message.reply_text("hm")
-    # update.message.reply_photo(photo='https://cdn.discordapp.com/attachments/556781113490538507/773990279996243988/kt'
-    #                                   '-jesus-cut-small.jpg')
+    #  update.message.reply_text("hm")
+    update.message.reply_photo(photo='https://cdn.discordapp.com/attachments/556781113490538507/773990279996243988/kt'
+                                     '-jesus-cut-small.jpg')
 
 
 #  context.bot.send_photo(GROUP, 'https://cdn.discordapp.com/attachments/556781113490538507/773990279996243988/kt'
@@ -360,13 +360,12 @@ def main():
     dp.add_handler(CommandHandler("android11", android11))
     #   dp.add_handler(CommandHandler("offtopic", offtopic))
     dp.add_handler(CommandHandler("form", form))
-    dp.add_handler(CommandHandler("kotlin", kotlin))
 
     # on noncommand i.e message - echo the message on Telegram
     #   dp.add_handler(MessageHandler(Filters.text, echo)) yyyyyyyyyyyyyy
 
     dp.add_handler(MessageHandler(Filters.regex(re.compile("(when|get)(.*?)update", re.IGNORECASE)), when_update))
-
+    dp.add_handler(MessageHandler(Filters.regex(re.compile("kotlin", re.IGNORECASE)), kotlin))
     dp.add_handler(MessageHandler(Filters.regex("69"), nice))
 
     dp.add_handler(CallbackQueryHandler(button))
