@@ -246,7 +246,8 @@ def android11(update, context):
 def kotlin(update, context):
     # update.message.reply_text("https://t.me/kotlingang/182640")
     # update.message.reply_photo()
-    update.message.sendPhoto(chat_id=GROUP, photo='https://t.me/kotlingang/182640')
+    update.message.sendPhoto(chat_id=GROUP,
+                             photo='https://cdn.discordapp.com/attachments/556781113490538507/773990279996243988/kt-jesus-cut-small.jpg')
 
 
 def echo(update, context):
