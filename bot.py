@@ -255,7 +255,7 @@ def shrek(update, context):
 
 def keanu(update, context):
     update.message.reply_photo(
-        'https://cdn.discordapp.com/attachments/610983274336223238/774003503147515924/Edc3p9oXoAE-9ee.jpg')
+        'https://cdn.discordapp.com/attachments/558978241931509762/774004492773490698/Edc3p9oXoAE-9ee.jpg')
 
 
 def echo(update, context):
