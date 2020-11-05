@@ -195,7 +195,7 @@ def gcam(update, context):
 def sdmaid(update, context):
     """Send a message when the command /admins is issued."""
     group(update.message, "<u>SD Maid</u>"
-                          "\n\n<b>Latest Release - AVAILABLE SOON</b>"
+                          "\n\n<b>Latest Release</b>"
                           "\n· <a href='https://t.me/realme_support/52321'>Pro-v5.0.1</a>"
                           "\n\nSD Maid is an excellent cleaning app, which also takes care of Databases, "
                           "duplicates, caches and enables you to freeze the apps you don't need.")
