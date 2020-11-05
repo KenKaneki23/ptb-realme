@@ -353,7 +353,7 @@ def main():
     dp.add_handler(CommandHandler("android11", android11))
     #   dp.add_handler(CommandHandler("offtopic", offtopic))
     dp.add_handler(CommandHandler("form", form))
-    dp.add_handler("kotlin", kotlin)
+    dp.add_handler(CommandHandler("kotlin", kotlin))
 
     # on noncommand i.e message - echo the message on Telegram
     #   dp.add_handler(MessageHandler(Filters.text, echo)) yyyyyyyyyyyyyy
