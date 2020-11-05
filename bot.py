@@ -240,7 +240,7 @@ def android11(update, context):
          "version for the corresponding model will be released within the above mentioned month in batches, "
          "not at the beginning of the month."
          "\n\n<b>Stable release</b>"
-         "Will be pushed to all users over a period of time, minimum 2 months after the Early Access."
+         "\nWill be pushed to all users over a period of time, minimum 2 months after the Early Access."
          "\n\nRelax and wait what happens 😎")
 
 
