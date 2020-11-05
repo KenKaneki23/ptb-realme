@@ -196,7 +196,7 @@ def sdmaid(update, context):
     """Send a message when the command /admins is issued."""
     group(update.message, "<u>SD Maid</u>"
                           "\n\n<b>Latest Release - AVAILABLE SOON</b>"
-                          "\n· <a href='https://t.me/realme_support/47467'>- placeholder -</a>"
+                          "\n· <a href='https://t.me/realme_support/52321'>- placeholder -</a>"
                           "\n\nSD Maid is an excellent cleaning app, which also takes care of Databases, "
                           "duplicates, caches and enables you to freeze the apps you don't need.")
 
@@ -236,11 +236,10 @@ def android11(update, context):
          "<u>Realme UI 2.0</u>"
          "\n\n<a href='https://static.c.realme.com/IN/wm-thread/1323470129358438400.jpg'>Official Roadmap</a>"
          "\n\n<b>Early Access</b>"
-         "\nThe timeline is for the first wave of early access rollout only. The Early Access "
-         "version for the corresponding model will be released within the above mentioned month in batches, "
-         "not at the beginning of the month."
+         "\nThe timeline is for the first wave of early access rollout only. The version for the corresponding model "
+         "will be released within the above mentioned month in batches, not at the beginning of the month. "
          "\n\n<b>Stable release</b>"
-         "\nWill be pushed to all users over a period of time, minimum 2 months after the Early Access."
+         "\nWill be pushed to all users over a period of time, minimum 2 months after early access."
          "\n\nRelax and wait what happens 😎")
 
 
@@ -348,7 +347,7 @@ def main():
     dp.add_handler(CommandHandler("rules", rules))
     dp.add_handler(CommandHandler("ask", ask))
     dp.add_handler(CommandHandler("android11", android11))
-    dp.add_handler(CommandHandler("offtopic", offtopic))
+    #   dp.add_handler(CommandHandler("offtopic", offtopic))
     dp.add_handler(CommandHandler("form", form))
 
     # on noncommand i.e message - echo the message on Telegram
