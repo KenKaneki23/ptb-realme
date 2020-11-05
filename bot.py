@@ -248,9 +248,9 @@ def kotlin(update, context):
     update.message.reply_photo('https://t.me/kotlingang/182640')
 
 
-def vidtest(update, context):
+def shrek(update, context):
     #  update.message.reply_text("hm")
-    context.bot.send_video(chat_id=GROUP, video='https://t.me/girlsupply/35041')
+    update.message.reply_text("..is love. Shrek is live. <3")
 
 
 def echo(update, context):
@@ -367,7 +367,7 @@ def main():
     dp.add_handler(MessageHandler(Filters.regex(re.compile("kotlin", re.IGNORECASE)), kotlin))
     dp.add_handler(MessageHandler(Filters.regex("69"), nice))
 
-    dp.add_handler(MessageHandler(Filters.regex("vidtest"), vidtest))
+    dp.add_handler(MessageHandler(Filters.regex(re.compile("shrek", re.IGNORECASE)), shrek))
 
     dp.add_handler(CallbackQueryHandler(button))
 
