@@ -243,6 +243,10 @@ def android11(update, context):
          "\n\nRelax and wait what happens 😎")
 
 
+def kotlin(update, context):
+    update.message.reply_text("https://t.me/kotlingang/182640")
+
+
 def echo(update, context):
     """Echo the user message."""
     update.message.reply_text(update.message.text)
@@ -349,6 +353,7 @@ def main():
     dp.add_handler(CommandHandler("android11", android11))
     #   dp.add_handler(CommandHandler("offtopic", offtopic))
     dp.add_handler(CommandHandler("form", form))
+    dp.add_handler("kotlin", kotlin)
 
     # on noncommand i.e message - echo the message on Telegram
     #   dp.add_handler(MessageHandler(Filters.text, echo)) yyyyyyyyyyyyyy
