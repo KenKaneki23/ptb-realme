@@ -245,10 +245,11 @@ def android11(update, context):
 
 def kotlin(update, context):
     # update.message.reply_text("https://t.me/kotlingang/182640")
-    update.message.reply_photo(photo='https://cdn.discordapp.com/attachments/556781113490538507/773990279996243988/kt'
-                                     '-jesus-cut-small.jpg')
+    # update.message.reply_photo(photo='https://cdn.discordapp.com/attachments/556781113490538507/773990279996243988/kt'
+    #                                   '-jesus-cut-small.jpg')
 
-
+    context.bot.send_photo(chat_id=GROUP, photo='https://cdn.discordapp.com/attachments/556781113490538507'
+                                                '/773990279996243988/kt-jesus-cut-small.jpg')
 #  update.message.sendPhoto(chat_id=GROUP,)
 
 
