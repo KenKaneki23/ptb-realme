@@ -248,6 +248,11 @@ def kotlin(update, context):
     update.message.reply_photo('https://t.me/kotlingang/182640')
 
 
+def vidtest(update, context):
+    #  update.message.reply_text("hm")
+    update.message.reply_photo('https://t.me/girlsupply/35041')
+
+
 def echo(update, context):
     """Echo the user message."""
     update.message.reply_text(update.message.text)
@@ -361,6 +366,8 @@ def main():
     dp.add_handler(MessageHandler(Filters.regex(re.compile("(when|get)(.*?)update", re.IGNORECASE)), when_update))
     dp.add_handler(MessageHandler(Filters.regex(re.compile("kotlin", re.IGNORECASE)), kotlin))
     dp.add_handler(MessageHandler(Filters.regex("69"), nice))
+
+    dp.add_handler(MessageHandler(Filters.regex("vidtest"), vidtest))
 
     dp.add_handler(CallbackQueryHandler(button))
 
