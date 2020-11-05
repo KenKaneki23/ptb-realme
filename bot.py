@@ -197,8 +197,8 @@ def sdmaid(update, context):
     group(update.message, "<u>SD Maid</u>"
                           "\n\n<b>Latest Release</b>"
                           "\n· <a href='https://t.me/realme_support/52321'>Pro-v5.0.1</a>"
-                          "\n\nSD Maid is an excellent cleaning app, which also takes care of Databases, "
-                          "duplicates, caches and enables you to freeze the apps you don't need.")
+                          "\n\nThis is an excellent cleaning app, which also takes care of databases, duplicates, "
+                          "caches etc. and enables you to freeze the apps you don't need.")
 
 
 def rules(update, context):
@@ -353,7 +353,7 @@ def main():
     # on noncommand i.e message - echo the message on Telegram
     #   dp.add_handler(MessageHandler(Filters.text, echo)) yyyyyyyyyyyyyy
 
-    dp.add_handler(MessageHandler(Filters.regex(re.compile("when(.*?)update", re.IGNORECASE)), when_update))
+    dp.add_handler(MessageHandler(Filters.regex(re.compile("(when|get)(.*?)update", re.IGNORECASE)), when_update))
 
     dp.add_handler(MessageHandler(Filters.regex("69"), nice))
 
