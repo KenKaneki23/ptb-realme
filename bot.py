@@ -235,9 +235,12 @@ def android11(update, context):
     html(update.message,
          "<u>Realme UI 2.0</u>"
          "\n\n<a href='https://static.c.realme.com/IN/wm-thread/1323470129358438400.jpg'>Official Roadmap</a>"
-         "\n\nPlease note that the timeline is for the first wave of early access rollout only. The Early Access "
+         "\n\n<b>Early Access</b>"
+         "\nThe timeline is for the first wave of early access rollout only. The Early Access "
          "version for the corresponding model will be released within the above mentioned month in batches, "
-         "not at the beginning of the month. The stable version will be pushed to all users over a period of time."
+         "not at the beginning of the month."
+         "\n\n<b>Stable release</b>"
+         "Will be pushed to all users over a period of time, minimum 2 months after the Early Access."
          "\n\nRelax and wait what happens 😎")
 
 
