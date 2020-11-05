@@ -244,7 +244,9 @@ def android11(update, context):
 
 
 def kotlin(update, context):
-    update.message.reply_text("https://t.me/kotlingang/182640")
+    # update.message.reply_text("https://t.me/kotlingang/182640")
+    # update.message.reply_photo()
+    update.message.sendPhoto(chat_id=GROUP, photo='https://t.me/kotlingang/182640')
 
 
 def echo(update, context):
