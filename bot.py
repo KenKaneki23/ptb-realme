@@ -250,7 +250,7 @@ def kotlin(update, context):
 
 def shrek(update, context):
     #  update.message.reply_text("hm")
-    update.message.reply_text("..is love. Shrek is live. <3")
+    update.message.reply_text("Shrek is love. Shrek is live.")
 
 
 def echo(update, context):
