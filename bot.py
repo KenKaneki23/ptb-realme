@@ -253,6 +253,11 @@ def shrek(update, context):
     update.message.reply_text("Shrek is love. Shrek is live.")
 
 
+def keanu(update, context):
+    update.message.reply_photo(
+        'https://cdn.discordapp.com/attachments/610983274336223238/774003503147515924/Edc3p9oXoAE-9ee.jpg')
+
+
 def echo(update, context):
     """Echo the user message."""
     update.message.reply_text(update.message.text)
@@ -368,6 +373,7 @@ def main():
     dp.add_handler(MessageHandler(Filters.regex("69"), nice))
 
     dp.add_handler(MessageHandler(Filters.regex(re.compile("shrek", re.IGNORECASE)), shrek))
+    dp.add_handler(MessageHandler(Filters.regex(re.compile("keanu|antonia", re.IGNORECASE)), keanu))
 
     dp.add_handler(CallbackQueryHandler(button))
 
