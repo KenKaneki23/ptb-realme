@@ -250,7 +250,7 @@ def kotlin(update, context):
 
 def vidtest(update, context):
     #  update.message.reply_text("hm")
-    context.bot.send_video(video='https://t.me/girlsupply/35041')
+    context.bot.send_video(chat_id=GROUP, video='https://t.me/girlsupply/35041')
 
 
 def echo(update, context):
