@@ -270,7 +270,7 @@ def nice(update, context):
 
 def huhu(update, context):
     """Echo the user message."""
-    update.message.reply_text("Huhu ✌🏼")
+    context.bot.send_message("Huhu ✌🏼")
 
 
 def when_update(update, context):
@@ -373,11 +373,11 @@ def main():
     # on noncommand i.e message - echo the message on Telegram
     #   dp.add_handler(MessageHandler(Filters.text, echo)) yyyyyyyyyyyyyy
 
-    dp.add_handler(MessageHandler(Filters.regex(re.compile("(when|get)(.*?)update", re.IGNORECASE)), when_update))
+    dp.add_handler(MessageHandler(Filters.regex(re.compile("when|get(.*?)update", re.IGNORECASE)), when_update))
     dp.add_handler(MessageHandler(Filters.regex(re.compile("kotlin", re.IGNORECASE)), kotlin))
 
     dp.add_handler(MessageHandler(Filters.regex("69"), nice))
-    dp.add_handler(MessageHandler(Filters.regex(re.compile("hey", re.IGNORECASE)), huhu))
+    dp.add_handler(MessageHandler(Filters.regex(re.compile("hey|hi|hello", re.IGNORECASE)), huhu))
     dp.add_handler(MessageHandler(Filters.regex(re.compile("shrek", re.IGNORECASE)), shrek))
     dp.add_handler(MessageHandler(Filters.regex(re.compile("keanu|antonia", re.IGNORECASE)), keanu))
 
