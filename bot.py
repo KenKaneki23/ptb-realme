@@ -270,7 +270,7 @@ def nice(update, context):
 
 def huhu(update, context):
     """Echo the user message."""
-    context.bot.send_message(context=GROUP, text="Huhu ✌🏼")
+    context.bot.send_message(chat_id=GROUP, text="Huhu ✌🏼")
 
 
 def when_update(update, context):
