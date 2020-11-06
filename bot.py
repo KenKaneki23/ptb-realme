@@ -377,7 +377,7 @@ def main():
     dp.add_handler(MessageHandler(Filters.regex(re.compile("kotlin", re.IGNORECASE)), kotlin))
 
     dp.add_handler(MessageHandler(Filters.regex("69"), nice))
-    dp.add_handler(MessageHandler(Filters.regex(re.compile("hey|hi|hello", re.IGNORECASE)), huhu))
+    dp.add_handler(MessageHandler(Filters.regex(re.compile("hey|hi|hello|huhu", re.IGNORECASE)), huhu))
     dp.add_handler(MessageHandler(Filters.regex(re.compile("shrek", re.IGNORECASE)), shrek))
     dp.add_handler(MessageHandler(Filters.regex(re.compile("keanu|antonia", re.IGNORECASE)), keanu))
 
