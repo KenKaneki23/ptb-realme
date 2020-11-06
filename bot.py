@@ -268,6 +268,11 @@ def nice(update, context):
     update.message.reply_text("nice")
 
 
+def huhu(update, context):
+    """Echo the user message."""
+    update.message.reply_text("Huhu ✌🏼")
+
+
 def when_update(update, context):
     delay_delete_html("Just wait a bit ;)", update, context)
 
@@ -370,8 +375,9 @@ def main():
 
     dp.add_handler(MessageHandler(Filters.regex(re.compile("(when|get)(.*?)update", re.IGNORECASE)), when_update))
     dp.add_handler(MessageHandler(Filters.regex(re.compile("kotlin", re.IGNORECASE)), kotlin))
-    dp.add_handler(MessageHandler(Filters.regex("69"), nice))
 
+    dp.add_handler(MessageHandler(Filters.regex("69"), nice))
+    dp.add_handler(MessageHandler(Filters.regex(re.compile("hey", re.IGNORECASE)), huhu))
     dp.add_handler(MessageHandler(Filters.regex(re.compile("shrek", re.IGNORECASE)), shrek))
     dp.add_handler(MessageHandler(Filters.regex(re.compile("keanu|antonia", re.IGNORECASE)), keanu))
 
