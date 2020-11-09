@@ -169,7 +169,7 @@ def android11(update, context):
 
 
 def delay_group(update, context, text):
-    update.message.delete()
+    # update.message.delete() # REQUIRES ADMIN!!!
 
     if update.message.chat_id == -1001374176745:
         reply_message: telegram.Message = context.bot.send_message(chat_id=update.message.chat_id, text=text,
