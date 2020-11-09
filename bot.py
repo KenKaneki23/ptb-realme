@@ -126,7 +126,6 @@ def sdmaid(update, context):
 
 
 def rules(update, context):
-    """Send a message when the command /admins is issued."""
     delay_group(update, context,
                 "<u>Group's rules</u>"
                 "\n\n<b>1. Language</b>"
@@ -157,7 +156,6 @@ def form(update, context):
 
 
 def android11(update, context):
-    """Echo the user message."""
     delay_group(update, context,
                 "<u>Realme UI 2.0</u>"
                 "\n\n<a href='https://static.c.realme.com/IN/wm-thread/1323470129358438400.jpg'>Official Roadmap</a>"
@@ -171,6 +169,8 @@ def android11(update, context):
 
 
 def delay_group(update, context, text):
+    update.message.delete()
+
     if update.message.chat_id == -1001374176745:
         reply_message: telegram.Message = context.bot.send_message(chat_id=update.message.chat_id, text=text,
                                                                    parse_mode=telegram.ParseMode.HTML)
@@ -180,7 +180,7 @@ def delay_group(update, context, text):
                                       reply_markup=InlineKeyboardMarkup.from_button(
                                           InlineKeyboardButton(text="Join »", url="https://t.me/realme_support")))
 
-    context.job_queue.run_once(delete, 15, context=update.message.chat_id, name=str(reply_message.message_id))
+    context.job_queue.run_once(delete, 300, context=update.message.chat_id, name=str(reply_message.message_id))
 
 
 def delete(context):
@@ -188,7 +188,6 @@ def delete(context):
 
 
 def error(update, context):
-    """Log Errors caused by Updates."""
     logger.warning('Update "%s" caused error "%s"', update, context.error)
 
 
