@@ -175,10 +175,10 @@ def delay_group(update, context, text):
         reply_message: telegram.Message = context.bot.send_message(chat_id=update.message.chat_id, text=text,
                                                                    parse_mode=telegram.ParseMode.HTML)
     else:
-        reply_message: telegram.Message = \
-            update.message.reply_text("Command can only be used in the community support group.",
-                                      reply_markup=InlineKeyboardMarkup.from_button(
-                                          InlineKeyboardButton(text="Join »", url="https://t.me/realme_support")))
+        reply_message: telegram.Message = update.message.reply_text(
+            "Command can only be used in the community support group.",
+            reply_markup=InlineKeyboardMarkup.from_button(
+                InlineKeyboardButton(text="Join »", url="https://t.me/realme_support")))
 
     context.job_queue.run_once(delete, 300, context=update.message.chat_id, name=str(reply_message.message_id))
 
