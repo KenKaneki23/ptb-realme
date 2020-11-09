@@ -22,8 +22,8 @@ def start(update, context):
     """Send a message when the command /start is issued."""
     private_next(update.message,
                  "Hey, human 🤖"
-                 "\nI will guide you through finding a solution."
-                 "\n\nPlease provide as many details as possible for every question to make it easier for the "
+                 "\nI will guide you through formulating a proper question to ask in the group."
+                 "\n\nPlease provide as many details as possible for every step to make it easier for the "
                  "community to understand your problem and give you a better answer quicker. "
                  "\n\nIf you face any issues with this bot, contact @pentexnyx",
                  InlineKeyboardButton("Proceed ➡", callback_data='1'))
@@ -41,9 +41,9 @@ def button(update: Update, context: CallbackContext) -> None:
 
     if position == 0:
         message_text = "Hey, human 🤖" \
-                       "\nI will guide you through finding a solution." \
-                       "\n\nPlease provide as many details as possible for every question to make it easier for the " \
-                       "community to understand your problem and give you a better answer quicker." \
+                       "\nI will guide you through formulating a proper question to ask in the group." \
+                       "\n\nPlease provide as many details as possible for every step to make it easier for the " \
+                       "community to understand your problem and give you a better answer quicker. " \
                        "\n\nIf you face any issues with this bot, contact @pentexnyx"
 
         query.edit_message_text(text=message_text, reply_markup=InlineKeyboardMarkup.from_button(
@@ -51,31 +51,31 @@ def button(update: Update, context: CallbackContext) -> None:
         return
 
     elif position == 1:
-        message_text = "Question 1" \
+        message_text = "Question 1/7" \
                        "\n\nWhich device are you using?"
 
     elif position == 2:
-        message_text = "Question 2" \
+        message_text = "Question 2/7" \
                        "\n\nWhich software update is installed?"
 
     elif position == 3:
-        message_text = "Question 3" \
+        message_text = "Question 3/7" \
                        "\n\nWhat do you want to do?"
 
     elif position == 4:
-        message_text = "Question 4" \
+        message_text = "Question 4/7" \
                        "\n\nWhat have you tried already?"
 
     elif position == 5:
-        message_text = "Question 5" \
+        message_text = "Question 5/7" \
                        "\n\nWhy do you want to do that?"
 
     elif position == 6:
-        message_text = "Question 6" \
+        message_text = "Question 6/7" \
                        "\n\nWhat benefits do you expect?"
 
     elif position == 7:
-        message_text = "Question 7" \
+        message_text = "Question 7/7" \
                        "\n\nWhat output did you get?"
 
     else:
@@ -134,6 +134,10 @@ def help(update, context):
                       "\nList experts for different segments"
                       "\n\n<b>/gcam</b>"
                       "\nLatest GCam release and configurations"
+                      "\n\n<b>/sdmaid</b>"
+                      "\nLatest release of the best cleaner out there"
+                      "\n\n<b>/android11</b>"
+                      "\nOfficial roadmap for the Early Access of RealmeUI 2.0"
                       "\n\n<b>/ask</b>"
                       "\nHow to ask questions properly"
                       "\n\nContact @pentexnyx if you face any issues with me 🤖"
@@ -278,11 +282,12 @@ def when_update(update, context):
 
 
 def delay_delete_html(text, update, context):
-    update.message.delete()
+    # update.message.delete()  # can't delete user's message currently
 
     reply_message: telegram.Message
-    reply_message = context.bot.send_message(chat_id=GROUP, text=text, parse_mode=telegram.ParseMode.HTML)
-    context.job_queue.run_once(delete, 20, context=GROUP, name=str(reply_message.message_id))
+    reply_message = context.bot.send_message(chat_id=update.message.chat_id, text=text,
+                                             parse_mode=telegram.ParseMode.HTML)
+    context.job_queue.run_once(delete, 20, context=update.message.chat_id, name=str(reply_message.message_id))
 
 
 # set to 300 (5mins)
@@ -377,7 +382,7 @@ def main():
     dp.add_handler(MessageHandler(Filters.regex(re.compile("kotlin", re.IGNORECASE)), kotlin))
 
     dp.add_handler(MessageHandler(Filters.regex("69"), nice))
- #   dp.add_handler(MessageHandler(Filters.regex(re.compile("hey|hi|hello|huhu", re.IGNORECASE)), huhu))
+    #   dp.add_handler(MessageHandler(Filters.regex(re.compile("hey|hi|hello|huhu", re.IGNORECASE)), huhu))
     dp.add_handler(MessageHandler(Filters.regex(re.compile("shrek", re.IGNORECASE)), shrek))
     dp.add_handler(MessageHandler(Filters.regex(re.compile("keanu|antonia", re.IGNORECASE)), keanu))
 
