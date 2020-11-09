@@ -292,16 +292,16 @@ def delay_delete_html(text, update, context):
 
 # set to 300 (5mins)
 
-def delete(context):
-    context.bot.delete_message(chat_id=GROUP, message_id=context.job.name)
+def delete(update, context):
+    context.bot.delete_message(chat_id=update.message.chat_id, message_id=context.job.name)
 
 
 def html(message, text):
     message.reply_text(text=text, parse_mode=telegram.ParseMode.HTML)
 
 
-def markdown(message, text):
-    message.reply_text(text=text, parse_mode=telegram.ParseMode.MARKDOWN_V2)
+# def markdown(message, text):
+#    message.reply_text(text=text, parse_mode=telegram.ParseMode.MARKDOWN_V2)
 
 
 def url_button(message, text, button_text, button_url):
