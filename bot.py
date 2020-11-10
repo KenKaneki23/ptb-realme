@@ -167,21 +167,32 @@ def android11(update, context):
                 "\n\nRelax and wait what happens 😎")
 
 
+def message_button_url(update, context, text, button_text, button_url):
+    return context.bot.send_message(chat_id=update.message.chat_id,
+                                    text=text,
+                                    parse_mode=telegram.ParseMode.HTML,
+                                    reply_markup=InlineKeyboardMarkup.from_button(
+                                        InlineKeyboardButton(text=button_text, url=button_url)))
+
+
+def message_html(update, context, text):
+    return context.bot.send_message(chat_id=update.message.chat_id,
+                                    text=text,
+                                    parse_mode=telegram.ParseMode.HTML)
+
+
 def delay_group_button_url(update, context, text, button_text, button_url):
     # update.message.delete() # TODO REQUIRES ADMIN!!!
 
     if update.message.chat_id == -1001374176745:
-        reply_message: telegram.Message = \
-            context.bot.send_message(chat_id=update.message.chat_id,
-                                     text=text,
-                                     parse_mode=telegram.ParseMode.HTML,
-                                     reply_markup=InlineKeyboardMarkup.from_button(
-                                         InlineKeyboardButton(text=button_text, url=button_url)))
+        reply_message = message_button_url(update, context, text, button_text, button_url)
+
     else:
-        reply_message: telegram.Message = update.message.reply_text(
-            "Command can only be used in the community support group.",
-            reply_markup=InlineKeyboardMarkup.from_button(
-                InlineKeyboardButton(text="Join »", url="https://t.me/realme_support")))
+        reply_message = message_button_url(update,
+                                           context,
+                                           "Command can only be used in the community support group.",
+                                           "Join »",
+                                           "https://t.me/realme_support")
 
     context.job_queue.run_once(delete, 300, context=update.message.chat_id, name=str(reply_message.message_id))
 
@@ -190,13 +201,13 @@ def delay_group(update, context, text):
     # update.message.delete() # TODO REQUIRES ADMIN!!!
 
     if update.message.chat_id == -1001374176745:
-        reply_message: telegram.Message = context.bot.send_message(chat_id=update.message.chat_id, text=text,
-                                                                   parse_mode=telegram.ParseMode.HTML)
+        reply_message = message_html(update, context, text)
     else:
-        reply_message: telegram.Message = update.message.reply_text(
-            "Command can only be used in the community support group.",
-            reply_markup=InlineKeyboardMarkup.from_button(
-                InlineKeyboardButton(text="Join »", url="https://t.me/realme_support")))
+        reply_message = message_button_url(update,
+                                           context,
+                                           "Command can only be used in the community support group.",
+                                           "Join »",
+                                           "https://t.me/realme_support")
 
     context.job_queue.run_once(delete, 300, context=update.message.chat_id, name=str(reply_message.message_id))
 
