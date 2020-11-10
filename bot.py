@@ -147,12 +147,11 @@ def rules(update, context):
 
 
 def form(update, context):
-    delay_group(update, context,
-                "If your issue is not resolved by the community after a week, you can also contact the developers."
-                "\n\nPlease don't abuse this possibility, so that Realme developers can focus on developing."
-                "\n\nAccess form 📝"
-                "\n\nhttps://docs.google.com/forms/d/e/1FAIpQLSceGI9ZaNOIb4NN-3UdJ-mbzvbRwulAh2"
-                "-VGJasy8VU_BLsFA/viewform")
+    delay_group_button_url(update, context,
+                           "If your issue is not resolved by the community after a week, you can also contact the developers."
+                           "\n\nPlease don't abuse this possibility, so that Realme developers can focus on developing.",
+                           "Access form 📝",
+                           "https://docs.google.com/forms/d/e/1FAIpQLSceGI9ZaNOIb4NN-3UdJ-mbzvbRwulAh2-VGJasy8VU_BLsFA/viewform")
 
 
 def android11(update, context):
@@ -168,8 +167,27 @@ def android11(update, context):
                 "\n\nRelax and wait what happens 😎")
 
 
+def delay_group_button_url(update, context, text, button_text, button_url):
+    # update.message.delete() # TODO REQUIRES ADMIN!!!
+
+    if update.message.chat_id == -1001374176745:
+        reply_message: telegram.Message = \
+            context.bot.send_message(chat_id=update.message.chat_id,
+                                     text=text,
+                                     parse_mode=telegram.ParseMode.HTML,
+                                     reply_markup=InlineKeyboardMarkup.from_button(
+                                         InlineKeyboardButton(text=button_text, url=button_url)))
+    else:
+        reply_message: telegram.Message = update.message.reply_text(
+            "Command can only be used in the community support group.",
+            reply_markup=InlineKeyboardMarkup.from_button(
+                InlineKeyboardButton(text="Join »", url="https://t.me/realme_support")))
+
+    context.job_queue.run_once(delete, 300, context=update.message.chat_id, name=str(reply_message.message_id))
+
+
 def delay_group(update, context, text):
-    # update.message.delete() # REQUIRES ADMIN!!!
+    # update.message.delete() # TODO REQUIRES ADMIN!!!
 
     if update.message.chat_id == -1001374176745:
         reply_message: telegram.Message = context.bot.send_message(chat_id=update.message.chat_id, text=text,
