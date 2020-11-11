@@ -278,8 +278,8 @@ def like_command(update, context):
     update.message.reply_text(
         "Text for this message.",
         reply_markup=InlineKeyboardMarkup.from_row(
-            [InlineKeyboardButton("Upvote 👍🏼", callback_data='true'),
-             InlineKeyboardButton("Downvote 👎🏼", callback_data='false')]))
+            [InlineKeyboardButton("Upvote 👍🏼", callback_data='0'),
+             InlineKeyboardButton("Downvote 👎🏼", callback_data='1')]))
 
 
 def like_callback(update: Update, context: CallbackContext) -> None:
@@ -289,17 +289,17 @@ def like_callback(update: Update, context: CallbackContext) -> None:
     # Some clients may have trouble otherwise. See https://core.telegram.org/bots/api#callbackquery
     query.answer()
 
-    liked = bool(query.data)
+    button_callback = int(query.data)
     #  proceed_button = InlineKeyboardButton("Next ➡", callback_data=str(position + 1))
 
-    if liked:
+    if button_callback == 0:
         query.edit_message_text(
             text="You liked it!",
             reply_markup=InlineKeyboardMarkup.from_row(
                 [InlineKeyboardButton("Upvote 👍🏼", callback_data='true'),
                  InlineKeyboardButton("Downvote 👎🏼", callback_data='false')]))
 
-    else:
+    elif button_callback == 1:
         query.edit_message_text(
             text="You hated it!",
             reply_markup=InlineKeyboardMarkup.from_row(
