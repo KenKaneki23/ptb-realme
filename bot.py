@@ -158,7 +158,7 @@ def rules(update, context):
 
 
 def new_member_join(update: Update, context: CallbackContext):
-    user = update.message.from_user
+    # user = update.message.from_user
     # update.message.
 
     # update_msg = getattr(update, "message", None)
@@ -175,7 +175,7 @@ def new_member_join(update: Update, context: CallbackContext):
         #
         join_usernames.append(join_user_name)
 
-    update.message.reply_text("Hi! {}".format(*join_usernames, sep=", "))
+    update.message.reply_text("Hi! {}".format(' '.join(join_usernames)))
 
     #   update.message.reply_text(text='Hi username {}'.format(join_user_name),
     #                             parse_mode=telegram.ParseMode.HTML)
