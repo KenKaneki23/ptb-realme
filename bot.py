@@ -3,7 +3,7 @@ import os
 
 import telegram
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, Update
-from telegram.ext import Updater, CommandHandler, CallbackContext, MessageHandler, Filters
+from telegram.ext import Updater, CommandHandler, CallbackContext, MessageHandler, Filters, CallbackQueryHandler
 
 PORT = int(os.environ.get('PORT', 5000))
 TOKEN = '1415969330:AAGEnSGxjYl-hd3VTkpS4uY017Wag5dDsDQ'
@@ -197,11 +197,13 @@ def new_member_join(update: Update, context: CallbackContext):
 
 
 def form(update, context):
-    delay_group_button_url(update, context,
-                           "If your issue is not resolved by the community after a week, you can also contact the developers."
-                           "\n\nPlease don't abuse this possibility, so that Realme developers can focus on developing.",
-                           "Access form 📝",
-                           "https://docs.google.com/forms/d/e/1FAIpQLSceGI9ZaNOIb4NN-3UdJ-mbzvbRwulAh2-VGJasy8VU_BLsFA/viewform")
+    delay_group_button_url(
+        update,
+        context,
+        "If your issue is not resolved by the community after a week, you can also contact the developers."
+        "\n\nPlease don't abuse this possibility, so that Realme developers can focus on developing.",
+        "Access form 📝",
+        "https://docs.google.com/forms/d/e/1FAIpQLSceGI9ZaNOIb4NN-3UdJ-mbzvbRwulAh2-VGJasy8VU_BLsFA/viewform")
 
 
 def android11(update, context):
@@ -270,6 +272,40 @@ def error(update, context):
     logger.warning('Update "%s" caused error "%s"', update, context.error)
 
 
+###############
+
+def like_command(update, context):
+    update.message.reply_text(
+        "Text for this message.",
+        reply_markup=InlineKeyboardMarkup.from_row(
+            [InlineKeyboardButton("Upvote", callback_data='true'),
+             InlineKeyboardButton("Downvote", callback_data='false')]))
+
+
+def like_callback(update: Update, context: CallbackContext) -> None:
+    query = update.callback_query
+
+    # CallbackQueries need to be answered, even if no notification to the user is needed
+    # Some clients may have trouble otherwise. See https://core.telegram.org/bots/api#callbackquery
+    query.answer()
+
+    liked = bool(query.data)
+    #  proceed_button = InlineKeyboardButton("Next ➡", callback_data=str(position + 1))
+
+    if liked:
+        query.edit_message_text(text="You liked it!", reply_markup=InlineKeyboardMarkup.from_row(
+            [InlineKeyboardButton("Upvote", callback_data='true'),
+             InlineKeyboardButton("Downvote", callback_data='false')]))
+
+    else:
+        query.edit_message_text(text="You hated it!", reply_markup=InlineKeyboardMarkup.from_row(
+            [InlineKeyboardButton("Upvote", callback_data='true'),
+             InlineKeyboardButton("Downvote", callback_data='false')]))
+
+
+##############
+
+
 def main():
     updater = Updater(TOKEN, use_context=True)
     dp = updater.dispatcher
@@ -293,6 +329,13 @@ def main():
     dp.add_handler(MessageHandler(Filters.status_update.new_chat_members, new_member_join))
 
     dp.add_error_handler(error)
+
+    ##############
+
+    dp.add_handler(CommandHandler("like", like_command))
+    dp.add_handler(CallbackQueryHandler(like_callback))
+
+    ##############
 
     updater.start_webhook(listen="0.0.0.0", port=int(PORT), url_path=TOKEN)
     updater.bot.setWebhook('https://pxnx-tg-bot-test.herokuapp.com/' + TOKEN)
