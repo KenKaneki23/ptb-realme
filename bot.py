@@ -2,8 +2,8 @@ import logging
 import os
 
 import telegram
-from telegram import InlineKeyboardButton, InlineKeyboardMarkup
-from telegram.ext import Updater, CommandHandler
+from telegram import InlineKeyboardButton, InlineKeyboardMarkup, Update
+from telegram.ext import Updater, CommandHandler, CallbackContext
 
 PORT = int(os.environ.get('PORT', 5000))
 TOKEN = '1415969330:AAGEnSGxjYl-hd3VTkpS4uY017Wag5dDsDQ'
@@ -157,7 +157,7 @@ def rules(update, context):
                 "\nGore, porn and anything alike is absolutely prohibited.")
 
 
-def new_member_join(update, context):
+def new_member_join(update: Update, context: CallbackContext):
     update.message.reply_text("New member!")
 
 
