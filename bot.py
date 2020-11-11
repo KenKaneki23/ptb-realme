@@ -165,7 +165,6 @@ def new_member_join(update: Update, context: CallbackContext):
     # update_msg = getattr(update, "message", None)
 
     global join_usernames
-    join_usernames = []
 
     for join_user in update.message.new_chat_members:
         # join_user_id = join_user.id
@@ -178,7 +177,7 @@ def new_member_join(update: Update, context: CallbackContext):
         #
         join_usernames.append(join_user_name)
 
-    if len(join_usernames) >= 15:
+    if len(join_usernames) >= 4:
         update.message.reply_text("Hi! {}".format(', '.join(join_usernames)))
         join_usernames = []
 
