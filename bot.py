@@ -159,33 +159,41 @@ def rules(update, context):
 
 
 def new_member_join(update: Update, context: CallbackContext):
-    # user = update.message.from_user
-    # update.message.
-
-    # update_msg = getattr(update, "message", None)
+    update.message.delete()
 
     global join_usernames
 
     for join_user in update.message.new_chat_members:
-        # join_user_id = join_user.id
-        # Get user name
+
         if join_user.name is not None:
             join_user_name = join_user.name
-        # join_user_name = join_user.username
         else:
             join_user_name = join_user.full_name
-        #
+
         join_usernames.append(join_user_name)
 
-    if len(join_usernames) >= 4:
-        update.message.reply_text("Hi! {}".format(', '.join(join_usernames)))
+    if len(join_usernames) >= 15:
+        update.message.reply_text(
+            text="Hi {} 🤖\nWelcome to the group.\n\n"
+                 "<u>Group's rules</u>"
+                 "\n\n<b>1. Language</b>"
+                 "\nPlease use English or Hindi as an alternative."
+                 "\n\n<b>2. Links</b>"
+                 "\nSending links is not permitted."
+                 "\n\n<b>3. Forwarding</b>"
+                 "\nForwarding messages from other channels is not permitted"
+                 "\n\n<b>4. Respect</b>"
+                 "\nWe're all one big community. Don't be rude."
+                 "\n\n<b>5. Spam</b>"
+                 "\nAvoid sending stuff multiple times. Flooding the chat won't give you more attention."
+                 "\n\n<b>6. Files</b>"
+                 "\nAvoid sending files over 50Mb, if not ultimately needed."
+                 "\n\n<b>7. Advertisements</b>"
+                 "\nSelf-promotion is not permitted."
+                 "\n\n<b>8. Content</b>"
+                 "\nGore, porn and anything alike is absolutely prohibited.".format(', '.join(join_usernames)),
+            parse_mode=telegram.ParseMode.HTML)
         join_usernames = []
-
-    #   update.message.reply_text(text='Hi username {}'.format(join_user_name),
-    #                             parse_mode=telegram.ParseMode.HTML)
-
-    # update.message.reply_text(text='Hi username {} with ID: <code>{}</code>'.format(user['username'], user['id']),
-    #                          parse_mode=telegram.ParseMode.HTML)
 
 
 def form(update, context):
