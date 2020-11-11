@@ -166,16 +166,16 @@ def new_member_join(update: Update, context: CallbackContext):
     join_usernames = []
 
     for join_user in update.message.new_chat_members:
-        join_user_id = join_user.id
-        # Get user name
-        if join_user.name is not None:
-            join_user_name = join_user.name
-        else:
-            join_user_name = join_user.full_name
+       # join_user_id = join_user.id
+       # Get user name
+       # if join_user.name is not None:
+       join_user_name = join_user.name
+       #  else:
+       #     join_user_name = join_user.full_name
+       #
+       join_usernames.append(join_user_name)
 
-        join_usernames.append(join_user_name)
-
-    update.message.reply_text(f"Hi! {join_usernames}")
+    update.message.reply_text("Hi! {}".format(join_usernames))
 
     #   update.message.reply_text(text='Hi username {}'.format(join_user_name),
     #                             parse_mode=telegram.ParseMode.HTML)
