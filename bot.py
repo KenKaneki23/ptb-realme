@@ -169,7 +169,8 @@ def new_member_join(update: Update, context: CallbackContext):
         # join_user_id = join_user.id
         # Get user name
         # if join_user.name is not None:
-        join_user_name = join_user.name
+        # join_user_name = join_user.name
+        join_user_name = join_user.username
         #  else:
         #     join_user_name = join_user.full_name
         #
