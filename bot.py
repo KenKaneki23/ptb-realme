@@ -160,8 +160,22 @@ def rules(update, context):
 def new_member_join(update: Update, context: CallbackContext):
     user = update.message.from_user
     # update.message.
-    update.message.reply_text(text='Hi username {} with ID: <code>{}</code>'.format(user['username'], user['id']),
-                              parse_mode=telegram.ParseMode.HTML)
+
+    update_msg = getattr(update, "message", None)
+
+    for join_user in update_msg.new_chat_members:
+        join_user_id = join_user.id
+        # Get user name
+        if join_user.name is not None:
+            join_user_name = join_user.name
+        else:
+            join_user_name = join_user.full_name
+
+        update.message.reply_text(text='Hi username {}'.format(join_user_name),
+                                  parse_mode=telegram.ParseMode.HTML)
+
+    # update.message.reply_text(text='Hi username {} with ID: <code>{}</code>'.format(user['username'], user['id']),
+    #                          parse_mode=telegram.ParseMode.HTML)
 
 
 def form(update, context):
