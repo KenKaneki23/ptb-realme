@@ -168,11 +168,11 @@ def new_member_join(update: Update, context: CallbackContext):
     for join_user in update.message.new_chat_members:
         # join_user_id = join_user.id
         # Get user name
-        # if join_user.name is not None:
-        # join_user_name = join_user.name
-        join_user_name = join_user.username
-        #  else:
-        #     join_user_name = join_user.full_name
+        if join_user.name is not None:
+            join_user_name = join_user.name
+        # join_user_name = join_user.username
+        else:
+            join_user_name = join_user.full_name
         #
         join_usernames.append(join_user_name)
 
