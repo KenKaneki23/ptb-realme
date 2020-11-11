@@ -157,6 +157,10 @@ def rules(update, context):
                 "\nGore, porn and anything alike is absolutely prohibited.")
 
 
+def new_member_join(update, context):
+    update.message.reply_text("New member!")
+
+
 def form(update, context):
     delay_group_button_url(update, context,
                            "If your issue is not resolved by the community after a week, you can also contact the developers."
@@ -250,6 +254,8 @@ def main():
     dp.add_handler(CommandHandler("ask", ask))
     dp.add_handler(CommandHandler("android11", android11))
     dp.add_handler(CommandHandler("form", form))
+
+    #  dp.add_handler(MessageHandler(Filters.status_update.new_chat_members, new_member_join))
 
     dp.add_error_handler(error)
 
