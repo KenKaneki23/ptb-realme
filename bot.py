@@ -278,8 +278,8 @@ def like_command(update, context):
     update.message.reply_text(
         "Text for this message.",
         reply_markup=InlineKeyboardMarkup.from_row(
-            [InlineKeyboardButton("Upvote", callback_data='true'),
-             InlineKeyboardButton("Downvote", callback_data='false')]))
+            [InlineKeyboardButton("Upvote 👍🏼", callback_data='true'),
+             InlineKeyboardButton("Downvote 👎🏼", callback_data='false')]))
 
 
 def like_callback(update: Update, context: CallbackContext) -> None:
@@ -293,14 +293,18 @@ def like_callback(update: Update, context: CallbackContext) -> None:
     #  proceed_button = InlineKeyboardButton("Next ➡", callback_data=str(position + 1))
 
     if liked:
-        query.edit_message_text(text="You liked it!", reply_markup=InlineKeyboardMarkup.from_row(
-            [InlineKeyboardButton("Upvote", callback_data='true'),
-             InlineKeyboardButton("Downvote", callback_data='false')]))
+        query.edit_message_text(
+            text="You liked it!",
+            reply_markup=InlineKeyboardMarkup.from_row(
+                [InlineKeyboardButton("Upvote 👍🏼", callback_data='true'),
+                 InlineKeyboardButton("Downvote 👎🏼", callback_data='false')]))
 
     else:
-        query.edit_message_text(text="You hated it!", reply_markup=InlineKeyboardMarkup.from_row(
-            [InlineKeyboardButton("Upvote", callback_data='true'),
-             InlineKeyboardButton("Downvote", callback_data='false')]))
+        query.edit_message_text(
+            text="You hated it!",
+            reply_markup=InlineKeyboardMarkup.from_row(
+                [InlineKeyboardButton("Upvote 👍🏼", callback_data='true'),
+                 InlineKeyboardButton("Downvote 👎🏼", callback_data='false')]))
 
 
 ##############
