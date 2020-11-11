@@ -296,15 +296,15 @@ def like_callback(update: Update, context: CallbackContext) -> None:
         query.edit_message_text(
             text="You liked it!",
             reply_markup=InlineKeyboardMarkup.from_row(
-                [InlineKeyboardButton("Upvote 👍🏼", callback_data='true'),
-                 InlineKeyboardButton("Downvote 👎🏼", callback_data='false')]))
+                [InlineKeyboardButton("Upvote 👍🏼", callback_data='0'),
+                 InlineKeyboardButton("Downvote 👎🏼", callback_data='1')]))
 
     elif button_callback == 1:
         query.edit_message_text(
             text="You hated it!",
             reply_markup=InlineKeyboardMarkup.from_row(
-                [InlineKeyboardButton("Upvote 👍🏼", callback_data='true'),
-                 InlineKeyboardButton("Downvote 👎🏼", callback_data='false')]))
+                [InlineKeyboardButton("Upvote 👍🏼", callback_data='0'),
+                 InlineKeyboardButton("Downvote 👎🏼", callback_data='1')]))
 
 
 ##############
