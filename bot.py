@@ -158,7 +158,8 @@ def rules(update, context):
 
 
 def new_member_join(update: Update, context: CallbackContext):
-    update.message.reply_text("New Member!!!!")
+    user = update.message.from_user
+    update.message.reply_text('Hi username {} with ID: {} '.format(user['username'], user['id']))
 
 
 def form(update, context):
