@@ -54,7 +54,7 @@ def ask(update, context):
                                  "will keep this chat more focused.")
 
 
-def help(update, context):
+def commands(update, context):
     delay_group(update, context,
                 "<u>Commands</u>"
                 "\n\n<b>/help</b>"
@@ -75,6 +75,17 @@ def help(update, context):
                 "\nHow to ask questions properly"
                 "\n\nContact @pentexnyx if you face any issues with me 🤖"
                 "\n<code>version 0.8</code>")
+
+
+def files(update, context):
+    delay_group(update, context,
+                "<u>Files</u>"
+                "\n\n<b>/gcam</b>"
+                "\nGoogle Camera and configs"
+                "\n\n<b>/sdmaid</b>"
+                "\nBest cleaning app"
+                "\n\n\n<b>Any suggestions?</b>"
+                "\nContact @pentexnyx")
 
 
 def experts(update, context):
@@ -198,7 +209,7 @@ def delay_group_button_url(update, context, text, button_text, button_url):
 
 
 def delay_group(update, context, text):
-    # update.message.delete() # TODO REQUIRES ADMIN!!!
+    # update.message.delete() # REQUIRES ADMIN!!!
 
     if update.message.chat_id == -1001374176745:
         reply_message = message_html(update, context, text)
@@ -225,12 +236,17 @@ def main():
     dp = updater.dispatcher
 
     dp.add_handler(CommandHandler("start", start))
+    dp.add_handler(CommandHandler("commands", commands))
+
+    dp.add_handler(CommandHandler("files", files))
+
     dp.add_handler(CommandHandler("admins", admins))
-    dp.add_handler(CommandHandler("help", help))
+    dp.add_handler(CommandHandler("rules", rules))
+
     dp.add_handler(CommandHandler("gcam", gcam))
     dp.add_handler(CommandHandler("sdmaid", sdmaid))
     dp.add_handler(CommandHandler("experts", experts))
-    dp.add_handler(CommandHandler("rules", rules))
+
     dp.add_handler(CommandHandler("ask", ask))
     dp.add_handler(CommandHandler("android11", android11))
     dp.add_handler(CommandHandler("form", form))
