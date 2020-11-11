@@ -171,8 +171,8 @@ def new_member_join(update: Update, context: CallbackContext):
         else:
             join_user_name = join_user.full_name
 
-        update.message.reply_text(text='Hi username {}'.format(join_user_name),
-                                  parse_mode=telegram.ParseMode.HTML)
+    #   update.message.reply_text(text='Hi username {}'.format(join_user_name),
+    #                             parse_mode=telegram.ParseMode.HTML)
 
     # update.message.reply_text(text='Hi username {} with ID: <code>{}</code>'.format(user['username'], user['id']),
     #                          parse_mode=telegram.ParseMode.HTML)
