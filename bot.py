@@ -8,6 +8,7 @@ from telegram.ext import Updater, CommandHandler, CallbackContext, MessageHandle
 PORT = int(os.environ.get('PORT', 5000))
 TOKEN = '1415969330:AAGEnSGxjYl-hd3VTkpS4uY017Wag5dDsDQ'
 GROUP = -1001374176745  # -1001327617858
+join_usernames = []
 
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
                     level=logging.INFO)
@@ -163,6 +164,7 @@ def new_member_join(update: Update, context: CallbackContext):
 
     # update_msg = getattr(update, "message", None)
 
+    global join_usernames
     join_usernames = []
 
     for join_user in update.message.new_chat_members:
@@ -176,7 +178,9 @@ def new_member_join(update: Update, context: CallbackContext):
         #
         join_usernames.append(join_user_name)
 
-    update.message.reply_text("Hi! {}".format(', '.join(join_usernames)))
+    if len(join_usernames) >= 15:
+        update.message.reply_text("Hi! {}".format(', '.join(join_usernames)))
+        join_usernames = []
 
     #   update.message.reply_text(text='Hi username {}'.format(join_user_name),
     #                             parse_mode=telegram.ParseMode.HTML)
