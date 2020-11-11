@@ -158,7 +158,7 @@ def rules(update, context):
 
 
 def new_member_join(update: Update, context: CallbackContext):
-    delay_group(update, context, "New Member!")
+    update.message.reply_text("New Member!!!!")
 
 
 def form(update, context):
