@@ -286,7 +286,7 @@ def like_callback(update: Update, context: CallbackContext) -> None:
 
     # CallbackQueries need to be answered, even if no notification to the user is needed
     # Some clients may have trouble otherwise. See https://core.telegram.org/bots/api#callbackquery
-    query.answer()
+    # query.answer()
 
     button_callback = int(query.data)
     #  proceed_button = InlineKeyboardButton("Next ➡", callback_data=str(position + 1))
@@ -305,6 +305,7 @@ def like_callback(update: Update, context: CallbackContext) -> None:
             reply_markup=InlineKeyboardMarkup.from_row(
                 [InlineKeyboardButton("Upvote 👍🏼", callback_data='0'),
                  InlineKeyboardButton("Downvote 👎🏼", callback_data='1')]))
+        query.answer()
 
 
 ############################################################
