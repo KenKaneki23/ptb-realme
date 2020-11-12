@@ -3,7 +3,7 @@ import os
 
 import telegram
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, Update
-from telegram.ext import Updater, CommandHandler, CallbackContext, MessageHandler, Filters, CallbackQueryHandler
+from telegram.ext import Updater, CommandHandler, CallbackContext, MessageHandler, Filters
 
 PORT = int(os.environ.get('PORT', 5000))
 TOKEN = '1415969330:AAGEnSGxjYl-hd3VTkpS4uY017Wag5dDsDQ'
@@ -159,7 +159,7 @@ def rules(update, context):
 
 
 def new_member_join(update: Update, context: CallbackContext):
-    # update.message.delete()
+    update.message.delete()
 
     global join_usernames
 
@@ -235,7 +235,7 @@ def message_html(update, context, text):
 
 
 def delay_group_button_url(update, context, text, button_text, button_url):
-    # update.message.delete() # TODO REQUIRES ADMIN!!!
+    update.message.delete()  # REQUIRES ADMIN
 
     if update.message.chat_id == -1001374176745:
         reply_message = message_button_url(update, context, text, button_text, button_url)
@@ -251,7 +251,7 @@ def delay_group_button_url(update, context, text, button_text, button_url):
 
 
 def delay_group(update, context, text):
-    # update.message.delete() # REQUIRES ADMIN!!!
+    update.message.delete()  # REQUIRES ADMIN!!!
 
     if update.message.chat_id == -1001374176745:
         reply_message = message_html(update, context, text)
@@ -271,52 +271,6 @@ def delete(context):
 
 def error(update, context):
     logger.warning('Update "%s" caused error "%s"', update, context.error)
-
-
-############################################################
-def like_command(update, context):
-    update.message.reply_text(
-        "Text for this message.",
-        reply_markup=InlineKeyboardMarkup(
-            [[InlineKeyboardButton("Option 1", callback_data='1'),
-              InlineKeyboardButton("Option 2", callback_data='2')],
-             [InlineKeyboardButton("Option 3", callback_data='3')]
-             ]))
-
-    #  reply_markup=InlineKeyboardMarkup.from_row(
-    #      [InlineKeyboardButton("Upvote 👍🏼", callback_data='0'),
-    #       InlineKeyboardButton("Downvote 👎🏼", callback_data='1')]))
-
-
-def like_callback(update: Update, context: CallbackContext) -> None:
-    query = update.callback_query
-
-    # CallbackQueries need to be answered, even if no notification to the user is needed
-    # Some clients may have trouble otherwise. See https://core.telegram.org/bots/api#callbackquery
-    # query.answer()
-
-    button_callback = int(query.data)
-    #  proceed_button = InlineKeyboardButton("Next ➡", callback_data=str(position + 1))
-
-    if button_callback == 0:
-        #  query.edit_message_text(
-        #     text="You liked it!",
-        #    reply_markup=InlineKeyboardMarkup.from_row(
-        #        [InlineKeyboardButton("Upvote 👍🏼", callback_data='0'),
-        #         InlineKeyboardButton("Downvote 👎🏼", callback_data='1')]))
-        query.answer(text='You liked it!', show_alert=True)
-
-    elif button_callback == 1:
-        query.edit_message_text(
-            text="You hated it!",
-            reply_markup=InlineKeyboardMarkup.from_row(
-                [InlineKeyboardButton("Upvote 👍🏼", callback_data='0'),
-                 InlineKeyboardButton("Downvote 👎🏼",
-                                      callback_data='1')]))
-        query.answer()
-
-
-############################################################
 
 
 def main():
@@ -342,11 +296,6 @@ def main():
     dp.add_handler(MessageHandler(Filters.status_update.new_chat_members, new_member_join))
 
     dp.add_error_handler(error)
-
-    ############################################################
-    dp.add_handler(CommandHandler("like", like_command))
-    dp.add_handler(CallbackQueryHandler(like_callback))
-    ############################################################
 
     updater.start_webhook(listen="0.0.0.0", port=int(PORT), url_path=TOKEN)
     updater.bot.setWebhook('https://pxnx-tg-bot-test.herokuapp.com/' + TOKEN)
