@@ -276,10 +276,12 @@ def error(update, context):
 def like_command(update, context):
     update.message.reply_text(
         "Text for this message.",
-        reply_markup=InlineKeyboardMarkup(InlineKeyboardMarkup.from_row(
-            [InlineKeyboardButton("Option 1", callback_data='1'),
-             InlineKeyboardButton("Option 1", callback_data='1')]),
-            InlineKeyboardMarkup.from_button(InlineKeyboardButton("Option 3", callback_data='3'))))
+        reply_markup=InlineKeyboardMarkup(
+            [[InlineKeyboardButton("Option 1", callback_data='1'),
+              InlineKeyboardButton("Option 2", callback_data='2')],
+             [InlineKeyboardButton("Option 3", callback_data='3')]
+             ]))
+
     #  reply_markup=InlineKeyboardMarkup.from_row(
     #      [InlineKeyboardButton("Upvote 👍🏼", callback_data='0'),
     #       InlineKeyboardButton("Downvote 👎🏼", callback_data='1')]))
@@ -308,7 +310,7 @@ def like_callback(update: Update, context: CallbackContext) -> None:
             text="You hated it!",
             reply_markup=InlineKeyboardMarkup.from_row(
                 [InlineKeyboardButton("Upvote 👍🏼", callback_data='0'),
-                 InlineKeyboardButton("⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀Downvote 👎🏼⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀",
+                 InlineKeyboardButton("Downvote 👎🏼",
                                       callback_data='1')]))
         query.answer()
 
