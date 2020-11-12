@@ -304,7 +304,7 @@ def like_callback(update: Update, context: CallbackContext) -> None:
             text="You hated it!",
             reply_markup=InlineKeyboardMarkup.from_row(
                 [InlineKeyboardButton("Upvote 👍🏼", callback_data='0'),
-                 InlineKeyboardButton("\n\n\n\nDownvote 👎🏼\n\n\n\n", callback_data='1')]))
+                 InlineKeyboardButton("⠀\n\n\n\nDownvote 👎🏼\n\n\n\n⠀", callback_data='1')]))
         query.answer()
 
 
