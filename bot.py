@@ -159,7 +159,7 @@ def rules(update, context):
 
 
 def new_member_join(update: Update, context: CallbackContext):
-   # update.message.delete()
+    # update.message.delete()
 
     global join_usernames
 
@@ -172,27 +172,28 @@ def new_member_join(update: Update, context: CallbackContext):
 
         join_usernames.append(join_user_name)
 
-   if len(join_usernames) >= 15:
-       delay_group(
-           update, context,
-           "Hi {} 🤖\nWelcome to the group.\n\n"
-           "<u>Group's rules</u>"
-           "\n\n<b>1. Language</b>"
-           "\nPlease use English or Hindi as an alternative."
-           "\n\n<b>2. Links</b>"
-           "\nSending links is not permitted."
-           "\n\n<b>3. Forwarding</b>"
-           "\nForwarding messages from other channels is not permitted"
-           "\n\n<b>4. Respect</b>"
-           "\nWe're all one big community. Don't be rude."
-           "\n\n<b>5. Spam</b>"
-           "\nAvoid sending stuff multiple times. Flooding the chat won't give you more attention."
-           "\n\n<b>6. Files</b>"
-           "\nAvoid sending files over 50Mb, if not ultimately needed."
-           "\n\n<b>7. Advertisements</b>"
-           "\nSelf-promotion is not permitted."
-           "\n\n<b>8. Content</b>"
-           "\nGore, porn and anything alike is absolutely prohibited.".format(', '.join(join_usernames)))
+    if len(join_usernames) >= 15:
+        delay_group(
+            update,
+            context,
+            "Hi {} 🤖\nWelcome to the group.\n\n"
+            "<u>Group's rules</u>"
+            "\n\n<b>1. Language</b>"
+            "\nPlease use English or Hindi as an alternative."
+            "\n\n<b>2. Links</b>"
+            "\nSending links is not permitted."
+            "\n\n<b>3. Forwarding</b>"
+            "\nForwarding messages from other channels is not permitted"
+            "\n\n<b>4. Respect</b>"
+            "\nWe're all one big community. Don't be rude."
+            "\n\n<b>5. Spam</b>"
+            "\nAvoid sending stuff multiple times. Flooding the chat won't give you more attention."
+            "\n\n<b>6. Files</b>"
+            "\nAvoid sending files over 50Mb, if not ultimately needed."
+            "\n\n<b>7. Advertisements</b>"
+            "\nSelf-promotion is not permitted."
+            "\n\n<b>8. Content</b>"
+            "\nGore, porn and anything alike is absolutely prohibited.".format(', '.join(join_usernames)))
         join_usernames = []
 
 
@@ -261,7 +262,7 @@ def delay_group(update, context, text):
                                            "Join »",
                                            "https://t.me/realme_support")
 
-    context.job_queue.run_once(delete, 300, context=update.message.chat_id, name=str(reply_message.message_id))
+    context.job_queue.run_once(delete, 600, context=update.message.chat_id, name=str(reply_message.message_id))
 
 
 def delete(context):
