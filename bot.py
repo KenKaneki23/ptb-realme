@@ -272,8 +272,7 @@ def error(update, context):
     logger.warning('Update "%s" caused error "%s"', update, context.error)
 
 
-###############
-
+############################################################
 def like_command(update, context):
     update.message.reply_text(
         "Text for this message.",
@@ -293,11 +292,12 @@ def like_callback(update: Update, context: CallbackContext) -> None:
     #  proceed_button = InlineKeyboardButton("Next ➡", callback_data=str(position + 1))
 
     if button_callback == 0:
-        query.edit_message_text(
-            text="You liked it!",
-            reply_markup=InlineKeyboardMarkup.from_row(
-                [InlineKeyboardButton("Upvote 👍🏼", callback_data='0'),
-                 InlineKeyboardButton("Downvote 👎🏼", callback_data='1')]))
+        #  query.edit_message_text(
+        #     text="You liked it!",
+        #    reply_markup=InlineKeyboardMarkup.from_row(
+        #        [InlineKeyboardButton("Upvote 👍🏼", callback_data='0'),
+        #         InlineKeyboardButton("Downvote 👎🏼", callback_data='1')]))
+        query.answer(text='You liked it!', show_alert=True)
 
     elif button_callback == 1:
         query.edit_message_text(
@@ -307,7 +307,7 @@ def like_callback(update: Update, context: CallbackContext) -> None:
                  InlineKeyboardButton("Downvote 👎🏼", callback_data='1')]))
 
 
-##############
+############################################################
 
 
 def main():
@@ -334,12 +334,10 @@ def main():
 
     dp.add_error_handler(error)
 
-    ##############
-
+    ############################################################
     dp.add_handler(CommandHandler("like", like_command))
     dp.add_handler(CallbackQueryHandler(like_callback))
-
-    ##############
+    ############################################################
 
     updater.start_webhook(listen="0.0.0.0", port=int(PORT), url_path=TOKEN)
     updater.bot.setWebhook('https://pxnx-tg-bot-test.herokuapp.com/' + TOKEN)
