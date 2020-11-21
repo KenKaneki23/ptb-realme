@@ -98,10 +98,9 @@ def button(update: Update, context: CallbackContext) -> None:
         # return
 
     if position != 6:
-        proceed_button = InlineKeyboardMarkup.from_button(
-            InlineKeyboardButton(button_text, callback_data=str(position + 1)))
+        proceed_button = InlineKeyboardButton(button_text, callback_data=str(position + 1))
 
-    query.edit_message_text(text=message_text, reply_markup=proceed_button)
+    query.edit_message_text(text=message_text, reply_markup=InlineKeyboardMarkup.from_button(proceed_button))
 
 
 def admins(update, context):
