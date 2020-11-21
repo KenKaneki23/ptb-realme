@@ -73,7 +73,8 @@ def button(update: Update, context: CallbackContext) -> None:
 
     elif position == 5:
         message_text = "Thanks for your time. 🤖" \
-                       "\n\nSubmit question?"
+                       "\n\n(as stated previously: this doesn't work yet)" \
+                       "\n\nSubmit question to the community?"
 
         buttons = InlineKeyboardMarkup.from_column(
             [InlineKeyboardButton("Submit ✅", callback_data=str(6)),
@@ -83,10 +84,8 @@ def button(update: Update, context: CallbackContext) -> None:
     elif position == 6:
         message_text = "I notified the group about your issue 🤖"
 
-        buttons = InlineKeyboardMarkup.from_button(
-            InlineKeyboardButton("Feedback 🗣️", url="https://t.me/pxnx_feedback"))
-
-        position = 0
+        buttons = InlineKeyboardMarkup.from_button(InlineKeyboardButton("Feedback 🗣️",
+                                                                        url="https://t.me/pxnx_community"))
 
     if position < 5:
         buttons = InlineKeyboardMarkup.from_button(InlineKeyboardButton("Proceed ➡", callback_data=str(position + 1)))
