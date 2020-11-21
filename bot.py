@@ -46,20 +46,21 @@ def button(update: Update, context: CallbackContext) -> None:
     query.answer()
 
     position = int(query.data)
-    proceed_button = InlineKeyboardButton("Next ➡", callback_data=str(position + 1))
+    button_text = "Proceed ➡"
 
-    if position == 0:
-        message_text = "Hey, human 🤖" \
-                       "\nI will guide you through formulating a proper question to ask in the group." \
-                       "\n\nPlease provide as many details as possible for every step to make it easier for the " \
-                       "community to understand your problem and give you a better answer quicker. " \
-                       "\n\nIf you face any issues with this bot, contact @pentexnyx"
+    # if position == 0:
+    #    message_text = "Hey, human 🤖" \
+    #                   "\nI will guide you through formulating a proper question to ask in the group." \
+    #                   "\n🚧 The troubleshooting is currently under development 🚧" \
+    #                   "\n\nPlease provide as many details as possible for every step to make it easier for the " \
+    #                   "community to understand your problem and give you a better answer quicker. " \
+    #                   "\n\nIf you face any issues with this bot, contact @pentexnyx"
+    #
+    #    query.edit_message_text(text=message_text, reply_markup=InlineKeyboardMarkup.from_button(
+    #        InlineKeyboardButton("Proceed ➡", callback_data='1')))
+    #    return
 
-        query.edit_message_text(text=message_text, reply_markup=InlineKeyboardMarkup.from_button(
-            InlineKeyboardButton("Proceed ➡", callback_data='1')))
-        return
-
-    elif position == 1:
+    if position == 1:
         message_text = "Progress 20%" \
                        "\n\nWhich device are you using? Which software update is installed?"
 
@@ -79,19 +80,25 @@ def button(update: Update, context: CallbackContext) -> None:
         message_text = "Thanks for your time. 🤖" \
                        "\n\nSubmit question?"
 
-        query.edit_message_text(text=message_text,
-                                reply_markup=InlineKeyboardMarkup.from_button(
-                                    InlineKeyboardButton("Submit", url="https://t.me/realme_support",
-                                                         callback_data=str(position + 1))))
-    else:
-        message_text = "The issue was sent to the group. 🤖"
+        button_text = "Submit ✅"
+
         proceed_button = InlineKeyboardButton("Feedback 🗣️", url="https://t.me/pentexnyx")
 
-    if position != 5:
-        buttons = InlineKeyboardMarkup.from_row(
-            [InlineKeyboardButton("⬅ Back", callback_data=str(position - 1)), proceed_button])
+    #   query.edit_message_text(text=message_text,
+    #                          reply_markup=InlineKeyboardMarkup.from_button(
+    #                              InlineKeyboardButton("Submit", url="https://t.me/realme_support",
+    #                                                     callback_data=str(position + 1))))
 
-        query.edit_message_text(text=message_text, reply_markup=buttons)
+    elif position == 6:
+        message_text = "The issue was sent to the group. 🤖"
+        proceed_button = InlineKeyboardButton("Feedback 🗣️", url="https://t.me/pentexnyx")
+        # return
+
+    if position != 6:
+        proceed_button = InlineKeyboardMarkup.from_button(
+            InlineKeyboardButton(button_text, callback_data=str(position + 1)))
+
+    query.edit_message_text(text=message_text, reply_markup=proceed_button)
 
 
 def admins(update, context):
