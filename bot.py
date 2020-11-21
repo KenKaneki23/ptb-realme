@@ -3,7 +3,7 @@ import os
 
 import telegram
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, Update
-from telegram.ext import Updater, CommandHandler, CallbackContext, MessageHandler, Filters
+from telegram.ext import Updater, CommandHandler, CallbackContext, MessageHandler, Filters, CallbackQueryHandler
 
 PORT = int(os.environ.get('PORT', 5000))
 TOKEN = '1415969330:AAGEnSGxjYl-hd3VTkpS4uY017Wag5dDsDQ'
@@ -380,6 +380,8 @@ def main():
     dp.add_handler(CommandHandler("form", form))
 
     dp.add_handler(MessageHandler(Filters.status_update.new_chat_members, new_member_join))
+
+    dp.add_handler(CallbackQueryHandler(button))
 
     dp.add_error_handler(error)
 
