@@ -90,7 +90,7 @@ def button(update: Update, context: CallbackContext) -> None:
     if position < 5:
         buttons = InlineKeyboardMarkup.from_button(InlineKeyboardButton("Proceed ➡", callback_data=str(position + 1)))
 
-    query.edit_message_text(text=message_text, reply_markup=buttons)
+    query.edit_message_text(text=message_text, reply_markup=buttons, parse_mode=telegram.ParseMode.HTML)
     query.answer()
 
 
