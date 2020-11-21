@@ -80,9 +80,9 @@ def button(update: Update, context: CallbackContext) -> None:
                        "\n\nSubmit question?"
 
         query.edit_message_text(text=message_text,
-                                reply_markup=InlineKeyboardButton("Submit", url="https://t.me/realme_support",
-                                                                  callback_data=str(position + 1)))
-
+                                reply_markup=InlineKeyboardMarkup.from_button(
+                                    InlineKeyboardButton("Submit", url="https://t.me/realme_support",
+                                                         callback_data=str(position + 1))))
     else:
         message_text = "The issue was sent to the group. 🤖"
         proceed_button = InlineKeyboardButton("Feedback 🗣️", url="https://t.me/pentexnyx")
