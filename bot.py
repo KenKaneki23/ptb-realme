@@ -28,6 +28,75 @@ def start(update, context):
                             "1")
 
 
+# NO!
+# def private_next(message, text, message_button):
+#  if message.chat_id > 0:
+#   message.reply_text(text, reply_markup=InlineKeyboardMarkup.from_button(message_button))
+# else: message_button_callback(message, "I'm shy 🤖", "Message me 💬",
+# "https://t.me/realme_community_support_bot?start=0")
+
+
+def button(update: Update, context: CallbackContext) -> None:
+    query = update.callback_query
+
+    # CallbackQueries need to be answered, even if no notification to the user is needed
+    # Some clients may have trouble otherwise. See https://core.telegram.org/bots/api#callbackquery
+    query.answer()
+
+    position = int(query.data)
+    proceed_button = InlineKeyboardButton("Next ➡", callback_data=str(position + 1))
+
+    if position == 0:
+        message_text = "Hey, human 🤖" \
+                       "\nI will guide you through formulating a proper question to ask in the group." \
+                       "\n\nPlease provide as many details as possible for every step to make it easier for the " \
+                       "community to understand your problem and give you a better answer quicker. " \
+                       "\n\nIf you face any issues with this bot, contact @pentexnyx"
+
+        query.edit_message_text(text=message_text, reply_markup=InlineKeyboardMarkup.from_button(
+            InlineKeyboardButton("Proceed ➡", callback_data='1')))
+        return
+
+    elif position == 1:
+        message_text = "Question 1/7" \
+                       "\n\nWhich device are you using?"
+
+    elif position == 2:
+        message_text = "Question 2/7" \
+                       "\n\nWhich software update is installed?"
+
+    elif position == 3:
+        message_text = "Question 3/7" \
+                       "\n\nWhat do you want to do?"
+
+    elif position == 4:
+        message_text = "Question 4/7" \
+                       "\n\nWhat have you tried already?"
+
+    elif position == 5:
+        message_text = "Question 5/7" \
+                       "\n\nWhy do you want to do that?"
+
+    elif position == 6:
+        message_text = "Question 6/7" \
+                       "\n\nWhat benefits do you expect?"
+
+    elif position == 7:
+        message_text = "Question 7/7" \
+                       "\n\nWhat output did you get?"
+
+    else:
+        message_text = "Thanks for your time. 🤖" \
+                       "\n\nNow ask in the community support group."
+
+        proceed_button = InlineKeyboardButton("Join »", url="https://t.me/realme_support")
+
+    buttons = InlineKeyboardMarkup.from_row(
+        [InlineKeyboardButton("⬅ Back", callback_data=str(position - 1)), proceed_button])
+
+    query.edit_message_text(text=message_text, reply_markup=buttons)
+
+
 def admins(update, context):
     delay_group(update, context,
                 "<u>Group's staff</u>"
