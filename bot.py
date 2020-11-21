@@ -83,7 +83,7 @@ def button(update: Update, context: CallbackContext) -> None:
     elif position == 6:
         message_text = "I notified the group about your issue 🤖"
 
-        buttons = InlineKeyboardButton("Feedback 🗣️", url="https://t.me/pentexnyx")
+        buttons = InlineKeyboardMarkup.from_button(InlineKeyboardButton("Feedback 🗣️", url="https://t.me/pentexnyx"))
 
     if position < 5:
         buttons = InlineKeyboardMarkup.from_button(InlineKeyboardButton("Proceed ➡", callback_data=str(position + 1)))
