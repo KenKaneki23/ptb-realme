@@ -62,15 +62,18 @@ def button(update: Update, context: CallbackContext) -> None:
 
     if position == 1:
         message_text = "Progress 20%" \
-                       "\n\nWhich device are you using? Which software update is installed?"
+                       "\n\nWhich device are you using?" \
+                       "\nWhich software update is installed?"
 
     elif position == 2:
         message_text = "Progress 40%" \
-                       "\n\nWhat do you want to do? What have you tried already?"
+                       "\n\nWhat do you want to do?" \
+                       "\nWhat have you tried already?"
 
     elif position == 3:
         message_text = "Progress 60%" \
-                       "\n\nWhy do you want to do that? What benefits do you expect?"
+                       "\n\nWhy do you want to do that?" \
+                       "\nWhat benefits do you expect?"
 
     elif position == 4:
         message_text = "Progress 80%" \
@@ -82,7 +85,7 @@ def button(update: Update, context: CallbackContext) -> None:
 
         button_text = "Submit ✅"
 
-        proceed_button = InlineKeyboardButton("Feedback 🗣️", url="https://t.me/pentexnyx")
+        proceed_button = InlineKeyboardButton("Feedback 🗣️", url="https://t.me/pentexnyx", callback_data=str(6))
 
     #   query.edit_message_text(text=message_text,
     #                          reply_markup=InlineKeyboardMarkup.from_button(
