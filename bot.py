@@ -23,6 +23,8 @@ def start(update, context):
                             "\nWelcome to my private chat."
                             "\n\nHere we can troubleshoot issues together. I will then forward your question to the "
                             "community."
+                            "\n\nI will ask you a few questions. Please respond in one message per each question."
+                            "\n\nTo restart type in /start"
                             "\n\n<i>Note: Commands work in @realme_support only.</i>",
                             "Create new issue ticket 🎫",
                             "1")
@@ -58,41 +60,35 @@ def button(update: Update, context: CallbackContext) -> None:
         return
 
     elif position == 1:
-        message_text = "[=      ] Question 1/7" \
-                       "\n\nWhich device are you using?"
+        message_text = "Progress 20%" \
+                       "\n\nWhich device are you using? Which software update is installed?"
 
     elif position == 2:
-        message_text = "Question 2/7" \
-                       "\n\nWhich software update is installed?"
+        message_text = "Progress 40%" \
+                       "\n\nWhat do you want to do? What have you tried already?"
 
     elif position == 3:
-        message_text = "Question 3/7" \
-                       "\n\nWhat do you want to do?"
+        message_text = "Progress 60%" \
+                       "\n\nWhy do you want to do that? What benefits do you expect?"
 
     elif position == 4:
-        message_text = "Question 4/7" \
-                       "\n\nWhat have you tried already?"
-
-    elif position == 5:
-        message_text = "Question 5/7" \
-                       "\n\nWhy do you want to do that?"
-
-    elif position == 6:
-        message_text = "Question 6/7" \
-                       "\n\nWhat benefits do you expect?"
-
-    elif position == 7:
-        message_text = "Question 7/7" \
+        message_text = "Progress 80%" \
                        "\n\nWhat output did you get?"
 
-    else:
+    elif position == 5:
         message_text = "Thanks for your time. 🤖" \
-                       "\n\nNow ask in the community support group."
+                       "\n\nSubmit question?"
 
-        proceed_button = InlineKeyboardButton("Join »", url="https://t.me/realme_support")
+        proceed_button = InlineKeyboardButton("Submit", url="https://t.me/realme_support",
+                                              callback_data=str(position + 1))
 
-    buttons = InlineKeyboardMarkup.from_row(
-        [InlineKeyboardButton("⬅ Back", callback_data=str(position - 1)), proceed_button])
+    else:
+        message_text = "The issue was sent to the group. 🤖"
+        proceed_button = InlineKeyboardButton("Feedback 🗣️", url="https://t.me/pentexnyx")
+
+    if position != 5:
+        buttons = InlineKeyboardMarkup.from_row(
+            [InlineKeyboardButton("⬅ Back", callback_data=str(position - 1)), proceed_button])
 
     query.edit_message_text(text=message_text, reply_markup=buttons)
 
