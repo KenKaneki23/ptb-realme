@@ -79,8 +79,9 @@ def button(update: Update, context: CallbackContext) -> None:
         message_text = "Thanks for your time. 🤖" \
                        "\n\nSubmit question?"
 
-        proceed_button = InlineKeyboardButton("Submit", url="https://t.me/realme_support",
-                                              callback_data=str(position + 1))
+        query.edit_message_text(text=message_text,
+                                reply_markup=InlineKeyboardButton("Submit", url="https://t.me/realme_support",
+                                                                  callback_data=str(position + 1)))
 
     else:
         message_text = "The issue was sent to the group. 🤖"
@@ -90,7 +91,7 @@ def button(update: Update, context: CallbackContext) -> None:
         buttons = InlineKeyboardMarkup.from_row(
             [InlineKeyboardButton("⬅ Back", callback_data=str(position - 1)), proceed_button])
 
-    query.edit_message_text(text=message_text, reply_markup=buttons)
+        query.edit_message_text(text=message_text, reply_markup=buttons)
 
 
 def admins(update, context):
