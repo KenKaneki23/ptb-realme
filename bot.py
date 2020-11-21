@@ -9,6 +9,7 @@ PORT = int(os.environ.get('PORT', 5000))
 TOKEN = '1415969330:AAGEnSGxjYl-hd3VTkpS4uY017Wag5dDsDQ'
 GROUP = -1001374176745  # -1001327617858
 join_usernames = []
+current_step = 0
 
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
                     level=logging.INFO)
@@ -16,7 +17,15 @@ logger = logging.getLogger(__name__)
 
 
 def start(update, context):
-    update.message.reply_text("Hey :)\nI'm under construction currently.")
+    message_button_callback(update,
+                            context,
+                            "Hey human🤖"
+                            "\nWelcome to my private chat."
+                            "\n\nHere we can troubleshoot issues together. I will then forward your question to the "
+                            "community."
+                            "\n\nNote: Commands work in @realme_support only.",
+                            "Start troubleshoot",
+                            "1")
 
 
 def admins(update, context):
@@ -172,7 +181,7 @@ def new_member_join(update: Update, context: CallbackContext):
 
         join_usernames.append(join_user_name)
 
-    if len(join_usernames) >= 15:
+    if len(join_usernames) >= 20:
         delay_group(
             update,
             context,
@@ -226,6 +235,14 @@ def message_button_url(update, context, text, button_text, button_url):
                                     parse_mode=telegram.ParseMode.HTML,
                                     reply_markup=InlineKeyboardMarkup.from_button(
                                         InlineKeyboardButton(text=button_text, url=button_url)))
+
+
+def message_button_callback(update, context, text, button_text, callback):
+    return context.bot.send_message(chat_id=update.message.chat_id,
+                                    text=text,
+                                    parse_mode=telegram.ParseMode.HTML,
+                                    reply_markup=InlineKeyboardMarkup.from_button(
+                                        InlineKeyboardButton(text=button_text, callback_data="1")))
 
 
 def message_html(update, context, text):
