@@ -23,8 +23,8 @@ def start(update, context):
                             "\nWelcome to my private chat."
                             "\n\nHere we can troubleshoot issues together. I will then forward your question to the "
                             "community."
-                            "\n\nNote: Commands work in @realme_support only.",
-                            "Start troubleshoot",
+                            "\n\n<i>Note: Commands work in @realme_support only.</i>",
+                            "Create new issue ticket 🎫",
                             "1")
 
 
@@ -58,7 +58,7 @@ def button(update: Update, context: CallbackContext) -> None:
         return
 
     elif position == 1:
-        message_text = "Question 1/7" \
+        message_text = "[=      ] Question 1/7" \
                        "\n\nWhich device are you using?"
 
     elif position == 2:
