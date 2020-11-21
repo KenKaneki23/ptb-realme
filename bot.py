@@ -47,20 +47,16 @@ def button(update: Update, context: CallbackContext) -> None:
 
     position = int(query.data)
 
+    if position == 0:
+        message_text = "Hey human 🤖" \
+                       "\n\n🚧 The troubleshooting is currently under development 🚧" \
+                       "\n\nHere we can troubleshoot issues together. I will then forward your question to the " \
+                       "community." \
+                       "\n\nI will ask you a few questions. Please respond in one message per each question." \
+                       "\n\nTo restart type in /start" \
+                       "\n\n<i>Note: Commands work in @realme_support only.</i>"
 
-    # if position == 0:
-    #    message_text = "Hey, human 🤖" \
-    #                   "\nI will guide you through formulating a proper question to ask in the group." \
-    #                   "\n🚧 The troubleshooting is currently under development 🚧" \
-    #                   "\n\nPlease provide as many details as possible for every step to make it easier for the " \
-    #                   "community to understand your problem and give you a better answer quicker. " \
-    #                   "\n\nIf you face any issues with this bot, contact @pentexnyx"
-    #
-    #    query.edit_message_text(text=message_text, reply_markup=InlineKeyboardMarkup.from_button(
-    #        InlineKeyboardButton("Proceed ➡", callback_data='1')))
-    #    return
-
-    if position == 1:
+    elif position == 1:
         message_text = "Progress 20%" \
                        "\n\nWhich device are you using?" \
                        "\nWhich software update is installed?"
@@ -87,11 +83,6 @@ def button(update: Update, context: CallbackContext) -> None:
             [InlineKeyboardButton("Submit ✅", callback_data=str(6)),
              InlineKeyboardButton("Cancel ❌", callback_data=str(0))]
         )
-
-    #   query.edit_message_text(text=message_text,
-    #                          reply_markup=InlineKeyboardMarkup.from_button(
-    #                              InlineKeyboardButton("Submit", url="https://t.me/realme_support",
-    #                                                     callback_data=str(position + 1))))
 
     elif position == 6:
         message_text = "The issue was sent to the group. 🤖"
