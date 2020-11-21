@@ -39,12 +39,8 @@ def start(update, context):
 
 
 def button(update: Update, context: CallbackContext) -> None:
+
     query = update.callback_query
-
-    # CallbackQueries need to be answered, even if no notification to the user is needed
-    # Some clients may have trouble otherwise. See https://core.telegram.org/bots/api#callbackquery
-    query.answer()
-
     position = int(query.data)
 
     if position == 0:
@@ -85,14 +81,15 @@ def button(update: Update, context: CallbackContext) -> None:
         )
 
     elif position == 6:
-        message_text = "The issue was sent to the group. 🤖"
+        message_text = "I notified the group about your issue 🤖"
+
         buttons = InlineKeyboardButton("Feedback 🗣️", url="https://t.me/pentexnyx")
-        # return
 
     if position < 5:
         buttons = InlineKeyboardMarkup.from_button(InlineKeyboardButton("Proceed ➡", callback_data=str(position + 1)))
 
     query.edit_message_text(text=message_text, reply_markup=buttons)
+    query.answer()
 
 
 def admins(update, context):
