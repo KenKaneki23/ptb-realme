@@ -39,7 +39,6 @@ def start(update, context):
 
 
 def button(update: Update, context: CallbackContext) -> None:
-
     query = update.callback_query
     position = int(query.data)
 
@@ -352,6 +351,10 @@ def delete(context):
     context.bot.delete_message(chat_id=context.job.context, message_id=context.job.name)
 
 
+def remove_message(update, context):
+    update.message.delete()
+
+
 def error(update, context):
     logger.warning('Update "%s" caused error "%s"', update, context.error)
 
@@ -377,6 +380,7 @@ def main():
     dp.add_handler(CommandHandler("form", form))
 
     dp.add_handler(MessageHandler(Filters.status_update.new_chat_members, new_member_join))
+    dp.add_handler(MessageHandler(Filters.text("/help@CoronaVirusRobot"), remove_message))
 
     dp.add_handler(CallbackQueryHandler(button))
 
