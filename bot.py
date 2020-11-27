@@ -30,7 +30,7 @@ def start(update, context):
                             "1")
 
 
-# NO!
+# NO! d
 # def private_next(message, text, message_button):
 #  if message.chat_id > 0:
 #   message.reply_text(text, reply_markup=InlineKeyboardMarkup.from_button(message_button))
