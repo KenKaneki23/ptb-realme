@@ -388,7 +388,7 @@ def main():
     dp.add_error_handler(error)
 
     updater.start_webhook(listen="0.0.0.0", port=int(PORT), url_path=TOKEN)
-    updater.bot.setWebhook('https://pxnx-tg-bot-test.herokuapp.com/' + TOKEN)
+    updater.bot.setWebhook('https://ptb-realme.herokuapp.com/' + TOKEN)
 
     updater.idle()
 
