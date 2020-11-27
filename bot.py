@@ -25,7 +25,7 @@ def start(update, context):
                             "community."
                             "\n\nI will ask you a few questions. Please respond in one message per each question."
                             "\n\nTo restart type in /start"
-                            "\n\n<i>Note: Commands work in @realme_support only.</i>",
+                            "\n\n<i>Note: Commands work in @realme_support only!</i>",
                             "Create new issue ticket 🎫",
                             "1")
 
