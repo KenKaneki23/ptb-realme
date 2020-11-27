@@ -20,7 +20,7 @@ def start(update, context):
     message_button_callback(update,
                             context,
                             "Hey human 🤖"
-                            "\n\n🚧 The troubleshooting is currently under development 🚧"
+                            "\n\n🚧 The troubleshooting is currently under development. No need to use it yet. 🚧"
                             "\n\nHere we can troubleshoot issues together. I will then forward your question to the "
                             "community."
                             "\n\nI will ask you a few questions. Please respond in one message per each question."
