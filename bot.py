@@ -284,8 +284,8 @@ def form(update, context):
 def android11(update, context):
     delay_group(update, context,
                 "<u>Realme UI 2.0</u>"
-                "\n\nEarly Access is there to test stuff. Testing is easier with a reduced userbase."
-                "\n\nTherefore it will be rolled out to a limited number of people only 😉"
+                "\n\n<i>Early Access is there to test stuff. Testing is easier with a reduced userbase. Therefore it "
+                "will be rolled out to a limited number of people only 😉</i> "
                 "\n\n<a href='https://static.c.realme.com/IN/wm-thread/1323470129358438400.jpg'>Official Roadmap</a>"
                 "\n\n<b>Early Access</b>"
                 "\nThe timeline is for the first wave of early access rollout only. The version for the corresponding "
