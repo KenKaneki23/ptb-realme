@@ -313,9 +313,15 @@ def message_button_callback(update, context, text, button_text, callback):
 
 
 def message_html(update, context, text):  # return context.bot.send_message(
-    return update.message.reply_to_message.reply_text(
-        text=text,
-        parse_mode=telegram.ParseMode.HTML)
+    if (update.message == update.message.reply_to_message):
+        return update.message.reply_to_message.reply_text(
+            text=text,
+            parse_mode=telegram.ParseMode.HTML)
+    else:
+        return context.bot.send_message(
+            chat_id=update.message.chat_id,
+            text=text,
+            parse_mode=telegram.ParseMode.HTML)
 
 
 def delay_group_button_url(update, context, text, button_text, button_url):
