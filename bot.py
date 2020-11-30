@@ -313,7 +313,7 @@ def message_button_callback(update, context, text, button_text, callback):
 
 
 def message_html(update, context, text):  # return context.bot.send_message(
-    return update.message.reply_to_message(
+    return update.message.reply_to_message.reply_text(
         text=text,
         parse_mode=telegram.ParseMode.HTML)
 
