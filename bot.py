@@ -348,7 +348,7 @@ def delay_group(update, context, text):
     else:
         reply_message = message_button_url(update,
                                            context,
-                                           "Command can only be used in the community support group.",
+                                           "Command can only be used in the community support group. <a href='mailto:contact.pxnx@gmail.com'>here</a>",
                                            "Join »",
                                            "mailto:contact.pxnx@gmail.com")  # https://t.me/realme_support
 
