@@ -335,7 +335,7 @@ def delay_group_button_url(update, context, text, button_text, button_url):
                                            context,
                                            "Command can only be used in the community support group.",
                                            "Join »",
-                                           "mailto:contact.pxnx@gmail.com")  # https://t.me/realme_support
+                                           "https://t.me/realme_support")
 
     context.job_queue.run_once(delete, 300, context=update.message.chat_id, name=str(reply_message.message_id))
 
@@ -348,15 +348,19 @@ def delay_group(update, context, text):
     else:
         reply_message = message_button_url(update,
                                            context,
-                                           "Command can only be used in the community support group. <a href='mailto:contact.pxnx@gmail.com'>here</a>",
+                                           "Command can only be used in the community support group.",
                                            "Join »",
-                                           "mailto:contact.pxnx@gmail.com")  # https://t.me/realme_support
+                                           "https://t.me/realme_support")
 
     context.job_queue.run_once(delete, 600, context=update.message.chat_id, name=str(reply_message.message_id))
 
 
 def delete(context):
     context.bot.delete_message(chat_id=context.job.context, message_id=context.job.name)
+
+
+def echo(update, context):
+    context.bot.send_message(chat_id=update.message.chat_id, text="hmm")
 
 
 def remove_message(update, context):
@@ -394,6 +398,8 @@ def main():
     dp.add_handler(CallbackQueryHandler(button))
 
     dp.add_error_handler(error)
+
+    dp.add_handler(MessageHandler(Filters.regex(".*"), echo))
 
     updater.start_webhook(listen="0.0.0.0", port=int(PORT), url_path=TOKEN)
     updater.bot.setWebhook('https://ptb-realme.herokuapp.com/' + TOKEN)
