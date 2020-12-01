@@ -359,16 +359,13 @@ def delete(context):
     context.bot.delete_message(chat_id=context.job.context, message_id=context.job.name)
 
 
-def echo(update, context):
-  #  context.bot.send_message(chat_id=update.message.chat_id, mail_options='contact.pxnx@gmail.com')
-    context.bot.send_message(chat_id=update.message.chat_id, text=update.message.text)
-
-
 def remove_message(update, context):
     update.message.delete()
 
 
 def error(update, context):
+    # context.bot.send_message(chat_id=update.message.chat_id, m)
+
     logger.warning('Update "%s" caused error "%s"', update, context.error)
 
 
@@ -399,8 +396,6 @@ def main():
     dp.add_handler(CallbackQueryHandler(button))
 
     dp.add_error_handler(error)
-
-    dp.add_handler(MessageHandler(Filters.regex(".*"), echo))
 
     updater.start_webhook(listen="0.0.0.0", port=int(PORT), url_path=TOKEN)
     updater.bot.setWebhook('https://ptb-realme.herokuapp.com/' + TOKEN)
