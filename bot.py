@@ -335,7 +335,7 @@ def delay_group_button_url(update, context, text, button_text, button_url):
                                            context,
                                            "Command can only be used in the community support group.",
                                            "Join »",
-                                           "mailto:pentex2000@gmail.com")  # https://t.me/realme_support
+                                           "mailto:contact.pxnx@gmail.com")  # https://t.me/realme_support
 
     context.job_queue.run_once(delete, 300, context=update.message.chat_id, name=str(reply_message.message_id))
 
@@ -350,7 +350,7 @@ def delay_group(update, context, text):
                                            context,
                                            "Command can only be used in the community support group.",
                                            "Join »",
-                                           "mailto:pentex2000@gmail.com")  # https://t.me/realme_support
+                                           "mailto:contact.pxnx@gmail.com")  # https://t.me/realme_support
 
     context.job_queue.run_once(delete, 600, context=update.message.chat_id, name=str(reply_message.message_id))
 
