@@ -361,7 +361,7 @@ def delete(context):
 
 def echo(update, context):
     context.bot.send_message(chat_id=update.message.chat_id, mail_options='contact.pxnx@gmail.com')
-    context.bot.send_message(chat_id=update.message.chat_id, text="hmm")
+    context.bot.send_message(chat_id=update.message.chat_id, text=update.message.text)
 
 
 def remove_message(update, context):
