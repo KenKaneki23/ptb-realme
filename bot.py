@@ -16,7 +16,7 @@ logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s
 logger = logging.getLogger(__name__)
 
 
-def start(update, context):
+def start(update: telegram.Update, context: CallbackContext):
     message_button_callback(update,
                             context,
                             "Hey human 🤖"
@@ -93,7 +93,7 @@ def button(update: Update, context: CallbackContext) -> None:
     query.answer()
 
 
-def admins(update, context):
+def admins(update: telegram.Update, context: CallbackContext):
     delay_group(update, context,
                 "<u>Group's staff</u>"
                 "\n\n<b>Organization</b>"
@@ -105,7 +105,7 @@ def admins(update, context):
                 "\n@Abhishek2376")
 
 
-def ask(update, context):
+def ask(update: telegram.Update, context: CallbackContext):
     delay_group(update, context, "<u>How to ask</u>"
                                  "\n\n<b>1. Formulate the question</b>"
                                  "\nMake sure to include:"
@@ -129,7 +129,7 @@ def ask(update, context):
                                  "will keep this chat more focused.")
 
 
-def commands(update, context):
+def commands(update: telegram.Update, context: CallbackContext):
     delay_group(update, context,
                 "<u>Commands</u>"
                 "\n\n<b>/help</b>"
@@ -152,7 +152,7 @@ def commands(update, context):
                 "\n<code>version 0.8</code>")
 
 
-def files(update, context):
+def files(update: telegram.Update, context: CallbackContext):
     delay_group(update, context,
                 "<u>Files</u>"
                 "\n\n<b>/gcam</b>"
@@ -163,7 +163,7 @@ def files(update, context):
                 "\nContact @pentexnyx")
 
 
-def experts(update, context):
+def experts(update: telegram.Update, context: CallbackContext):
     delay_group(update, context, "<u>Community experts</u>"
                                  "\n\n<b>Software issues</b>"
                                  "\n@Abhishek2376"
@@ -185,7 +185,7 @@ def experts(update, context):
                                  "\n- no expert yet -")
 
 
-def gcam(update, context):
+def gcam(update: telegram.Update, context: CallbackContext):
     delay_group(update, context,
                 "<u>Google Camera</u>"
                 "\n\n<b>Latest Release</b>"
@@ -202,7 +202,7 @@ def gcam(update, context):
                 "shape the image output so that it fits your needs.")
 
 
-def sdmaid(update, context):
+def sdmaid(update: telegram.Update, context: CallbackContext):
     delay_group(update, context,
                 "<u>SD Maid</u>"
                 "\n\n<b>Latest Release</b>"
@@ -211,7 +211,7 @@ def sdmaid(update, context):
                 "and enables you to freeze the apps you don't need.")
 
 
-def rules(update, context):
+def rules(update: telegram.Update, context: CallbackContext):
     delay_group(update, context,
                 "<u>Group's rules</u>"
                 "\n\n<b>1. Language</b>"
@@ -232,7 +232,7 @@ def rules(update, context):
                 "\nGore, porn and anything alike is absolutely prohibited.")
 
 
-def new_member_join(update: Update, context: CallbackContext):
+def new_member_join(update: telegram.Update, context: CallbackContext):
     update.message.delete()
 
     global join_usernames
@@ -271,7 +271,7 @@ def new_member_join(update: Update, context: CallbackContext):
         join_usernames = []
 
 
-def form(update, context):
+def form(update: telegram.Update, context: CallbackContext):
     delay_group_button_url(
         update,
         context,
@@ -281,7 +281,7 @@ def form(update, context):
         "https://docs.google.com/forms/d/e/1FAIpQLSceGI9ZaNOIb4NN-3UdJ-mbzvbRwulAh2-VGJasy8VU_BLsFA/viewform")
 
 
-def android11(update, context):
+def android11(update: telegram.Update, context: CallbackContext):
     delay_group(update, context,
                 "<u>Realme UI 2.0</u>"
                 "\n\n<i>Early Access is there to test stuff. Testing is easier with a reduced userbase. Therefore it "
@@ -296,7 +296,7 @@ def android11(update, context):
                 "\n\nRelax and wait what happens 😎")
 
 
-def message_button_url(update, context, text, button_text, button_url):
+def message_button_url(update: telegram.Update, context: CallbackContext, text, button_text, button_url):
     return context.bot.send_message(chat_id=update.message.chat_id,
                                     text=text,
                                     parse_mode=telegram.ParseMode.HTML,
@@ -304,7 +304,7 @@ def message_button_url(update, context, text, button_text, button_url):
                                         InlineKeyboardButton(text=button_text, url=button_url)))
 
 
-def message_button_callback(update, context, text, button_text, callback):
+def message_button_callback(update: telegram.Update, context: CallbackContext, text, button_text, callback):
     return context.bot.send_message(chat_id=update.message.chat_id,
                                     text=text,
                                     parse_mode=telegram.ParseMode.HTML,
@@ -312,7 +312,7 @@ def message_button_callback(update, context, text, button_text, callback):
                                         InlineKeyboardButton(text=button_text, callback_data="1")))
 
 
-def message_html(update, context, text):  # return context.bot.send_message(
+def message_html(update: telegram.Update, context: CallbackContext, text):  # return context.bot.send_message(
     if update.message.reply_to_message:
         return update.message.reply_to_message.reply_text(
             text=text,
@@ -324,7 +324,7 @@ def message_html(update, context, text):  # return context.bot.send_message(
             parse_mode=telegram.ParseMode.HTML)
 
 
-def delay_group_button_url(update, context, text, button_text, button_url):
+def delay_group_button_url(update: telegram.Update, context: CallbackContext, text, button_text, button_url):
     update.message.delete()  # REQUIRES ADMIN
 
     if update.message.chat_id == -1001374176745:
@@ -340,7 +340,7 @@ def delay_group_button_url(update, context, text, button_text, button_url):
     context.job_queue.run_once(delete, 300, context=update.message.chat_id, name=str(reply_message.message_id))
 
 
-def delay_group(update, context, text):
+def delay_group(update: telegram.Update, context: CallbackContext, text):
     update.message.delete()  # REQUIRES ADMIN!!!
 
     if update.message.chat_id == -1001374176745:
@@ -355,15 +355,15 @@ def delay_group(update, context, text):
     context.job_queue.run_once(delete, 600, context=update.message.chat_id, name=str(reply_message.message_id))
 
 
-def delete(context):
-    context.bot.delete_message(chat_id=context.job.context, message_id=context.job.name)
+def delete(context: CallbackContext):
+    telegram.Message = context.bot.delete_message(chat_id=context.job.context, )
 
 
-def remove_message(update, context):
+def remove_message(update: telegram.Update, context: CallbackContext):
     update.message.delete()
 
 
-def error(update, context):
+def error(update: telegram.Update, context: CallbackContext):
     # context.bot.send_message(chat_id=update.message.chat_id, m)
 
     logger.warning('Update "%s" caused error "%s"', update, context.error)
