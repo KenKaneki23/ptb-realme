@@ -297,11 +297,18 @@ def android11(update: telegram.Update, context: CallbackContext):
 
 
 def message_button_url(update: telegram.Update, context: CallbackContext, text, button_text, button_url):
-    return context.bot.send_message(chat_id=update.message.chat_id,
-                                    text=text,
-                                    parse_mode=telegram.ParseMode.HTML,
-                                    reply_markup=InlineKeyboardMarkup.from_button(
-                                        InlineKeyboardButton(text=button_text, url=button_url)))
+    if update.message.reply_to_message:
+        return update.message.reply_to_message.reply_text(
+            text=text,
+            parse_mode=telegram.ParseMode.HTML,
+            reply_markup=InlineKeyboardMarkup.from_button(
+                InlineKeyboardButton(text=button_text, url=button_url)))
+    else:
+        return context.bot.send_message(chat_id=update.message.chat_id,
+                                        text=text,
+                                        parse_mode=telegram.ParseMode.HTML,
+                                        reply_markup=InlineKeyboardMarkup.from_button(
+                                            InlineKeyboardButton(text=button_text, url=button_url)))
 
 
 def message_button_callback(update: telegram.Update, context: CallbackContext, text, button_text, callback):
