@@ -363,7 +363,7 @@ def delay_group(update: telegram.Update, context: CallbackContext, text):
 
 
 def delete(context: CallbackContext):
-    telegram.Message = context.bot.delete_message(chat_id=context.job.context, )
+    telegram.Message = context.bot.delete_message(chat_id=str(context.job.context), message_id=context.job.name)
 
 
 def remove_message(update: telegram.Update, context: CallbackContext):
