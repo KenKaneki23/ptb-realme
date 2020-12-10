@@ -396,7 +396,7 @@ def main():
     dp.add_handler(CommandHandler("sdmaid", sdmaid))
     dp.add_handler(CommandHandler("experts", experts))
 
-    dp.add_handler(CommandHandler("ask", ask))
+    # dp.add_handler(CommandHandler("ask", ask))
     dp.add_handler(CommandHandler("android11", android11))
     dp.add_handler(CommandHandler("form", form))
 
