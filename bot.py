@@ -313,7 +313,7 @@ def message_button_url(update: telegram.Update, context: CallbackContext, text, 
 
 def message_button_callback(update: telegram.Update, context: CallbackContext, text, button_text, callback):
     keyboard = [
-        ['Feature not available yet.']
+        ['Private chat not available yet.']
     ]
 
     return context.bot.send_message(chat_id=update.message.chat_id,
