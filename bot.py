@@ -2,7 +2,7 @@ import logging
 import os
 
 import telegram
-from telegram import InlineKeyboardButton, InlineKeyboardMarkup, Update
+from telegram import InlineKeyboardButton, InlineKeyboardMarkup, Update, ReplyKeyboardMarkup
 from telegram.ext import Updater, CommandHandler, CallbackContext, MessageHandler, Filters, CallbackQueryHandler
 
 PORT = int(os.environ.get('PORT', 5000))
@@ -312,11 +312,18 @@ def message_button_url(update: telegram.Update, context: CallbackContext, text, 
 
 
 def message_button_callback(update: telegram.Update, context: CallbackContext, text, button_text, callback):
+    keyboard = [
+        ['Make an Order']
+    ]
+
     return context.bot.send_message(chat_id=update.message.chat_id,
                                     text=text,
                                     parse_mode=telegram.ParseMode.HTML,
-                                    reply_markup=InlineKeyboardMarkup.from_button(
-                                        InlineKeyboardButton(text=button_text, callback_data="1")))
+                                    reply_markup=ReplyKeyboardMarkup(keyboard, one_time_keyboard=True,
+                                                                     resize_keyboard=True)
+                                    )
+    #    reply_markup=InlineKeyboardMarkup.from_button(
+    #        InlineKeyboardButton(text=button_text, callback_data="1")))
 
 
 def message_html(update: telegram.Update, context: CallbackContext, text):  # return context.bot.send_message(
