@@ -405,7 +405,7 @@ def main():
 
     dp.add_handler(CommandHandler("ask", ask))
     dp.add_handler(CommandHandler("android11", android11))
-    dp.add_handler(CommandHandler("form", form, filters=(Filters.sender_chat.super_group.id == GROUP)))
+    dp.add_handler(CommandHandler("form", form, filters=Filters.chat(chat_id=GROUP)))
 
     dp.add_handler(MessageHandler(Filters.status_update.new_chat_members, new_member_join))
     dp.add_handler(MessageHandler(Filters.text(
