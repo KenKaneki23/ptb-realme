@@ -408,8 +408,9 @@ def main():
     dp.add_handler(CommandHandler("form", form, filters=Filters.chat(chat_id=GROUP)))
 
     dp.add_handler(MessageHandler(Filters.status_update.new_chat_members, new_member_join))
-    dp.add_handler(MessageHandler(Filters.text(
-        ["/help@CoronaVirusRobot", "/victims@CoronaVirusRobot", "/infect@CoronaVirusRobot"]), remove_message))
+    dp.add_handler(MessageHandler(
+        Filters.text(["/help@CoronaVirusRobot", "/victims@CoronaVirusRobot", "/infect@CoronaVirusRobot"]),
+        remove_message))
 
     dp.add_handler(CallbackQueryHandler(button))
 
