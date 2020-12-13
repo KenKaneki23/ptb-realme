@@ -396,7 +396,7 @@ def main():
 
     dp.add_handler(CommandHandler("files", files))
 
-    dp.add_handler(CommandHandler("admins", admins))
+    dp.add_handler(CommandHandler("admins", admins, filters=Filters.chat(chat_id=GROUP)))
     dp.add_handler(CommandHandler("rules", rules))
 
     dp.add_handler(CommandHandler("gcam", gcam))
