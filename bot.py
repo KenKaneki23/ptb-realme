@@ -221,14 +221,22 @@ def message_html(update: Update, context: CallbackContext, text):  # return cont
 def delay_group_button_url(update: Update, context: CallbackContext, text, button_text, button_url):
     update.message.delete()
     reply_message = message_button_url(update, context, text, button_text, button_url)
-
     context.job_queue.run_once(delete, 300, context=update.message.chat_id, name=str(reply_message.message_id))
 
 
 def delay_group(update: Update, context: CallbackContext, text):
     update.message.delete()
-    reply_message = message_html(update, context, text)
-    context.job_queue.run_once(delete, 600, context=update.message.chat_id, name=str(reply_message.message_id))
+
+    if update.message.reply_to_message:
+        update.message.reply_text(
+            text=text,
+            parse_mode=telegram.ParseMode.HTML)
+    else:
+        reply_message = context.bot.send_message(
+            chat_id=update.message.chat_id,
+            text=text,
+            parse_mode=telegram.ParseMode.HTML)
+        context.job_queue.run_once(delete, 600, context=update.message.chat_id, name=str(reply_message.message_id))
 
 
 def delete(context: CallbackContext):
