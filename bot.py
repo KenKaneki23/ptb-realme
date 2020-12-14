@@ -254,7 +254,7 @@ def main():
     updater = Updater(TOKEN, use_context=True)
     dp = updater.dispatcher
 
-    dp.add_handler(CommandHandler("start", start, filters=Filters.private))
+    dp.add_handler(CommandHandler("start", start))
     dp.add_handler(CommandHandler("commands", commands, filters=Filters.chat(chat_id=GROUP)))
 
     dp.add_handler(CommandHandler("files", files, filters=Filters.chat(chat_id=GROUP)))
