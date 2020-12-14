@@ -82,7 +82,7 @@ def commands(update: Update, context: CallbackContext):
                 "\nOfficial roadmap for the Early Access of RealmeUI 2.0"
                 "\n\n<b>/ask</b>"
                 "\nHow to ask questions properly"
-                "\n\nContact @pentexnyx if you face any issues with me 🤖"
+                "\n\nMessage @pentexnyx, if you face any issues with me 🤖"
                 "\n<i>" + str(os.environ.get('HEROKU_RELEASE_VERSION')) + "</i>")
 
 
