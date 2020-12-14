@@ -15,7 +15,6 @@ logger = logging.getLogger(__name__)
 
 def start(update: Update, context: CallbackContext):
     update.message.reply_text(
-        chat_id=update.message.chat_id,
         text="Hey human 🤖"
              "\n\n<b>🚧 The troubleshooting is currently under development. You can't use it yet. 🚧</b>"
              "\n\nHere we can troubleshoot issues together. I will then forward your question to the community."
