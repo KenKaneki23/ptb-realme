@@ -3,97 +3,32 @@ import os
 
 import telegram
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, Update, ReplyKeyboardMarkup
-from telegram.ext import Updater, CommandHandler, CallbackContext, MessageHandler, Filters, CallbackQueryHandler
+from telegram.ext import Updater, CommandHandler, CallbackContext, MessageHandler, Filters
 
 PORT = int(os.environ.get('PORT', 5000))
 TOKEN = '1415969330:AAGEnSGxjYl-hd3VTkpS4uY017Wag5dDsDQ'
 GROUP = -1001374176745  # -1001327617858
-join_usernames = []
-current_step = 0
 
-logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
-                    level=logging.INFO)
+logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 
-def start(update: telegram.Update, context: CallbackContext):
-    message_button_callback(update,
-                            context,
-                            "Hey human 🤖"
-                            "\n\n🚧 The troubleshooting is currently under development. No need to use it yet. 🚧"
-                            "\n\nHere we can troubleshoot issues together. I will then forward your question to the "
-                            "community."
-                            "\n\nI will ask you a few questions. Please respond in one message per each question."
-                            "\n\nTo restart type in /start"
-                            "\n\n<i>Note: Commands work in @realme_support only.</i>",
-                            "Create new issue ticket 🎫",
-                            "1")
+def start(update: Update, context: CallbackContext):
+    update.message.reply_text(
+        chat_id=update.message.chat_id,
+        text="Hey human 🤖"
+             "\n\n<b>🚧 The troubleshooting is currently under development. You can't use it yet. 🚧</b>"
+             "\n\nHere we can troubleshoot issues together. I will then forward your question to the community."
+             "\n\nI will ask you a few questions. Please respond in one message per each question."
+             "\n\nTo restart type in /start"
+             "\n\n<i>Note: Commands work in @realme_support only.</i>"
+             "\n\nType /rules to get the group's rules.",
+        parse_mode=telegram.ParseMode.HTML,
+        reply_markup=ReplyKeyboardMarkup([['Private chat not available yet.']], one_time_keyboard=True,
+                                         resize_keyboard=True))
 
 
-# NO! d
-# def private_next(message, text, message_button):
-#  if message.chat_id > 0:
-#   message.reply_text(text, reply_markup=InlineKeyboardMarkup.from_button(message_button))
-# else: message_button_callback(message, "I'm shy 🤖", "Message me 💬",
-# "https://t.me/realme_community_support_bot?start=0")
-
-
-def button(update: Update, context: CallbackContext) -> None:
-    query = update.callback_query
-    position = int(query.data)
-
-    if position == 0:
-        message_text = "Hey human 🤖" \
-                       "\n\n🚧 The troubleshooting is currently under development 🚧" \
-                       "\n\nHere we can troubleshoot issues together. I will then forward your question to the " \
-                       "community." \
-                       "\n\nI will ask you a few questions. Please respond in one message per each question." \
-                       "\n\nTo restart type in /start" \
-                       "\n\n<i>Note: Commands work in @realme_support only.</i>"
-
-    elif position == 1:
-        message_text = "Progress 20%" \
-                       "\n\nWhich device are you using?" \
-                       "\nWhich software update is installed?"
-
-    elif position == 2:
-        message_text = "Progress 40%" \
-                       "\n\nWhat do you want to do?" \
-                       "\nWhat have you tried already?"
-
-    elif position == 3:
-        message_text = "Progress 60%" \
-                       "\n\nWhy do you want to do that?" \
-                       "\nWhat benefits do you expect?"
-
-    elif position == 4:
-        message_text = "Progress 80%" \
-                       "\n\nWhat output did you get?"
-
-    elif position == 5:
-        message_text = "Thanks for your time. 🤖" \
-                       "\n\n(as stated previously: this doesn't work yet)" \
-                       "\n\nSubmit question to the community?"
-
-        buttons = InlineKeyboardMarkup.from_column(
-            [InlineKeyboardButton("Submit ✅", callback_data=str(6)),
-             InlineKeyboardButton("Cancel ❌", callback_data=str(0))]
-        )
-
-    elif position == 6:
-        message_text = "I notified the group about your issue 🤖"
-
-        buttons = InlineKeyboardMarkup.from_button(InlineKeyboardButton("Feedback 🗣️",
-                                                                        url="https://t.me/pxnx_community"))
-
-    if position < 5:
-        buttons = InlineKeyboardMarkup.from_button(InlineKeyboardButton("Proceed ➡", callback_data=str(position + 1)))
-
-    query.edit_message_text(text=message_text, reply_markup=buttons, parse_mode=telegram.ParseMode.HTML)
-    query.answer()
-
-
-def admins(update: telegram.Update, context: CallbackContext):
+def admins(update: Update, context: CallbackContext):
     delay_group(update, context,
                 "<u>Group's staff</u>"
                 "\n\n<b>Organization</b>"
@@ -105,7 +40,7 @@ def admins(update: telegram.Update, context: CallbackContext):
                 "\n@Abhishek2376")
 
 
-def ask(update: telegram.Update, context: CallbackContext):
+def ask(update: Update, context: CallbackContext):
     delay_group(update, context, "<u>How to ask</u>"
                                  "\n\n<b>1. Formulate the question</b>"
                                  "\nMake sure to include:"
@@ -129,7 +64,7 @@ def ask(update: telegram.Update, context: CallbackContext):
                                  "will keep this chat more focused.")
 
 
-def commands(update: telegram.Update, context: CallbackContext):
+def commands(update: Update, context: CallbackContext):
     delay_group(update, context,
                 "<u>Commands</u>"
                 "\n\n<b>/help</b>"
@@ -152,7 +87,7 @@ def commands(update: telegram.Update, context: CallbackContext):
                 "\n<code>version 0.8</code>")
 
 
-def files(update: telegram.Update, context: CallbackContext):
+def files(update: Update, context: CallbackContext):
     delay_group(update, context,
                 "<u>Files</u>"
                 "\n\n<b>/gcam</b>"
@@ -163,7 +98,7 @@ def files(update: telegram.Update, context: CallbackContext):
                 "\nContact @pentexnyx")
 
 
-def experts(update: telegram.Update, context: CallbackContext):
+def experts(update: Update, context: CallbackContext):
     delay_group(update, context, "<u>Community experts</u>"
                                  "\n\n<b>Software issues</b>"
                                  "\n@Abhishek2376"
@@ -185,11 +120,11 @@ def experts(update: telegram.Update, context: CallbackContext):
                                  "\n- no expert yet -")
 
 
-def gcam(update: telegram.Update, context: CallbackContext):
+def gcam(update: Update, context: CallbackContext):
     delay_group(update, context,
                 "<u>Google Camera</u>"
                 "\n\n<b>Latest Release</b>"
-                "\n· <a href='https://t.me/realme_support/47467'>Urnyx05-v2.4</a>"
+                "\n· <a href='https://t.me/realme_support/68844'>Urnyx05-v2.5</a>"
                 "\n\nUrnyx05's releases work well on most Realme devices. Take a look at @googlecameraport for other "
                 "releases. "
                 "\n\n\n<b>Configurations</b>"
@@ -202,7 +137,7 @@ def gcam(update: telegram.Update, context: CallbackContext):
                 "shape the image output so that it fits your needs.")
 
 
-def sdmaid(update: telegram.Update, context: CallbackContext):
+def sdmaid(update: Update, context: CallbackContext):
     delay_group(update, context,
                 "<u>SD Maid</u>"
                 "\n\n<b>Latest Release</b>"
@@ -211,7 +146,7 @@ def sdmaid(update: telegram.Update, context: CallbackContext):
                 "and enables you to freeze the apps you don't need.")
 
 
-def rules(update: telegram.Update, context: CallbackContext):
+def rules(update: Update, context: CallbackContext):
     delay_group(update, context,
                 "<u>Group's rules</u>"
                 "\n\n<b>1. Language</b>"
@@ -232,46 +167,7 @@ def rules(update: telegram.Update, context: CallbackContext):
                 "\nGore, porn and anything alike is absolutely prohibited.")
 
 
-def new_member_join(update: telegram.Update, context: CallbackContext):
-    update.message.delete()
-
-    global join_usernames
-
-    for join_user in update.message.new_chat_members:
-
-        if join_user.name is not None:
-            join_user_name = join_user.name
-        else:
-            join_user_name = join_user.full_name
-
-        join_usernames.append(join_user_name)
-
-    if len(join_usernames) >= 20:
-        delay_group(
-            update,
-            context,
-            "Hi {} 🤖\nWelcome to the group.\n\n"
-            "<u>Group's rules</u>"
-            "\n\n<b>1. Language</b>"
-            "\nPlease use English or Hindi as an alternative."
-            "\n\n<b>2. Links</b>"
-            "\nSending links is not permitted."
-            "\n\n<b>3. Forwarding</b>"
-            "\nForwarding messages from other channels is not permitted"
-            "\n\n<b>4. Respect</b>"
-            "\nWe're all one big community. Don't be rude."
-            "\n\n<b>5. Spam</b>"
-            "\nAvoid sending stuff multiple times. Flooding the chat won't give you more attention."
-            "\n\n<b>6. Files</b>"
-            "\nAvoid sending files over 50Mb, if not ultimately needed."
-            "\n\n<b>7. Advertisements</b>"
-            "\nSelf-promotion is not permitted."
-            "\n\n<b>8. Content</b>"
-            "\nGore, porn and anything alike is absolutely prohibited.".format(', '.join(join_usernames)))
-        join_usernames = []
-
-
-def form(update: telegram.Update, context: CallbackContext):
+def form(update: Update, context: CallbackContext):
     delay_group_button_url(
         update,
         context,
@@ -281,7 +177,7 @@ def form(update: telegram.Update, context: CallbackContext):
         "https://docs.google.com/forms/d/e/1FAIpQLSceGI9ZaNOIb4NN-3UdJ-mbzvbRwulAh2-VGJasy8VU_BLsFA/viewform")
 
 
-def android11(update: telegram.Update, context: CallbackContext):
+def android11(update: Update, context: CallbackContext):
     delay_group(update, context,
                 "<u>Realme UI 2.0</u>"
                 "\n\n<i>Early Access is there to test stuff. Testing is easier with a reduced userbase. Therefore it "
@@ -296,7 +192,7 @@ def android11(update: telegram.Update, context: CallbackContext):
                 "\n\nRelax and wait what happens 😎")
 
 
-def message_button_url(update: telegram.Update, context: CallbackContext, text, button_text, button_url):
+def message_button_url(update: Update, context: CallbackContext, text, button_text, button_url):
     if update.message.reply_to_message:
         return update.message.reply_to_message.reply_text(
             text=text,
@@ -311,22 +207,7 @@ def message_button_url(update: telegram.Update, context: CallbackContext, text, 
                                             InlineKeyboardButton(text=button_text, url=button_url)))
 
 
-def message_button_callback(update: telegram.Update, context: CallbackContext, text, button_text, callback):
-    keyboard = [
-        ['Private chat not available yet.']
-    ]
-
-    return context.bot.send_message(chat_id=update.message.chat_id,
-                                    text=text,
-                                    parse_mode=telegram.ParseMode.HTML,
-                                    reply_markup=ReplyKeyboardMarkup(keyboard, one_time_keyboard=True,
-                                                                     resize_keyboard=True)
-                                    )
-    #    reply_markup=InlineKeyboardMarkup.from_button(
-    #        InlineKeyboardButton(text=button_text, callback_data="1")))
-
-
-def message_html(update: telegram.Update, context: CallbackContext, text):  # return context.bot.send_message(
+def message_html(update: Update, context: CallbackContext, text):  # return context.bot.send_message(
     if update.message.reply_to_message:
         return update.message.reply_to_message.reply_text(
             text=text,
@@ -338,34 +219,16 @@ def message_html(update: telegram.Update, context: CallbackContext, text):  # re
             parse_mode=telegram.ParseMode.HTML)
 
 
-def delay_group_button_url(update: telegram.Update, context: CallbackContext, text, button_text, button_url):
-    update.message.delete()  # REQUIRES ADMIN
-
-    if update.message.chat_id == -1001374176745:
-        reply_message = message_button_url(update, context, text, button_text, button_url)
-
-    else:
-        reply_message = message_button_url(update,
-                                           context,
-                                           "Command can only be used in the community support group.",
-                                           "Join »",
-                                           "https://t.me/realme_support")
+def delay_group_button_url(update: Update, context: CallbackContext, text, button_text, button_url):
+    update.message.delete()
+    reply_message = message_button_url(update, context, text, button_text, button_url)
 
     context.job_queue.run_once(delete, 300, context=update.message.chat_id, name=str(reply_message.message_id))
 
 
-def delay_group(update: telegram.Update, context: CallbackContext, text):
-    update.message.delete()  # REQUIRES ADMIN!!!
-
-    if update.message.chat_id == -1001374176745:
-        reply_message = message_html(update, context, text)
-    else:
-        reply_message = message_button_url(update,
-                                           context,
-                                           "Command can only be used in the community support group.",
-                                           "Join »",
-                                           "https://t.me/realme_support")
-
+def delay_group(update: Update, context: CallbackContext, text):
+    update.message.delete()
+    reply_message = message_html(update, context, text)
     context.job_queue.run_once(delete, 600, context=update.message.chat_id, name=str(reply_message.message_id))
 
 
@@ -373,7 +236,7 @@ def delete(context: CallbackContext):
     telegram.Message = context.bot.delete_message(chat_id=str(context.job.context), message_id=context.job.name)
 
 
-def remove_message(update: telegram.Update, context: CallbackContext):
+def remove_message(update: Update, context: CallbackContext):
     update.message.delete()
 
 
@@ -391,28 +254,25 @@ def main():
     updater = Updater(TOKEN, use_context=True)
     dp = updater.dispatcher
 
-    dp.add_handler(CommandHandler("start", start))
-    dp.add_handler(CommandHandler("commands", commands))
+    dp.add_handler(CommandHandler("start", start, filters=Filters.private))
+    dp.add_handler(CommandHandler("commands", commands, filters=Filters.chat(chat_id=GROUP)))
 
-    dp.add_handler(CommandHandler("files", files))
+    dp.add_handler(CommandHandler("files", files, filters=Filters.chat(chat_id=GROUP)))
 
     dp.add_handler(CommandHandler("admins", admins, filters=Filters.chat(chat_id=GROUP)))
     dp.add_handler(CommandHandler("rules", rules))
 
-    dp.add_handler(CommandHandler("gcam", gcam))
-    dp.add_handler(CommandHandler("sdmaid", sdmaid))
-    dp.add_handler(CommandHandler("experts", experts))
+    dp.add_handler(CommandHandler("gcam", gcam, filters=Filters.chat(chat_id=GROUP)))
+    dp.add_handler(CommandHandler("sdmaid", sdmaid, filters=Filters.chat(chat_id=GROUP)))
+    dp.add_handler(CommandHandler("experts", experts, filters=Filters.chat(chat_id=GROUP)))
 
-    dp.add_handler(CommandHandler("ask", ask))
-    dp.add_handler(CommandHandler("android11", android11))
+    dp.add_handler(CommandHandler("ask", ask, filters=Filters.chat(chat_id=GROUP)))
+    dp.add_handler(CommandHandler("android11", android11, filters=Filters.chat(chat_id=GROUP)))
     dp.add_handler(CommandHandler("form", form, filters=Filters.chat(chat_id=GROUP)))
 
-    dp.add_handler(MessageHandler(Filters.status_update.new_chat_members, new_member_join))
     dp.add_handler(MessageHandler(
         Filters.text(["/help@CoronaVirusRobot", "/victims@CoronaVirusRobot", "/infect@CoronaVirusRobot"]),
         remove_message))
-
-    dp.add_handler(CallbackQueryHandler(button))
 
     dp.add_error_handler(error)
 
