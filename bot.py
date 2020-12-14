@@ -83,7 +83,7 @@ def commands(update: Update, context: CallbackContext):
                 "\n\n<b>/ask</b>"
                 "\nHow to ask questions properly"
                 "\n\nContact @pentexnyx if you face any issues with me 🤖"
-                "\n<code>version 0.8</code>")
+                "\n<i>" + os.environ.get('RELEASE_ID') + "</i>")
 
 
 def files(update: Update, context: CallbackContext):
