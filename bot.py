@@ -83,7 +83,7 @@ def commands(update: Update, context: CallbackContext):
                 "\n\n<b>/ask</b>"
                 "\nHow to ask questions properly"
                 "\n\nContact @pentexnyx if you face any issues with me 🤖"
-                "\n<i>" + os.environ.get('RELEASE_ID') + "</i>")
+                "\n<i>" + str(os.environ.get('HEROKU_RELEASE_VERSION')) + "</i>")
 
 
 def files(update: Update, context: CallbackContext):
