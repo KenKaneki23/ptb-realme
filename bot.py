@@ -226,7 +226,7 @@ def delay_group(update: Update, context: CallbackContext, text):
     update.message.delete()
 
     if update.message.reply_to_message:
-        update.message.reply_text(
+        update.message.reply_to_message.reply_text(
             text=text,
             parse_mode=telegram.ParseMode.HTML)
     else:
