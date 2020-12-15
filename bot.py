@@ -28,160 +28,150 @@ def start(update: Update, context: CallbackContext):
 
 
 def admins(update: Update, context: CallbackContext):
-    delay_group(
-        update,
-        context,
-        "<u>Group's staff</u>"
-        "\n\n<b>Organization</b>"
-        "\n@aakaah00001"
-        "\n@Prashant_Choudhary"
-        "\n@PacificPC"
-        "\n\n<b>Moderators</b>"
-        "\n@pentexnyx"
-        "\n@Abhishek2376")
+    delay_group(update, context,
+                "<u>Group's staff</u>"
+                "\n\n<b>Organization</b>"
+                "\n@aakaah00001"
+                "\n@Prashant_Choudhary"
+                "\n@PacificPC"
+                "\n\n<b>Moderators</b>"
+                "\n@pentexnyx"
+                "\n@Abhishek2376")
 
 
 def ask(update: Update, context: CallbackContext):
-    delay_group(
-        update,
-        context,
-        "<u>How to ask</u>"
-        "\n\n<b>1. Formulate the question</b>"
-        "\nMake sure to include:"
-        "\n· The device you use"
-        "\n· The latest software installed"
-        "\n· What you want to do"
-        "\n· What you have tried already"
-        "\n· Why you want to do that"
-        "\n· What benefits you expected"
-        "\n· The output you got"
-        "\n\n<b>2. Wait for a response</b>"
-        "\nGive the community 48h to answer your question. The needed expert might not be available all the time, so receiving an answer might take a bit."
-        "\n\n<b>3. No answer yet</b>"
-        "\nUse /experts and tag the experts, whose segment fits your issue."
-        "\nIf you didn't receive an answer after a week, use /form and fill out the linked form."
-        "\n\nThese suggestions enable us to provide you with better answers quicker and will keep this chat more focused.")
+    delay_group(update, context,
+                "<u>How to ask</u>"
+                "\n\n<b>1. Formulate the question</b>"
+                "\nMake sure to include:"
+                "\n· The device you use"
+                "\n· The latest software installed"
+                "\n· What you want to do"
+                "\n· What you have tried already"
+                "\n· Why you want to do that"
+                "\n· What benefits you expected"
+                "\n· The output you got"
+                "\n\n<b>2. Wait for a response</b>"
+                "\nGive the community 48h to answer your question. The needed expert might not be available all the "
+                "time, so receiving an answer might take a bit. "
+                "\n\n<b>3. No answer yet</b>"
+                "\nUse /experts and tag the experts, whose segment fits your issue."
+                "\nIf you didn't receive an answer after a week, use /form and fill out the linked form."
+                "\n\nThese suggestions enable us to provide you with better answers quicker and will keep this chat "
+                "more focused.")
 
 
 def commands(update: Update, context: CallbackContext):
-    delay_group(
-        update,
-        context,
-        "<u>Commands</u>"
-        "\n\n<b>/help</b>"
-        "\nDisplay this message"
-        "\n\n<b>/admins</b>"
-        "\nShow this group\'s staff"
-        "\n\n<b>/rules</b>"
-        "\nShow this group\'s rules"
-        "\n\n<b>/experts</b>"
-        "\nList experts for different segments"
-        "\n\n<b>/gcam</b>"
-        "\nLatest GCam release and configurations"
-        "\n\n<b>/sdmaid</b>"
-        "\nLatest release of the best cleaner out there"
-        "\n\n<b>/android11</b>"
-        "\nOfficial roadmap for the Early Access of RealmeUI 2.0"
-        "\n\n<b>/ask</b>"
-        "\nHow to ask questions properly"
-        "\n\nMessage @pentexnyx, if you face any issues with me 🤖"
-        "\n<i>" + str(os.environ.get('HEROKU_RELEASE_VERSION')) + "</i>")
+    delay_group(update, context,
+                "<u>Commands</u>"
+                "\n\n<b>/help</b>"
+                "\nDisplay this message"
+                "\n\n<b>/admins</b>"
+                "\nShow this group\'s staff"
+                "\n\n<b>/rules</b>"
+                "\nShow this group\'s rules"
+                "\n\n<b>/experts</b>"
+                "\nList experts for different segments"
+                "\n\n<b>/gcam</b>"
+                "\nLatest GCam release and configurations"
+                "\n\n<b>/sdmaid</b>"
+                "\nLatest release of the best cleaner out there"
+                "\n\n<b>/android11</b>"
+                "\nOfficial roadmap for the Early Access of RealmeUI 2.0"
+                "\n\n<b>/ask</b>"
+                "\nHow to ask questions properly"
+                "\n\nMessage @pentexnyx, if you face any issues with me 🤖"
+                "\nRelease " + str(os.environ.get('HEROKU_RELEASE_VERSION')))
 
 
 def files(update: Update, context: CallbackContext):
-    delay_group(
-        update,
-        context,
-        "<u>Files</u>"
-        "\n\n<b>/gcam</b>"
-        "\nGoogle Camera and configs"
-        "\n\n<b>/sdmaid</b>"
-        "\nBest cleaning app"
-        "\n\n\n<b>Any suggestions?</b>"
-        "\nContact @pentexnyx")
+    delay_group(update, context,
+                "<u>Files</u>"
+                "\n\n<b>/gcam</b>"
+                "\nGoogle Camera and configs"
+                "\n\n<b>/sdmaid</b>"
+                "\nBest cleaning app"
+                "\n\n\n<b>Any suggestions?</b>"
+                "\nContact @pentexnyx")
 
 
 def experts(update: Update, context: CallbackContext):
-    delay_group(
-        update,
-        context, "<u>Community experts</u>"
-                 "\n\n<b>Software issues</b>"
-                 "\n@Abhishek2376"
-                 "\n@Dhairya3391"
-                 "\n@pentexnyx"
-                 "\n\n<b>Hardware issues</b>"
-                 "\n@Abhishek2376"
-                 "\n\n<b>Updates and apps</b>"
-                 "\n@Abhishek2376"
-                 "\n@Dhairya3391"
-                 "\n\n<b>Phone recommendations</b>"
-                 "\n@Abhishek2376"
-                 "\n@pentexnyx"
-                 "\n\n<b>Flashing</b>"
-                 "\n- no expert yet -"
-                 "\n\n<b>Android development</b>"
-                 "\n@pentexnyx"
-                 "\n\n<b>Realme ecosystem</b>"
-                 "\n- no expert yet -")
+    delay_group(update, context,
+                "<u>Community experts</u>"
+                "\n\n<b>Software issues</b>"
+                "\n@Abhishek2376"
+                "\n@Dhairya3391"
+                "\n@pentexnyx"
+                "\n\n<b>Hardware issues</b>"
+                "\n@Abhishek2376"
+                "\n\n<b>Updates and apps</b>"
+                "\n@Abhishek2376"
+                "\n@Dhairya3391"
+                "\n\n<b>Phone recommendations</b>"
+                "\n@Abhishek2376"
+                "\n@pentexnyx"
+                "\n\n<b>Flashing</b>"
+                "\n- no expert yet -"
+                "\n\n<b>Android development</b>"
+                "\n@pentexnyx"
+                "\n\n<b>Realme ecosystem</b>"
+                "\n- no expert yet -")
 
 
 def gcam(update: Update, context: CallbackContext):
-    delay_group(
-        update,
-        context,
-        "<u>Google Camera</u>"
-        "\n\n<b>Latest Release</b>"
-        "\n· <a href='https://t.me/realme_support/68844'>Urnyx05-v2.5</a>"
-        "\n\nUrnyx05's releases work well on most Realme devices. Take a look at @googlecameraport for other releases."
-        "\n\n\n<b>Configurations</b>"
-        "\n· <a href='https://t.me/realme_support/20129'>new-natural</a>"
-        "\n· <a href='https://t.me/realme_support/20127'>X2 Pro terev</a>"
-        "\n\nTo enable these configurations, place them in <b>Internal Storage > GCam > Configs7</b>."
-        "\n\nThen go to your GCam and press on the bottom left (next to the camera switch button) a few times. A dialog should appear where your can select the desired configuration."
-        "\n\nFeel free to fiddle around with LibPatcher (in GCam's settings) a little to shape the image output so that it fits your needs.")
+    delay_group(update, context,
+                "<u>Google Camera</u>"
+                "\n\n<b>Latest Release</b>"
+                "\n· <a href='https://t.me/realme_support/68844'>Urnyx05-v2.5</a>"
+                "\n\nUrnyx05's releases work well on most Realme devices. Take a look at @googlecameraport for other "
+                "releases. "
+                "\n\n\n<b>Configurations</b>"
+                "\n· <a href='https://t.me/realme_support/20129'>new-natural</a>"
+                "\n· <a href='https://t.me/realme_support/20127'>X2 Pro terev</a>"
+                "\n\nTo enable these configurations, place them in <b>Internal Storage > GCam > Configs7</b>."
+                "\n\nThen go to your GCam and press on the bottom left (next to the camera switch button) a few "
+                "times. A dialog should appear where your can select the desired configuration. "
+                "\n\nFeel free to fiddle around with LibPatcher (in GCam's settings) a little to shape the image "
+                "output so that it fits your needs.")
 
 
 def sdmaid(update: Update, context: CallbackContext):
-    delay_group(
-        update,
-        context,
-        "<u>SD Maid</u>"
-        "\n\n<b>Latest Release</b>"
-        "\n· <a href='https://t.me/realme_support/52321'>Pro-v5.0.1</a>"
-        "\n\nThis is an excellent cleaning app, which also takes care of databases, duplicates, caches etc. and enables you to freeze the apps you don't need.")
+    delay_group(update, context,
+                "<u>SD Maid</u>"
+                "\n\n<b>Latest Release</b>"
+                "\n· <a href='https://t.me/realme_support/52321'>Pro-v5.0.1</a>"
+                "\n\nThis is an excellent cleaning app, which also takes care of databases, duplicates, caches etc. and enables you to freeze the apps you don't need.")
 
 
 def rules(update: Update, context: CallbackContext):
-    delay_group(
-        update,
-        context,
-        "<u>Group's rules</u>"
-        "\n\n<b>1. Language</b>"
-        "\nPlease use English or Hindi as an alternative."
-        "\n\n<b>2. Links</b>"
-        "\nSending links is not permitted."
-        "\n\n<b>3. Forwarding</b>"
-        "\nForwarding messages from other channels is not permitted"
-        "\n\n<b>4. Respect</b>"
-        "\nWe're all one big community. Don't be rude."
-        "\n\n<b>5. Spam</b>"
-        "\nAvoid sending stuff multiple times. Flooding the chat won't give you more attention."
-        "\n\n<b>6. Files</b>"
-        "\nAvoid sending files over 50Mb, if not ultimately needed."
-        "\n\n<b>7. Advertisements</b>"
-        "\nSelf-promotion is not permitted."
-        "\n\n<b>8. Content</b>"
-        "\nGore, porn and anything alike is absolutely prohibited.")
+    delay_group(update, context,
+                "<u>Group's rules</u>"
+                "\n\n<b>1. Language</b>"
+                "\nPlease use English or Hindi as an alternative."
+                "\n\n<b>2. Links</b>"
+                "\nSending links is not permitted."
+                "\n\n<b>3. Forwarding</b>"
+                "\nForwarding messages from other channels is not permitted"
+                "\n\n<b>4. Respect</b>"
+                "\nWe're all one big community. Don't be rude."
+                "\n\n<b>5. Spam</b>"
+                "\nAvoid sending stuff multiple times. Flooding the chat won't give you more attention."
+                "\n\n<b>6. Files</b>"
+                "\nAvoid sending files over 50Mb, if not ultimately needed."
+                "\n\n<b>7. Advertisements</b>"
+                "\nSelf-promotion is not permitted."
+                "\n\n<b>8. Content</b>"
+                "\nGore, porn and anything alike is absolutely prohibited.")
 
 
 def form(update: Update, context: CallbackContext):
-    delay_group_button_url(
-        update,
-        context,
-        "If your issue is not resolved by the community after a week, you can also contact the developers."
-        "\n\nPlease don't abuse this possibility, so that Realme developers can focus on developing.",
-        "Access form 📝",
-        "https://docs.google.com/forms/d/e/1FAIpQLSceGI9ZaNOIb4NN-3UdJ-mbzvbRwulAh2-VGJasy8VU_BLsFA/viewform")
+    delay_group_button_url(update, context,
+                           "If your issue is not resolved by the community after a week, you can also contact the "
+                           "developers. "
+                           "\n\nPlease don't abuse this possibility, so that Realme developers can focus on developing.",
+                           "Access form 📝",
+                           "https://docs.google.com/forms/d/e/1FAIpQLSceGI9ZaNOIb4NN-3UdJ-mbzvbRwulAh2"
+                           "-VGJasy8VU_BLsFA/viewform")
 
 
 def android11(update: Update, context: CallbackContext):
