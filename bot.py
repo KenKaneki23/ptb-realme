@@ -2,7 +2,7 @@ import logging
 import os
 
 import telegram
-from telegram import InlineKeyboardButton, InlineKeyboardMarkup, Update, ReplyKeyboardMarkup
+from telegram import InlineKeyboardButton, InlineKeyboardMarkup, Update
 from telegram.ext import Updater, CommandHandler, CallbackContext, MessageHandler, Filters
 
 PORT = int(os.environ.get('PORT', 5000))
@@ -11,20 +11,6 @@ GROUP = -1001374176745  # -1001327617858
 
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO)
 logger = logging.getLogger(__name__)
-
-
-def start(update: Update, context: CallbackContext):
-    update.message.reply_text(
-        "Hey human 🤖"
-        "\n\n<b>🚧 The troubleshooting is currently under development. You can't use it yet. 🚧</b>"
-        "\n\nHere we can troubleshoot issues together. I will then forward your question to the community."
-        "\n\nI will ask you a few questions. Please respond in one message per each question."
-        "\n\nTo restart type in /start"
-        "\n\n<i>Note: Commands work in @realme_support only.</i>"
-        "\n\nType /rules to get the group's rules.",
-        parse_mode=telegram.ParseMode.HTML,
-        reply_markup=ReplyKeyboardMarkup([['Private chat not available yet.']], one_time_keyboard=True,
-                                         resize_keyboard=True))
 
 
 def admins(update: Update, context: CallbackContext):
@@ -259,7 +245,6 @@ def main():
     updater = Updater(TOKEN)
     dp = updater.dispatcher
 
-    dp.add_handler(CommandHandler("start", start))
     dp.add_handler(MessageHandler(
         Filters.text(["/help@CoronaVirusRobot", "/victims@CoronaVirusRobot", "/infect@CoronaVirusRobot"]),
         remove_message))
