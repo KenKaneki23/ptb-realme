@@ -126,7 +126,8 @@ def sdmaid(update: Update, context: CallbackContext):
                 "<u>SD Maid</u>"
                 "\n\n<b>Latest Release</b>"
                 "\n· <a href='https://t.me/realme_support/52321'>Pro-v5.0.1</a>"
-                "\n\nThis is an excellent cleaning app, which also takes care of databases, duplicates, caches etc. and enables you to freeze the apps you don't need.")
+                "\n\nThis is an excellent cleaning app, which also takes care of databases, duplicates, caches etc. "
+                "and enables you to freeze the apps you don't need.")
 
 
 def rules(update: Update, context: CallbackContext):
@@ -260,7 +261,7 @@ def main():
     dp.add_handler(CommandHandler("android11", android11, filters=Filters.chat(chat_id=GROUP)))
     dp.add_handler(CommandHandler("form", form, filters=Filters.chat(chat_id=GROUP)))
 
-   # dp.add_error_handler(error)
+    # dp.add_error_handler(error)
 
     updater.start_webhook(listen="0.0.0.0", port=PORT, url_path=TOKEN)
     updater.bot.setWebhook('https://ptb-realme.herokuapp.com/' + TOKEN)
