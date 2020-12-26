@@ -154,7 +154,8 @@ def rules(update: Update, context: CallbackContext):
 def form(update: Update, context: CallbackContext):
     delay_group_button_url(update, context,
                            "If your issue is not resolved by the community after a week, you can also contact the "
-                           "developers. "
+                           "developers."
+                           "\n\nWe Admins collect those entries and will forward them to the developers."
                            "\n\nPlease don't abuse this possibility, so that Realme developers can focus on developing.",
                            "Access form 📝",
                            "https://docs.google.com/forms/d/e/1FAIpQLSceGI9ZaNOIb4NN-3UdJ-mbzvbRwulAh2"
