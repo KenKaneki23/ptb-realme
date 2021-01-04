@@ -268,9 +268,7 @@ def main():
     updater.bot.setWebhook('https://ptb-realme.herokuapp.com/' + TOKEN)
 
     updater.start_polling()
-
-
-# updater.idle()
+    updater.idle()
 
 
 if __name__ == '__main__':
