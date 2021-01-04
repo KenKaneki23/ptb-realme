@@ -247,7 +247,7 @@ def main():
     updater = Updater(TOKEN)
     dp = updater.dispatcher
 
-    dp.add_handler(CommandHandler("commands", commands, filters=Filters.chat(chat_id=GROUP)))
+    dp.add_handler(CommandHandler("help", commands, filters=Filters.chat(chat_id=GROUP)))
     dp.add_handler(CommandHandler("files", files, filters=Filters.chat(chat_id=GROUP)))
     dp.add_handler(CommandHandler("admins", admins, filters=Filters.chat(chat_id=GROUP)))
     dp.add_handler(CommandHandler("rules", rules))
