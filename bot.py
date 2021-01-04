@@ -6,7 +6,7 @@ from telegram import InlineKeyboardButton, InlineKeyboardMarkup, Update
 from telegram.ext import Updater, CommandHandler, CallbackContext, MessageHandler, Filters
 
 PORT = int(os.environ.get('PORT', 5000))
-TOKEN = str(os.environ.get('TOKEN'))
+TOKEN = "1415969330:AAGEnSGxjYl-hd3VTkpS4uY017Wag5dDsDQ"  # str(os.environ.get('TOKEN'))
 GROUP = -1001374176745  # -1001327617858
 
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO)
@@ -247,20 +247,20 @@ def main():
     updater = Updater(TOKEN, use_context=True)
     dp = updater.dispatcher
 
-    dp.add_handler(CommandHandler("help", commands)) #, filters=Filters.chat(chat_id=GROUP)))
-    dp.add_handler(CommandHandler("files", files)) #, filters=Filters.chat(chat_id=GROUP)))
-    dp.add_handler(CommandHandler("admins", admins)) #, filters=Filters.chat(chat_id=GROUP)))
+    dp.add_handler(CommandHandler("help", commands))  # , filters=Filters.chat(chat_id=GROUP)))
+    dp.add_handler(CommandHandler("files", files))  # , filters=Filters.chat(chat_id=GROUP)))
+    dp.add_handler(CommandHandler("admins", admins))  # , filters=Filters.chat(chat_id=GROUP)))
     dp.add_handler(CommandHandler("rules", rules))
-    dp.add_handler(CommandHandler("gcam", gcam)) #, filters=Filters.chat(chat_id=GROUP)))
-    dp.add_handler(CommandHandler("sdmaid", sdmaid)) #, filters=Filters.chat(chat_id=GROUP)))
-    dp.add_handler(CommandHandler("experts", experts)) #, filters=Filters.chat(chat_id=GROUP)))
-    dp.add_handler(CommandHandler("ask", ask)) #, filters=Filters.chat(chat_id=GROUP)))
-    dp.add_handler(CommandHandler("android11", android11)) #, filters=Filters.chat(chat_id=GROUP)))
-    dp.add_handler(CommandHandler("form", form )) #,  filters=Filters.chat(chat_id=GROUP)))
-
- #   dp.add_handler(MessageHandler(
+    dp.add_handler(CommandHandler("gcam", gcam))  # , filters=Filters.chat(chat_id=GROUP)))
+    dp.add_handler(CommandHandler("sdmaid", sdmaid))  # , filters=Filters.chat(chat_id=GROUP)))
+    dp.add_handler(CommandHandler("experts", experts))  # , filters=Filters.chat(chat_id=GROUP)))
+    dp.add_handler(CommandHandler("ask", ask))  # , filters=Filters.chat(chat_id=GROUP)))
+    dp.add_handler(CommandHandler("android11", android11))  # , filters=Filters.chat(chat_id=GROUP)))
+    dp.add_handler(CommandHandler("form", form))  # ,  filters=Filters.chat(chat_id=GROUP)))
+    dp.add_handler(CommandHandler("pizza", form))
+    #   dp.add_handler(MessageHandler(
     #    Filters.text(["/help@CoronaVirusRobot", "/victims@CoronaVirusRobot", "/infect@CoronaVirusRobot"]),
-     #   remove_message))
+    #   remove_message))
 
     dp.add_error_handler(error)
 
