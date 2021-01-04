@@ -247,9 +247,7 @@ def main():
     updater = Updater(TOKEN)
     dp = updater.dispatcher
 
-    dp.add_handler(MessageHandler(
-        Filters.text(["/help@CoronaVirusRobot", "/victims@CoronaVirusRobot", "/infect@CoronaVirusRobot"]),
-        remove_message))
+
 
     dp.add_handler(CommandHandler("commands", commands, filters=Filters.chat(chat_id=GROUP)))
     dp.add_handler(CommandHandler("files", files, filters=Filters.chat(chat_id=GROUP)))
@@ -261,6 +259,10 @@ def main():
     dp.add_handler(CommandHandler("ask", ask, filters=Filters.chat(chat_id=GROUP)))
     dp.add_handler(CommandHandler("android11", android11, filters=Filters.chat(chat_id=GROUP)))
     dp.add_handler(CommandHandler("form", form, filters=Filters.chat(chat_id=GROUP)))
+
+    dp.add_handler(MessageHandler(
+        Filters.text(["/help@CoronaVirusRobot", "/victims@CoronaVirusRobot", "/infect@CoronaVirusRobot"]),
+        remove_message))
 
     # dp.add_error_handler(error)
 
