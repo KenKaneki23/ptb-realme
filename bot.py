@@ -244,23 +244,23 @@ def error(update: Update, context: CallbackContext):
 
 
 def main():
-    updater = Updater(TOKEN)
+    updater = Updater(TOKEN, use_context=True)
     dp = updater.dispatcher
 
-    dp.add_handler(CommandHandler("help", commands, filters=Filters.chat(chat_id=GROUP)))
-    dp.add_handler(CommandHandler("files", files, filters=Filters.chat(chat_id=GROUP)))
-    dp.add_handler(CommandHandler("admins", admins, filters=Filters.chat(chat_id=GROUP)))
+    dp.add_handler(CommandHandler("help", commands)) #, filters=Filters.chat(chat_id=GROUP)))
+    dp.add_handler(CommandHandler("files", files)) #, filters=Filters.chat(chat_id=GROUP)))
+    dp.add_handler(CommandHandler("admins", admins)) #, filters=Filters.chat(chat_id=GROUP)))
     dp.add_handler(CommandHandler("rules", rules))
-    dp.add_handler(CommandHandler("gcam", gcam, filters=Filters.chat(chat_id=GROUP)))
-    dp.add_handler(CommandHandler("sdmaid", sdmaid, filters=Filters.chat(chat_id=GROUP)))
-    dp.add_handler(CommandHandler("experts", experts, filters=Filters.chat(chat_id=GROUP)))
-    dp.add_handler(CommandHandler("ask", ask, filters=Filters.chat(chat_id=GROUP)))
-    dp.add_handler(CommandHandler("android11", android11, filters=Filters.chat(chat_id=GROUP)))
-    dp.add_handler(CommandHandler("form", form, filters=Filters.chat(chat_id=GROUP)))
+    dp.add_handler(CommandHandler("gcam", gcam)) #, filters=Filters.chat(chat_id=GROUP)))
+    dp.add_handler(CommandHandler("sdmaid", sdmaid)) #, filters=Filters.chat(chat_id=GROUP)))
+    dp.add_handler(CommandHandler("experts", experts)) #, filters=Filters.chat(chat_id=GROUP)))
+    dp.add_handler(CommandHandler("ask", ask)) #, filters=Filters.chat(chat_id=GROUP)))
+    dp.add_handler(CommandHandler("android11", android11)) #, filters=Filters.chat(chat_id=GROUP)))
+    dp.add_handler(CommandHandler("form", form )) #,  filters=Filters.chat(chat_id=GROUP)))
 
-    dp.add_handler(MessageHandler(
-        Filters.text(["/help@CoronaVirusRobot", "/victims@CoronaVirusRobot", "/infect@CoronaVirusRobot"]),
-        remove_message))
+ #   dp.add_handler(MessageHandler(
+    #    Filters.text(["/help@CoronaVirusRobot", "/victims@CoronaVirusRobot", "/infect@CoronaVirusRobot"]),
+     #   remove_message))
 
     dp.add_error_handler(error)
 
