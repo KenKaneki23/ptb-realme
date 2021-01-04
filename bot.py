@@ -247,8 +247,6 @@ def main():
     updater = Updater(TOKEN)
     dp = updater.dispatcher
 
-
-
     dp.add_handler(CommandHandler("commands", commands, filters=Filters.chat(chat_id=GROUP)))
     dp.add_handler(CommandHandler("files", files, filters=Filters.chat(chat_id=GROUP)))
     dp.add_handler(CommandHandler("admins", admins, filters=Filters.chat(chat_id=GROUP)))
@@ -264,13 +262,15 @@ def main():
         Filters.text(["/help@CoronaVirusRobot", "/victims@CoronaVirusRobot", "/infect@CoronaVirusRobot"]),
         remove_message))
 
-    # dp.add_error_handler(error)
+    dp.add_error_handler(error)
 
     updater.start_webhook(listen="0.0.0.0", port=PORT, url_path=TOKEN)
     updater.bot.setWebhook('https://ptb-realme.herokuapp.com/' + TOKEN)
 
     updater.start_polling()
-   # updater.idle()
+
+
+# updater.idle()
 
 
 if __name__ == '__main__':
