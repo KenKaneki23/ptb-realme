@@ -178,7 +178,7 @@ def android11(update: Update, context: CallbackContext):
 
 
 def message_button_url(update: Update, context: CallbackContext, text, button_text, button_url):
-    if update.message is update.message.reply_to_message:
+    if update.message.reply_to_message is not None:
         return update.message.reply_to_message.reply_text(
             text=text,
             parse_mode=telegram.ParseMode.HTML,
