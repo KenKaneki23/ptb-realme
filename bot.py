@@ -193,7 +193,7 @@ def message_button_url(update: Update, context: CallbackContext, text, button_te
 
 
 def message_html(update: Update, context: CallbackContext, text):  # return context.bot.send_message(
-    if update.message is update.message.reply_to_message:
+    if update.message.reply_to_message is not None:
         return update.message.reply_to_message.reply_text(
             text=text,
             parse_mode=telegram.ParseMode.HTML)
