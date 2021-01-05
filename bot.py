@@ -47,7 +47,7 @@ def ask(update: Update, context: CallbackContext):
                 "more focused.")
 
 
-def commands(update: Update, context: CallbackContext):
+def commands(update: Update, context):
     delay_group(update, context,
                 "<u>Commands</u>"
                 "\n\n<b>/help</b>"
@@ -138,7 +138,7 @@ def rules(update: Update, context: CallbackContext):
                 "\n\n<b>2. Links</b>"
                 "\nSending links is not permitted."
                 "\n\n<b>3. Forwarding</b>"
-                "\nForwarding messages from other channels is not permitted"
+                "\nForwarding messages from other channels is not permitted."
                 "\n\n<b>4. Respect</b>"
                 "\nWe're all one big community. Don't be rude."
                 "\n\n<b>5. Spam</b>"
@@ -178,7 +178,7 @@ def android11(update: Update, context: CallbackContext):
 
 
 def message_button_url(update: Update, context: CallbackContext, text, button_text, button_url):
-    if update.message.reply_to_message:
+    if update.message is update.message.reply_to_message:
         return update.message.reply_to_message.reply_text(
             text=text,
             parse_mode=telegram.ParseMode.HTML,
@@ -193,7 +193,7 @@ def message_button_url(update: Update, context: CallbackContext, text, button_te
 
 
 def message_html(update: Update, context: CallbackContext, text):  # return context.bot.send_message(
-    if update.message.reply_to_message:
+    if update.message is update.message.reply_to_message:
         return update.message.reply_to_message.reply_text(
             text=text,
             parse_mode=telegram.ParseMode.HTML)
@@ -210,7 +210,7 @@ def delay_group_button_url(update: Update, context: CallbackContext, text, butto
     context.job_queue.run_once(delete, 600, context=update.message.chat_id, name=str(reply_message.message_id))
 
 
-def delay_group(update: Update, context: CallbackContext, text):
+def delay_group(update: Update, context, text):
     update.message.delete()
 
     if update.message.reply_to_message:
@@ -257,15 +257,15 @@ def main():
     dp.add_handler(CommandHandler("ask", ask))  # , filters=Filters.chat(chat_id=GROUP)))
     dp.add_handler(CommandHandler("android11", android11))  # , filters=Filters.chat(chat_id=GROUP)))
     dp.add_handler(CommandHandler("form", form))  # ,  filters=Filters.chat(chat_id=GROUP)))
-    dp.add_handler(CommandHandler("pizza", form))
+    dp.add_handler(CommandHandler("pizzaa", form))
     #   dp.add_handler(MessageHandler(
     #    Filters.text(["/help@CoronaVirusRobot", "/victims@CoronaVirusRobot", "/infect@CoronaVirusRobot"]),
     #   remove_message))
 
-    dp.add_error_handler(error)
+    # dp.add_error_handler(error)
 
-    updater.start_webhook(listen="0.0.0.0", port=PORT, url_path=TOKEN)
-    updater.bot.setWebhook('https://ptb-realme.herokuapp.com/' + TOKEN)
+    #  updater.start_webhook(listen="0.0.0.0", port=PORT, url_path=TOKEN)
+    ##   updater.bot.setWebhook('https://ptb-realme.herokuapp.com/' + TOKEN)
 
     updater.start_polling()
     updater.idle()
