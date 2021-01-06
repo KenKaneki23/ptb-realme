@@ -213,7 +213,7 @@ def delay_group_button_url(update: Update, context: CallbackContext, text, butto
 def delay_group(update: Update, context, text):
     update.message.delete()
 
-    if update.message.reply_to_message:
+    if update.message.reply_to_message is not None:
         update.message.reply_to_message.reply_text(
             text=text,
             parse_mode=telegram.ParseMode.HTML)
