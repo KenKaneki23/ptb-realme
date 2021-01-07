@@ -178,7 +178,7 @@ def android11(update: Update, context: CallbackContext):
 
 
 def message_button_url(update: Update, context: CallbackContext, text, button_text, button_url):
-    if update.message.reply_to_message is not None:
+    if update.message.reply_to_message:
         return update.message.reply_to_message.reply_text(
             text=text,
             parse_mode=ParseMode.HTML,
@@ -193,7 +193,7 @@ def message_button_url(update: Update, context: CallbackContext, text, button_te
 
 
 def message_html(update: Update, context: CallbackContext, text):  # return context.bot.send_message(
-    if update.message.reply_to_message is not None:
+    if update.message.reply_to_message:
         return update.message.reply_to_message.reply_text(
             text=text,
             parse_mode=ParseMode.HTML)
@@ -211,7 +211,7 @@ def delay_group_button_url(update: Update, context: CallbackContext, text, butto
 
 
 def delay_group(update: Update, context, text):
-    if update.message.reply_to_message is not None:
+    if update.message.reply_to_message:
         update.message.reply_to_message.reply_text(
             text=text,
             parse_mode=ParseMode.HTML)
@@ -226,7 +226,7 @@ def delay_group(update: Update, context, text):
 
 
 def delete(context: CallbackContext):
-    telegram.Message = context.bot.delete_message(chat_id=str(context.job.context), message_id=context.job.name)
+    context.bot.delete_message(chat_id=str(context.job.context), message_id=context.job.name)
 
 
 def remove_message(update: Update, context: CallbackContext):

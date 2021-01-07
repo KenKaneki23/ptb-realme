@@ -12,8 +12,8 @@ def start(update: Update, context: CallbackContext):
 
 
 def delay_group(update: Update, context: CallbackContext, text: str):
-    if update.effective_message.reply_to_message:
-        update.effective_message.reply_to_message.reply_text(
+    if update.message.reply_to_message:
+        update.message.reply_to_message.reply_text(
             text=text,
             parse_mode=ParseMode.HTML)
     else:
@@ -23,7 +23,7 @@ def delay_group(update: Update, context: CallbackContext, text: str):
             parse_mode=ParseMode.HTML)
         context.job_queue.run_once(delete, 30, context=reply_message.chat_id, name=str(reply_message.message_id))
 
-    update.effective_message.delete()
+    update.message.delete()
 
 
 def delete(context: CallbackContext):
