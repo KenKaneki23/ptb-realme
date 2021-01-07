@@ -211,8 +211,6 @@ def delay_group_button_url(update: Update, context: CallbackContext, text, butto
 
 
 def delay_group(update: Update, context, text):
-    update.message.delete()
-
     if update.message.reply_to_message is not None:
         update.message.reply_to_message.reply_text(
             text=text,
@@ -223,6 +221,8 @@ def delay_group(update: Update, context, text):
             text=text,
             parse_mode=telegram.ParseMode.HTML)
         context.job_queue.run_once(delete, 600, context=reply_message.chat_id, name=str(reply_message.message_id))
+
+    update.message.delete()
 
 
 def delete(context: CallbackContext):
@@ -267,7 +267,7 @@ def main():
     updater.start_webhook(listen="0.0.0.0", port=PORT, url_path=TOKEN)
     updater.bot.setWebhook('https://ptb-realme.herokuapp.com/' + TOKEN)
 
-  #  updater.start_polling()
+    #  updater.start_polling()
     updater.idle()
 
 
