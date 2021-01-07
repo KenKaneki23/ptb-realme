@@ -1,3 +1,5 @@
+import os
+
 import telegram
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, Update
 from telegram.ext import Updater, CommandHandler, CallbackContext, MessageHandler, Filters
@@ -43,6 +45,11 @@ def main():
     updater = Updater(TOKEN, use_context=True)
     dp = updater.dispatcher
     dp.add_handler(CommandHandler("test", start))
+
+    PORT = int(os.environ.get('PORT', 5000))
+
+    updater.start_webhook(listen="0.0.0.0", port=PORT, url_path=TOKEN)
+    updater.bot.setWebhook('https://ptb-realme.herokuapp.com/' + TOKEN)
 
     updater.start_polling()
     updater.idle()
