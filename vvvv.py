@@ -23,7 +23,7 @@ def delay_group(update: Update, context: CallbackContext, text: str):
             chat_id=update.message.chat_id,
             text=text,
             parse_mode=telegram.ParseMode.HTML)
-        context.job_queue.run_once(delete, 600, context=reply_message.chat_id, name=str(reply_message.message_id))
+        context.job_queue.run_once(delete, 30, context=reply_message.chat_id, name=str(reply_message.message_id))
 
     update.message.delete()
 
