@@ -12,7 +12,6 @@ def start(update: Update, context: CallbackContext):
 
 
 def delay_group(update: Update, context: CallbackContext, text: str):
-
     if update.effective_message.reply_to_message:
         update.effective_message.reply_to_message.reply_text(
             text=text,
@@ -27,9 +26,8 @@ def delay_group(update: Update, context: CallbackContext, text: str):
     update.effective_message.delete()
 
 
-
 def delete(context: CallbackContext):
-    telegram.Message = context.bot.delete_message(chat_id=str(context.job.context), message_id=context.job.name)
+    return context.bot.delete_message(chat_id=str(context.job.context), message_id=context.job.name)
 
 
 def main():
