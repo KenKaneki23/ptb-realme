@@ -1,7 +1,7 @@
 import os
 
 import telegram
-from telegram import InlineKeyboardButton, InlineKeyboardMarkup, Update
+from telegram import InlineKeyboardButton, InlineKeyboardMarkup, Update, ParseMode
 from telegram.ext import Updater, CommandHandler, CallbackContext, MessageHandler, Filters
 
 TOKEN = "1415969330:AAGEnSGxjYl-hd3VTkpS4uY017Wag5dDsDQ"
@@ -15,23 +15,23 @@ def delay_group(update: Update, context: CallbackContext, text: str):
     if update.effective_message.reply_to_message:
         update.effective_message.reply_to_message.reply_text(
             text=text,
-            parse_mode=telegram.ParseMode.HTML)
+            parse_mode=ParseMode.HTML)
     else:
         reply_message = context.bot.send_message(
             chat_id=update.message.chat_id,
             text=text,
-            parse_mode=telegram.ParseMode.HTML)
+            parse_mode=ParseMode.HTML)
         context.job_queue.run_once(delete, 30, context=reply_message.chat_id, name=str(reply_message.message_id))
 
     update.effective_message.delete()
 
 
 def delete(context: CallbackContext):
-    return context.bot.delete_message(chat_id=str(context.job.context), message_id=context.job.name)
+    context.bot.delete_message(chat_id=str(context.job.context), message_id=context.job.name)
 
 
-def main():
-    updater = Updater(TOKEN, use_context=True)
+if __name__ == '__main__':
+    updater = Updater(TOKEN)
     dp = updater.dispatcher
     dp.add_handler(CommandHandler("test", start))
 
@@ -42,7 +42,3 @@ def main():
 
     updater.start_polling()
     updater.idle()
-
-
-if __name__ == '__main__':
-    main()
