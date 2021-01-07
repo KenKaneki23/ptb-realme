@@ -2,7 +2,7 @@ import logging
 import os
 
 import telegram
-from telegram import InlineKeyboardButton, InlineKeyboardMarkup, Update
+from telegram import InlineKeyboardButton, InlineKeyboardMarkup, Update, ParseMode
 from telegram.ext import Updater, CommandHandler, CallbackContext, MessageHandler, Filters
 
 PORT = int(os.environ.get('PORT', 5000))
@@ -181,13 +181,13 @@ def message_button_url(update: Update, context: CallbackContext, text, button_te
     if update.message.reply_to_message is not None:
         return update.message.reply_to_message.reply_text(
             text=text,
-            parse_mode=telegram.ParseMode.HTML,
+            parse_mode=ParseMode.HTML,
             reply_markup=InlineKeyboardMarkup.from_button(
                 InlineKeyboardButton(text=button_text, url=button_url)))
     else:
         return context.bot.send_message(chat_id=update.message.chat_id,
                                         text=text,
-                                        parse_mode=telegram.ParseMode.HTML,
+                                        parse_mode=ParseMode.HTML,
                                         reply_markup=InlineKeyboardMarkup.from_button(
                                             InlineKeyboardButton(text=button_text, url=button_url)))
 
@@ -196,12 +196,12 @@ def message_html(update: Update, context: CallbackContext, text):  # return cont
     if update.message.reply_to_message is not None:
         return update.message.reply_to_message.reply_text(
             text=text,
-            parse_mode=telegram.ParseMode.HTML)
+            parse_mode=ParseMode.HTML)
     else:
         return context.bot.send_message(
             chat_id=update.message.chat_id,
             text=text,
-            parse_mode=telegram.ParseMode.HTML)
+            parse_mode=ParseMode.HTML)
 
 
 def delay_group_button_url(update: Update, context: CallbackContext, text, button_text, button_url):
@@ -214,12 +214,12 @@ def delay_group(update: Update, context, text):
     if update.message.reply_to_message is not None:
         update.message.reply_to_message.reply_text(
             text=text,
-            parse_mode=telegram.ParseMode.HTML)
+            parse_mode=ParseMode.HTML)
     else:
         reply_message = context.bot.send_message(
             chat_id=update.message.chat_id,
             text=text,
-            parse_mode=telegram.ParseMode.HTML)
+            parse_mode=ParseMode.HTML)
         context.job_queue.run_once(delete, 600, context=reply_message.chat_id, name=str(reply_message.message_id))
 
     update.message.delete()
@@ -240,34 +240,34 @@ def error(update: Update, context: CallbackContext):
         text="<b>🤖 Affected Bot</b>\n@" + context.bot.username +
              "\n\n<b>⚠ Error</b>\n<code>" + str(context.error) +
              "</code>\n\n<b>Caused by Update</b>\n<code>" + str(update) + "</code>",
-        parse_mode=telegram.ParseMode.HTML)
+        parse_mode=ParseMode.HTML)
 
 
 def main():
     updater = Updater(TOKEN, use_context=True)
     dp = updater.dispatcher
 
-    dp.add_handler(CommandHandler("help", commands))  # , filters=Filters.chat(chat_id=GROUP)))
-    dp.add_handler(CommandHandler("files", files))  # , filters=Filters.chat(chat_id=GROUP)))
-    dp.add_handler(CommandHandler("admins", admins))  # , filters=Filters.chat(chat_id=GROUP)))
-    dp.add_handler(CommandHandler("rules", rules))
-    dp.add_handler(CommandHandler("gcam", gcam))  # , filters=Filters.chat(chat_id=GROUP)))
-    dp.add_handler(CommandHandler("sdmaid", sdmaid))  # , filters=Filters.chat(chat_id=GROUP)))
-    dp.add_handler(CommandHandler("experts", experts))  # , filters=Filters.chat(chat_id=GROUP)))
-    dp.add_handler(CommandHandler("ask", ask))  # , filters=Filters.chat(chat_id=GROUP)))
-    dp.add_handler(CommandHandler("android11", android11))  # , filters=Filters.chat(chat_id=GROUP)))
-    dp.add_handler(CommandHandler("form", form))  # ,  filters=Filters.chat(chat_id=GROUP)))
-    dp.add_handler(CommandHandler("pizzaa", form))
-    #   dp.add_handler(MessageHandler(
-    #    Filters.text(["/help@CoronaVirusRobot", "/victims@CoronaVirusRobot", "/infect@CoronaVirusRobot"]),
-    #   remove_message))
+    dp.add_handler(MessageHandler(
+        Filters.text(["/help@CoronaVirusRobot", "/victims@CoronaVirusRobot", "/infect@CoronaVirusRobot"]),
+        remove_message))
 
-    # dp.add_error_handler(error)
+    dp.add_handler(CommandHandler("android11", android11, filters=Filters.chat(chat_id=GROUP)))
+    dp.add_handler(CommandHandler("gcam", gcam, filters=Filters.chat(chat_id=GROUP)))
+    dp.add_handler(CommandHandler("sdmaid", sdmaid, filters=Filters.chat(chat_id=GROUP)))
+    dp.add_handler(CommandHandler("help", commands, filters=Filters.chat(chat_id=GROUP)))
+    dp.add_handler(CommandHandler("files", files, filters=Filters.chat(chat_id=GROUP)))
+    dp.add_handler(CommandHandler("admins", admins, filters=Filters.chat(chat_id=GROUP)))
+    dp.add_handler(CommandHandler("rules", rules))
+    dp.add_handler(CommandHandler("experts", experts, filters=Filters.chat(chat_id=GROUP)))
+    dp.add_handler(CommandHandler("ask", ask, filters=Filters.chat(chat_id=GROUP)))
+    dp.add_handler(CommandHandler("form", form, filters=Filters.chat(chat_id=GROUP)))
+
+    dp.add_error_handler(error)
 
     updater.start_webhook(listen="0.0.0.0", port=PORT, url_path=TOKEN)
     updater.bot.setWebhook('https://ptb-realme.herokuapp.com/' + TOKEN)
 
-    #  updater.start_polling()
+    updater.start_polling()
     updater.idle()
 
 
