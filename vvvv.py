@@ -6,13 +6,13 @@ from telegram.ext import Updater, CommandHandler, CallbackContext, MessageHandle
 
 TOKEN = "1415969330:AAGEnSGxjYl-hd3VTkpS4uY017Wag5dDsDQ"
 
+
 def start(update: Update, context: CallbackContext):
     delay_group(update, context, "Fancy text")
-    message_html(update, context, "Even fancier text")
+   # message_html(update, context, "Even fancier text")
 
 
 def delay_group(update: Update, context: CallbackContext, text: str):
-    update.message.delete()
 
     if update.message.reply_to_message:
         update.message.reply_to_message.reply_text(
@@ -25,6 +25,8 @@ def delay_group(update: Update, context: CallbackContext, text: str):
             parse_mode=telegram.ParseMode.HTML)
         context.job_queue.run_once(delete, 600, context=reply_message.chat_id, name=str(reply_message.message_id))
 
+    update.message.delete()
+
 
 def message_html(update: Update, context: CallbackContext, text):  # return context.bot.send_message(
     if update.message.reply_to_message:
@@ -36,6 +38,7 @@ def message_html(update: Update, context: CallbackContext, text):  # return cont
             chat_id=update.message.chat_id,
             text=text,
             parse_mode=telegram.ParseMode.HTML)
+
 
 def delete(context: CallbackContext):
     telegram.Message = context.bot.delete_message(chat_id=str(context.job.context), message_id=context.job.name)
@@ -53,6 +56,7 @@ def main():
 
     updater.start_polling()
     updater.idle()
+
 
 if __name__ == '__main__':
     main()
