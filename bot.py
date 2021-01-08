@@ -192,7 +192,7 @@ def message_button_url(update: Update, context: CallbackContext, text, button_te
                                             InlineKeyboardButton(text=button_text, url=button_url)))
 
 
-def message_html(update: Update, context: CallbackContext, text):  # return context.bot.send_message(
+def message_html(update: Update, context: CallbackContext, text):
     if update.message.reply_to_message:
         return update.message.reply_to_message.reply_text(
             text=text,
@@ -211,6 +211,8 @@ def delay_group_button_url(update: Update, context: CallbackContext, text, butto
 
 
 def delay_group(update: Update, context, text):
+    update.message.delete()
+
     if update.message.reply_to_message:
         update.message.reply_to_message.reply_text(
             text=text,
@@ -221,8 +223,6 @@ def delay_group(update: Update, context, text):
             text=text,
             parse_mode=ParseMode.HTML)
         context.job_queue.run_once(delete, 600, context=reply_message.chat_id, name=str(reply_message.message_id))
-
-    update.message.delete()
 
 
 def delete(context: CallbackContext):
@@ -243,7 +243,7 @@ def error(update: Update, context: CallbackContext):
         parse_mode=ParseMode.HTML)
 
 
-def main():
+if __name__ == '__main__':
     updater = Updater(TOKEN, use_context=True)
     dp = updater.dispatcher
 
@@ -269,7 +269,3 @@ def main():
 
     updater.start_polling()
     updater.idle()
-
-
-if __name__ == '__main__':
-    main()
