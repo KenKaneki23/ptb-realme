@@ -1,12 +1,11 @@
 import logging
 import os
 
-import telegram
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, Update, ParseMode
 from telegram.ext import Updater, CommandHandler, CallbackContext, MessageHandler, Filters
 
 PORT = int(os.environ.get('PORT', 5000))
-TOKEN = "1415969330:AAGEnSGxjYl-hd3VTkpS4uY017Wag5dDsDQ"  # str(os.environ.get('TOKEN'))
+TOKEN = os.environ.get('TOKEN')
 GROUP = -1001374176745  # -1001327617858
 
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO)
