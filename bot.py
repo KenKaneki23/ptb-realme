@@ -172,7 +172,7 @@ def android11(update: Update, context: CallbackContext):
                 "model will be released within the above mentioned month in batches, not at the beginning of the "
                 "month."
                 "\n\n<b>Stable release</b>"
-                "\nWill be pushed to all users over a period of time, minimum 2 months after early access."
+                "\nWill be pushed to all users over a period of time, a few months after early access."
                 "\n\nRelax and wait what happens 😎")
 
 
