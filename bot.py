@@ -66,7 +66,7 @@ def commands(update: Update, context):
                 "\n\n<b>/ask</b>"
                 "\nHow to ask questions properly"
                 "\n\nMessage @pentexnyx, if you face any issues with me 🤖"
-                "\nRelease " + str(os.environ.get('HEROKU_RELEASE_VERSION')))
+                "\nRelease " ))) #+ str(os.environ.get('HEROKU_RELEASE_VERSION')))
 
 
 def files(update: Update, context: CallbackContext):
@@ -261,7 +261,7 @@ if __name__ == '__main__':
     dp.add_handler(CommandHandler("ask", ask, filters=Filters.chat(chat_id=GROUP)))
     dp.add_handler(CommandHandler("form", form, filters=Filters.chat(chat_id=GROUP)))
 
-    dp.add_error_handler(error)
+    #dp.add_error_handler(error)
 
     updater.start_webhook(listen="0.0.0.0", port=PORT, url_path=TOKEN)
     updater.bot.setWebhook('https://ptb-realme.herokuapp.com/' + TOKEN)
