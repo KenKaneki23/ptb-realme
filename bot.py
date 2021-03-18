@@ -167,7 +167,7 @@ def android11(update: Update, context: CallbackContext):
                 "<u>Realme UI 2.0</u>"
                 "\n\n<i>Early Access is there to test stuff. Testing is easier with a reduced userbase. Therefore it "
                 "will be rolled out to a limited number of people only 😉</i> "
-                "\n\n<a href='https://static.c.realme.com/IN/wm-thread/1359110816133050368.jpg'>Official Roadmap</a>"
+                "\n\n<a href='https://static.c.realme.com/IN/wm-thread/1369542731847704576.jpg'>Official Roadmap</a>"
                 "\n\n<b>Early Access</b>"
                 "\nThe timeline is for the first wave of early access rollout only. The version for the corresponding "
                 "model will be released within the above mentioned month in batches, not at the beginning of the "
