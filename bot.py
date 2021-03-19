@@ -12,6 +12,10 @@ logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s
 logger = logging.getLogger(__name__)
 
 
+def private_not_available(update: Update, context: CallbackContext):
+    update.message.reply_text(
+            text="Sorry. I can only chat in @realme_support")
+
 def admins(update: Update, context: CallbackContext):
     delay_group(update, context,
                 "<u>Group's staff</u>"
@@ -250,7 +254,10 @@ if __name__ == '__main__':
     dp.add_handler(MessageHandler(
         Filters.text(["/help@CoronaVirusRobot", "/victims@CoronaVirusRobot", "/infect@CoronaVirusRobot"]),
         remove_message))
-
+ dp.add_handler(MessageHandler(
+        Filters.private,
+        private_not_available))
+ 
     dp.add_handler(CommandHandler("android11", android11, filters=Filters.chat(chat_id=GROUP)))
     dp.add_handler(CommandHandler("gcam", gcam, filters=Filters.chat(chat_id=GROUP)))
     dp.add_handler(CommandHandler("sdmaid", sdmaid, filters=Filters.chat(chat_id=GROUP)))
