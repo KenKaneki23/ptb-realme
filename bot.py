@@ -255,7 +255,7 @@ if __name__ == '__main__':
         Filters.text(["/help@CoronaVirusRobot", "/victims@CoronaVirusRobot", "/infect@CoronaVirusRobot"]),
         remove_message))
  dp.add_handler(MessageHandler(
-        Filters.private,
+        Filters.chat_type.private,
         private_not_available))
  
     dp.add_handler(CommandHandler("android11", android11, filters=Filters.chat(chat_id=GROUP)))
