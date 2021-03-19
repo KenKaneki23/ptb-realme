@@ -254,7 +254,7 @@ if __name__ == '__main__':
     dp.add_handler(MessageHandler(
         Filters.text(["/help@CoronaVirusRobot", "/victims@CoronaVirusRobot", "/infect@CoronaVirusRobot"]),
         remove_message))
- dp.add_handler(MessageHandler(
+    dp.add_handler(MessageHandler(
         Filters.chat_type.private,
         private_not_available))
  
