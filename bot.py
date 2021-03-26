@@ -14,7 +14,8 @@ logger = logging.getLogger(__name__)
 
 def private_not_available(update: Update, context: CallbackContext):
     update.message.reply_text(
-            text="Sorry. I can only chat in @realme_support")
+        text="Sorry. I can only chat in @realme_support")
+
 
 def admins(update: Update, context: CallbackContext):
     delay_group(update, context,
@@ -171,7 +172,10 @@ def android11(update: Update, context: CallbackContext):
                 "<u>Realme UI 2.0</u>"
                 "\n\n<i>Early Access is there to test stuff. Testing is easier with a reduced userbase. Therefore it "
                 "will be rolled out to a limited number of people only 😉</i> "
-                "\n\n<a href='https://static.c.realme.com/IN/wm-thread/1369542731847704576.jpg'>Official Roadmap</a>"
+                "\n\n<a href='https://static.c.realme.com/IN/wm-thread/1374937652238790656.png'>current Official "
+                "Roadmap</a> "
+                "\n\n<a href='https://static.c.realme.com/IN/wm-thread/1369542731847704576.jpg'>previous Official "
+                "Roadmap</a> "
                 "\n\n<b>Early Access</b>"
                 "\nThe timeline is for the first wave of early access rollout only. The version for the corresponding "
                 "model will be released within the above mentioned month in batches, not at the beginning of the "
@@ -257,7 +261,7 @@ if __name__ == '__main__':
     dp.add_handler(MessageHandler(
         Filters.chat_type.private,
         private_not_available))
- 
+
     dp.add_handler(CommandHandler("android11", android11, filters=Filters.chat(chat_id=GROUP)))
     dp.add_handler(CommandHandler("gcam", gcam, filters=Filters.chat(chat_id=GROUP)))
     dp.add_handler(CommandHandler("sdmaid", sdmaid, filters=Filters.chat(chat_id=GROUP)))
