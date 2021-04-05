@@ -278,8 +278,8 @@ if __name__ == '__main__':
 
     dp.add_error_handler(error)
 
-    updater.start_webhook(listen="0.0.0.0", port=PORT, url_path=TOKEN)
-    updater.bot.setWebhook('https://ptb-realme.herokuapp.com/' + TOKEN)
+    updater.start_webhook(listen="0.0.0.0", port=PORT, url_path=TOKEN,
+                          webhook_url='https://ptb-realme.herokuapp.com/' + TOKEN)
 
     updater.start_polling()
     updater.idle()
