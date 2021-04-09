@@ -131,7 +131,7 @@ def sdmaid(update: Update, context: CallbackContext):
     delay_group(update, context,
                 "<u>SD Maid</u>"
                 "\n\n<b>Latest Release</b>"
-                "\n· <a href='https://t.me/realme_support/52321'>Pro-v5.0.1</a>"
+                "\n· <a href='https://t.me/realme_support/52321'>Pro v5.0.1</a>"
                 "\n\nThis is an excellent cleaning app, which also takes care of databases, duplicates, caches etc. "
                 "and enables you to freeze the apps you don't need.")
 
