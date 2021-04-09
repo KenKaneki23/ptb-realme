@@ -97,6 +97,8 @@ def experts(update: Update, context: CallbackContext):
                 "\n\n<b>Updates and apps</b>"
                 "\n@Abhishek2376"
                 "\n@Dhairya3391"
+                "\n\n<b>UI-Team</b>"
+                "\n@Abhishek2376"
                 "\n\n<b>Phone recommendations</b>"
                 "\n@Abhishek2376"
                 "\n@pentexnyx"
