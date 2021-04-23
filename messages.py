@@ -169,7 +169,7 @@ def form(update: Update, context: CallbackContext):
 
 
 def date(update: Update, context: CallbackContext):
-    delay_group_button_url(update, context,
+    delay_group(update, context,
                            "Sorry "+update.message.from_user.name+" 🤖"
                            "\nAs far as I'm aware, there is no specified release date for that yet."
                            "\n\nDevelopers are working very hard currently, but it may still take some time. Please "
