@@ -49,6 +49,7 @@ if __name__ == '__main__':
     dp.add_handler(CommandHandler("experts", experts, filters=Filters.chat(chat_id=GROUP)))
     dp.add_handler(CommandHandler("ask", ask, filters=Filters.chat(chat_id=GROUP)))
     dp.add_handler(CommandHandler("form", form, filters=Filters.chat(chat_id=GROUP)))
+    dp.add_handler(CommandHandler("date", date, filters=Filters.chat(chat_id=GROUP)))
     #  add commands below. follow this scheme:  "command", function
 
     # add commands above this comment

@@ -168,6 +168,14 @@ def form(update: Update, context: CallbackContext):
                            "-VGJasy8VU_BLsFA/viewform")
 
 
+def date(update: Update, context: CallbackContext):
+    delay_group_button_url(update, context,
+                           "Sorry "+update.message.from_user.name+" 🤖"
+                           "\nAs far as I'm aware, there is no specified release date for that yet."
+                           "\n\nDevelopers are working very hard currently, but it may still take some time. Please "
+                           "stand by.")
+
+
 def android11(update: Update, context: CallbackContext):
     delay_group(update, context,
                 "<u>Realme UI 2.0</u>"
