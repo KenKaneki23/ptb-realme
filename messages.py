@@ -2,6 +2,7 @@ from telegram import Update
 from telegram.ext import CallbackContext
 from utils import delay_group, delay_group_button_url
 
+
 ##########################################
 # this file contains the actions that will happen once a command is called
 # just replicate below schemes :)
@@ -169,11 +170,12 @@ def form(update: Update, context: CallbackContext):
 
 
 def date(update: Update, context: CallbackContext):
-    delay_group(update, context,
-                           "Sorry "+update.message.from_user.name+" 🤖"
-                           "\nAs far as I'm aware, there is no specified release date for that yet."
-                           "\n\nDevelopers are working very hard currently, but it may still take some time. Please "
-                           "stand by.")
+    if update.message.reply_to_message:
+        delay_group(update, context,
+                    "Sorry " + update.message.reply_to_message.from_user.name + " 🤖"
+                    "\nAs far as I'm aware, there is no specified release date for that yet. "
+                    "\n\nDevelopers are working very hard currently, but it may still take some time. Please "
+                    "stand by.")
 
 
 def android11(update: Update, context: CallbackContext):
