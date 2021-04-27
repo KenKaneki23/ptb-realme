@@ -130,9 +130,9 @@ def gcam(update: Update, context: CallbackContext):
 
 def sdmaid(update: Update, context: CallbackContext):
     delay_group(update, context,
-                "<u>SD Maid</u>"
+                "<u>Cleaner</u>"
                 "\n\n<b>Latest Release</b>"
-                "\n· <a href='https://t.me/realme_support/52321'>Pro-v5.0.1</a>"
+                "\n· <a href='https://t.me/realme_support/122144'>SD Maid 5.1.1</a>"
                 "\n\nThis is an excellent cleaning app, which also takes care of databases, duplicates, caches etc. "
                 "and enables you to freeze the apps you don't need.")
 
@@ -173,9 +173,9 @@ def date(update: Update, context: CallbackContext):
     if update.message.reply_to_message:
         delay_group(update, context,
                     "Sorry " + update.message.reply_to_message.from_user.name + " 🤖"
-                    "\nAs far as I'm aware, there is no specified release date for that yet. "
-                    "\n\nDevelopers are working very hard currently, but it may still take some time. Please "
-                    "stand by.")
+                                                                                "\nAs far as I'm aware, there is no specified release date for that yet. "
+                                                                                "\n\nDevelopers are working very hard currently, but it may still take some time. Please "
+                                                                                "stand by.")
 
 
 def android11(update: Update, context: CallbackContext):
