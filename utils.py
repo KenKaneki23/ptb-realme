@@ -60,4 +60,5 @@ def delete(context: CallbackContext):
 
 
 def remove_message(update: Update, context: CallbackContext):
-    update.message.delete()
+    if update.message is not None:
+        update.message.delete()
