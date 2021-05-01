@@ -195,7 +195,7 @@ def offtopic(update: Update, context: CallbackContext):
                                      update.message.reply_to_message.link,
                                      update.message.reply_to_message.text),
                                  ParseMode.HTML)
-        update.message.reply_to_message.delete()
+      #  update.message.reply_to_message.delete()
         update.message.reply_to_message.reply_text(
             "Hey {} 🤖"
             "\nThis is getting pretty off-topic now."
