@@ -186,19 +186,18 @@ def date(update: Update, context: CallbackContext):
 
 def offtopic(update: Update, context: CallbackContext):
     if update.message.reply_to_message:
-
         context.bot.send_message(703453307,
-                                 "I moved <a href={}>{}'s message</a> here:\n\n"
-                                 "{}".format(update.message.reply_to_message.link,
-                                             update.message.reply_to_message.from_user.name,
-                                             update.message.reply_to_message.text))
-
+                                 "I moved <a href={}>{}'s message</a> here:"
+                                 "\n\n{}"
+                                 .format(update.message.reply_to_message.link,
+                                         update.message.reply_to_message.from_user.name,
+                                         update.message.reply_to_message.text))
         update.message.reply_to_message.reply_text(
             "Hey {} 🤖"
             "\nThis is getting pretty off-topic now."
             "\n\nI moved the message to @realme_offtopic"
             "\n\nPlease continue the discussion there 😉"
-                .format(update.message.reply_to_message.from_user.name))
+            .format(update.message.reply_to_message.from_user.name))
     else:
         delay_group(update, context,
                     "Hey {} 🤖"

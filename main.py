@@ -39,18 +39,18 @@ if __name__ == '__main__':
         Filters.chat_type.private,
         private_not_available))
 
-    dp.add_handler(CommandHandler("android11", android11, filters=Filters.chat(chat_id=GROUP)))
-    dp.add_handler(CommandHandler("gcam", gcam, filters=Filters.chat(chat_id=GROUP)))
-    dp.add_handler(CommandHandler("sdmaid", sdmaid, filters=Filters.chat(chat_id=GROUP)))
-    dp.add_handler(CommandHandler("help", commands, filters=Filters.chat(chat_id=GROUP)))
-    dp.add_handler(CommandHandler("files", files, filters=Filters.chat(chat_id=GROUP)))
-    dp.add_handler(CommandHandler("admins", admins, filters=Filters.chat(chat_id=GROUP)))
+    dp.add_handler(CommandHandler("android11", android11, Filters.chat(chat_id=GROUP)))
+    dp.add_handler(CommandHandler("gcam", gcam, Filters.chat(chat_id=GROUP)))
+    dp.add_handler(CommandHandler("sdmaid", sdmaid, Filters.chat(chat_id=GROUP)))
+    dp.add_handler(CommandHandler("help", commands, Filters.chat(chat_id=GROUP)))
+    dp.add_handler(CommandHandler("files", files, Filters.chat(chat_id=GROUP)))
+    dp.add_handler(CommandHandler("admins", admins, Filters.chat(chat_id=GROUP)))
     dp.add_handler(CommandHandler("rules", rules))
-    dp.add_handler(CommandHandler("experts", experts, filters=Filters.chat(chat_id=GROUP)))
-    dp.add_handler(CommandHandler("ask", ask, filters=Filters.chat(chat_id=GROUP)))
-    dp.add_handler(CommandHandler("form", form, filters=Filters.chat(chat_id=GROUP)))
-    dp.add_handler(CommandHandler("date", date, filters=Filters.chat(chat_id=GROUP)))
-    dp.add_handler(MessageHandler(Filters.chat(chat_id=GROUP) & Filters.regex(".*offtopic.*"), offtopic))
+    dp.add_handler(CommandHandler("experts", experts, Filters.chat(chat_id=GROUP)))
+    dp.add_handler(CommandHandler("ask", ask, Filters.chat(chat_id=GROUP)))
+    dp.add_handler(CommandHandler("form", form, Filters.chat(chat_id=GROUP)))
+    dp.add_handler(CommandHandler("date", date, Filters.chat(chat_id=GROUP)))
+    dp.add_handler(CommandHandler("offtopic", offtopic, Filters.chat(chat_id=GROUP)))
     #  add commands below. follow this scheme:  "command", function
 
     # add commands above this comment
