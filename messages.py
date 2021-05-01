@@ -195,7 +195,6 @@ def offtopic(update: Update, context: CallbackContext):
                                      update.message.reply_to_message.link,
                                      update.message.reply_to_message.text),
                                  ParseMode.HTML)
-      #  update.message.reply_to_message.delete()
         update.message.reply_to_message.reply_text(
             "Hey {} 🤖"
             "\nThis is getting pretty off-topic now."
@@ -206,6 +205,7 @@ def offtopic(update: Update, context: CallbackContext):
         delay_group(update, context,
                     "Hey {} 🤖"
                     "\nFeel free to join @realme_offtopic to discuss topics not related to Realme or Android."
+                    "\n\nYou can also send Links and Stickers there 🥳"
                     .format(update.message.reply_to_message.from_user.name))
 
 
