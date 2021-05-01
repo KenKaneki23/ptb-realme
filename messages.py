@@ -182,6 +182,8 @@ def date(update: Update, context: CallbackContext):
                     "\n\n<b>How to estimate the time for stable rollout?</b>"
                     "\nAdd a minimum of 6 months to the Early Access date from /android11"
                     .format(update.message.reply_to_message.from_user.name))
+    else:
+        update.message.delete()
 
 
 def offtopic(update: Update, context: CallbackContext):
