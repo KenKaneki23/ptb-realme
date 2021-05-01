@@ -10,7 +10,10 @@ from utils import delay_group, delay_group_button_url
 
 def private_not_available(update: Update, context: CallbackContext):
     update.message.reply_text(
-        text="Sorry. I can only chat in @realme_support")
+        text="My commands work in @realme_support only."
+             "\n\nYou can submit some Feedback here though."
+             "\n\nDo you like me?"
+             "\n\nIs there any missing feature?")
 
 
 def admins(update: Update, context: CallbackContext):
@@ -116,7 +119,8 @@ def gcam(update: Update, context: CallbackContext):
                 "releases."
                 "\n\n\n<b>Configurations</b>"
                 "\nTaken from <a href='https://www.celsoazevedo.com/files/android/google-camera/f/configs-urnyx-02"
-                "/'>Urnyx05's page</a>"
+                "/'>Urnyx05's page</a>. These configurations are optimized for a specific device, but may work for "
+                "other devices aswell. Just give them a try 😊 "
                 "\n\n· <a href='https://t.me/realme_support/113610'>Realme 5 & 5 Pro</a>"
                 "\n· <a href='https://t.me/realme_support/113612'>Realme X2 Pro</a>"
                 "\n· <a href='https://t.me/realme_support/113614'>Realme X50 & X50 Pro</a>"
@@ -172,10 +176,34 @@ def form(update: Update, context: CallbackContext):
 def date(update: Update, context: CallbackContext):
     if update.message.reply_to_message:
         delay_group(update, context,
-                    "Sorry " + update.message.reply_to_message.from_user.name + " 🤖"
-                                                                                "\nAs far as I'm aware, there is no specified release date for that yet. "
-                                                                                "\n\nDevelopers are working very hard currently, but it may still take some time. Please "
-                                                                                "stand by.")
+                    "Sorry {} 🤖"
+                    "\nAs far as I'm aware, there is no specified release date for that yet. "
+                    "\n\nDevelopers are working very hard currently, but it may still take some time. Please stand by."
+                    "\n\n<b>How to estimate the time for stable rollout?</b>"
+                    "\nAdd a minimum of 6 months to the Early Access date from /android11"
+                    .format(update.message.reply_to_message.from_user.name))
+
+
+def offtopic(update: Update, context: CallbackContext):
+    if update.message.reply_to_message:
+
+        context.bot.send_message(703453307,
+                                 "I moved <a href={}>{}'s message</a> here:\n\n"
+                                 "{}".format(update.message.reply_to_message.link,
+                                             update.message.reply_to_message.from_user.name,
+                                             update.message.reply_to_message.text))
+
+        update.message.reply_to_message.reply_text(
+            "Hey {} 🤖"
+            "\nThis is getting pretty off-topic now."
+            "\n\nI moved the message to @realme_offtopic"
+            "\n\nPlease continue the discussion there 😉"
+                .format(update.message.reply_to_message.from_user.name))
+    else:
+        delay_group(update, context,
+                    "Hey {} 🤖"
+                    "\nFeel free to join @realme_offtopic to discuss topics not related to Realme or Android."
+                    .format(update.message.reply_to_message.from_user.name))
 
 
 def android11(update: Update, context: CallbackContext):
@@ -183,9 +211,8 @@ def android11(update: Update, context: CallbackContext):
                 "<u>Realme UI 2.0</u>"
                 "\n\n<i>Early Access is there to test stuff. Testing is easier with a reduced userbase. Therefore it "
                 "will be rolled out to a limited number of people only 😉</i> "
-                "\n\n<a href='https://static.c.realme.com/IN/wm-thread/1374937652238790656.png'>🆕 Current Roadmap "
-                "🆕</a> "
-                "\n\n<a href='https://static.c.realme.com/IN/wm-thread/1369542731847704576.jpg'>Previous Roadmap</a> "
+                "\n\n· <a href='https://static.c.realme.com/IN/wm-thread/1374937652238790656.png'>Current Roadmap</a> "
+                "\n\n· <a href='https://static.c.realme.com/IN/wm-thread/1369542731847704576.jpg'>Previous Roadmap</a> "
                 "\n\n<b>Early Access</b>"
                 "\nThe timeline is for the first wave of early access rollout only. The version for the corresponding "
                 "model will be released within the above mentioned month in batches, not at the beginning of the "
