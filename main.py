@@ -13,6 +13,7 @@ from utils import remove_message
 PORT = int(os.environ.get('PORT', 5000))
 TOKEN = os.environ.get('TOKEN')
 GROUP = -1001374176745  # -1001327617858 for test group
+VERIFIED_USERS = (703453307, 1038099761)
 
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -50,7 +51,8 @@ if __name__ == '__main__':
     dp.add_handler(CommandHandler("ask", ask, Filters.chat(chat_id=GROUP)))
     dp.add_handler(CommandHandler("form", form, Filters.chat(chat_id=GROUP)))
     dp.add_handler(CommandHandler("date", date, Filters.chat(chat_id=GROUP)))
-    dp.add_handler(CommandHandler("offtopic", offtopic, Filters.chat(chat_id=GROUP)))
+    dp.add_handler(CommandHandler("offtopic", offtopic,
+                                  Filters.chat(chat_id=GROUP) & Filters.user(user_id=VERIFIED_USERS)))
     #  add commands below. follow this scheme:  "command", function
 
     # add commands above this comment
