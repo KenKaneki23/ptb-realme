@@ -196,13 +196,14 @@ def offtopic(update: Update, context: CallbackContext):
                                      update.message.reply_to_message.from_user.name,
                                      update.message.reply_to_message.link,
                                      update.message.reply_to_message.text),
-                                 ParseMode.HTML)
+                                 ParseMode.HTML,
+                                 True)
         update.message.reply_to_message.reply_text(
             "Hey {} 🤖"
             "\nThis is getting pretty off-topic now."
             "\n\nI moved the message to @realme_offtopic"
             "\n\nPlease continue the discussion there 😉"
-            .format(update.message.reply_to_message.from_user.name))
+                .format(update.message.reply_to_message.from_user.name))
     else:
         delay_group(update, context,
                     "Hey guys 🤖"
