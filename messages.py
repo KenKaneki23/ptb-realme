@@ -10,7 +10,7 @@ from utils import delay_group, delay_group_button_url
 
 def private_not_available(update: Update, context: CallbackContext):
     update.message.reply_text(
-        text="My commands work in @realme_support only."
+        "My commands work in @realme_support only."
              "\n\nYou can submit some Feedback here though."
              "\n\nDo you like me?"
              "\n\nIs there any missing feature?")
@@ -208,7 +208,7 @@ def offtopic(update: Update, context: CallbackContext):
                     "Hey {} 🤖"
                     "\nFeel free to join @realme_offtopic to discuss topics not related to Realme or Android."
                     "\n\nYou can also send Links and Stickers there 🥳"
-                    .format(update.message.reply_to_message.from_user.name))
+                    .format(update.message.from_user.name))
 
 
 def android11(update: Update, context: CallbackContext):

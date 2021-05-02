@@ -21,12 +21,11 @@ logger = logging.getLogger(__name__)
 
 def error(update: Update, context: CallbackContext):
     logger.warning('Update "%s" caused error "%s"', update, context.error)
-    context.bot.send_message(
-        chat_id=-1001338514957,
-        text="<b>🤖 Affected Bot</b>\n@" + context.bot.username +
-             "\n\n<b>⚠ Error</b>\n<code>" + str(context.error) +
-             "</code>\n\n<b>Caused by Update</b>\n<code>" + str(update) + "</code>",
-        parse_mode=ParseMode.HTML)
+    context.bot.send_message(-1001338514957,
+                             "<b>🤖 Affected Bot</b>\n@" + context.bot.username +
+                             "\n\n<b>⚠ Error</b>\n<code>" + str(context.error) +
+                             "</code>\n\n<b>Caused by Update</b>\n<code>" + str(update) + "</code>",
+                             ParseMode.HTML)
 
 
 if __name__ == '__main__':
@@ -36,30 +35,27 @@ if __name__ == '__main__':
     dp.add_handler(MessageHandler(
         Filters.text(["/help@CoronaVirusRobot", "/victims@CoronaVirusRobot", "/infect@CoronaVirusRobot"]),
         remove_message))
-    dp.add_handler(MessageHandler(
-        Filters.chat_type.private,
-        private_not_available))
 
-    dp.add_handler(CommandHandler("android11", android11, Filters.chat(chat_id=GROUP)))
-    dp.add_handler(CommandHandler("gcam", gcam, Filters.chat(chat_id=GROUP)))
-    dp.add_handler(CommandHandler("sdmaid", sdmaid, Filters.chat(chat_id=GROUP)))
-    dp.add_handler(CommandHandler("help", commands, Filters.chat(chat_id=GROUP)))
-    dp.add_handler(CommandHandler("files", files, Filters.chat(chat_id=GROUP)))
-    dp.add_handler(CommandHandler("admins", admins, Filters.chat(chat_id=GROUP)))
+    dp.add_handler(CommandHandler("android11", android11, Filters.chat(GROUP)))
+    dp.add_handler(CommandHandler("gcam", gcam, Filters.chat(GROUP)))
+    dp.add_handler(CommandHandler("sdmaid", sdmaid, Filters.chat(GROUP)))
+    dp.add_handler(CommandHandler("help", commands, Filters.chat(GROUP)))
+    dp.add_handler(CommandHandler("files", files, Filters.chat(GROUP)))
+    dp.add_handler(CommandHandler("admins", admins, Filters.chat(GROUP)))
     dp.add_handler(CommandHandler("rules", rules))
-    dp.add_handler(CommandHandler("experts", experts, Filters.chat(chat_id=GROUP)))
-    dp.add_handler(CommandHandler("ask", ask, Filters.chat(chat_id=GROUP)))
-    dp.add_handler(CommandHandler("form", form, Filters.chat(chat_id=GROUP)))
-    dp.add_handler(CommandHandler("date", date, Filters.chat(chat_id=GROUP)))
-    dp.add_handler(CommandHandler("offtopic", offtopic,
-                                  Filters.chat(chat_id=GROUP) & Filters.user(user_id=VERIFIED_USERS)))
+    dp.add_handler(CommandHandler("experts", experts, Filters.chat(GROUP)))
+    dp.add_handler(CommandHandler("ask", ask, Filters.chat(GROUP)))
+    dp.add_handler(CommandHandler("form", form, Filters.chat(GROUP)))
+    dp.add_handler(CommandHandler("date", date, Filters.chat(GROUP)))
+    dp.add_handler(CommandHandler("offtopic", offtopic, Filters.chat(GROUP) & Filters.user(VERIFIED_USERS)))
+
+    dp.add_handler(MessageHandler(Filters.chat_type.private, private_not_available))
     #  add commands below. follow this scheme:  "command", function
 
     # add commands above this comment
     dp.add_error_handler(error)
 
-    updater.start_webhook(listen="0.0.0.0", port=PORT, url_path=TOKEN,
-                          webhook_url='https://ptb-realme.herokuapp.com/' + TOKEN)
+    updater.start_webhook("0.0.0.0", PORT, TOKEN, webhook_url='https://ptb-realme.herokuapp.com/' + TOKEN)
 
     updater.start_polling()
     updater.idle()

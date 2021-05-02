@@ -10,48 +10,48 @@ from telegram.ext import CallbackContext
 def message_button_url(update: Update, context: CallbackContext, text, button_text, button_url):
     if update.message.reply_to_message:
         return update.message.reply_to_message.reply_text(
-            text=text,
-            parse_mode=ParseMode.HTML,
+            text,
+            ParseMode.HTML,
             reply_markup=InlineKeyboardMarkup.from_button(
-                InlineKeyboardButton(text=button_text, url=button_url)))
+                InlineKeyboardButton(button_text, button_url)))
     else:
-        return context.bot.send_message(chat_id=update.message.chat_id,
-                                        text=text,
-                                        parse_mode=ParseMode.HTML,
+        return context.bot.send_message(update.message.chat_id,
+                                        text,
+                                        ParseMode.HTML,
                                         reply_markup=InlineKeyboardMarkup.from_button(
-                                            InlineKeyboardButton(text=button_text, url=button_url)))
+                                            InlineKeyboardButton(button_text, button_url)))
 
 
 def message_html(update: Update, context: CallbackContext, text):
     if update.message.reply_to_message:
         return update.message.reply_to_message.reply_text(
-            text=text,
-            parse_mode=ParseMode.HTML)
+            text,
+            ParseMode.HTML)
     else:
         return context.bot.send_message(
-            chat_id=update.message.chat_id,
-            text=text,
-            parse_mode=ParseMode.HTML)
+            update.message.chat_id,
+            text,
+            ParseMode.HTML)
 
 
 def delay_group_button_url(update: Update, context: CallbackContext, text, button_text, button_url):
     update.message.delete()
     reply_message = message_button_url(update, context, text, button_text, button_url)
-    context.job_queue.run_once(delete, 600, context=update.message.chat_id, name=str(reply_message.message_id))
+    context.job_queue.run_once(delete, 600, update.message.chat_id, str(reply_message.message_id))
 
 
 def delay_group(update: Update, context, text):
     update.message.delete()
 
     if update.message.reply_to_message:
-        update.message.reply_to_message.reply_text(text,ParseMode.HTML)
+        update.message.reply_to_message.reply_text(text, ParseMode.HTML)
     else:
-        reply_message = context.bot.send_message(update.message.chat_id,text,ParseMode.HTML)
-        context.job_queue.run_once(delete, 600, context=reply_message.chat_id, name=str(reply_message.message_id))
+        reply_message = context.bot.send_message(update.message.chat_id, text, ParseMode.HTML)
+        context.job_queue.run_once(delete, 600, reply_message.chat_id, str(reply_message.message_id))
 
 
 def delete(context: CallbackContext):
-    context.bot.delete_message(chat_id=str(context.job.context), message_id=context.job.name)
+    context.bot.delete_message(str(context.job.context), context.job.name)
 
 
 def remove_message(update: Update, context: CallbackContext):
