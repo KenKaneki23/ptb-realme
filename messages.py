@@ -190,7 +190,7 @@ def offtopic(update: Update, context: CallbackContext):
     if update.message.reply_to_message:
         update.message.delete()
         context.bot.send_message(-1001415779011,
-                                 "<i>{} <a href='{}'>wrote:</a></i>"
+                                 "<i>{} <a href='{}'>wrote</a>:</i>"
                                  "\n\n{}"
                                  .format(
                                      update.message.reply_to_message.from_user.name,

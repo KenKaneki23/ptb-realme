@@ -13,7 +13,10 @@ from utils import remove_message
 PORT = int(os.environ.get('PORT', 5000))
 TOKEN = os.environ.get('TOKEN')
 GROUP = -1001374176745  # -1001327617858 for test group
-VERIFIED_USERS = (703453307, 1038099761)
+VERIFIED_USERS = (703453307,  # Nyx
+                  1038099761,  # Abhiskek
+                  984010225  # Phoenix
+                  )
 
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO)
 logger = logging.getLogger(__name__)
