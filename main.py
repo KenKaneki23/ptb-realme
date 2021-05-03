@@ -51,6 +51,7 @@ if __name__ == '__main__':
     dp.add_handler(CommandHandler("form", form, Filters.chat(GROUP)))
     dp.add_handler(CommandHandler("date", date, Filters.chat(GROUP)))
     dp.add_handler(CommandHandler("offtopic", offtopic, Filters.chat(GROUP) & Filters.user(VERIFIED_USERS)))
+    dp.add_handler(CommandHandler("polls", polls, Filters.user(VERIFIED_USERS)))
 
     dp.add_handler(MessageHandler(Filters.chat_type.private, private_not_available))
     #  add commands below. follow this scheme:  "command", function

@@ -1,3 +1,5 @@
+import time
+
 from telegram import Update, ParseMode
 from telegram.ext import CallbackContext
 from utils import delay_group, delay_group_button_url
@@ -178,7 +180,7 @@ def date(update: Update, context: CallbackContext):
     if update.message.reply_to_message:
         delay_group(update, context,
                     "Hey {} 🤖"
-                    "\n<i>Realme rolls out an Update, if it works as expected and not if a certain date is met. "
+                    "\n\n<i>Realme rolls out an Update, if it works as expected - not if a certain date is met. "
                     "Therefore an exact date for when you will receive an update doesn't exist.</i> "
                     "\n\n<b>Estimating the stable release date</b>"
                     "\nUse /android11 and add a minimum of 6 months after the Early Access date. This is the "
@@ -187,6 +189,7 @@ def date(update: Update, context: CallbackContext):
                     .format(update.message.reply_to_message.from_user.name))
     else:
         update.message.delete()
+    update.message.link
 
 
 def offtopic(update: Update, context: CallbackContext):
@@ -228,3 +231,32 @@ def android11(update: Update, context: CallbackContext):
                 "\n\n<b>Stable release</b>"
                 "\nWill be pushed to all users over a period of time, a few months after early access."
                 "\n\nRelax and wait what happens 😎")
+
+
+def polls(update: Update, context: CallbackContext):
+    question_1 = "[Poll 1 of 5] How old is your current phone?"
+    answers_1 = ["3 months", "6 months", "9 months", "1 year", "1.5 years",
+                 "2 years", "2.5 years", "3 years", "3.5 years", "4 years or older"]
+
+    question_2 = "How many different phones have you owned over the last 5 years?"
+    answers_2 = ["1", "2", "3", "4", "more than 4"]
+
+    question_3 = "How old are you?"
+    answers_3 = ["below 15", "15-18", "19-21", "22-26", "27-32",
+                 "33-37", "38-45", "46-53", "54-62", "older than 63"]
+
+    question_4 = "What's the most important thing when buying a brandnew phone?"
+    answers_4 = ["Camera", "Display", "Audio", "Haptics/Design", "Storage space",
+                 "Connectivity", "Multitasking capability/Ram", "Processing power", "Battery/Endurance",
+                 "Durability/Protection"]
+
+    question_5 = "How much money would you spend on a good value phone?"
+    answers_5 = ["80-120$", "121-150$", "151-200$", "201-250$", "251-300$",
+                 "301-350$", "351-420$", "421-500$", "501-650$", "more than 650$"]
+
+    questions = [question_1,question_2,question_3,question_4,question_5]
+    answers =[answers_1, answers_2,answers_3,answers_4,answers_5]
+
+    for i in range(5):
+        update.message.reply_poll("[Poll {} of 5]".format(questions[i]), answers[i])
+        time.sleep(5)
