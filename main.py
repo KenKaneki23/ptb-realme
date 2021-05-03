@@ -12,6 +12,7 @@ from utils import remove_message
 
 PORT = int(os.environ.get('PORT', 5000))
 TOKEN = os.environ.get('TOKEN')
+OFFTOPIC_GROUP = -1001415779011
 GROUP = -1001374176745  # -1001327617858 for test group
 VERIFIED_USERS = (703453307,  # Nyx
                   1038099761,  # Abhiskek
