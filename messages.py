@@ -132,13 +132,16 @@ def gcam(update: Update, context: CallbackContext):
                 "output so that it fits your needs.")
 
 
-def sdmaid(update: Update, context: CallbackContext):
+def clean(update: Update, context: CallbackContext):
     delay_group(update, context,
-                "<u>Cleaner</u>"
-                "\n\n<b>Latest Release</b>"
+                "<u>Cleaners</u>"
+                "\n\n<b>SD Maid</b>"
                 "\n· <a href='https://t.me/realme_support/122153'>SD Maid 5.1.1</a>"
                 "\n\nThis is an excellent cleaning app, which also takes care of databases, duplicates, caches etc. "
-                "and enables you to freeze the apps you don't need.")
+                "and enables you to freeze the apps you don't need."
+                "\n\n\n<b>Phone Manager</b>"
+                "\n\n· <a href='https://t.me/realme_support/126160'>Phone Manager 8.6.1</a>"
+                "\n\nThis Cleaner requires Android 11.")
 
 
 def rules(update: Update, context: CallbackContext):

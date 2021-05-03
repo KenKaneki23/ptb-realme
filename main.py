@@ -41,7 +41,7 @@ if __name__ == '__main__':
 
     dp.add_handler(CommandHandler("android11", android11, Filters.chat(GROUP)))
     dp.add_handler(CommandHandler("gcam", gcam, Filters.chat(GROUP)))
-    dp.add_handler(CommandHandler("sdmaid", sdmaid, Filters.chat(GROUP)))
+    dp.add_handler(CommandHandler("clean", clean, Filters.chat(GROUP)))
     dp.add_handler(CommandHandler("help", commands, Filters.chat(GROUP)))
     dp.add_handler(CommandHandler("files", files, Filters.chat(GROUP)))
     dp.add_handler(CommandHandler("admins", admins, Filters.chat(GROUP)))
