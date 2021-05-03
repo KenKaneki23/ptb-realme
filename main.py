@@ -41,7 +41,7 @@ if __name__ == '__main__':
 
     dp.add_handler(CommandHandler("android11", android11, Filters.chat(GROUP)))
     dp.add_handler(CommandHandler("gcam", gcam, Filters.chat(GROUP)))
-    dp.add_handler(CommandHandler("clean", clean, Filters.chat(GROUP)))
+    dp.add_handler(CommandHandler("cleaners", cleaners, Filters.chat(GROUP)))
     dp.add_handler(CommandHandler("help", commands, Filters.chat(GROUP)))
     dp.add_handler(CommandHandler("files", files, Filters.chat(GROUP)))
     dp.add_handler(CommandHandler("admins", admins, Filters.chat(GROUP)))
@@ -49,7 +49,7 @@ if __name__ == '__main__':
     dp.add_handler(CommandHandler("experts", experts, Filters.chat(GROUP)))
     dp.add_handler(CommandHandler("ask", ask, Filters.chat(GROUP)))
     dp.add_handler(CommandHandler("form", form, Filters.chat(GROUP)))
-    dp.add_handler(CommandHandler("date", date, Filters.chat(GROUP) & Filters.user(VERIFIED_USERS)))
+    dp.add_handler(CommandHandler("date", date, Filters.chat(GROUP)))
     dp.add_handler(CommandHandler("offtopic", offtopic, Filters.chat(GROUP) & Filters.user(VERIFIED_USERS)))
 
     dp.add_handler(MessageHandler(Filters.chat_type.private, private_not_available))

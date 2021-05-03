@@ -11,9 +11,9 @@ from utils import delay_group, delay_group_button_url
 def private_not_available(update: Update, context: CallbackContext):
     update.message.reply_text(
         "My commands work in @realme_support only."
-        "\n\nYou can submit some Feedback here though."
-        "\n\nDo you like me?"
-        "\n\nIs there any missing feature?")
+        "\nYou can submit some Feedback here though."
+        "\n\nDo you like me? Is there any missing feature?"
+        "\n\nPlease tell me 🤖")
 
 
 def admins(update: Update, context: CallbackContext):
@@ -132,7 +132,7 @@ def gcam(update: Update, context: CallbackContext):
                 "output so that it fits your needs.")
 
 
-def clean(update: Update, context: CallbackContext):
+def cleaners(update: Update, context: CallbackContext):
     delay_group(update, context,
                 "<u>Cleaners</u>"
                 "\n\n<b>SD Maid</b> · <a href='https://t.me/realme_support/122153'>Download 5.1.1</a>"
@@ -177,11 +177,13 @@ def form(update: Update, context: CallbackContext):
 def date(update: Update, context: CallbackContext):
     if update.message.reply_to_message:
         delay_group(update, context,
-                    "Sorry {} 🤖"
-                    "\nAs far as I'm aware, there is no specified release date for that yet. "
+                    "Hey {} 🤖"
+                    "\n<i>Realme rolls out an Update, if it works as expected and not if a certain date is met. "
+                    "Therefore an exact date for when you will receive an update doesn't exist.</i> "
+                    "\n\n<b>Estimating the stable release date</b>"
+                    "\nUse /android11 and add a minimum of 6 months after the Early Access date. This is the "
+                    "timeframe developers currently need to go from Beta to Stable. "
                     "\n\nDevelopers are working very hard currently, but it may still take some time. Please stand by."
-                    "\n\n<b>How to estimate the time for stable rollout?</b>"
-                    "\nAdd a minimum of 6 months to the Early Access date from /android11"
                     .format(update.message.reply_to_message.from_user.name))
     else:
         update.message.delete()
