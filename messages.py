@@ -235,9 +235,11 @@ def android11(update: Update, context: CallbackContext):
 
 
 def polls(update: Update, context: CallbackContext):  # GROUP
-    context.bot.send_message(OFFTOPIC_GROUP, "Hey Realme Fans!"
-                                             "\n\n<b>It's once again time for our Poll-Five 🖐️</b>"
-                                             "\n\n- The Community Team -", parse_mode=ParseMode.HTML)
+    update.message.delete()
+
+    #  context.bot.send_message(OFFTOPIC_GROUP, "Hey Realme Fans!"
+    #                                          "\n\n<b>It's once again time for Poll-Five 🖐️</b>"
+    #                                          "\n\n- The Community Team -", parse_mode=ParseMode.HTML)
 
     question_1 = "How old are you? 🎂"
     answers_1 = ["below 15", "15-18", "19-21", "22-26", "27-32",
