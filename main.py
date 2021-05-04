@@ -34,7 +34,7 @@ def error(update: Update, context: CallbackContext):
 
 if __name__ == '__main__':
     updater = Updater(TOKEN)
-    dp = updater.dispatcher
+    dp = updater.dispatcher #g
 
     dp.persistence = PicklePersistence(filename='bot_persistence')
 
