@@ -1,7 +1,7 @@
 import logging
 import os
 from telegram import ParseMode
-from telegram.ext import Updater, MessageHandler, Filters, CommandHandler
+from telegram.ext import Updater, MessageHandler, Filters, CommandHandler, PicklePersistence
 from messages import *
 from utils import remove_message
 
@@ -35,6 +35,8 @@ def error(update: Update, context: CallbackContext):
 if __name__ == '__main__':
     updater = Updater(TOKEN)
     dp = updater.dispatcher
+
+    dp.persistence = PicklePersistence(filename='bot_persistence')
 
     dp.add_handler(MessageHandler(
         Filters.text(["/help@CoronaVirusRobot", "/victims@CoronaVirusRobot", "/infect@CoronaVirusRobot"]),
