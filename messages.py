@@ -284,31 +284,31 @@ def polls(update: Update, context: CallbackContext):  # GROUP
 #                                             "\n\n<b>It's once again time for Poll-Five 🖐️</b>"
 #                                            "\n\n- The Community Team -", parse_mode=ParseMode.HTML)  # .message_id
 
-question_0 = "How old are you? 🎂"
-answers_0 = ["below 15", "15-18", "19-21", "22-26", "27-32",
+    question_0 = "How old are you? 🎂"
+    answers_0 = ["below 15", "15-18", "19-21", "22-26", "27-32",
              "33-37", "38-45", "46-53", "54-62", "older than 63"]
 
-question_1 = "How old is your current phone? 📱"
-answers_1 = ["3 months", "6 months", "9 months", "1 year", "1.5 years",
+    question_1 = "How old is your current phone? 📱"
+    answers_1 = ["3 months", "6 months", "9 months", "1 year", "1.5 years",
              "2 years", "2.5 years", "3 years", "3.5 years", "4 years or older"]
 
-question_2 = "How much money would you spend on a good value phone? 💰"
-answers_2 = ["80-120$", "121-150$", "151-200$", "201-250$", "251-300$",
+    question_2 = "How much money would you spend on a good value phone? 💰"
+    answers_2 = ["80-120$", "121-150$", "151-200$", "201-250$", "251-300$",
              "301-350$", "351-420$", "421-500$", "501-650$", "more than 650$"]
 
-question_3 = "How many different phones have you owned over the last 5 years? 🎁"
-answers_3 = ["1", "2", "3", "4", "more than 4"]
+    question_3 = "How many different phones have you owned over the last 5 years? 🎁"
+    answers_3 = ["1", "2", "3", "4", "more than 4"]
 
-question_4 = "What's the most important thing when buying a brandnew phone? 🔥"
-answers_4 = ["Camera", "Display", "Audio", "Haptics/Design", "Storage space",
+    question_4 = "What's the most important thing when buying a brandnew phone? 🔥"
+    answers_4 = ["Camera", "Display", "Audio", "Haptics/Design", "Storage space",
              "Connectivity", "Multitasking capability/Ram", "Processing power", "Battery/Endurance",
              "Durability/Protection"]
 
-questions = [question_0, question_1, question_2, question_3]
-answers = [answers_0, answers_1, answers_2, answers_3]
+    questions = [question_0, question_1, question_2, question_3]
+    answers = [answers_0, answers_1, answers_2, answers_3]
 
-for i in range(4):
-    context.bot.send_poll(GROUP, "[Poll {} of 5] · {}".format(i + 1, questions[i]), answers[i])
-    time.sleep(3)
+    for i in range(4):
+        context.bot.send_poll(GROUP, "[Poll {} of 5] · {}".format(i + 1, questions[i]), answers[i])
+        time.sleep(3)
 
-context.bot.send_poll(GROUP, "[Poll 5 of 5] · {}".format(question_4), answers_4)
+    context.bot.send_poll(GROUP, "[Poll 5 of 5] · {}".format(question_4), answers_4)
