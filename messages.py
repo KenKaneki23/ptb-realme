@@ -241,7 +241,7 @@ def polls(update: Update, context: CallbackContext):  # GROUP
         #  and context.chat_data["polls_previous_date"] + 3628800000 < now(): ###enable again !!
 
         context.chat_data["polls_previous_link"] = \
-            context.bot.send_message(GROUP, "Hey Realme Fans!"
+            context.bot.send_message(OFFTOPIC_GROUP, "Hey Realme Fans!"
                                             "\n\n<b>It's once again time for Poll-Five 🖐️</b> "
                                             "\n\nThis idea came up in @realme_offtopic a few days ago and I "
                                             "immediately implemented it. It could just be interesting to see what the "
