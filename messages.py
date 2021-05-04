@@ -235,7 +235,7 @@ def android11(update: Update, context: CallbackContext):
 
 
 def polls(update: Update, context: CallbackContext):  # GROUP
-    update.message.delete()
+   # update.message.delete()
 
     if update.message.from_user.id in VERIFIED_USERS:
         #  and context.chat_data["polls_previous_date"] + 3628800000 < now(): ###enable again !!
@@ -255,6 +255,7 @@ def polls(update: Update, context: CallbackContext):  # GROUP
 
 
     else:
+        print (context.chat_data["polls_previous_link"])
         delay_group(update, context,
                     "<b>Poll-Five</b> 🖐️"
                     "\n\nThis idea came up in @realme_offtopic. We thought it could just be interesting to see what "
