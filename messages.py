@@ -260,6 +260,7 @@ def polls(update: Update, context: CallbackContext):  # GROUP
 
      #   context.chat_data["polls_previous_date"] = now()
         print("inserrrrt")
+        cur.execute("CREATE TABLE bot_data")
         cur.execute(f'INSERT INTO bot_data ({now()}, {msg})')
 
         print(cur.execute('SELECT * FROM bot_data'))
