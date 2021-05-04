@@ -259,7 +259,7 @@ def polls(update: Update, context: CallbackContext):  # GROUP
                                             "\n\n<b>It's once again time for "
                                              "Poll-Five 🖐️</b> "
                                               "\n\n<a href='{}'>previous poll</a>"
-                                      .format(str(context.chat_data["polls_previous_link"])),
+                                      .format(str(context.chat_data.get("polls_previous_link", "https://t.me/realme_support/127238"))),
                                        parse_mode=ParseMode.HTML
                                       )
 
