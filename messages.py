@@ -240,7 +240,7 @@ def polls(update: Update, context: CallbackContext):  # GROUP
     if not context.chat_data["polls_previous_date"]:
 
         context.chat_data["polls_previous_link"] = \
-            context.bot.send_message(OFFTOPIC_GROUP, "Hey Realme Fans!"
+            context.bot.send_message(GROUP, "Hey Realme Fans!"
                                                      "\n\nI thought of creating something called <b>Poll-Five</b> 🖐️ "
                                                      "\n\nThis idea came up in @realme_offtopic a few days ago and I "
                                                      "immediately implemented it. It could just be interesting to see "
@@ -258,7 +258,7 @@ def polls(update: Update, context: CallbackContext):  # GROUP
             "polls_previous_date"] + 3628800000 < now():
 
             context.chat_data["polls_previous_link"] = \
-                context.bot.send_message(OFFTOPIC_GROUP, "Hey Realme Fans!"
+                context.bot.send_message(GROUP, "Hey Realme Fans!"
                                                          "\n\n<b>It's once again time for Poll-Five 🖐️</b>"
                                                          "\n\n<a href='{}'>previous poll</a>"
                                          .format(context.chat_data["polls_previous_link"]), parse_mode=ParseMode.HTML).link
@@ -267,11 +267,9 @@ def polls(update: Update, context: CallbackContext):  # GROUP
 
 
         else:
-            context.bot.send_message(OFFTOPIC_GROUP, "Hey {}"
-                                                     "\n\n<b>What is Poll-Five?</b> 🖐️"
-                                                     "\n\nThis idea came up in @realme_offtopic a few days ago and I "
-                                                     "immediately implemented it. It could just be interesting to see "
-                                                     "what the community thinks about certain topics. "
+            context.bot.send_message(GROUP, "Hey {}"
+                                                     "\n\n<b>Poll-Five</b> 🖐️"
+                                                     "\n\nThis idea came up in @realme_offtopic. We thought it could just be interesting to see what the community thinks about certain topics. "
                                                      "\n\nCredits go to all the ones who brought up the following questions."
                                                      "\n\n<a href='{}'>current poll</a>"
                                      .format(update.message.from_user.name, context.chat_data["polls_previous_link"]),
