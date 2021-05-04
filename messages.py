@@ -4,7 +4,7 @@ import psycopg2
 from telegram import Update, ParseMode, Message
 from telegram.ext import CallbackContext
 
-from main import GROUP, OFFTOPIC_GROUP, VERIFIED_USERS, conn, DATABASE_URL
+from main import GROUP, OFFTOPIC_GROUP, VERIFIED_USERS, DATABASE_URL
 from utils import delay_group, delay_group_button_url, now
 
 
@@ -243,7 +243,6 @@ def polls(update: Update, context: CallbackContext):  # GROUP
     cur = con.cursor()
 
 
-    # return results as a dataframe
     print(cur.execute('SELECT version()'))
 
     if update.message.from_user.id in VERIFIED_USERS:
