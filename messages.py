@@ -263,7 +263,7 @@ def polls(update: Update, context: CallbackContext):  # GROUP
         cur.execute("CREATE TABLE bot_data (previous_link TEXT, previous_timestamp BIGINT);")
         cur.execute("INSERT INTO bot_data VALUES ('{}',{});".format(msg, now()))
 
-        print(cur.execute('SELECT * FROM bot_data RETURNING previous_link previous_timestamp;'))
+        print(cur.execute('SELECT * FROM bot_data;'))
 
         ###polls go here f
 
