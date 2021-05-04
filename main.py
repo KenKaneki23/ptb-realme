@@ -58,7 +58,7 @@ if __name__ == '__main__':
     #  add commands below. follow this scheme:  "command", function
 
     # add commands above this comment
-  #  dp.add_error_handler(error)
+  #  dp.add_error_handler(error) #comment this one out for full stacktrace
 
     updater.start_webhook("0.0.0.0", PORT, TOKEN, webhook_url='https://ptb-realme.herokuapp.com/' + TOKEN)
 

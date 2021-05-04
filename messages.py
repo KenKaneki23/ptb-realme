@@ -254,13 +254,15 @@ def polls(update: Update, context: CallbackContext):  # GROUP
     if update.message.from_user.id in VERIFIED_USERS:
         #  and context.chat_data["polls_previous_date"] + 3628800000 < now(): ###enable again
 
-        context.chat_data["polls_previous_link"] = \
-            context.bot.send_message(GROUP, "Hey Realme Fans!"
-                                            "\n\n<b>It's once again time for "
-                                            "Poll-Five 🖐️</b> "
-                                            "\n\n<a href='{}'>previous poll</a>"
-                                     .format(str(context.chat_data["polls_previous_link"])),
-                                     parse_mode=ParseMode.HTML).link
+        msg = context.bot.send_message(GROUP, "Hey Realme Fans!"
+                                              "\n\n<b>It's once again time for "
+                                              "Poll-Five 🖐️</b> "
+                                              "\n\n<a href='{}'>previous poll</a>"
+                                       .format(str(context.chat_data["polls_previous_link"])),
+                                       parse_mode=ParseMode.HTML
+                                       )
+
+        context.chat_data['polls_previous_link'] = msg.link
 
         context.chat_data["polls_previous_date"] = now()
 
@@ -302,7 +304,7 @@ def polls(update: Update, context: CallbackContext):  # GROUP
                     "\n\nCredits go to all the ones who brought up the questions."
                     "\n\n<a href='{}'>current poll</a>"
                     .format(update.message.from_user.name, context.chat_data["polls_previous_link"])
-            )
+                    )
 
     context.bot.send_message(OFFTOPIC_GROUP, "date: {} - link: {}".format(context.chat_data["polls_previous_date"],
                                                                           context.chat_data["polls_previous_link"]))
