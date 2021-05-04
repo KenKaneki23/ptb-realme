@@ -252,9 +252,10 @@ def polls(update: Update, context: CallbackContext):  # GROUP
 
         context.chat_data["polls_previous_date"] = now()
 
-    elif context.chat_data["polls_previous_date"] + 3628800000 < now():
+    else:
 
-        if update.message.from_user.id in VERIFIED_USERS:
+        if update.message.from_user.id in VERIFIED_USERS and context.chat_data[
+            "polls_previous_date"] + 3628800000 < now():
 
             context.chat_data["polls_previous_link"] = \
                 context.bot.send_message(OFFTOPIC_GROUP, "Hey Realme Fans!"
