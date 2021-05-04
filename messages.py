@@ -237,7 +237,7 @@ def android11(update: Update, context: CallbackContext):
 def polls(update: Update, context: CallbackContext):  # GROUP
     update.message.delete()
 
-    if "polls_previous_date" not in context.chat_data:
+    if not context.chat_data["polls_previous_date"]:
 
         context.chat_data["polls_previous_link"] = \
             context.bot.send_message(OFFTOPIC_GROUP, "Hey Realme Fans!"
