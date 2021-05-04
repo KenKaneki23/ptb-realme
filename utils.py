@@ -1,3 +1,5 @@
+import time
+
 from telegram import InlineKeyboardMarkup, InlineKeyboardButton, ParseMode, Update
 from telegram.ext import CallbackContext
 
@@ -57,3 +59,7 @@ def delete(context: CallbackContext):
 def remove_message(update: Update, context: CallbackContext):
     if update.message is not None:
         update.message.delete()
+
+
+def now():
+    return int(round(time.time() * 1000))

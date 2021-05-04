@@ -3,8 +3,8 @@ import time
 from telegram import Update, ParseMode, Message
 from telegram.ext import CallbackContext
 
-from main import GROUP, OFFTOPIC_GROUP
-from utils import delay_group, delay_group_button_url
+from main import GROUP, OFFTOPIC_GROUP, VERIFIED_USERS
+from utils import delay_group, delay_group_button_url, now
 
 
 ##########################################
@@ -237,14 +237,48 @@ def android11(update: Update, context: CallbackContext):
 def polls(update: Update, context: CallbackContext):  # GROUP
     update.message.delete()
 
-    if "polls_date" not in context.chat_data:
+    if "polls_previous_date" not in context.chat_data:
 
-        context.bot.send_message(OFFTOPIC_GROUP,
-                                 "Not date was given. Should be: {}"
-                                 .format(int(round(time.time() * 1000))),
-                                 parse_mode=ParseMode.HTML)  # .message_id
-    else:
-        context.bot.send_message(OFFTOPIC_GROUP, "no DATE given", parse_mode=ParseMode.HTML)
+        context.chat_data["polls_previous_link"] = \
+            context.bot.send_message(OFFTOPIC_GROUP, "Hey Realme Fans!"
+                                                     "\n\nI thought of creating something called <b>Poll-Five</b> 🖐️ "
+                                                     "\n\nThis idea came up in @realme_offtopic a few days ago and I "
+                                                     "immediately implemented it. It could just be interesting to see "
+                                                     "what the community thinks about certain topics. "
+                                                     "\n\nCredits go to all the ones who brought up the following "
+                                                     "questions. "
+                                                     "\n\nHope you enjoy it!",
+                                     parse_mode=ParseMode.HTML).link
+
+        context.chat_data["polls_previous_date"] = now()
+
+    elif context.chat_data["polls_previous_date"] + 3628800000 < now():
+
+        if update.message.from_user.id in VERIFIED_USERS:
+
+            context.chat_data["polls_previous_link"] = \
+                context.bot.send_message(OFFTOPIC_GROUP, "Hey Realme Fans!"
+                                                         "\n\n<b>It's once again time for Poll-Five 🖐️</b>"
+                                                         "\n\n<a href='{}'>previous poll</a>"
+                                         .format(context.chat_data["polls_previous_link"]), parse_mode=ParseMode.HTML)
+
+            context.chat_data["polls_previous_date"] = now()
+
+
+        else:
+            context.bot.send_message(OFFTOPIC_GROUP, "Hey {}"
+                                                     "\n\n<b>What is Poll-Five?</b> 🖐️"
+                                                     "\n\nThis idea came up in @realme_offtopic a few days ago and I "
+                                                     "immediately implemented it. It could just be interesting to see "
+                                                     "what the community thinks about certain topics. "
+                                                     "\n\nCredits go to all the ones who brought up the following questions."
+                                                     "\n\n<a href='{}'>current poll</a>"
+                                     .format(update.message.from_user.name, context.chat_data["polls_previous_link"]),
+                                     parse_mode=ParseMode.HTML)
+
+    context.bot.send_message(OFFTOPIC_GROUP, "date: {} - link: {}".format(context.chat_data["polls_previous_date"],
+                                                                          context.chat_data["polls_previous_link"]))
+
     #    context.bot.send_message(OFFTOPIC_GROUP, "Hey Realme Fans!"
     #                                             "\n\n<b>It's once again time for Poll-Five 🖐️</b>"
     #                                            "\n\n- The Community Team -", parse_mode=ParseMode.HTML)  # .message_id
