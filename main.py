@@ -33,10 +33,8 @@ def error(update: Update, context: CallbackContext):
 
 
 if __name__ == '__main__':
-    updater = Updater(TOKEN)
-    dp = updater.dispatcher #g
-
-    dp.persistence = PicklePersistence(filename='bot_persistence')
+    updater = Updater(TOKEN, persistence=PicklePersistence(filename='bot_persistence'), use_context=True)
+    dp = updater.dispatcher
 
     dp.add_handler(MessageHandler(
         Filters.text(["/help@CoronaVirusRobot", "/victims@CoronaVirusRobot", "/infect@CoronaVirusRobot"]),
