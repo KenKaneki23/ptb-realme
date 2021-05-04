@@ -238,29 +238,31 @@ def android11(update: Update, context: CallbackContext):
 def polls(update: Update, context: CallbackContext):  # GROUP
 
     con = psycopg2.connect(DATABASE_URL)
-  #  conn = psycopg2.connect(DATABASE_URL, sslmode='require')
+    #  conn = psycopg2.connect(DATABASE_URL, sslmode='require')
 
     cur = con.cursor()
 
-
-    print(cur.execute('SELECT version()'))
+    print(cur.execute('SELECT * FROM bot_data'))
 
     if update.message.from_user.id in VERIFIED_USERS:
         update.message.delete()
         #  and context.chat_data["polls_previous_date"] + 3628800000 < now(): ###enable again !!
 
-        context.chat_data["polls_previous_link"] = \
-            context.bot.send_message(OFFTOPIC_GROUP, "Hey Realme Fans!"
-                                                     "\n\n<b>It's once again time for Poll-Five 🖐️</b> "
-                                                     "\n\nThis idea came up in @realme_offtopic a few days ago and I "
-                                                     "immediately implemented it. It could just be interesting to see what the "
-                                                     "community thinks about certain topics. "
-                                                     "\n\nCredits go to all the ones who brought up the following questions. "
-                                                     "\n\nHope you enjoy it!",
-                                     parse_mode=ParseMode.HTML
-                                     ).link
+        msg = context.bot.send_message(OFFTOPIC_GROUP, "Hey Realme Fans!"
+                                                       "\n\n<b>It's once again time for Poll-Five 🖐️</b> "
+                                                       "\n\nThis idea came up in @realme_offtopic a few days ago and I "
+                                                       "immediately implemented it. It could just be interesting to see what the "
+                                                       "community thinks about certain topics. "
+                                                       "\n\nCredits go to all the ones who brought up the following questions. "
+                                                       "\n\nHope you enjoy it!",
+                                       parse_mode=ParseMode.HTML
+                                       ).link
 
-        context.chat_data["polls_previous_date"] = now()
+     #   context.chat_data["polls_previous_date"] = now()
+        print("inserrrrt")
+        cur.execute(f'INSERT INTO bot_data ({now()}, {msg})')
+
+        print(cur.execute('SELECT * FROM bot_data'))
 
         ###polls go here f
 
@@ -274,5 +276,5 @@ def polls(update: Update, context: CallbackContext):  # GROUP
                     "\n\n<a href='{}'>current poll</a>"
                     .format(context.chat_data["polls_previous_link"]))
 
-  #  context.bot.send_message(OFFTOPIC_GROUP, "date: {} - link: {}".format(context.chat_data["polls_previous_date"],
-  #                                                                        context.chat_data["polls_previous_link"]))
+#  context.bot.send_message(OFFTOPIC_GROUP, "date: {} - link: {}".format(context.chat_data["polls_previous_date"],
+#                                                                        context.chat_data["polls_previous_link"]))
