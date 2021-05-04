@@ -1,6 +1,6 @@
 import time
 
-from telegram import Update, ParseMode
+from telegram import Update, ParseMode, Message
 from telegram.ext import CallbackContext
 
 from main import GROUP, OFFTOPIC_GROUP
@@ -237,17 +237,25 @@ def android11(update: Update, context: CallbackContext):
 def polls(update: Update, context: CallbackContext):  # GROUP
     update.message.delete()
 
-    #  context.bot.send_message(OFFTOPIC_GROUP, "Hey Realme Fans!"
-    #                                          "\n\n<b>It's once again time for Poll-Five 🖐️</b>"
-    #                                          "\n\n- The Community Team -", parse_mode=ParseMode.HTML)
+    if context.chat_data["polls_date"]:
+        context.bot.send_message(OFFTOPIC_GROUP, "DATE given", parse_mode=ParseMode.HTML)  # .message_id
+    else:
+        context.bot.send_message(OFFTOPIC_GROUP, "no DATE given", parse_mode=ParseMode.HTML)
+    #    context.bot.send_message(OFFTOPIC_GROUP, "Hey Realme Fans!"
+   #                                             "\n\n<b>It's once again time for Poll-Five 🖐️</b>"
+     #                                            "\n\n- The Community Team -", parse_mode=ParseMode.HTML)  # .message_id
 
-    question_1 = "How old are you? 🎂"
-    answers_1 = ["below 15", "15-18", "19-21", "22-26", "27-32",
+    question_0 = "How old are you? 🎂"
+    answers_0 = ["below 15", "15-18", "19-21", "22-26", "27-32",
                  "33-37", "38-45", "46-53", "54-62", "older than 63"]
 
-    question_2 = "How old is your current phone? 📱"
-    answers_2 = ["3 months", "6 months", "9 months", "1 year", "1.5 years",
+    question_1 = "How old is your current phone? 📱"
+    answers_1 = ["3 months", "6 months", "9 months", "1 year", "1.5 years",
                  "2 years", "2.5 years", "3 years", "3.5 years", "4 years or older"]
+
+    question_2 = "How much money would you spend on a good value phone? 💰"
+    answers_2 = ["80-120$", "121-150$", "151-200$", "201-250$", "251-300$",
+                 "301-350$", "351-420$", "421-500$", "501-650$", "more than 650$"]
 
     question_3 = "How many different phones have you owned over the last 5 years? 🎁"
     answers_3 = ["1", "2", "3", "4", "more than 4"]
@@ -257,13 +265,11 @@ def polls(update: Update, context: CallbackContext):  # GROUP
                  "Connectivity", "Multitasking capability/Ram", "Processing power", "Battery/Endurance",
                  "Durability/Protection"]
 
-    question_5 = "How much money would you spend on a good value phone? 💰"
-    answers_5 = ["80-120$", "121-150$", "151-200$", "201-250$", "251-300$",
-                 "301-350$", "351-420$", "421-500$", "501-650$", "more than 650$"]
+    questions = [question_0, question_1, question_2, question_3]
+    answers = [answers_0, answers_1, answers_2, answers_3]
 
-    questions = [question_1, question_2, question_3, question_4, question_5]
-    answers = [answers_1, answers_2, answers_3, answers_4, answers_5]
-
-    for i in range(5):
-        context.bot.send_poll(OFFTOPIC_GROUP, "[Poll {} of 5] · {}".format(i + 1, questions[i]), answers[i])
+    for i in range(4):
+        context.bot.send_poll(OFFTOPIC_GROUP,"[Poll {} of 5] · {}".format(i + 1, questions[i]),answers[i])
         time.sleep(3)
+
+    context.bot.send_poll(OFFTOPIC_GROUP,"[Poll 5 of 5] · {}".format(question_4), answers_4)
