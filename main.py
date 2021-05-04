@@ -16,7 +16,7 @@ OFFTOPIC_GROUP = -1001415779011
 GROUP = -1001374176745  # -1001327617858 for test group
 VERIFIED_USERS = (703453307,  # Nyx
                   1038099761,  # Abhiskek
-                  984010225  # Phoenix
+                #  984010225  # Phoenix
                   )
 
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO)
