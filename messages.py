@@ -253,7 +253,7 @@ def polls(update: Update, context: CallbackContext):  # GROUP
 
         context.chat_data["polls_previous_date"] = now()
 
-        ###polls go here
+        ###polls go here f
 
     else:
         print(context.chat_data["polls_previous_link"])
