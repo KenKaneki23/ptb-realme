@@ -242,7 +242,7 @@ def polls(update: Update, context: CallbackContext):  # GROUP
 
     cur = con.cursor()
 
-    print(cur.execute('SELECT * FROM bot_data'))
+  #  print(cur.execute('SELECT * FROM bot_data'))
 
     if update.message.from_user.id in VERIFIED_USERS:
         update.message.delete()
