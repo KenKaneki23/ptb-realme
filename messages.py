@@ -237,33 +237,19 @@ def android11(update: Update, context: CallbackContext):
 def polls(update: Update, context: CallbackContext):  # GROUP
     update.message.delete()
 
-  #  context.chat_data["polls_previous_link"] = "https://t.me/realme_support/127238"
-    ####init
-  #  context.chat_data["polls_previous_link"] = \
-   #      context.bot.send_message(GROUP, "Hey Realme Fans!"
-   #                                      "\n\nI thought of creating something called <b>Poll-Five</b> 🖐️ "
-     #                                   "\n\nThis idea came up in @realme_offtopic a few days ago and I "
-     #                                   "immediately implemented it. It could just be interesting to see "
-      #                                  "what the community thinks about certain topics. "
-      #                                 "\n\nCredits go to all the ones who brought up the following "
-      #                                "questions. "
-      #                                  "\n\nHope you enjoy it!",
-      #                          parse_mode=ParseMode.HTML).link
-
-    # context.chat_data["polls_previous_date"] = now()
-
     if update.message.from_user.id in VERIFIED_USERS:
         #  and context.chat_data["polls_previous_date"] + 3628800000 < now(): ###enable again !!
 
-        msg = context.bot.send_message(GROUP, "Hey Realme Fans!"
-                                            "\n\n<b>It's once again time for "
-                                             "Poll-Five 🖐️</b> "
-                                              "\n\n<a href='{}'>previous poll</a>"
-                                      .format(str(context.chat_data.get("polls_previous_link", "https://t.me/realme_support/127238"))),
-                                       parse_mode=ParseMode.HTML
-                                      )
-
-        context.chat_data['polls_previous_link'] = msg.link
+        context.chat_data["polls_previous_link"] = \
+            context.bot.send_message(GROUP, "Hey Realme Fans!"
+                                            "\n\n<b>It's once again time for Poll-Five 🖐️</b> "
+                                            "\n\nThis idea came up in @realme_offtopic a few days ago and I "
+                                            "immediately implemented it. It could just be interesting to see what the "
+                                            "community thinks about certain topics. "
+                                            "\n\nCredits go to all the ones who brought up the following questions. "
+                                            "\n\nHope you enjoy it!",
+                                     parse_mode=ParseMode.HTML
+                                     ).link
 
         context.chat_data["polls_previous_date"] = now()
 
