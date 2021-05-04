@@ -239,7 +239,10 @@ def polls(update: Update, context: CallbackContext):  # GROUP
 
     if "polls_date" not in context.chat_data:
 
-        context.bot.send_message(OFFTOPIC_GROUP, "Not date was given. Should be: {}".format(time.time()), parse_mode=ParseMode.HTML)  # .message_id
+        context.bot.send_message(OFFTOPIC_GROUP,
+                                 "Not date was given. Should be: {}"
+                                 .format(int(round(time.time() * 1000))),
+                                 parse_mode=ParseMode.HTML)  # .message_id
     else:
         context.bot.send_message(OFFTOPIC_GROUP, "no DATE given", parse_mode=ParseMode.HTML)
     #    context.bot.send_message(OFFTOPIC_GROUP, "Hey Realme Fans!"
