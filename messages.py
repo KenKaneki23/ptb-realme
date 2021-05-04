@@ -237,6 +237,7 @@ def android11(update: Update, context: CallbackContext):
 def polls(update: Update, context: CallbackContext):  # GROUP
     update.message.delete()
 
+    context.bot_data["polls_previus_link"] = "https://t.me/realme_support/127238"
     ####init
   #  context.chat_data["polls_previous_link"] = \
    #      context.bot.send_message(GROUP, "Hey Realme Fans!"
