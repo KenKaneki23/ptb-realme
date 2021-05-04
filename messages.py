@@ -237,13 +237,13 @@ def android11(update: Update, context: CallbackContext):
 def polls(update: Update, context: CallbackContext):  # GROUP
     update.message.delete()
 
-    if context.chat_data["polls_date"] is not None:
+    if context.chat_data.has_key("polls_date") & context.chat_data["polls_date"]:
         context.bot.send_message(OFFTOPIC_GROUP, "DATE given", parse_mode=ParseMode.HTML)  # .message_id
     else:
         context.bot.send_message(OFFTOPIC_GROUP, "no DATE given", parse_mode=ParseMode.HTML)
     #    context.bot.send_message(OFFTOPIC_GROUP, "Hey Realme Fans!"
-   #                                             "\n\n<b>It's once again time for Poll-Five 🖐️</b>"
-     #                                            "\n\n- The Community Team -", parse_mode=ParseMode.HTML)  # .message_id
+    #                                             "\n\n<b>It's once again time for Poll-Five 🖐️</b>"
+    #                                            "\n\n- The Community Team -", parse_mode=ParseMode.HTML)  # .message_id
 
     question_0 = "How old are you? 🎂"
     answers_0 = ["below 15", "15-18", "19-21", "22-26", "27-32",
@@ -269,7 +269,7 @@ def polls(update: Update, context: CallbackContext):  # GROUP
     answers = [answers_0, answers_1, answers_2, answers_3]
 
     for i in range(4):
-        context.bot.send_poll(OFFTOPIC_GROUP,"[Poll {} of 5] · {}".format(i + 1, questions[i]),answers[i])
+        context.bot.send_poll(OFFTOPIC_GROUP, "[Poll {} of 5] · {}".format(i + 1, questions[i]), answers[i])
         time.sleep(3)
 
-    context.bot.send_poll(OFFTOPIC_GROUP,"[Poll 5 of 5] · {}".format(question_4), answers_4)
+    context.bot.send_poll(OFFTOPIC_GROUP, "[Poll 5 of 5] · {}".format(question_4), answers_4)
