@@ -1,5 +1,6 @@
 import logging
 import os
+import psycopg2
 from telegram import ParseMode
 from telegram.ext import Updater, MessageHandler, Filters, CommandHandler, PicklePersistence
 from messages import *
@@ -11,12 +12,14 @@ from utils import remove_message
 ##########################################
 
 PORT = int(os.environ.get('PORT', 5000))
-TOKEN = os.environ.get('TOKEN')
+DATABASE_URL = os.environ['DATABASE_URL']
+TOKEN = os.environ['TOKEN']
+
 OFFTOPIC_GROUP = -1001415779011
 GROUP = -1001374176745  # -1001327617858 for test group
 VERIFIED_USERS = (703453307,  # Nyx
                   1038099761,  # Abhiskek
-                #  984010225  # Phoenix
+                984010225  # Phoenix
                   )
 
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO)

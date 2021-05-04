@@ -1,9 +1,10 @@
 import time
 
+import psycopg2
 from telegram import Update, ParseMode, Message
 from telegram.ext import CallbackContext
 
-from main import GROUP, OFFTOPIC_GROUP, VERIFIED_USERS
+from main import GROUP, OFFTOPIC_GROUP, VERIFIED_USERS, conn, DATABASE_URL
 from utils import delay_group, delay_group_button_url, now
 
 
@@ -235,6 +236,15 @@ def android11(update: Update, context: CallbackContext):
 
 
 def polls(update: Update, context: CallbackContext):  # GROUP
+
+    con = psycopg2.connect(DATABASE_URL)
+  #  conn = psycopg2.connect(DATABASE_URL, sslmode='require')
+
+    cur = con.cursor()
+
+
+    # return results as a dataframe
+    print(cur.execute('SELECT version()'))
 
     if update.message.from_user.id in VERIFIED_USERS:
         update.message.delete()
