@@ -237,7 +237,7 @@ def android11(update: Update, context: CallbackContext):
 def polls(update: Update, context: CallbackContext):  # GROUP
     update.message.delete()
 
-    if context.chat_data["polls_date"]:
+    if context.chat_data["polls_date"] is not None:
         context.bot.send_message(OFFTOPIC_GROUP, "DATE given", parse_mode=ParseMode.HTML)  # .message_id
     else:
         context.bot.send_message(OFFTOPIC_GROUP, "no DATE given", parse_mode=ParseMode.HTML)
