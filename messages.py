@@ -259,8 +259,8 @@ def polls(update: Update, context: CallbackContext):  # GROUP
                                        ).link
 
      #   context.chat_data["polls_previous_date"] = now()
-        print("inserrrrt")
-        cur.execute("CREATE TABLE IF NOT EXISTS bot_data (previous_link TEXT, previous_timestamp INT);")
+        print("inserrrrt") #IF NOT EXISTS
+        cur.execute("CREATE TABLE bot_data (previous_link TEXT, previous_timestamp INT);")
         cur.execute('INSERT INTO bot_data VALUES ("{}",{});'.format(msg, now()))
 
         print(cur.execute('SELECT * FROM bot_data'))
