@@ -308,7 +308,7 @@ questions = [question_0, question_1, question_2, question_3]
 answers = [answers_0, answers_1, answers_2, answers_3]
 
 for i in range(4):
-    context.bot.send_poll(OFFTOPIC_GROUP, "[Poll {} of 5] · {}".format(i + 1, questions[i]), answers[i])
+    context.bot.send_poll(GROUP, "[Poll {} of 5] · {}".format(i + 1, questions[i]), answers[i])
     time.sleep(3)
 
-context.bot.send_poll(OFFTOPIC_GROUP, "[Poll 5 of 5] · {}".format(question_4), answers_4)
+context.bot.send_poll(GROUP, "[Poll 5 of 5] · {}".format(question_4), answers_4)
