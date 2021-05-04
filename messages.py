@@ -263,7 +263,14 @@ def polls(update: Update, context: CallbackContext):  # GROUP
         cur.execute("CREATE TABLE bot_data (previous_link TEXT, previous_timestamp BIGINT);")
         cur.execute("INSERT INTO bot_data VALUES (%s,%s);",(msg, now()))
 
-        print(cur.execute('SELECT * FROM bot_data;'))
+
+        try:
+            cur.execute('SELECT * FROM bot_data;')
+            print(cur.fetchone())
+        except psycopg2.Error as e:
+            pass
+        finally:
+            cur.close()
 
         ###polls go here f
 
