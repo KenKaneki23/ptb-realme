@@ -265,5 +265,5 @@ def polls(update: Update, context: CallbackContext):  # GROUP
                     "\n\n<a href='{}'>current poll</a>"
                     .format(context.chat_data["polls_previous_link"]))
 
-    context.bot.send_message(OFFTOPIC_GROUP, "date: {} - link: {}".format(context.chat_data["polls_previous_date"],
-                                                                          context.chat_data["polls_previous_link"]))
+  #  context.bot.send_message(OFFTOPIC_GROUP, "date: {} - link: {}".format(context.chat_data["polls_previous_date"],
+  #                                                                        context.chat_data["polls_previous_link"]))
