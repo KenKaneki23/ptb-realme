@@ -251,8 +251,8 @@ def polls(update: Update, context: CallbackContext):  # GROUP
 
     # context.chat_data["polls_previous_date"] = now()
 
-    if update.message.from_user.id in VERIFIED_USERS and context.chat_data[
-        "polls_previous_date"] + 3628800000 < now():
+    if update.message.from_user.id in VERIFIED_USERS:
+      #  and context.chat_data["polls_previous_date"] + 3628800000 < now(): ###enable again
 
         context.chat_data["polls_previous_link"] = \
             context.bot.send_message(GROUP, "Hey Realme Fans!"
@@ -304,4 +304,4 @@ def polls(update: Update, context: CallbackContext):  # GROUP
         context.bot.send_poll(GROUP, "[Poll {} of 5] · {}".format(i + 1, questions[i]), answers[i])
         time.sleep(3)
 
-    context.bot.send_poll(GROUP, "[Poll 5 of 5] · {}".format(question_4), answers_4)
+    context.bot.send_poll(GROUP, "[Poll 5 of 5] · {}".format(question_4), answers_4, allows_multiple_answers=True)
