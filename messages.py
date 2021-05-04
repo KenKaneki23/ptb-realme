@@ -253,7 +253,7 @@ def polls(update: Update, context: CallbackContext):  # GROUP
     # context.chat_data["polls_previous_date"] = now()
 
     if update.message.from_user.id in VERIFIED_USERS:
-        #  and context.chat_data["polls_previous_date"] + 3628800000 < now(): ###enable again
+        #  and context.chat_data["polls_previous_date"] + 3628800000 < now(): ###enable again !!
 
         msg = context.bot.send_message(GROUP, "Hey Realme Fans!"
                                             "\n\n<b>It's once again time for "
