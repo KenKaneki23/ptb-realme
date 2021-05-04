@@ -261,7 +261,7 @@ def polls(update: Update, context: CallbackContext):  # GROUP
                 context.bot.send_message(OFFTOPIC_GROUP, "Hey Realme Fans!"
                                                          "\n\n<b>It's once again time for Poll-Five 🖐️</b>"
                                                          "\n\n<a href='{}'>previous poll</a>"
-                                         .format(context.chat_data["polls_previous_link"]), parse_mode=ParseMode.HTML)
+                                         .format(context.chat_data["polls_previous_link"]), parse_mode=ParseMode.HTML).link
 
             context.chat_data["polls_previous_date"] = now()
 
