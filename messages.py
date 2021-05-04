@@ -242,7 +242,7 @@ def polls(update: Update, context: CallbackContext):  # GROUP
 
     cur = con.cursor()
 
-  #  print(cur.execute('SELECT * FROM bot_data'))
+    #  print(cur.execute('SELECT * FROM bot_data'))
 
     if update.message.from_user.id in VERIFIED_USERS:
         update.message.delete()
@@ -258,11 +258,10 @@ def polls(update: Update, context: CallbackContext):  # GROUP
                                        parse_mode=ParseMode.HTML
                                        ).link
 
-     #   context.chat_data["polls_previous_date"] = now()
-        print("inserrrrt") #IF NOT EXISTS
+        #   context.chat_data["polls_previous_date"] = now()
+        print("inserrrrt")  # IF NOT EXISTS
         cur.execute("CREATE TABLE bot_data (previous_link TEXT, previous_timestamp BIGINT);")
-        cur.execute("INSERT INTO bot_data VALUES (%s,%s);",(msg, now()))
-
+        cur.execute("INSERT INTO bot_data VALUES ({},{});".format(msg, now()))
 
         try:
             cur.execute('SELECT * FROM bot_data;')
