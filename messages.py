@@ -275,7 +275,7 @@ def polls(update: Update, context: CallbackContext):  # GROUP
 
     #    cur.execute("CREATE TABLE  bot_data (previous_link TEXT, previous_timestamp BIGINT, key INT,  "
     #                "PRIMARY KEY (key));") #IF NOT EXISTS
-        cur.execute("INSERT INTO bot_data VALUES (%s,%s);", (msg, now()))
+        cur.execute("INSERT INTO bot_data VALUES (%s,%s,%s);", (msg, now(),1))
 
         ###polls go here f
 
