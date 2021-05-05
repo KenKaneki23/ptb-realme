@@ -254,25 +254,25 @@ def polls(update: Update, context: CallbackContext):  # GROUP
 
         current_time = now()
 
-        if update.message.from_user.id in VERIFIED_USERS \
-               and int(previous_timestamp) + 20000 < current_time:  # 3628800000 < now():  ###enable again !!
+        if update.message.from_user.id in VERIFIED_USERS and previous_timestamp\
+                and int(previous_timestamp) + 20000 < current_time:  # 3628800000 < now():  ###enable again !!
 
             update.message.delete()
             print("--- sending new poll")
 
             msg = context.bot.send_message(OFFTOPIC_GROUP, "Hey Realme Fans!"
                                                            "\n\n<b>It's once again time for Poll-Five 🖐️</b> "
-                                                           "\n\nThis idea came up in @realme_offtopic a few days ago and I "
-                                                           "immediately implemented it. It could just be interesting to "
-                                                           "see what the "
-                                                           "community thinks about certain topics. "
-                                                           "\n\nCredits go to all the ones who brought up the following "
-                                                           "questions. "
+                                                           "\n\nThis idea came up in @realme_offtopic a few days ago "
+                                                           "and I immediately implemented it. It could just be "
+                                                           "interesting to see what the community thinks about "
+                                                           "certain topics. "
+                                                           "\n\nCredits go to all the ones who brought up the "
+                                                           "following questions. "
                                                            "\n\nHope you enjoy it!",
                                            parse_mode=ParseMode.HTML
                                            ).link
 
-            cur.execute("UPDATE bot_data SET previous_link=%s, previous_timestamp=%s WHERE key=1;", (msg,current_time))
+            cur.execute("UPDATE bot_data SET previous_link=%s, previous_timestamp=%s WHERE key=1;", (msg, current_time))
 
             ###polls go here f
 
