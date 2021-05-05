@@ -247,8 +247,6 @@ def polls(update: Update, context: CallbackContext):  # GROUP
     except psycopg2.Error as e:
         print(e)
         pass
-    finally:
-        cur.close()
 
     print(previous_timestamp)
 
