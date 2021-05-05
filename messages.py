@@ -236,52 +236,63 @@ def android11(update: Update, context: CallbackContext):
 
 
 def polls(update: Update, context: CallbackContext):  # GROUP
-
     con = psycopg2.connect(DATABASE_URL)
-    #  conn = psycopg2.connect(DATABASE_URL, sslmode='require')
-
     cur = con.cursor()
 
-    #  print(cur.execute('SELECT * FROM bot_data'))
+    previous_timestamp=None
 
-    if update.message.from_user.id in VERIFIED_USERS:
+    try:
+        cur.execute('SELECT previous_timestamp FROM bot_data;')
+        previous_timestamp = cur.fetchone()
+    except psycopg2.Error as e:
+        print(e)
+        pass
+    finally:
+        cur.close()
+
+    print(previous_timestamp)
+
+    if update.message.from_user.id in VERIFIED_USERS \
+            and previous_timestamp + 20000 <now(): #3628800000 < now():  ###enable again !!
+
         update.message.delete()
-        #  and context.chat_data["polls_previous_date"] + 3628800000 < now(): ###enable again !!
 
         msg = context.bot.send_message(OFFTOPIC_GROUP, "Hey Realme Fans!"
                                                        "\n\n<b>It's once again time for Poll-Five 🖐️</b> "
                                                        "\n\nThis idea came up in @realme_offtopic a few days ago and I "
-                                                       "immediately implemented it. It could just be interesting to see what the "
+                                                       "immediately implemented it. It could just be interesting to "
+                                                       "see what the "
                                                        "community thinks about certain topics. "
-                                                       "\n\nCredits go to all the ones who brought up the following questions. "
+                                                       "\n\nCredits go to all the ones who brought up the following "
+                                                       "questions. "
                                                        "\n\nHope you enjoy it!",
                                        parse_mode=ParseMode.HTML
                                        ).link
 
-        #   context.chat_data["polls_previous_date"] = now()
-        print("inserrrrt")  # IF NOT EXISTS
-        cur.execute("CREATE TABLE bot_data (previous_link TEXT, previous_timestamp BIGINT);")
-        cur.execute("INSERT INTO bot_data VALUES ({},{});".format(msg, now()))
-
-        try:
-            cur.execute('SELECT * FROM bot_data;')
-            print(cur.fetchone())
-        except psycopg2.Error as e:
-            pass
-        finally:
-            cur.close()
+        cur.execute("CREATE TABLE IF NOT EXISTS bot_data (previous_link TEXT, previous_timestamp BIGINT);")
+        cur.execute("INSERT INTO bot_data VALUES (%s,%s);", (msg, now()))
 
         ###polls go here f
 
     else:
-        print(context.chat_data["polls_previous_link"])
+        previous_link = None
+
+        try:
+            cur.execute('SELECT previous_link FROM bot_data;')
+            previous_link = cur.fetchone()
+        except psycopg2.Error as e:
+            print(e)
+            pass
+        finally:
+            cur.close()
+
         delay_group(update, context,
                     "<b>Poll-Five</b> 🖐️"
                     "\n\nThis idea came up in @realme_offtopic. We thought it could just be interesting to see what "
                     "the community thinks about certain topics. "
                     "\n\nCredits go to all the ones who brought up the questions."
                     "\n\n<a href='{}'>current poll</a>"
-                    .format(context.chat_data["polls_previous_link"]))
+                    .format(previous_link))
 
 #  context.bot.send_message(OFFTOPIC_GROUP, "date: {} - link: {}".format(context.chat_data["polls_previous_date"],
 #                                                                        context.chat_data["polls_previous_link"]))
