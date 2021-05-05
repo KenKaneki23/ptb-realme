@@ -254,7 +254,7 @@ def polls(update: Update, context: CallbackContext):  # GROUP
         print(e)
         pass
     finally:
-        print("finally: "+previous_timestamp)
+        print("finally: "+str(previous_timestamp))
    #     cur.close()
 
     print(previous_timestamp)
