@@ -248,7 +248,7 @@ def polls(update: Update, context: CallbackContext):  # GROUP
     print("------------")
 
     try:
-        cur.execute('SELECT previous_timestamp FROM bot_data;') # WHERE key=1
+        cur.execute('SELECT previous_timestamp FROM bot_data WHERE key=1;') # WHERE key=1
         previous_timestamp = cur.fetchone()
     except psycopg2.Error as e:
         print(e)
