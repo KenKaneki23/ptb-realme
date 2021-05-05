@@ -236,7 +236,7 @@ def android11(update: Update, context: CallbackContext):
 
 
 def polls(update: Update, context: CallbackContext):  # GROUP
-    con = psycopg2.connect(DATABASE_URL)
+    con = psycopg2.connect(DATABASE_URL, ssl_require=True)
     cur = con.cursor()
 
     previous_timestamp = None
