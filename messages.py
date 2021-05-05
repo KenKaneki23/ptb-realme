@@ -254,7 +254,7 @@ def polls(update: Update, context: CallbackContext):  # GROUP
 
         current_time = now()
 
-        if update.message.from_user.id in VERIFIED_USERS and previous_timestamp\
+        if update.message.from_user.id in VERIFIED_USERS \
                 and int(previous_timestamp) + 20000 < current_time:  # 3628800000 < now():  ###enable again !!
 
             update.message.delete()
@@ -272,7 +272,13 @@ def polls(update: Update, context: CallbackContext):  # GROUP
                                            parse_mode=ParseMode.HTML
                                            ).link
 
-            cur.execute("UPDATE bot_data SET previous_link=%s, previous_timestamp=%s WHERE key=1;", (msg, current_time))
+            try:
+                cur.execute("UPDATE bot_data SET previous_link=%s, previous_timestamp=%s WHERE key=1;",
+                            (msg, current_time))
+            except psycopg2.Error as e:
+                print(e)
+            finally:
+                print(f"finally UPDATE")
 
             ###polls go here f
 
@@ -291,14 +297,14 @@ def polls(update: Update, context: CallbackContext):  # GROUP
 
             delay_group(update, context,
                         "<b>Poll-Five</b> 🖐️"
-                        "\n\nThis idea came up in @realme_offtopic. We thought it could just be interesting to see what "
-                        "the community thinks about certain topics. "
+                        "\n\nThis idea came up in @realme_offtopic. We thought it could just be interesting to see "
+                        "what the community thinks about certain topics. "
                         "\n\nCredits go to all the ones who brought up the questions."
                         "\n\n<a href='{}'>current poll</a>"
                         .format(previous_link))
     #     cur.close()
 
-    print(previous_timestamp)
+    print("END ---- " + str(previous_timestamp))
 
 #  context.bot.send_message(OFFTOPIC_GROUP, "date: {} - link: {}".format(context.chat_data["polls_previous_date"],
 #                                                                        context.chat_data["polls_previous_link"]))
