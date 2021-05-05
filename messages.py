@@ -252,8 +252,8 @@ def polls(update: Update, context: CallbackContext):  # GROUP
 
     print(previous_timestamp)
 
-    if update.message.from_user.id in VERIFIED_USERS \
-            and int(previous_timestamp) + 20000 < now():  # 3628800000 < now():  ###enable again !!
+    if update.message.from_user.id in VERIFIED_USERS : #\
+           # and int(previous_timestamp) + 20000 < now():  # 3628800000 < now():  ###enable again !!
 
         update.message.delete()
 
