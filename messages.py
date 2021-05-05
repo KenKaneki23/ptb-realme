@@ -251,7 +251,7 @@ def polls(update: Update, context: CallbackContext):  # GROUP
     except psycopg2.Error as e:
         print(e)
     finally:
-        print(f"finally: {previous_timestamp}")
+        print(f"finally TIMESTAMP: {previous_timestamp}")
 
         if update.message.from_user.id in VERIFIED_USERS \
             and int(previous_timestamp) + 20000 < now():  # 3628800000 < now():  ###enable again !!
@@ -278,11 +278,12 @@ def polls(update: Update, context: CallbackContext):  # GROUP
             previous_link = None
 
             try:
-                cur.execute('SELECT previous_link FROM bot_data;')
-                previous_link = cur.fetchone()
+                cur.execute("SELECT previous_link FROM bot_data WHERE key=1;")
+                (previous_link,) = next(cur, (None,))
             except psycopg2.Error as e:
                 print(e)
-                pass
+            finally:
+                print(f"finally LINK: {previous_link}")
 
             delay_group(update, context,
                         "<b>Poll-Five</b> 🖐️"
