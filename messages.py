@@ -256,6 +256,7 @@ def polls(update: Update, context: CallbackContext):  # GROUP
                and int(previous_timestamp) + 20000 < now():  # 3628800000 < now():  ###enable again !!
 
             update.message.delete()
+            print("--- sending new poll")
 
             msg = context.bot.send_message(OFFTOPIC_GROUP, "Hey Realme Fans!"
                                                            "\n\n<b>It's once again time for Poll-Five 🖐️</b> "
@@ -274,6 +275,8 @@ def polls(update: Update, context: CallbackContext):  # GROUP
             ###polls go here f
 
         else:
+            print("--- sending poll message")
+
             previous_link = None
 
             try:
