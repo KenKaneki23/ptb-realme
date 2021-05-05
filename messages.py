@@ -269,7 +269,8 @@ def polls(update: Update, context: CallbackContext):  # GROUP
                                        parse_mode=ParseMode.HTML
                                        ).link
 
-        cur.execute("CREATE TABLE IF NOT EXISTS bot_data (previous_link TEXT, previous_timestamp BIGINT);")
+        cur.execute("CREATE TABLE  bot_data (previous_link TEXT, previous_timestamp BIGINT, key INT,  "
+                    "PRIMARY KEY (key));") #IF NOT EXISTS
         cur.execute("INSERT INTO bot_data VALUES (%s,%s);", (msg, now()))
 
         ###polls go here f
