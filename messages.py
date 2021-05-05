@@ -241,7 +241,7 @@ def polls(update: Update, context: CallbackContext):  # GROUP
 
     previous_timestamp = None
 
-    cur.execute("drop bot_data;")
+    cur.execute("drop table bot_data;")
 
     cur.execute("CREATE TABLE  bot_data (previous_link TEXT, previous_timestamp BIGINT, key INT,  "
                 "PRIMARY KEY (key));")
