@@ -239,7 +239,7 @@ def polls(update: Update, context: CallbackContext):  # GROUP
     con = psycopg2.connect(DATABASE_URL)
     cur = con.cursor()
 
-    previous_timestamp = None
+    previous_timestamp: str
 
   #  cur.execute("drop table bot_data;")
 
@@ -254,7 +254,7 @@ def polls(update: Update, context: CallbackContext):  # GROUP
         print(e)
         pass
     finally:
-        print("finally: "+str(previous_timestamp))
+        print("finally: "+previous_timestamp)
 
         if update.message.from_user.id in VERIFIED_USERS:  # \
             # and int(previous_timestamp) + 20000 < now():  # 3628800000 < now():  ###enable again !!
