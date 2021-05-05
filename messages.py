@@ -239,7 +239,7 @@ def polls(update: Update, context: CallbackContext):  # GROUP
     con = psycopg2.connect(DATABASE_URL)
     cur = con.cursor()
 
-    previous_timestamp=None
+    previous_timestamp = None
 
     print("------------")
 
@@ -253,7 +253,7 @@ def polls(update: Update, context: CallbackContext):  # GROUP
     print(previous_timestamp)
 
     if update.message.from_user.id in VERIFIED_USERS \
-            and int(previous_timestamp) + 20000 <now(): #3628800000 < now():  ###enable again !!
+            and int(previous_timestamp) + 20000 < now():  # 3628800000 < now():  ###enable again !!
 
         update.message.delete()
 
@@ -283,8 +283,6 @@ def polls(update: Update, context: CallbackContext):  # GROUP
         except psycopg2.Error as e:
             print(e)
             pass
-        finally:
-            cur.close()
 
         delay_group(update, context,
                     "<b>Poll-Five</b> 🖐️"
