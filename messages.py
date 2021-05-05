@@ -241,33 +241,20 @@ def polls(update: Update, context: CallbackContext):  # GROUP
 
     previous_timestamp = None
 
-    #  cur.execute("drop table bot_data;")
+    # cur.execute("CREATE TABLE IF NOT EXISTS bot_data (previous_link TEXT, previous_timestamp BIGINT, key INT,
+    # PRIMARY KEY (key));")
 
-    #   cur.execute("CREATE TABLE  bot_data (previous_link TEXT, previous_timestamp BIGINT, key INT, PRIMARY KEY (key));")
-
-    print("------------")
-
-    #    try:
-    #      cur.execute('SELECT previous_timestamp FROM bot_data WHERE key=1;') # WHERE key=1
-    #      previous_timestamp = cur.fetchone()
-    #   except psycopg2.Error as e:
-    #       print(e)
-    #       pass
-    #   finally:
-    #      print("finally: "+str(previous_timestamp))
 
     try:
-        cur.execute(
-            "SELECT previous_timestamp FROM bot_data WHERE key=1;"
-        )  # WHERE key=1
+        cur.execute("SELECT previous_timestamp FROM bot_data WHERE key=1;")
         (previous_timestamp,) = next(cur, (None,))
     except psycopg2.Error as e:
         print(e)
     finally:
         print(f"finally: {previous_timestamp}")
 
-        if update.message.from_user.id in VERIFIED_USERS:  # \
-            # and int(previous_timestamp) + 20000 < now():  # 3628800000 < now():  ###enable again !!
+        if update.message.from_user.id in VERIFIED_USERS \
+            and int(previous_timestamp) + 20000 < now():  # 3628800000 < now():  ###enable again !!
 
             update.message.delete()
 
@@ -283,9 +270,6 @@ def polls(update: Update, context: CallbackContext):  # GROUP
                                            parse_mode=ParseMode.HTML
                                            ).link
 
-            #    cur.execute("CREATE TABLE  bot_data (previous_link TEXT, previous_timestamp BIGINT, key INT,  "
-            #                "PRIMARY KEY (key));") #IF NOT EXISTS
-         #   cur.execute("INSERT INTO bot_data VALUES (%s,%s,%s);", (msg, now(), 1))
             cur.execute("UPDATE bot_data SET previous_link=%s,previous_timestamp=%s WHERE key=1;", (msg, now()))
 
             ###polls go here f
