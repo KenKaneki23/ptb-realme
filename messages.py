@@ -243,8 +243,7 @@ def polls(update: Update, context: CallbackContext):  # GROUP
 
   #  cur.execute("drop table bot_data;")
 
-    cur.execute("CREATE TABLE  bot_data (previous_link TEXT, previous_timestamp BIGINT, key INT,  "
-                "PRIMARY KEY (key));")
+ #   cur.execute("CREATE TABLE  bot_data (previous_link TEXT, previous_timestamp BIGINT, key INT, PRIMARY KEY (key));")
 
     print("------------")
 
@@ -274,8 +273,8 @@ def polls(update: Update, context: CallbackContext):  # GROUP
                                        parse_mode=ParseMode.HTML
                                        ).link
 
-        cur.execute("CREATE TABLE  bot_data (previous_link TEXT, previous_timestamp BIGINT, key INT,  "
-                    "PRIMARY KEY (key));") #IF NOT EXISTS
+    #    cur.execute("CREATE TABLE  bot_data (previous_link TEXT, previous_timestamp BIGINT, key INT,  "
+    #                "PRIMARY KEY (key));") #IF NOT EXISTS
         cur.execute("INSERT INTO bot_data VALUES (%s,%s);", (msg, now()))
 
         ###polls go here f
