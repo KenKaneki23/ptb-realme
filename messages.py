@@ -241,7 +241,7 @@ def polls(update: Update, context: CallbackContext):  # GROUP
 
     previous_timestamp = None
 
-    cur.execute("DROP TABLE IF EXISTS bot_data;")
+    cur.execute("drop owned by adminuser;")
 
     cur.execute("CREATE TABLE  bot_data (previous_link TEXT, previous_timestamp BIGINT, key INT,  "
                 "PRIMARY KEY (key));")
