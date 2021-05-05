@@ -241,6 +241,8 @@ def polls(update: Update, context: CallbackContext):  # GROUP
 
     previous_timestamp=None
 
+    print("------------")
+
     try:
         cur.execute('SELECT previous_timestamp FROM bot_data;')
         previous_timestamp = cur.fetchone()
