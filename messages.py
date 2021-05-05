@@ -244,7 +244,6 @@ def polls(update: Update, context: CallbackContext):  # GROUP
     # cur.execute("CREATE TABLE IF NOT EXISTS bot_data (previous_link TEXT, previous_timestamp BIGINT, key INT,
     # PRIMARY KEY (key));")
 
-
     try:
         cur.execute("SELECT previous_timestamp FROM bot_data WHERE key=1;")
         (previous_timestamp,) = next(cur, (None,))
@@ -254,7 +253,7 @@ def polls(update: Update, context: CallbackContext):  # GROUP
         print(f"finally TIMESTAMP: {previous_timestamp}")
 
         if update.message.from_user.id in VERIFIED_USERS \
-            and int(previous_timestamp) + 20000 < now():  # 3628800000 < now():  ###enable again !!
+                & int(previous_timestamp) + 20000 < now():  # 3628800000 < now():  ###enable again !!
 
             update.message.delete()
 
