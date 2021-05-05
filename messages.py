@@ -255,50 +255,52 @@ def polls(update: Update, context: CallbackContext):  # GROUP
         pass
     finally:
         print("finally: "+str(previous_timestamp))
+
+        if update.message.from_user.id in VERIFIED_USERS:  # \
+            # and int(previous_timestamp) + 20000 < now():  # 3628800000 < now():  ###enable again !!
+
+            update.message.delete()
+
+            msg = context.bot.send_message(OFFTOPIC_GROUP, "Hey Realme Fans!"
+                                                           "\n\n<b>It's once again time for Poll-Five 🖐️</b> "
+                                                           "\n\nThis idea came up in @realme_offtopic a few days ago and I "
+                                                           "immediately implemented it. It could just be interesting to "
+                                                           "see what the "
+                                                           "community thinks about certain topics. "
+                                                           "\n\nCredits go to all the ones who brought up the following "
+                                                           "questions. "
+                                                           "\n\nHope you enjoy it!",
+                                           parse_mode=ParseMode.HTML
+                                           ).link
+
+            #    cur.execute("CREATE TABLE  bot_data (previous_link TEXT, previous_timestamp BIGINT, key INT,  "
+            #                "PRIMARY KEY (key));") #IF NOT EXISTS
+            cur.execute("INSERT INTO bot_data VALUES (%s,%s,%s);", (msg, now(), 1))
+
+            ###polls go here f
+
+        else:
+            previous_link = None
+
+            try:
+                cur.execute('SELECT previous_link FROM bot_data;')
+                previous_link = cur.fetchone()
+            except psycopg2.Error as e:
+                print(e)
+                pass
+
+            delay_group(update, context,
+                        "<b>Poll-Five</b> 🖐️"
+                        "\n\nThis idea came up in @realme_offtopic. We thought it could just be interesting to see what "
+                        "the community thinks about certain topics. "
+                        "\n\nCredits go to all the ones who brought up the questions."
+                        "\n\n<a href='{}'>current poll</a>"
+                        .format(previous_link))
    #     cur.close()
 
     print(previous_timestamp)
 
-    if update.message.from_user.id in VERIFIED_USERS : #\
-           # and int(previous_timestamp) + 20000 < now():  # 3628800000 < now():  ###enable again !!
 
-        update.message.delete()
-
-        msg = context.bot.send_message(OFFTOPIC_GROUP, "Hey Realme Fans!"
-                                                       "\n\n<b>It's once again time for Poll-Five 🖐️</b> "
-                                                       "\n\nThis idea came up in @realme_offtopic a few days ago and I "
-                                                       "immediately implemented it. It could just be interesting to "
-                                                       "see what the "
-                                                       "community thinks about certain topics. "
-                                                       "\n\nCredits go to all the ones who brought up the following "
-                                                       "questions. "
-                                                       "\n\nHope you enjoy it!",
-                                       parse_mode=ParseMode.HTML
-                                       ).link
-
-    #    cur.execute("CREATE TABLE  bot_data (previous_link TEXT, previous_timestamp BIGINT, key INT,  "
-    #                "PRIMARY KEY (key));") #IF NOT EXISTS
-        cur.execute("INSERT INTO bot_data VALUES (%s,%s,%s);", (msg, now(),1))
-
-        ###polls go here f
-
-    else:
-        previous_link = None
-
-        try:
-            cur.execute('SELECT previous_link FROM bot_data;')
-            previous_link = cur.fetchone()
-        except psycopg2.Error as e:
-            print(e)
-            pass
-
-        delay_group(update, context,
-                    "<b>Poll-Five</b> 🖐️"
-                    "\n\nThis idea came up in @realme_offtopic. We thought it could just be interesting to see what "
-                    "the community thinks about certain topics. "
-                    "\n\nCredits go to all the ones who brought up the questions."
-                    "\n\n<a href='{}'>current poll</a>"
-                    .format(previous_link))
 
 #  context.bot.send_message(OFFTOPIC_GROUP, "date: {} - link: {}".format(context.chat_data["polls_previous_date"],
 #                                                                        context.chat_data["polls_previous_link"]))
