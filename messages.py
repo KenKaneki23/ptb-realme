@@ -239,22 +239,32 @@ def polls(update: Update, context: CallbackContext):  # GROUP
     con = psycopg2.connect(DATABASE_URL)
     cur = con.cursor()
 
-    previous_timestamp: str
+    previous_timestamp = None
 
-  #  cur.execute("drop table bot_data;")
+    #  cur.execute("drop table bot_data;")
 
- #   cur.execute("CREATE TABLE  bot_data (previous_link TEXT, previous_timestamp BIGINT, key INT, PRIMARY KEY (key));")
+    #   cur.execute("CREATE TABLE  bot_data (previous_link TEXT, previous_timestamp BIGINT, key INT, PRIMARY KEY (key));")
 
     print("------------")
 
+    #    try:
+    #      cur.execute('SELECT previous_timestamp FROM bot_data WHERE key=1;') # WHERE key=1
+    #      previous_timestamp = cur.fetchone()
+    #   except psycopg2.Error as e:
+    #       print(e)
+    #       pass
+    #   finally:
+    #      print("finally: "+str(previous_timestamp))
+
     try:
-        cur.execute('SELECT previous_timestamp FROM bot_data WHERE key=1;') # WHERE key=1
-        previous_timestamp = cur.fetchone()
+        cur.execute(
+            "SELECT previous_timestamp FROM bot_data WHERE key=1;"
+        )  # WHERE key=1
+        (previous_timestamp,) = next(cur, (None,))
     except psycopg2.Error as e:
         print(e)
-        pass
     finally:
-        print("finally: "+previous_timestamp)
+        print(f"finally: {previous_timestamp}")
 
         if update.message.from_user.id in VERIFIED_USERS:  # \
             # and int(previous_timestamp) + 20000 < now():  # 3628800000 < now():  ###enable again !!
@@ -296,11 +306,9 @@ def polls(update: Update, context: CallbackContext):  # GROUP
                         "\n\nCredits go to all the ones who brought up the questions."
                         "\n\n<a href='{}'>current poll</a>"
                         .format(previous_link))
-   #     cur.close()
+    #     cur.close()
 
     print(previous_timestamp)
-
-
 
 #  context.bot.send_message(OFFTOPIC_GROUP, "date: {} - link: {}".format(context.chat_data["polls_previous_date"],
 #                                                                        context.chat_data["polls_previous_link"]))
