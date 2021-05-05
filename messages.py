@@ -252,8 +252,10 @@ def polls(update: Update, context: CallbackContext):  # GROUP
     finally:
         print(f"finally TIMESTAMP: {previous_timestamp}")
 
+        current_time = now()
+
         if update.message.from_user.id in VERIFIED_USERS \
-               and int(previous_timestamp) + 20000 < now():  # 3628800000 < now():  ###enable again !!
+               and int(previous_timestamp) + 20000 < current_time:  # 3628800000 < now():  ###enable again !!
 
             update.message.delete()
             print("--- sending new poll")
@@ -270,7 +272,7 @@ def polls(update: Update, context: CallbackContext):  # GROUP
                                            parse_mode=ParseMode.HTML
                                            ).link
 
-            cur.execute("UPDATE bot_data SET previous_link=%s,previous_timestamp=%s WHERE key=1;", (msg, now()))
+            cur.execute("UPDATE bot_data SET previous_link=%s, previous_timestamp=%s WHERE key=1;", (msg,current_time))
 
             ###polls go here f
 
