@@ -42,13 +42,23 @@ def delay_group_button_url(update: Update, context: CallbackContext, text, butto
     context.job_queue.run_once(delete, 600, update.message.chat_id, str(reply_message.message_id))
 
 
-def delay_group(update: Update, context, text):
+def delay_group_show_link(update: Update, context, text):  # check if some messages should migrate to it
     update.message.delete()
 
     if update.message.reply_to_message:
         update.message.reply_to_message.reply_text(text, ParseMode.HTML)
     else:
         reply_message = context.bot.send_message(update.message.chat_id, text, ParseMode.HTML)
+        context.job_queue.run_once(delete, 600, reply_message.chat_id, str(reply_message.message_id))
+
+
+def delay_group(update: Update, context, text):
+    update.message.delete()
+
+    if update.message.reply_to_message:
+        update.message.reply_to_message.reply_text(text, ParseMode.HTML, True)
+    else:
+        reply_message = context.bot.send_message(update.message.chat_id, text, ParseMode.HTML, True)
         context.job_queue.run_once(delete, 600, reply_message.chat_id, str(reply_message.message_id))
 
 

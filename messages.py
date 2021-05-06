@@ -246,12 +246,10 @@ def debloat(update: Update, context: CallbackContext):
                 "\n\n2. Enable USB-Debugging on your device, plug your phone into the Computer"
                 "\n\n3. Open the command prompt and type in <code>adb shell</code> and then <code>adb devices</code> "
                 "and make sure yours is listed there. "
-                "\n\nMake sure you know exactly what Application you want to remove! Some are required by the system "
-                "and might make it unstable or result in a crash. "
+                "\n\n<b>Make sure you know exactly what Application you want to remove! Some are required by the "
+                "system and might make it unstable or result in a crash.</b>"
                 "\n\n4. To uninstall apps type in <code>pm uninstall -k --user 0 PACKAGE-NAME</code> - for example: "
-                "<code>pm uninstall -k --user 0 com.facebook.katana</code> "
-
-                )
+                "<code>pm uninstall -k --user 0 com.facebook.katana</code>")
 
 
 def polls(update: Update, context: CallbackContext):  # GROUP
