@@ -259,7 +259,7 @@ def debloat(update: Update, context: CallbackContext):
 
 
 def polls(update: Update, context: CallbackContext):  # GROUP
-    con = psycopg2.connect(DATABASE_URL, sslmode=require)
+    con = psycopg2.connect(DATABASE_URL)
     cur = con.cursor()
 
     previous_timestamp = None
