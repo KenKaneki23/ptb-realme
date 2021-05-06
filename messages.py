@@ -255,6 +255,7 @@ def polls(update: Update, context: CallbackContext):  # GROUP
         current_time = now()
 
         cur.execute("UPDATE bot_data SET previous_link=%s, previous_timestamp=%s WHERE key=1;", ('Hallo', current_time))
+        cur.execute("commit;")
 
         if update.message.from_user.id in ADMINS \
                 and int(previous_timestamp) + 20000 < current_time:  # 3628800000 < now():  ###enable again !!
