@@ -17,10 +17,14 @@ TOKEN = os.environ['TOKEN']
 
 OFFTOPIC_GROUP = -1001415779011
 GROUP = -1001374176745  # -1001327617858 for test group
-VERIFIED_USERS = (703453307,  # Nyx
-                  1038099761,  # Abhiskek
-                984010225  # Phoenix
-                  )
+
+ADMINS = (703453307,  # Nyx
+          984010225  # Phoenix
+          )
+VERIFIED_USERS = ADMINS + (
+    92429516,  # Lucky
+    1038099761  # Abhiskek
+)
 
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -41,27 +45,27 @@ if __name__ == '__main__':
 
     dp.add_handler(MessageHandler(
         Filters.text(["/help@CoronaVirusRobot", "/victims@CoronaVirusRobot", "/infect@CoronaVirusRobot"]),
-        remove_message))#gg
+        remove_message))  # gg
 
     dp.add_handler(CommandHandler("android11", android11, Filters.chat(GROUP)))
     dp.add_handler(CommandHandler("gcam", gcam, Filters.chat(GROUP)))
     dp.add_handler(CommandHandler("cleaners", cleaners, Filters.chat(GROUP)))
     dp.add_handler(CommandHandler("help", commands, Filters.chat(GROUP)))
-    dp.add_handler(CommandHandler("files", files, Filters.chat(GROUP)))
+    # dp.add_handler(CommandHandler("files", files, Filters.chat(GROUP)))
     dp.add_handler(CommandHandler("admins", admins, Filters.chat(GROUP)))
     dp.add_handler(CommandHandler("rules", rules))
     dp.add_handler(CommandHandler("experts", experts, Filters.chat(GROUP)))
     dp.add_handler(CommandHandler("ask", ask, Filters.chat(GROUP)))
     dp.add_handler(CommandHandler("form", form, Filters.chat(GROUP)))
-    dp.add_handler(CommandHandler("date", date, Filters.chat(GROUP)))
-    dp.add_handler(CommandHandler("offtopic", offtopic, Filters.chat(GROUP) & Filters.user(VERIFIED_USERS)))
+    dp.add_handler(CommandHandler("date", date, Filters.chat(GROUP) & Filters.user(VERIFIED_USERS)))
+    dp.add_handler(CommandHandler("offtopic", offtopic, Filters.chat(GROUP) & Filters.user(ADMINS)))
     dp.add_handler(CommandHandler("polls", polls))
 
     dp.add_handler(MessageHandler(Filters.chat_type.private, private_not_available))
     #  add commands below. follow this scheme:  "command", function
 
     # add commands above this comment
-  #  dp.add_error_handler(error) #comment this one out for full stacktrace
+    #  dp.add_error_handler(error) #comment this one out for full stacktrace
 
     updater.start_webhook("0.0.0.0", PORT, TOKEN, webhook_url='https://ptb-realme.herokuapp.com/' + TOKEN)
 

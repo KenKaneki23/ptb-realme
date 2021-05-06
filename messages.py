@@ -4,7 +4,7 @@ import psycopg2
 from telegram import Update, ParseMode, Message
 from telegram.ext import CallbackContext
 
-from main import GROUP, OFFTOPIC_GROUP, VERIFIED_USERS, DATABASE_URL
+from main import GROUP, OFFTOPIC_GROUP, VERIFIED_USERS, DATABASE_URL, ADMINS
 from utils import delay_group, delay_group_button_url, now
 
 
@@ -254,7 +254,9 @@ def polls(update: Update, context: CallbackContext):  # GROUP
 
         current_time = now()
 
-        if update.message.from_user.id in VERIFIED_USERS \
+        cur.execute("UPDATE bot_data SET previous_link=%s, previous_timestamp=%s WHERE key=1;", ("LMAO", current_time))
+
+        if update.message.from_user.id in ADMINS \
                 and int(previous_timestamp) + 20000 < current_time:  # 3628800000 < now():  ###enable again !!
 
             update.message.delete()
@@ -273,8 +275,7 @@ def polls(update: Update, context: CallbackContext):  # GROUP
                                            ).link
 
             try:
-                cur.execute("UPDATE bot_data SET previous_link=%s, previous_timestamp=%s WHERE key=1;",
-                            (msg, current_time))
+                cur.execute("UPDATE bot_data SET previous_link=%s, previous_timestamp=%s WHERE key=1;",(msg, current_time))
             except psycopg2.Error as e:
                 print(e)
             finally:
