@@ -237,12 +237,13 @@ def android11(update: Update, context: CallbackContext):
 
 def debloat(update: Update, context: CallbackContext):
     delay_group(update, context,
-                "<i>There's two major ways of having a device debloated: flashing a debloated Rom or rooting your "
-                "device and uninstalling things yourself. These methods void your warranty!</i> "
-                "\n\nIf you want some free space or block apps from running, try /cleaners"
+                "<u>Debloat</u>"
+                "<i>\n\nThere's two major ways of having a device debloated: flashing a debloated Rom or rooting your "
+                "device and uninstalling things yourself. These methods void your warranty and can be risky!</i> "
+                "\n\nIf you just want some free space or block apps from running, try /cleaners"
                 "\n\n\n<b>The alternative solution</b>"
-                "\n\n1. install ADB on your Computer · <a "
-                "href='https://www.xda-developers.com/install-adb-windows-macos-linux/'>XDA's Guide</a> "
+                "\n\n1. Install ADB on your Computer"
+                "\n<a href='https://www.xda-developers.com/install-adb-windows-macos-linux/'>XDA's Guide</a> "
                 "\n\n2. Enable USB-Debugging on your device, plug your phone into the Computer"
                 "\n\n3. Open the command prompt and type in <code>adb shell</code> and then <code>adb devices</code> "
                 "and make sure yours is listed there. "
