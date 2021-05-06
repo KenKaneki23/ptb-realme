@@ -55,6 +55,7 @@ if __name__ == '__main__':
     dp.add_handler(CommandHandler("admins", admins, Filters.chat(GROUP)))
     dp.add_handler(CommandHandler("rules", rules))
     dp.add_handler(CommandHandler("experts", experts, Filters.chat(GROUP)))
+    dp.add_handler(CommandHandler("debloat", debloat, Filters.chat(GROUP)))
     dp.add_handler(CommandHandler("ask", ask, Filters.chat(GROUP)))
     dp.add_handler(CommandHandler("form", form, Filters.chat(GROUP)))
     dp.add_handler(CommandHandler("date", date, Filters.chat(GROUP) & Filters.user(VERIFIED_USERS)))

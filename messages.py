@@ -235,6 +235,25 @@ def android11(update: Update, context: CallbackContext):
                 "\n\nRelax and wait what happens 😎")
 
 
+def debloat(update: Update, context: CallbackContext):
+    delay_group(update, context,
+                "<i>There's two major ways of having a device debloated: flashing a debloated Rom or rooting your "
+                "device and uninstalling things yourself. These methods void your warranty!</i> "
+                "\n\nIf you want some free space or block apps from running, try /cleaners"
+                "\n\n\n<b>The alternative solution</b>"
+                "\n\n1. install ADB on your Computer · <a "
+                "href='https://www.xda-developers.com/install-adb-windows-macos-linux/'>XDA's Guide</a> "
+                "\n\n2. Enable USB-Debugging on your device, plug your phone into the Computer"
+                "\n\n3. Open the command prompt and type in <code>adb shell</code> and then <code>adb devices</code> "
+                "and make sure yours is listed there. "
+                "\n\nMake sure you know exactly what Application you want to remove! Some are required by the system "
+                "and might make it unstable or result in a crash. "
+                "\n\n4. To uninstall apps type in <code>pm uninstall -k --user 0 PACKAGE-NAME</code> - for example: "
+                "<code>pm uninstall -k --user 0 com.facebook.katana</code> "
+
+                )
+
+
 def polls(update: Update, context: CallbackContext):  # GROUP
     con = psycopg2.connect(DATABASE_URL)
     cur = con.cursor()
@@ -255,7 +274,7 @@ def polls(update: Update, context: CallbackContext):  # GROUP
         current_time = now()
 
         cur.execute("UPDATE bot_data SET previous_link='Hallo', previous_timestamp=1234 WHERE key=1;")
-      #  cur.execute("UPDATE bot_data SET previous_link=%s, previous_timestamp=%s WHERE key=1;", ('Hallo', current_time))
+        #  cur.execute("UPDATE bot_data SET previous_link=%s, previous_timestamp=%s WHERE key=1;", ('Hallo', current_time))
         cur.execute("commit;")
 
         if update.message.from_user.id in ADMINS \
@@ -277,7 +296,8 @@ def polls(update: Update, context: CallbackContext):  # GROUP
                                            ).link
 
             try:
-                cur.execute("UPDATE bot_data SET previous_link=%s, previous_timestamp=%s WHERE key=1;",(msg, current_time))
+                cur.execute("UPDATE bot_data SET previous_link=%s, previous_timestamp=%s WHERE key=1;",
+                            (msg, current_time))
             except psycopg2.Error as e:
                 print(e)
             finally:
