@@ -5,7 +5,7 @@ from telegram import Update, ParseMode, Message
 from telegram.ext import CallbackContext
 
 from main import GROUP, OFFTOPIC_GROUP, VERIFIED_USERS, DATABASE_URL, ADMINS
-from utils import delay_group, delay_group_button_url, now
+from utils import delay_group, delay_group_button_url, now, delay_group_preview
 
 
 ##########################################
@@ -68,8 +68,10 @@ def commands(update: Update, context):
                 "\nList experts for different segments"
                 "\n\n<b>/gcam</b>"
                 "\nLatest GCam release and configurations"
-                "\n\n<b>/sdmaid</b>"
-                "\nLatest release of the best cleaner out there"
+                "\n\n<b>/cleaners</b>"
+                "\nCleaners to keep your storage free and more"
+                "\n\n<b>/debloat</b>"
+                "\nHow to remove unwanted Apps"
                 "\n\n<b>/android11</b>"
                 "\nOfficial roadmap for the Early Access of RealmeUI 2.0"
                 "\n\n<b>/ask</b>"
@@ -115,36 +117,36 @@ def experts(update: Update, context: CallbackContext):
 
 
 def gcam(update: Update, context: CallbackContext):
-    delay_group(update, context,
-                "<u>Google Camera</u>"
-                "\n\n<b>Releases</b>"
-                "\n· <a href='https://t.me/realme_support/113595'>PXv8.1_GCam-v1.2</a>"
-                "\n· <a href='https://t.me/realme_support/113609'>Urnyx05-v2.5</a>"
-                "\n\nUrnyx05's releases work well on most Realme devices. Take a look at @googlecameraport for other "
-                "releases."
-                "\n\n\n<b>Configurations</b>"
-                "\nTaken from <a href='https://www.celsoazevedo.com/files/android/google-camera/f/configs-urnyx-02"
-                "/'>Urnyx05's page</a>. These configurations are optimized for a specific device, but may work for "
-                "other devices aswell. Just give them a try 😊 "
-                "\n\n· <a href='https://t.me/realme_support/113610'>Realme 5 & 5 Pro</a>"
-                "\n· <a href='https://t.me/realme_support/113612'>Realme X2 Pro</a>"
-                "\n· <a href='https://t.me/realme_support/113614'>Realme X50 & X50 Pro</a>"
-                "\n· <a href='https://t.me/realme_support/113616'>Realme 6 & 6 Pro</a>"
-                "\n\nTo enable these configurations, place them in <b>Internal Storage > GCam > Configs7</b>."
-                "\n\nThen go to your GCam and press on the bottom left (next to the camera switch button) a few "
-                "times. A dialog should appear where your can select the desired configuration. "
-                "\n\nFeel free to fiddle around with LibPatcher (in GCam's settings) a little to shape the image "
-                "output so that it fits your needs.")
+    delay_group_preview(update, context,
+                        "<u>Google Camera</u>"
+                        "\n\n<b>Releases</b>"
+                        "\n· <a href='https://t.me/realme_support/113595'>PXv8.1_GCam-v1.2</a>"
+                        "\n· <a href='https://t.me/realme_support/113609'>Urnyx05-v2.5</a>"
+                        "\n\nUrnyx05's releases work well on most Realme devices. Take a look at @googlecameraport "
+                        "for other releases. "
+                        "\n\n\n<b>Configurations</b>"
+                        "\nTaken from <a href='https://www.celsoazevedo.com/files/android/google-camera/f/configs"
+                        "-urnyx-02/'>Urnyx05's page</a>. These configurations are optimized for a specific device, "
+                        "but may work for other devices aswell. Just give them a try 😊 "
+                        "\n\n· <a href='https://t.me/realme_support/113610'>Realme 5 & 5 Pro</a>"
+                        "\n· <a href='https://t.me/realme_support/113612'>Realme X2 Pro</a>"
+                        "\n· <a href='https://t.me/realme_support/113614'>Realme X50 & X50 Pro</a>"
+                        "\n· <a href='https://t.me/realme_support/113616'>Realme 6 & 6 Pro</a>"
+                        "\n\nTo enable these configurations, place them in <b>Internal Storage > GCam > Configs7</b>."
+                        "\n\nThen go to your GCam and press on the bottom left (next to the camera switch button) a "
+                        "few times. A dialog should appear where your can select the desired configuration. "
+                        "\n\nFeel free to fiddle around with LibPatcher (in GCam's settings) a little to shape the "
+                        "image output so that it fits your needs.")
 
 
 def cleaners(update: Update, context: CallbackContext):
-    delay_group(update, context,
-                "<u>Cleaners</u>"
-                "\n\n<b>SD Maid</b> · <a href='https://t.me/realme_support/122153'>Download 5.1.1</a>"
-                "\n\nThis is an excellent cleaning app, which also takes care of databases, duplicates, caches etc. "
-                "and enables you to freeze the apps you don't need."
-                "\n\n\n<b>Phone Manager</b> · <a href='https://t.me/realme_support/126160'>Download 8.6.1</a>"
-                "\n\nOfficial Cleaner by Realme. Requires Android 11.")
+    delay_group_preview(update, context,
+                        "<u>Cleaners</u>"
+                        "\n\n<b>SD Maid</b> · <a href='https://t.me/realme_support/122153'>Download 5.1.1</a>"
+                        "\n\nThis is an excellent cleaning app, which also takes care of databases, duplicates, "
+                        "caches etc. and enables you to freeze the apps you don't need. "
+                        "\n\n\n<b>Phone Manager</b> · <a href='https://t.me/realme_support/126160'>Download 8.6.1</a>"
+                        "\n\nOfficial Cleaner by Realme. Requires Android 11.")
 
 
 def rules(update: Update, context: CallbackContext):
@@ -220,19 +222,21 @@ def offtopic(update: Update, context: CallbackContext):
 
 
 def android11(update: Update, context: CallbackContext):
-    delay_group(update, context,
-                "<u>Realme UI 2.0</u>"
-                "\n\n<i>Early Access is there to test stuff. Testing is easier with a reduced userbase. Therefore it "
-                "will be rolled out to a limited number of people only 😉</i> "
-                "\n\n· <a href='https://static.c.realme.com/IN/wm-thread/1374937652238790656.png'>Current Roadmap</a> "
-                "\n\n· <a href='https://static.c.realme.com/IN/wm-thread/1369542731847704576.jpg'>Previous Roadmap</a> "
-                "\n\n<b>Early Access</b>"
-                "\nThe timeline is for the first wave of early access rollout only. The version for the corresponding "
-                "model will be released within the above mentioned month in batches, not at the beginning of the "
-                "month."
-                "\n\n<b>Stable release</b>"
-                "\nWill be pushed to all users over a period of time, a few months after early access."
-                "\n\nRelax and wait what happens 😎")
+    delay_group_preview(update, context,
+                        "<u>Realme UI 2.0</u>"
+                        "\n\n<i>Early Access is there to test stuff. Testing is easier with a reduced userbase. "
+                        "Therefore it will be rolled out to a limited number of people only 😉</i> "
+                        "\n\n· <a href='https://static.c.realme.com/IN/wm-thread/1374937652238790656.png'>Current "
+                        "Roadmap</a> "
+                        "\n\n· <a href='https://static.c.realme.com/IN/wm-thread/1369542731847704576.jpg'>Previous "
+                        "Roadmap</a> "
+                        "\n\n<b>Early Access</b>"
+                        "\nThe timeline is for the first wave of early access rollout only. The version for the "
+                        "corresponding model will be released within the above mentioned month in batches, "
+                        "not at the beginning of the month. "
+                        "\n\n<b>Stable release</b>"
+                        "\nWill be pushed to all users over a period of time, a few months after early access."
+                        "\n\nRelax and wait what happens 😎")
 
 
 def debloat(update: Update, context: CallbackContext):
@@ -273,7 +277,8 @@ def polls(update: Update, context: CallbackContext):  # GROUP
         current_time = now()
 
         cur.execute("UPDATE bot_data SET previous_link='Hallo', previous_timestamp=1234 WHERE key=1;")
-        #  cur.execute("UPDATE bot_data SET previous_link=%s, previous_timestamp=%s WHERE key=1;", ('Hallo', current_time))
+        # cur.execute("UPDATE bot_data SET previous_link=%s, previous_timestamp=%s WHERE key=1;", ('Hallo',
+        # current_time))
         cur.execute("commit;")
 
         if update.message.from_user.id in ADMINS \
