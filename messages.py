@@ -1,6 +1,7 @@
 import time
 
 import psycopg2
+from pkg_resources import require
 from telegram import Update, ParseMode, Message
 from telegram.ext import CallbackContext
 
@@ -258,7 +259,7 @@ def debloat(update: Update, context: CallbackContext):
 
 
 def polls(update: Update, context: CallbackContext):  # GROUP
-    con = psycopg2.connect(DATABASE_URL)
+    con = psycopg2.connect(DATABASE_URL, sslmode=require)
     cur = con.cursor()
 
     previous_timestamp = None
