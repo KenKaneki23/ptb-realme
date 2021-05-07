@@ -283,7 +283,7 @@ def polls(update: Update, context: CallbackContext):  # GROUP
      #   con.commit()
 
         if update.message.from_user.id in ADMINS \
-                and int(previous_timestamp) + 100000 < current_time:  # 3628800000 < now():  ###enable again !!
+                and int(previous_timestamp) + 36000000 < current_time:  # 3628800000 < now():  ###enable again !!
 
             update.message.delete()
             print("--- sending new poll")
