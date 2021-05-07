@@ -309,7 +309,7 @@ def polls(update: Update, context: CallbackContext):  # GROUP
             finally:
                 print(f"finally UPDATE")
 
-            ###polls go here f
+            ###polls go here fg
 
         else:
             print("--- sending poll message")
