@@ -277,10 +277,10 @@ def polls(update: Update, context: CallbackContext):  # GROUP
 
         current_time = now()
 
-        cur.execute("UPDATE bot_data SET previous_link='Hallo', previous_timestamp=1234 WHERE key=1;")
+    #    cur.execute("UPDATE bot_data SET previous_link='Hallo', previous_timestamp=1234 WHERE key=1;")
         # cur.execute("UPDATE bot_data SET previous_link=%s, previous_timestamp=%s WHERE key=1;", ('Hallo',
         # current_time))
-        con.commit()
+     #   con.commit()
 
         if update.message.from_user.id in ADMINS \
                 and int(previous_timestamp) + 20000 < current_time:  # 3628800000 < now():  ###enable again !!
@@ -303,6 +303,7 @@ def polls(update: Update, context: CallbackContext):  # GROUP
             try:
                 cur.execute("UPDATE bot_data SET previous_link=%s, previous_timestamp=%s WHERE key=1;",
                             (msg, current_time))
+                con.commit()
             except psycopg2.Error as e:
                 print(e)
             finally:
