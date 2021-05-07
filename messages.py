@@ -362,7 +362,7 @@ def polls(update: Update, context: CallbackContext):  # GROUP
 def postgress2(update: Update, context: CallbackContext):
     print("-------")
     context.bot_data["huuu"] = "nothing yet"
-    update.message.reply_text("WWWW: " + context.bot_data["huuu"])
+    update.message.reply_text("initial: " + context.bot_data["huuu"])
     print("msg: " + update.message.text)
     print("1: " + context.bot_data["huuu"])
     context.bot_data["huuu"] = update.message.text
