@@ -1,11 +1,10 @@
 import time
 
 import psycopg2
-from pkg_resources import require
-from telegram import Update, ParseMode, Message
+from telegram import Update, ParseMode
 from telegram.ext import CallbackContext
 
-from main import GROUP, OFFTOPIC_GROUP, VERIFIED_USERS, DATABASE_URL, ADMINS
+from main import GROUP, OFFTOPIC_GROUP, DATABASE_URL, ADMINS
 from utils import delay_group, delay_group_button_url, now, delay_group_preview
 
 
@@ -358,3 +357,9 @@ def polls(update: Update, context: CallbackContext):  # GROUP
     # cur.close()
 
     print("END ---- " + str(previous_timestamp))
+
+
+def postgress2 (update: Update, context: CallbackContext):
+    update.message.reply_to_message.reply_text("WWWW: "+context.bot_data["huuu"])
+
+    context.bot_data["huuu"] = update.message.text

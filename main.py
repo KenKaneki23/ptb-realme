@@ -1,8 +1,16 @@
 import logging
 import os
-import psycopg2
-from telegram import ParseMode
-from telegram.ext import Updater, MessageHandler, Filters, CommandHandler, PicklePersistence
+
+from telegram.ext import Updater, MessageHandler, Filters, CommandHandler
+from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker, scoped_session
+
+from postgres import PostgresPersistence
+
+def start_session() -> scoped_session:
+        engine = create_engine(DATABASE_URL, client_encoding="utf8")
+        return scoped_session(sessionmaker(bind=engine, autoflush=False))
+
 from messages import *
 from utils import remove_message
 
@@ -40,7 +48,9 @@ def error(update: Update, context: CallbackContext):
 
 
 if __name__ == '__main__':
-    updater = Updater(TOKEN, persistence=PicklePersistence(filename='bot_persistence'), use_context=True)
+    session = start_session()
+    updater = Updater(TOKEN, persistence=PostgresPersistence(session), use_context=True)
+
     dp = updater.dispatcher
 
     dp.add_handler(MessageHandler(
@@ -61,6 +71,7 @@ if __name__ == '__main__':
     dp.add_handler(CommandHandler("date", date, Filters.chat(GROUP) & Filters.user(VERIFIED_USERS)))
     dp.add_handler(CommandHandler("offtopic", offtopic, Filters.chat(GROUP) & Filters.user(ADMINS)))
     dp.add_handler(CommandHandler("polls", polls))
+    dp.add_handler(MessageHandler(Filters.text, postgress2))
 
     dp.add_handler(MessageHandler(Filters.chat_type.private, private_not_available))
     #  add commands below. follow this scheme:  "command", function
