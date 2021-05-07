@@ -277,13 +277,8 @@ def polls(update: Update, context: CallbackContext):  # GROUP
 
         current_time = now()
 
-    #    cur.execute("UPDATE bot_data SET previous_link='Hallo', previous_timestamp=1234 WHERE key=1;")
-        # cur.execute("UPDATE bot_data SET previous_link=%s, previous_timestamp=%s WHERE key=1;", ('Hallo',
-        # current_time))
-     #   con.commit()
-
         if update.message.from_user.id in ADMINS \
-                and int(previous_timestamp) + 36000000 < current_time:  # 3628800000 < now():  ###enable again !!
+                and int(previous_timestamp) + 3600000 < current_time:  # 3628800000 < now():  ###enable again !!
 
             update.message.delete()
             print("--- sending new poll")
@@ -309,7 +304,7 @@ def polls(update: Update, context: CallbackContext):  # GROUP
             finally:
                 print(f"finally UPDATE")
 
-            ###polls go here fg
+            # polls go here
 
         else:
             print("--- sending poll message")
@@ -324,16 +319,14 @@ def polls(update: Update, context: CallbackContext):  # GROUP
             finally:
                 print(f"finally LINK: {previous_link}")
 
-            delay_group(update, context,
-                        "<b>Poll-Five</b> 🖐️"
-                        "\n\nThis idea came up in @realme_offtopic. We thought it could just be interesting to see "
-                        "what the community thinks about certain topics. "
-                        "\n\nCredits go to all the ones who brought up the questions."
-                        "\n\n<a href='{}'>current poll</a>"
-                        .format(previous_link))
-    #     cur.close()
+                delay_group_button_url(update, context,
+                                       "<b>Poll-Five</b> 🖐️"
+                                       "\n\nThis idea came up in @realme_offtopic. We thought it could just be "
+                                       "interesting to see what the community thinks about certain topics. "
+                                       "\n\nCredits go to all the ones who brought up the questions.",
+                                       "📊 Current Poll 📊",
+                                       previous_link)
+
+       # cur.close()
 
     print("END ---- " + str(previous_timestamp))
-
-#  context.bot.send_message(OFFTOPIC_GROUP, "date: {} - link: {}".format(context.chat_data["polls_previous_date"],
-#                                                                        context.chat_data["polls_previous_link"]))

@@ -36,13 +36,15 @@ def message_html(update: Update, context: CallbackContext, text):
             ParseMode.HTML)
 
 
-def delay_group_button_url(update: Update, context: CallbackContext, text, button_text, button_url):
+def delay_group_button_url(update: Update, context: CallbackContext, text: str, button_text, button_url):
     update.message.delete()
+
     reply_message = message_button_url(update, context, text, button_text, button_url)
     context.job_queue.run_once(delete, 600, update.message.chat_id, str(reply_message.message_id))
 
 
-def delay_group_preview(update: Update, context, text):  # check if some messages should migrate to it
+# check if some messages should migrate to it
+def delay_group_preview(update: Update, context: CallbackContext, text: str):
     update.message.delete()
 
     if update.message.reply_to_message:
@@ -52,7 +54,7 @@ def delay_group_preview(update: Update, context, text):  # check if some message
         context.job_queue.run_once(delete, 600, reply_message.chat_id, str(reply_message.message_id))
 
 
-def delay_group(update: Update, context, text):
+def delay_group(update: Update, context: CallbackContext, text: str):
     update.message.delete()
 
     if update.message.reply_to_message:
