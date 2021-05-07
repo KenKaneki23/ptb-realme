@@ -366,4 +366,5 @@ def postgress2(update: Update, context: CallbackContext):
     print("msg: " + update.message.text)
     print("1: " + context.bot_data["huuu"])
     context.bot_data["huuu"] = update.message.text
+    update.message.reply_text("Second one with update from DB" + context.bot_data["huuu"])
     print(context.bot_data["huuu"])
