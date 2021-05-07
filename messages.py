@@ -282,7 +282,7 @@ def polls(update: Update, context: CallbackContext):  # GROUP
             update.message.delete()
             print("--- sending new poll")
 
-            msg = context.bot.send_message(OFFTOPIC_GROUP, "Hey Realme Fans!"
+            msg = context.bot.send_message(GROUP, "Hey Realme Fans!"
                                                            "\n\n<b>It's once again time for Poll-Five 🖐️</b> "
                                                            "\n\nThis idea came up in @realme_offtopic a few days ago "
                                                            "and I immediately implemented it. It could just be "
