@@ -8,7 +8,7 @@ from sqlalchemy.orm import sessionmaker, scoped_session
 from postgres import PostgresPersistence
 
 def start_session() -> scoped_session:
-        engine = create_engine("postgresql://"+DATABASE_URL, client_encoding="utf8")
+        engine = create_engine(DATABASE_URL, client_encoding="utf8")
         return scoped_session(sessionmaker(bind=engine, autoflush=False))
 
 from messages import *
