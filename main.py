@@ -1,18 +1,21 @@
 import logging
 import os
 
-from telegram.ext import Updater, MessageHandler, Filters, CommandHandler
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, scoped_session
-
-from postgres import PostgresPersistence
-
-def start_session() -> scoped_session:
-        engine = create_engine("postgresql://blpxjuiwemaqpm:4c9a03691098bb7a6f615d510652c7c355b030da52e24b2cb48653a145082205@ec2-54-220-35-19.eu-west-1.compute.amazonaws.com:5432/dcu1jgmr7u3uv3", client_encoding="utf8")
-        return scoped_session(sessionmaker(bind=engine, autoflush=False))
+from telegram.ext import Updater, MessageHandler, Filters, CommandHandler
 
 from messages import *
+from postgres import PostgresPersistence
 from utils import remove_message
+
+
+def start_session() -> scoped_session:
+    engine = create_engine("postgresql://blpxjuiwemaqpm"
+                           ":4c9a03691098bb7a6f615d510652c7c355b030da52e24b2cb48653a145082205@ec2-54-220-35-19.eu"
+                           "-west-1.compute.amazonaws.com:5432/dcu1jgmr7u3uv3", client_encoding="utf8")
+    return scoped_session(sessionmaker(bind=engine, autoflush=False))
+
 
 ##########################################
 # this file serves as an entry point to the program.
