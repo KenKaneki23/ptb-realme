@@ -283,14 +283,13 @@ def polls(update: Update, context: CallbackContext):  # GROUP
             print("--- sending new poll")
 
             msg = context.bot.send_message(GROUP, "Hey Realme Fans!"
-                                                           "\n\n<b>It's once again time for Poll-Five 🖐️</b> "
-                                                           "\n\nThis idea came up in @realme_offtopic a few days ago "
-                                                           "and I immediately implemented it. It could just be "
-                                                           "interesting to see what the community thinks about "
-                                                           "certain topics. "
-                                                           "\n\nCredits go to all the ones who brought up the "
-                                                           "following questions. "
-                                                           "\n\nHope you enjoy it!",
+                                                  "\n\n<b>It's once again time for Poll-Five 🖐️</b> "
+                                                  "\n\nThis idea came up in @realme_offtopic a few days ago and I "
+                                                  "immediately implemented it. It could just be interesting to see "
+                                                  "what the community thinks about certain topics. "
+                                                  "\n\nCredits go to all the ones who brought up the following "
+                                                  "questions. "
+                                                  "\n\nHope you enjoy it!",
                                            parse_mode=ParseMode.HTML
                                            ).link
 
@@ -361,7 +360,7 @@ def polls(update: Update, context: CallbackContext):  # GROUP
 
 def postgress2(update: Update, context: CallbackContext):
     print("-------")
-    update.message.reply_text("initial: " + context.bot_data.get("huuu","INITIAL"))
+    update.message.reply_text("initial: " + context.bot_data.get("huuu", "INITIAL"))
     print("msg: " + update.message.text)
     print("1: " + context.bot_data["huuu"])
     context.bot_data["huuu"] = update.message.text

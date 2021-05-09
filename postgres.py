@@ -17,13 +17,12 @@ import ujson as json
 class PostgresPersistence(DictPersistence):
 
     def __init__(
-        self,
-        session: scoped_session,
-        store_user_data: bool = True,
-        store_chat_data: bool = True,
-        store_bot_data: bool = True,
+            self,
+            session: scoped_session,
+            store_user_data: bool = True,
+            store_chat_data: bool = True,
+            store_bot_data: bool = True,
     ) -> None:
-
         super().__init__(
             store_user_data=store_user_data,
             store_chat_data=store_chat_data,
@@ -39,8 +38,6 @@ class PostgresPersistence(DictPersistence):
         self.__load_database()
 
     def __init_database(self) -> None:
-        """creates table for persistence data if not exists"""
-
         create_table_qry = """
             CREATE TABLE IF NOT EXISTS persistence(
             data json NOT NULL);"""
@@ -66,8 +63,6 @@ class PostgresPersistence(DictPersistence):
         return {func(k): v for k, v in iterable.items()}
 
     def _dump_into_json(self) -> Any:
-        """Dumps data into json format for inserting in db."""
-
         to_dump = {
             "chat_data": self._chat_data,
             "user_data": self._user_data,
@@ -78,10 +73,6 @@ class PostgresPersistence(DictPersistence):
         return json.dumps(to_dump)
 
     def flush(self) -> None:
-        """Will be called by :class:`telegram.ext.Updater` upon receiving a stop signal. Gives the
-        persistence a chance to finish up saving or close a database connection gracefully.
-        """
-
         self.logger.info("Saving user/chat/bot data before shutdown")
         try:
             self._session.execute("DELETE FROM persistence")

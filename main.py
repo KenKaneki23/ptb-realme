@@ -74,7 +74,7 @@ if __name__ == '__main__':
     dp.add_handler(CommandHandler("date", date, Filters.chat(GROUP) & Filters.user(VERIFIED_USERS)))
     dp.add_handler(CommandHandler("offtopic", offtopic, Filters.chat(GROUP) & Filters.user(ADMINS)))
     dp.add_handler(CommandHandler("polls", polls))
-    dp.add_handler(MessageHandler(Filters.text & Filters.chat(OFFTOPIC_GROUP), postgress2))
+    #   dp.add_handler(MessageHandler(Filters.text & Filters.chat(OFFTOPIC_GROUP), postgress2))
 
     dp.add_handler(MessageHandler(Filters.chat_type.private, private_not_available))
     #  add commands below. follow this scheme:  "command", function
@@ -84,5 +84,5 @@ if __name__ == '__main__':
 
     updater.start_webhook("0.0.0.0", PORT, TOKEN, webhook_url='https://ptb-realme.herokuapp.com/' + TOKEN)
 
-    updater.start_polling()
+   # updater.start_polling()
     updater.idle()
