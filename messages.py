@@ -29,8 +29,8 @@ def admins(update: Update, context: CallbackContext):
                 "\n@Prashant_Choudhary"
                 "\n@PacificPC"
                 "\n\n<b>Moderators</b>"
-                "\n@pentexnyx"
-                "\n@Abhishek2376")
+                "\n@dark_phoenix6969"
+                "\n@blue_bettle")
 
 
 def ask(update: Update, context: CallbackContext):
@@ -95,25 +95,21 @@ def experts(update: Update, context: CallbackContext):
     delay_group(update, context,
                 "<u>Community experts</u>"
                 "\n\n<b>Software issues</b>"
-                "\n@Abhishek2376"
                 "\n@NoobOf2021"
-                "\n@pentexnyx"
                 "\n\n<b>Hardware issues</b>"
-                "\n@Abhishek2376"
+                "\n- no expert yet -"
                 "\n\n<b>Updates and apps</b>"
-                "\n@Abhishek2376"
                 "\n@NoobOf2021"
-                "\n\n<b>UI-Team</b>"
-                "\n@Abhishek2376"
                 "\n\n<b>Phone recommendations</b>"
-                "\n@Abhishek2376"
                 "\n@pentexnyx"
                 "\n\n<b>Flashing</b>"
                 "\n- no expert yet -"
                 "\n\n<b>Android development</b>"
                 "\n@pentexnyx"
                 "\n\n<b>Realme ecosystem</b>"
-                "\n- no expert yet -")
+                "\n- no expert yet -"
+                "\n\nIf you want to be listed here, please join @realme_offtopic and ask for it. We'll then decide "
+                "whether you're worthy.")
 
 
 def gcam(update: Update, context: CallbackContext):
