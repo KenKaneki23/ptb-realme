@@ -75,6 +75,7 @@ if __name__ == '__main__':
     dp.add_handler(CommandHandler("offtopic", offtopic, Filters.chat(GROUP) & Filters.user(ADMINS)))
     dp.add_handler(CommandHandler("polls", polls))
     #   dp.add_handler(MessageHandler(Filters.text & Filters.chat(OFFTOPIC_GROUP), postgress2))
+    dp.add_handler(MessageHandler(Filters.update.ne))
 
     dp.add_handler(MessageHandler(Filters.chat_type.private, private_not_available))
     #  add commands below. follow this scheme:  "command", function
