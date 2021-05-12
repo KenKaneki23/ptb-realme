@@ -163,7 +163,11 @@ def rules(update: Update, context: CallbackContext):
                 "\n\n<b>7. Advertisements</b>"
                 "\nSelf-promotion is not permitted."
                 "\n\n<b>8. Content</b>"
-                "\nGore, porn and anything alike is absolutely prohibited.")
+                "\nGore, porn and anything alike is absolutely prohibited."
+                "\n\n<b>9. Privacy</b>"
+                "\nPlease only contact members of this group only if they permit it. Staff does not require to ask "
+                "for permission. "
+                )
 
 
 def form(update: Update, context: CallbackContext):
