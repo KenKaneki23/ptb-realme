@@ -37,7 +37,7 @@ def start_session() -> scoped_session:
     engine = create_engine(  # "postgresql://blpxjuiwemaqpm"
         # ":4c9a03691098bb7a6f615d510652c7c355b030da52e24b2cb48653a145082205@ec2-54-220-35-19.eu"
         # "-west-1.compute.amazonaws.com:5432/dcu1jgmr7u3uv3"
-        str(os.environ["DATABASE_URL"])  # mehh
+        DATABASE_URL  # mehh
         , client_encoding="utf8")
     return scoped_session(sessionmaker(bind=engine, autoflush=False))
 
