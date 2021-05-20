@@ -11,9 +11,11 @@ from utils import remove_message
 
 
 def start_session() -> scoped_session:
-    engine = create_engine("postgresql://blpxjuiwemaqpm"
-                           ":4c9a03691098bb7a6f615d510652c7c355b030da52e24b2cb48653a145082205@ec2-54-220-35-19.eu"
-                           "-west-1.compute.amazonaws.com:5432/dcu1jgmr7u3uv3", client_encoding="utf8")
+    engine = create_engine(  # "postgresql://blpxjuiwemaqpm"
+        # ":4c9a03691098bb7a6f615d510652c7c355b030da52e24b2cb48653a145082205@ec2-54-220-35-19.eu"
+        # "-west-1.compute.amazonaws.com:5432/dcu1jgmr7u3uv3"
+        str(os.environ["DATABASE_URL"])
+        , client_encoding="utf8")
     return scoped_session(sessionmaker(bind=engine, autoflush=False))
 
 
@@ -75,7 +77,6 @@ if __name__ == '__main__':
     dp.add_handler(CommandHandler("offtopic", offtopic, Filters.chat(GROUP) & Filters.user(ADMINS)))
     dp.add_handler(CommandHandler("polls", polls))
     #   dp.add_handler(MessageHandler(Filters.text & Filters.chat(OFFTOPIC_GROUP), postgress2))
-    dp.add_handler(MessageHandler(Filters.update.ne))
 
     dp.add_handler(MessageHandler(Filters.chat_type.private, private_not_available))
     #  add commands below. follow this scheme:  "command", function
@@ -84,6 +85,4 @@ if __name__ == '__main__':
     #  dp.add_error_handler(error) #comment this one out for full stacktrace
 
     updater.start_webhook("0.0.0.0", PORT, TOKEN, webhook_url='https://ptb-realme.herokuapp.com/' + TOKEN)
-
-    # updater.start_polling()
     updater.idle()
