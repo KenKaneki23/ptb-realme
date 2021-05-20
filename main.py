@@ -9,16 +9,6 @@ from messages import *
 from postgres import PostgresPersistence
 from utils import remove_message
 
-
-def start_session() -> scoped_session:
-    engine = create_engine(  # "postgresql://blpxjuiwemaqpm"
-        # ":4c9a03691098bb7a6f615d510652c7c355b030da52e24b2cb48653a145082205@ec2-54-220-35-19.eu"
-        # "-west-1.compute.amazonaws.com:5432/dcu1jgmr7u3uv3"
-        str(os.environ["DATABASE_URL"])  # mehh
-        , client_encoding="utf8")
-    return scoped_session(sessionmaker(bind=engine, autoflush=False))
-
-
 ##########################################
 # this file serves as an entry point to the program.
 # here all the stuff is initialized.
@@ -41,6 +31,15 @@ VERIFIED_USERS = ADMINS + (
 
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO)
 logger = logging.getLogger(__name__)
+
+
+def start_session() -> scoped_session:
+    engine = create_engine(  # "postgresql://blpxjuiwemaqpm"
+        # ":4c9a03691098bb7a6f615d510652c7c355b030da52e24b2cb48653a145082205@ec2-54-220-35-19.eu"
+        # "-west-1.compute.amazonaws.com:5432/dcu1jgmr7u3uv3"
+        str(os.environ["DATABASE_URL"])  # mehh
+        , client_encoding="utf8")
+    return scoped_session(sessionmaker(bind=engine, autoflush=False))
 
 
 def error(update: Update, context: CallbackContext):
