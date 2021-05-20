@@ -15,7 +15,7 @@ from utils import remove_message
 ##########################################
 
 PORT = int(os.environ.get('PORT', 5000))
-DATABASE_URL = os.environ['DATABASE_URL']
+DATABASE_URL = str(os.environ['DATABASE_URL'])
 TOKEN = os.environ['TOKEN']
 
 OFFTOPIC_GROUP = -1001415779011
