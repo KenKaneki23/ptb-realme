@@ -15,7 +15,8 @@ from utils import remove_message
 ##########################################
 
 PORT = int(os.environ.get('PORT', 5000))
-DATABASE_URL = str(os.environ['DATABASE_URL'])
+DATABASE_URL = "postgresql://bhjxvyetywwsnr:6cb4b29e478d696ea277137eea8b155e63738ee2a1c615aac9e4aaad5b1f6c33@ec2-34" \
+               "-253-116-145.eu-west-1.compute.amazonaws.com:5432/d35rn2vlejg4ah "  # os.environ['DATABASE_URL']
 TOKEN = os.environ['TOKEN']
 
 OFFTOPIC_GROUP = -1001415779011
@@ -34,11 +35,7 @@ logger = logging.getLogger(__name__)
 
 
 def start_session() -> scoped_session:
-    engine = create_engine(  # "postgresql://blpxjuiwemaqpm"
-        # ":4c9a03691098bb7a6f615d510652c7c355b030da52e24b2cb48653a145082205@ec2-54-220-35-19.eu"
-        # "-west-1.compute.amazonaws.com:5432/dcu1jgmr7u3uv3"
-        DATABASE_URL  # mehh
-        , client_encoding="utf8")
+    engine = create_engine(DATABASE_URL, client_encoding="utf8")
     return scoped_session(sessionmaker(bind=engine, autoflush=False))
 
 
