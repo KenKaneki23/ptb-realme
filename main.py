@@ -23,7 +23,7 @@ OFFTOPIC_GROUP = -1001415779011
 GROUP = -1001374176745  # -1001327617858 for test group
 
 ADMINS = (703453307,  # Nyx
-          984010225  # Phoenix #TODO replace with BlueBettle
+          806473770  # BlueBettle
           )
 VERIFIED_USERS = ADMINS + (
     924295169,  # Lucky
