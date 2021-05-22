@@ -5,7 +5,7 @@ from telegram import Update, ParseMode
 from telegram.ext import CallbackContext
 
 from main import GROUP, OFFTOPIC_GROUP, DATABASE_URL, ADMINS
-from utils import delay_group, delay_group_button_url, now, delay_group_preview
+from utils import delay_group, delay_group_button_url, now, delay_group_preview, message_button_url
 
 
 ##########################################
@@ -199,21 +199,24 @@ def date(update: Update, context: CallbackContext):
 def offtopic(update: Update, context: CallbackContext):
     if update.message.reply_to_message:
         update.message.delete()
-        context.bot.send_message(OFFTOPIC_GROUP,
-                                 "<i>{} <a href='{}'>wrote</a>:</i>"
-                                 "\n\n{}"
-                                 .format(
-                                     update.message.reply_to_message.from_user.name,
-                                     update.message.reply_to_message.link,
-                                     update.message.reply_to_message.text),
-                                 ParseMode.HTML,
-                                 True)
-        update.message.reply_to_message.reply_text(
-            "Hey {} 🤖"
-            "\nThis is getting pretty off-topic now."
-            "\n\nI moved the message to @realme_offtopic"
-            "\n\nPlease continue the discussion there 😉"
-                .format(update.message.reply_to_message.from_user.name))
+        moved_link = context.bot.send_message(OFFTOPIC_GROUP,
+                                              "{} <a href='{}'>wrote</a>:"
+                                              "\n\n{}"
+                                              .format(
+                                                  update.message.reply_to_message.from_user.name,
+                                                  update.message.reply_to_message.link,
+                                                  update.message.reply_to_message.text),
+                                              ParseMode.HTML,
+                                              True).link
+
+        message_button_url(update, context,
+                           "Hey {} 🤖"
+                           "\nThis is getting pretty off-topic now."
+                           "\n\nI moved the message to @realme_offtopic"
+                           "\n\nPlease continue the discussion there 😉"
+                           .format(update.message.reply_to_message.from_user.name)
+                           , "Continue here 😉", moved_link)
+
     else:
         delay_group(update, context,
                     "Hey guys 🤖"
