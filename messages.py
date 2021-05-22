@@ -258,111 +258,63 @@ def debloat(update: Update, context: CallbackContext):
 
 
 def polls(update: Update, context: CallbackContext):  # GROUP
-    con = psycopg2.connect(DATABASE_URL)
-    cur = con.cursor()
 
-    previous_timestamp = None
+    current_time = now()
+    previous_timestamp = context.bot_data.get("previous_timestamp", 1000)
 
-    # cur.execute("CREATE TABLE IF NOT EXISTS bot_data (previous_link TEXT, previous_timestamp BIGINT, key INT,
-    # PRIMARY KEY (key));")
+    if update.message.from_user.id in ADMINS and int(previous_timestamp) + 3628800000 <= current_time:
+        update.message.delete()
+        print("--- sending new poll")
 
-    try:
-        cur.execute("SELECT previous_timestamp FROM bot_data WHERE key=1;")
-        (previous_timestamp,) = next(cur, (None,))
-    except psycopg2.Error as e:
-        print(e)
-    finally:
-        print(f"finally TIMESTAMP: {previous_timestamp}")
+        current_link = context.bot.send_message(GROUP, "Hey Realme Fans!"
+                                                       "\n\n<b>It's once again time for Poll-Five 🖐️</b> "
+                                                       "\n\nThis idea came up in @realme_offtopic a few days ago and I "
+                                                       "immediately implemented it. It could just be interesting to see "
+                                                       "what the community thinks about certain topics. "
+                                                       "\n\nCredits go to all the ones who brought up the following "
+                                                       "questions. "
+                                                       "\n\nHope you enjoy it!", parse_mode=ParseMode.HTML).link
 
-        current_time = now()
+        context.bot_data['previous_link'] = current_link
+        context.bot_data['previous_timestamp'] = current_time
 
-        if update.message.from_user.id in ADMINS \
-                and int(previous_timestamp) + 10000 < current_time:  # 3628800000 < now():  ###enable again !!
+        question_0 = "How old are you? 🎂"
+        answers_0 = ["below 15", "15-18", "19-21", "22-26", "27-32",
+                     "33-37", "38-45", "46-53", "54-62", "older than 63"]
 
-            update.message.delete()
-            print("--- sending new poll")
+        question_1 = "How old is your current phone? 📱"
+        answers_1 = ["3 months", "6 months", "9 months", "1 year", "1.5 years",
+                     "2 years", "2.5 years", "3 years", "3.5 years", "4 years or older"]
 
-            msg = context.bot.send_message(GROUP, "Hey Realme Fans!"
-                                                  "\n\n<b>It's once again time for Poll-Five 🖐️</b> "
-                                                  "\n\nThis idea came up in @realme_offtopic a few days ago and I "
-                                                  "immediately implemented it. It could just be interesting to see "
-                                                  "what the community thinks about certain topics. "
-                                                  "\n\nCredits go to all the ones who brought up the following "
-                                                  "questions. "
-                                                  "\n\nHope you enjoy it!",
-                                           parse_mode=ParseMode.HTML
-                                           ).link
+        question_2 = "How much money would you spend on a good value phone? 💰"
+        answers_2 = ["80-120$", "121-150$", "151-200$", "201-250$", "251-300$",
+                     "301-350$", "351-420$", "421-500$", "501-650$", "more than 650$"]
 
-            try:
-                cur.execute("UPDATE bot_data SET previous_link=%s, previous_timestamp=%s WHERE key=1;",
-                            (msg, current_time))
-                con.commit()
-            except psycopg2.Error as e:
-                print(e)
-            finally:
-                print(f"finally UPDATE")
+        question_3 = "How many different phones have you owned over the last 5 years? 🎁"
+        answers_3 = ["1", "2", "3", "4", "more than 4"]
 
-            question_0 = "How old are you? 🎂"
-            answers_0 = ["below 15", "15-18", "19-21", "22-26", "27-32",
-                         "33-37", "38-45", "46-53", "54-62", "older than 63"]
+        question_4 = "What's the most important thing when buying a brandnew phone? 🔥"
+        answers_4 = ["Camera", "Display", "Audio", "Haptics/Design", "Storage space",
+                     "Connectivity", "Multitasking capability/Ram", "Processing power", "Battery/Endurance",
+                     "Durability/Protection"]
 
-            question_1 = "How old is your current phone? 📱"
-            answers_1 = ["3 months", "6 months", "9 months", "1 year", "1.5 years",
-                         "2 years", "2.5 years", "3 years", "3.5 years", "4 years or older"]
+        questions = [question_0, question_1, question_2, question_3]
+        answers = [answers_0, answers_1, answers_2, answers_3]
 
-            question_2 = "How much money would you spend on a good value phone? 💰"
-            answers_2 = ["80-120$", "121-150$", "151-200$", "201-250$", "251-300$",
-                         "301-350$", "351-420$", "421-500$", "501-650$", "more than 650$"]
+        for i in range(4):
+            context.bot.send_poll(GROUP, "[Poll {} of 5] · {}".format(i + 1, questions[i]), answers[i])
+            time.sleep(3)
 
-            question_3 = "How many different phones have you owned over the last 5 years? 🎁"
-            answers_3 = ["1", "2", "3", "4", "more than 4"]
+        context.bot.send_poll(GROUP, "[Poll 5 of 5] · {}".format(question_4), answers_4, allows_multiple_answers=True)
 
-            question_4 = "What's the most important thing when buying a brandnew phone? 🔥"
-            answers_4 = ["Camera", "Display", "Audio", "Haptics/Design", "Storage space",
-                         "Connectivity", "Multitasking capability/Ram", "Processing power", "Battery/Endurance",
-                         "Durability/Protection"]
+    else:
+        print("--- sending poll message")
 
-            questions = [question_0, question_1, question_2, question_3]
-            answers = [answers_0, answers_1, answers_2, answers_3]
+        previous_link = context.bot_data.get("previous_link", "https://t.me/realme_support/135222")
 
-            for i in range(4):
-                context.bot.send_poll(GROUP, "[Poll {} of 5] · {}".format(i + 1, questions[i]), answers[i])
-                time.sleep(3)
-
-            context.bot.send_poll(GROUP, "[Poll 5 of 5] · {}".format(question_4), answers_4,
-                                  allows_multiple_answers=True)
-
-        else:
-            print("--- sending poll message")
-
-            previous_link = None
-
-            try:
-                cur.execute("SELECT previous_link FROM bot_data WHERE key=1;")
-                (previous_link,) = next(cur, (None,))
-            except psycopg2.Error as e:
-                print(e)
-            finally:
-                print(f"finally LINK: {previous_link}")
-
-                delay_group_button_url(update, context,
-                                       "<b>Poll-Five</b> 🖐️"
-                                       "\n\nThis idea came up in @realme_offtopic. We thought it could just be "
-                                       "interesting to see what the community thinks about certain topics. "
-                                       "\n\nCredits go to all the ones who brought up the questions.",
-                                       "📊 Current Poll 📊",
-                                       previous_link)
-
-    # cur.close()
-
-    print("END ---- " + str(previous_timestamp))
-
-
-def postgress2(update: Update, context: CallbackContext):
-    print("-------")
-    update.message.reply_text("initial: " + context.bot_data.get("huuu", "INITIAL"))
-    print("msg: " + update.message.text)
-    print("1: " + context.bot_data["huuu"])
-    context.bot_data["huuu"] = update.message.text
-    update.message.reply_text("Second one (with update from DB): " + context.bot_data["huuu"])
-    print(context.bot_data["huuu"])
+        delay_group_button_url(update, context,
+                               "<b>Poll-Five</b> 🖐️"
+                               "\n\nThis idea came up in @realme_offtopic. We thought it could just be "
+                               "interesting to see what the community thinks about certain topics. "
+                               "\n\nCredits go to all the ones who brought up the questions.",
+                               "📊 Current Poll 📊", previous_link)
