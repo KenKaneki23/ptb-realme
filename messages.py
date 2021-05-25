@@ -1,10 +1,9 @@
 import time
 
-import psycopg2
 from telegram import Update, ParseMode
 from telegram.ext import CallbackContext
 
-from main import GROUP, OFFTOPIC_GROUP, DATABASE_URL, ADMINS
+from main import GROUP, OFFTOPIC_GROUP, ADMINS
 from utils import delay_group, delay_group_button_url, now, delay_group_preview, message_button_url
 
 
@@ -213,7 +212,7 @@ def offtopic(update: Update, context: CallbackContext):
                            "Hey {} 🤖"
                            "\nThis is getting pretty off-topic now."
                            "\n\nI moved the message to @realme_offtopic"
-                           "\n\nPlease continue the discussion there 😉"
+                           "\n\nPlease continue the discussion there."
                            .format(update.message.reply_to_message.from_user.name)
                            , "Continue here 😉", moved_link)
 

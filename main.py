@@ -1,10 +1,10 @@
 import logging
-import os
 
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, scoped_session
 from telegram.ext import Updater, MessageHandler, Filters, CommandHandler
 
+from config import *
 from messages import *
 from postgres import PostgresPersistence
 from utils import remove_message
@@ -14,21 +14,6 @@ from utils import remove_message
 # here all the stuff is initialized.
 ##########################################
 
-PORT = int(os.environ.get('PORT', 5000))
-DATABASE_URL = os.environ['DATABASE_URL'].replace('postgres', 'postgresql',1)
-
-TOKEN = os.environ['TOKEN']
-
-OFFTOPIC_GROUP = -1001415779011
-GROUP = -1001374176745  # -1001327617858 for test group
-
-ADMINS = (703453307,  # Nyx
-          806473770  # BlueBettle
-          )
-VERIFIED_USERS = ADMINS + (
-    924295169,  # Lucky
-    1038099761  # Abhiskek
-)
 
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO)
 logger = logging.getLogger(__name__)
