@@ -12,7 +12,7 @@ from utils import delay_group, delay_group_button_url, now, delay_group_preview,
 # just replicate below schemes :)
 ##########################################
 
-def private_not_available(update: Update, context: CallbackContext):
+def private_not_available(update: Update, _: CallbackContext):
     update.message.reply_text(
         "My commands work in @realme_support only."
         "\nYou can submit some Feedback here though."
@@ -268,14 +268,15 @@ def polls(update: Update, context: CallbackContext):  # GROUP
         update.message.delete()
         print("--- sending new poll")
 
-        current_link = context.bot.send_message(GROUP, "Hey Realme Fans!"
-                                                       "\n\n<b>It's once again time for Poll-Five 🖐️</b> "
-                                                       "\n\nThis idea came up in @realme_offtopic a few days ago and I "
-                                                       "immediately implemented it. It could just be interesting to see "
-                                                       "what the community thinks about certain topics. "
-                                                       "\n\nCredits go to all the ones who brought up the following "
-                                                       "questions. "
-                                                       "\n\nHope you enjoy it!", parse_mode=ParseMode.HTML).link
+        current_link = context.bot.send_message(GROUP,
+                                                "Hey Realme Fans!"
+                                                "\n\n<b>It's once again time for Poll-Five 🖐️</b> "
+                                                "\n\nThis idea came up in @realme_offtopic a few days ago and I "
+                                                "immediately implemented it. It could just be interesting to see what "
+                                                "the community thinks about certain topics. "
+                                                "\n\nCredits go to all the ones who brought up the following "
+                                                "questions. "
+                                                "\n\nHope you enjoy it!", ParseMode.HTML).link
 
         context.bot_data['previous_link'] = current_link
         context.bot_data['previous_timestamp'] = current_time

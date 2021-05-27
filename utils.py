@@ -16,12 +16,12 @@ def message_button_url(update: Update, context: CallbackContext, text, button_te
             ParseMode.HTML,
             reply_markup=InlineKeyboardMarkup.from_button(
                 InlineKeyboardButton(button_text, button_url)))
-    else:
-        return context.bot.send_message(update.message.chat_id,
-                                        text,
-                                        ParseMode.HTML,
-                                        reply_markup=InlineKeyboardMarkup.from_button(
-                                            InlineKeyboardButton(button_text, button_url)))
+
+    return context.bot.send_message(update.message.chat_id,
+                                    text,
+                                    ParseMode.HTML,
+                                    reply_markup=InlineKeyboardMarkup.from_button(
+                                        InlineKeyboardButton(button_text, button_url)))
 
 
 def message_html(update: Update, context: CallbackContext, text):
@@ -29,11 +29,11 @@ def message_html(update: Update, context: CallbackContext, text):
         return update.message.reply_to_message.reply_text(
             text,
             ParseMode.HTML)
-    else:
-        return context.bot.send_message(
-            update.message.chat_id,
-            text,
-            ParseMode.HTML)
+
+    return context.bot.send_message(
+        update.message.chat_id,
+        text,
+        ParseMode.HTML)
 
 
 def delay_group_button_url(update: Update, context: CallbackContext, text: str, button_text, button_url):
@@ -68,7 +68,7 @@ def delete(context: CallbackContext):
     context.bot.delete_message(str(context.job.context), context.job.name)
 
 
-def remove_message(update: Update, context: CallbackContext):
+def remove_message(update: Update, _: CallbackContext):
     if update.message is not None:
         update.message.delete()
 
