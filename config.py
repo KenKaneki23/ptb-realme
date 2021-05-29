@@ -17,7 +17,7 @@ GROUP = -1001374176745  # -1001327617858 for test group
 ADMINS = (703453307,  # Nyx
           806473770,  # BlueBettle
           984010225  # Phoenix
-)
+          )
 
 VERIFIED_USERS = set(ADMINS + (
     924295169,  # Lucky

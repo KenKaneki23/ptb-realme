@@ -195,6 +195,17 @@ def date(update: Update, context: CallbackContext):
         update.message.delete()
 
 
+def push(update: Update, context: CallbackContext):
+    if update.message.reply_to_message:
+        delay_group(update, context,
+                    "Hey {} 🤖"
+                    "\n\nUpdates are pushed randomly to a few users first. If no bigger issues appear the others will "
+                    "get it aswell after a few days. "
+                    .format(update.message.reply_to_message.from_user.name))
+    else:
+        update.message.delete()
+
+
 def offtopic(update: Update, context: CallbackContext):
     if update.message.reply_to_message:
         update.message.delete()

@@ -1,17 +1,15 @@
-from logging import getLogger
 from collections import defaultdict
+from logging import getLogger
 from typing import Dict, Any, Callable
 
+import ujson as json
+from sqlalchemy.orm import scoped_session
+from sqlalchemy.sql import text
 from telegram.ext import DictPersistence
 from telegram.utils.helpers import (
     encode_conversations_to_json,
     decode_conversations_from_json,
 )
-
-from sqlalchemy.orm import scoped_session
-from sqlalchemy.sql import text
-
-import ujson as json
 
 
 class PostgresPersistence(DictPersistence):
