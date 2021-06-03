@@ -206,6 +206,39 @@ def push(update: Update, context: CallbackContext):
         update.message.delete()
 
 
+def rant(update: Update, context: CallbackContext):
+    delay_group(update, context, "<b>A bird in the hand is worth two in the bush</b>"
+                                 "\nA small rant by @nyx69 - I made this bot."
+                                 "\n\n\nActually it's better to not have some actual date. So tat Realme can release "
+                                 "things, if they meet the requirements. "
+                                 "\n\nTake Cyberpunk for instance. They had to release an unfinished crap full of "
+                                 "bugs, because moving the release date yet another time would have caused big "
+                                 "trouble with investors and public. "
+                                 "\n\nAdditionally, just about anyone here doesn't seem to understand the concept of "
+                                 "announcements and plans. All the dates given are estimates, not exact ones at all. "
+                                 "I'll dive a bit deeper in the following paragraphs. "
+                                 "\n\nRealme's few developers are working very hard to bring out updates and fixes "
+                                 "for all these devices they threw on the market. Obviously those updates we see take "
+                                 "some time and testing. They won't just do all that in five minutes straight. "
+                                 "\n\nTheir developers focus on important things for the company itself as mentioned "
+                                 "already. Especially as Realme has a very limited capacity when it comes to "
+                                 "developers. So simply wait as those security fixes aren't a huge game changer "
+                                 "anyway. "
+                                 "\n\nYou pay the company for a device and you already own this device. The company "
+                                 "itself offers free updates as a bonus on top of that. The have to earn more money "
+                                 "from advertising those updates and selling devices than what maintenance and "
+                                 "development costs. "
+                                 "\n\nTherefore it's better for them to pack a few updates together and release them "
+                                 "all at once rather than doing every single bit and piece individually. A company "
+                                 "will always act in a way that they profit as much as possible. That's just natural. "
+                                 "That's how economy works. "
+                                 "\n\nCrying, shouting, anger and whatsoever won't bring any benefit into this game. "
+                                 "So it's better to just relax and focus on the actually important things in life. "
+                                 "Those minor improvements are not worth all the panic you tend to create. You won't "
+                                 "die just because you receive something rather unimportant a few more days later. "
+                                 "\n\n\nThanks for reading :)")
+
+
 def offtopic(update: Update, context: CallbackContext):
     if update.message.reply_to_message:
         update.message.delete()
