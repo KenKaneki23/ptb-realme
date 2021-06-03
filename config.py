@@ -21,5 +21,6 @@ ADMINS = (703453307,  # Nyx
 
 VERIFIED_USERS = set(ADMINS + (
     924295169,  # Lucky
-    1038099761  # Abhiskek
+    1038099761,  # Abhiskek
+    1128670209  # LalitSaini
 ))
