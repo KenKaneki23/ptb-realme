@@ -208,10 +208,10 @@ def push(update: Update, context: CallbackContext):
 
 def rant(update: Update, context: CallbackContext):
     delay_group(update, context, "<b>A bird in the hand is worth two in the bush 🕊️</b>"
-                                 "\n\nA small rant by me, @nyx69 - I made this bot. The following is not affiliated "
+                                 "\n\n<i>A small rant by me, @nyx69 - I made this bot. The following is not affiliated "
                                  "with Realme. These are my own personal thoughts as a developer for a rather big "
-                                 "German company myself. "
-                                 "\n\nActually it's better to not have some actual date. So that Realme can release "
+                                 "German company myself.</i>"
+                                 "\n\n\nActually it's better to not have some actual date. So that Realme can release "
                                  "things, if they meet their requirements."
                                  "\n\nTake Cyberpunk for instance. They had to release an unfinished crap full of "
                                  "bugs, because moving the release date yet another time would have caused big "
