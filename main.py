@@ -47,7 +47,6 @@ if __name__ == '__main__':
     dp.add_handler(CommandHandler("gcam", gcam, Filters.chat(GROUP)))
     dp.add_handler(CommandHandler("cleaners", cleaners, Filters.chat(GROUP)))
     dp.add_handler(CommandHandler("help", commands, Filters.chat(GROUP)))
-    # dp.add_handler(CommandHandler("files", files, Filters.chat(GROUP)))
     dp.add_handler(CommandHandler("admins", admins, Filters.chat(GROUP)))
     dp.add_handler(CommandHandler("rules", rules))
     dp.add_handler(CommandHandler("experts", experts, Filters.chat(GROUP)))
