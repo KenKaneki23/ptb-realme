@@ -198,9 +198,10 @@ def date(update: Update, context: CallbackContext):
 def push(update: Update, context: CallbackContext):
     if update.message.reply_to_message:
         delay_group(update, context,
-                    "Hey {} 🤖"
-                    "\n\nUpdates are pushed randomly to a few users first. If no bigger issues appear the others will "
-                    "get it aswell after a few days. "
+                    "Don't worry {} 🤖"
+                    "\n\nTo ensure the stability of updates, they have a staged rollouts."
+                    "\n\nThe update will be randomly pushed  to a limited number of users first."
+                    "\n\nIf no critical bugs appear within the next days, full rollout begins."
                     .format(update.message.reply_to_message.from_user.name))
     else:
         update.message.delete()
