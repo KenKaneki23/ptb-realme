@@ -223,13 +223,12 @@ def button_click(update: Update, context: CallbackContext):
 
 def ban(update: Update, context: CallbackContext):
     if update.message.reply_to_message:
-        update.message.reply_text("ban")
 
         keyboard = InlineKeyboardMarkup([
             [InlineKeyboardButton("1 hour", callback_data={BAN: 1}),
-             InlineKeyboardButton("8 hours", callback_data={BAN: 1})],
-            [InlineKeyboardButton("1 day", callback_data={BAN: 1}),
-             InlineKeyboardButton("remove", callback_data={BAN: 1})]
+             InlineKeyboardButton("8 hours", callback_data={BAN: 2})],
+            [InlineKeyboardButton("1 day", callback_data={BAN: 3}),
+             InlineKeyboardButton("remove", callback_data={BAN: 4})]
         ])
 
         update.message.reply_text("Choose how long to remove this user:", reply_markup=keyboard)
