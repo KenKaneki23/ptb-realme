@@ -75,6 +75,10 @@ def commands(update: Update, context):
                 "\nOfficial roadmap for the Early Access of RealmeUI 2.0"
                 "\n\n<b>/ask</b>"
                 "\nHow to ask questions properly"
+                "\n\n\n\n<b>Utility commands</b>"
+                "\n\n/date - when stable is released"
+                "\n\n/push - how updates are rolled out"
+                "\n\n/rant - quality over quantitiy"
                 "\n\nMessage @pentexnyx, if you face any issues with me 🤖"
                 "\nRelease ")  # + str(os.environ.get('HEROKU_RELEASE_VERSION')))
 
@@ -205,6 +209,14 @@ def push(update: Update, context: CallbackContext):
                     .format(update.message.reply_to_message.from_user.name))
     else:
         update.message.delete()
+
+
+def warn(update: Update, context: CallbackContext):
+    update.message.reply_text("warn")
+
+
+def ban(update: Update, context: CallbackContext):
+    update.message.reply_text("ban")
 
 
 def rant(update: Update, context: CallbackContext):
