@@ -212,7 +212,7 @@ def button_click(update: Update, context: CallbackContext):
 
     query.answer()
 
-    choice: {str: int} = query.data
+    choice = query.data
 
     if WARN in choice:
         update.message.reply_text("Choose how long to remove this user:" + choice)
@@ -220,15 +220,18 @@ def button_click(update: Update, context: CallbackContext):
     elif BAN in choice:
         update.message.reply_text("Choose how long to remove this user:" + choice)
 
+    elif choice == "BAN_1h":
+        update.message.reply_text("Choose how long to remove this user:" + choice)
+
 
 def ban(update: Update, context: CallbackContext):
     if update.message.reply_to_message:
 
         keyboard = InlineKeyboardMarkup([
-            [InlineKeyboardButton("1 hour", callback_data={BAN: 1}),
-             InlineKeyboardButton("8 hours", callback_data={BAN: 2})],
-            [InlineKeyboardButton("1 day", callback_data={BAN: 3}),
-             InlineKeyboardButton("remove", callback_data={BAN: 4})]
+            [InlineKeyboardButton("1 hour", callback_data="BAN_1h"),
+             InlineKeyboardButton("8 hours", callback_data="BAN_8h")],
+            [InlineKeyboardButton("1 day", callback_data="BAN_1d"),
+             InlineKeyboardButton("remove", callback_data="BAN_remove")]
         ])
 
         update.message.reply_text("Choose how long to remove this user:", reply_markup=keyboard)
