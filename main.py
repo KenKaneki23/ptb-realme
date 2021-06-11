@@ -2,7 +2,7 @@ import logging
 
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, scoped_session
-from telegram.ext import Updater, MessageHandler, Filters, CommandHandler
+from telegram.ext import Updater, MessageHandler, Filters, CommandHandler, CallbackQueryHandler
 
 from config import *
 from messages import *
@@ -26,11 +26,12 @@ def start_session() -> scoped_session:
 
 def error(update: Update, context: CallbackContext):
     logger.warning('Update "%s" caused error "%s"', update, context.error)
-    context.bot.send_message(-1001338514957,
-                             "<b>🤖 Affected Bot</b>\n@" + context.bot.username +
-                             "\n\n<b>⚠ Error</b>\n<code>" + str(context.error) +
-                             "</code>\n\n<b>Caused by Update</b>\n<code>" + str(update) + "</code>",
-                             ParseMode.HTML)
+    if update is Update:
+        context.bot.send_message(-1001338514957,
+                                 "<b>🤖 Affected Bot</b>\n@" + context.bot.username +
+                                 "\n\n<b>⚠️ Error</b>\n<code>" + str(context.error) +
+                                 "</code>\n\n<b>Caused by Update</b>\n<code>" + str(update) + "</code>",
+                                 ParseMode.HTML)
 
 
 if __name__ == '__main__':
@@ -41,7 +42,7 @@ if __name__ == '__main__':
 
     dp.add_handler(MessageHandler(
         Filters.text(["/help@CoronaVirusRobot", "/victims@CoronaVirusRobot", "/infect@CoronaVirusRobot"]),
-        remove_message))  # gg
+        remove_message))
 
     dp.add_handler(CommandHandler("android11", android11, Filters.chat(GROUP)))
     dp.add_handler(CommandHandler("gcam", gcam, Filters.chat(GROUP)))
@@ -57,7 +58,11 @@ if __name__ == '__main__':
     dp.add_handler(CommandHandler("rant", rant, Filters.chat(GROUP) & Filters.user(VERIFIED_USERS)))
     dp.add_handler(CommandHandler("push", push, Filters.chat(GROUP) & Filters.user(VERIFIED_USERS)))
     dp.add_handler(CommandHandler("offtopic", offtopic, Filters.chat(GROUP) & Filters.user(ADMINS)))
+    dp.add_handler(CommandHandler("warn", warn, Filters.chat(GROUP) & Filters.user(ADMINS)))
+    dp.add_handler(CommandHandler("ban", ban, Filters.chat(GROUP) & Filters.user(ADMINS)))
     dp.add_handler(CommandHandler("polls", polls))
+
+    dp.add_handler(CallbackQueryHandler(button_click))
 
     dp.add_handler(MessageHandler(Filters.chat_type.private, private_not_available))
     #  add commands below. follow this scheme:  "command", function

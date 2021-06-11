@@ -1,10 +1,13 @@
 import time
 
-from telegram import Update, ParseMode
+from telegram import Update, ParseMode, InlineKeyboardMarkup, InlineKeyboardButton
 from telegram.ext import CallbackContext
 
 from main import GROUP, OFFTOPIC_GROUP, ADMINS
 from utils import delay_group, delay_group_button_url, now, delay_group_preview, message_button_url
+
+BAN = "banUser"
+WARN = "warnUser"
 
 
 ##########################################
@@ -54,7 +57,7 @@ def ask(update: Update, context: CallbackContext):
                 "more focused.")
 
 
-def commands(update: Update, context):
+def commands(update: Update, context: CallbackContext):
     delay_group(update, context,
                 "<u>Commands</u>"
                 "\n\n<b>/help</b>"
@@ -75,23 +78,12 @@ def commands(update: Update, context):
                 "\nOfficial roadmap for the Early Access of RealmeUI 2.0"
                 "\n\n<b>/ask</b>"
                 "\nHow to ask questions properly"
-                "\n\n\n\n<b>Utility commands</b>"
+                "\n\n\n\n<b>Utility commands for Admins</b>"
                 "\n\n/date - when stable is released"
                 "\n\n/push - how updates are rolled out"
                 "\n\n/rant - quality over quantitiy"
                 "\n\nMessage @pentexnyx, if you face any issues with me 🤖"
                 "\nRelease ")  # + str(os.environ.get('HEROKU_RELEASE_VERSION')))
-
-
-def files(update: Update, context: CallbackContext):
-    delay_group(update, context,
-                "<u>Files</u>"
-                "\n\n<b>/gcam</b>"
-                "\nGoogle Camera and configs"
-                "\n\n<b>/sdmaid</b>"
-                "\nBest cleaning app"
-                "\n\n\n<b>Any suggestions?</b>"
-                "\nContact @pentexnyx")
 
 
 def experts(update: Update, context: CallbackContext):
@@ -215,8 +207,35 @@ def warn(update: Update, context: CallbackContext):
     update.message.reply_text("warn")
 
 
+def button_click(update: Update, context: CallbackContext):
+    query = update.callback_query
+
+    query.answer()
+
+    choice: {str: int} = query.data
+
+    if WARN in choice:
+        update.message.reply_text("Choose how long to remove this user:" + choice)
+
+    elif BAN in choice:
+        update.message.reply_text("Choose how long to remove this user:" + choice)
+
+
 def ban(update: Update, context: CallbackContext):
-    update.message.reply_text("ban")
+    if update.message.reply_to_message:
+        update.message.reply_text("ban")
+
+        keyboard = InlineKeyboardMarkup([
+            [InlineKeyboardButton("1 hour", callback_data={BAN: 1}),
+             InlineKeyboardButton("8 hours", callback_data={BAN: 1})],
+            [InlineKeyboardButton("1 day", callback_data={BAN: 1}),
+             InlineKeyboardButton("remove", callback_data={BAN: 1})]
+        ])
+
+        update.message.reply_text("Choose how long to remove this user:", reply_markup=keyboard)
+
+    else:
+        update.message.delete()
 
 
 def rant(update: Update, context: CallbackContext):
