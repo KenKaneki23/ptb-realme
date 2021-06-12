@@ -1,6 +1,7 @@
 import time
 
-from telegram import Update, ParseMode, InlineKeyboardMarkup, InlineKeyboardButton
+from telegram import Update, ParseMode, InlineKeyboardMarkup, InlineKeyboardButton, ReplyKeyboardMarkup, KeyboardButton, \
+    KeyboardButtonPollType
 from telegram.ext import CallbackContext
 
 from main import GROUP, OFFTOPIC_GROUP, ADMINS
@@ -202,9 +203,17 @@ def push(update: Update, context: CallbackContext):
     else:
         update.message.delete()
 
-
 def warn(update: Update, context: CallbackContext):
-    update.message.reply_text("warn")
+    update.message.reply_text(
+        "What poll do you want?", reply_markup=ReplyKeyboardMarkup(
+            keyboard=[
+                [KeyboardButton("Create Quiz", request_poll=KeyboardButtonPollType("quiz"))],
+                [KeyboardButton("Create Poll", request_poll=KeyboardButtonPollType("regular"))]
+            ],
+            resize_keyboard=True,
+            one_time_keyboard=True,
+            selective=True)
+    )
 
 
 def button_click(update: Update, context: CallbackContext):
@@ -228,10 +237,9 @@ def ban(update: Update, context: CallbackContext):
     if update.message.reply_to_message:
 
         keyboard = InlineKeyboardMarkup([
-            [InlineKeyboardButton("1 hour", callback_data="BAN_1h"),
-             InlineKeyboardButton("8 hours", callback_data="BAN_8h")],
-            [InlineKeyboardButton("1 day", callback_data="BAN_1d"),
-             InlineKeyboardButton("remove", callback_data="BAN_remove")]
+            [InlineKeyboardButton("1 hour", callback_data="BAN_1h")],
+            [InlineKeyboardButton("1 day", callback_data="BAN_1d")],
+            [InlineKeyboardButton("remove", callback_data="BAN_remove")]
         ])
 
         update.message.reply_text("Choose how long to remove this user:", reply_markup=keyboard)
