@@ -205,16 +205,20 @@ def push(update: Update, context: CallbackContext):
 
 
 def warn(update: Update, context: CallbackContext):
-    update.message.reply_text(
-        "What poll do you want?", reply_markup=ReplyKeyboardMarkup(
-            keyboard=[
-                [KeyboardButton("Create Quiz", request_poll=KeyboardButtonPollType("quiz"))],
-                [KeyboardButton("Create Poll", request_poll=KeyboardButtonPollType("regular"))]
-            ],
-            resize_keyboard=True,
-            one_time_keyboard=True,
-            selective=True)
-    )
+    if update.message.reply_to_message:
+        update.message.reply_to_message.reply_text(
+            "This user has currently 3 warnings.", reply_markup=ReplyKeyboardMarkup(
+                [
+                    [KeyboardButton("Create Quiz", request_poll=KeyboardButtonPollType("quiz"))],
+                    [KeyboardButton("Create Poll", request_poll=KeyboardButtonPollType("regular"))]
+                ],
+                resize_keyboard=True,
+                one_time_keyboard=True,
+                selective=True)
+        )
+
+    else:
+        update.message.delete()
 
 
 def button_click(update: Update, context: CallbackContext):
@@ -231,19 +235,19 @@ def button_click(update: Update, context: CallbackContext):
         update.message.reply_text("Choose how long to remove this user:" + choice)
 
     elif choice == "BAN_1h":
-        update.message.reply_text("Choose how long to remove this user:" + choice)
+        context.bot.send_message(chat_id=update.message.chat_id, text="choice: " + choice)
 
 
 def ban(update: Update, context: CallbackContext):
     if update.message.reply_to_message:
 
         keyboard = InlineKeyboardMarkup([
-            [InlineKeyboardButton("1 hour", callback_data="BAN_1h")],
+            [InlineKeyboardButton("1 hour (test)", callback_data="BAN_1h")],
             [InlineKeyboardButton("1 day", callback_data="BAN_1d")],
             [InlineKeyboardButton("remove", callback_data="BAN_remove")]
         ])
 
-        update.message.reply_text("Choose how long to remove this user:", reply_markup=keyboard)
+        update.message.reply_to_message.reply_text("Choose how long to remove this user:", reply_markup=keyboard)
 
     else:
         update.message.delete()
@@ -349,6 +353,8 @@ def debloat(update: Update, context: CallbackContext):
 
 def polls(update: Update, context: CallbackContext):  # GROUP
 
+    update.message.delete()
+
     current_time = now()
     previous_timestamp = context.bot_data.get("previous_timestamp", 1000)
 
@@ -403,9 +409,9 @@ def polls(update: Update, context: CallbackContext):  # GROUP
 
         previous_link = context.bot_data.get("previous_link", "https://t.me/realme_support/135222")
 
-        delay_group_button_url(update, context,
-                               "<b>Poll-Five</b> 🖐️"
-                               "\n\nThis idea came up in @realme_offtopic. We thought it could just be "
-                               "interesting to see what the community thinks about certain topics. "
-                               "\n\nCredits go to all the ones who brought up the questions.",
-                               "📊 Current Poll 📊", previous_link)
+        message_button_url(update, context,
+                           "<b>Poll-Five</b> 🖐️"
+                           "\n\nThis idea came up in @realme_offtopic. We thought it could just be "
+                           "interesting to see what the community thinks about certain topics. "
+                           "\n\nCredits go to all the ones who brought up the questions.",
+                           "📊 Current Poll 📊", previous_link)

@@ -58,7 +58,7 @@ if __name__ == '__main__':
     dp.add_handler(CommandHandler("rant", rant, Filters.chat(GROUP) & Filters.user(VERIFIED_USERS)))
     dp.add_handler(CommandHandler("push", push, Filters.chat(GROUP) & Filters.user(VERIFIED_USERS)))
     dp.add_handler(CommandHandler("offtopic", offtopic, Filters.chat(GROUP) & Filters.user(ADMINS)))
-    dp.add_handler(CommandHandler("warn", warn, ))#Filters.chat(OFFTOPIC_GROUP) & Filters.user(ADMINS)))
+    dp.add_handler(CommandHandler("warn", warn, ))  # Filters.chat(OFFTOPIC_GROUP) & Filters.user(ADMINS)))
     dp.add_handler(CommandHandler("ban", ban, Filters.chat(OFFTOPIC_GROUP) & Filters.user(ADMINS)))
     dp.add_handler(CommandHandler("polls", polls))
 
