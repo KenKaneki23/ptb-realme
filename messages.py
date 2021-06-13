@@ -113,8 +113,8 @@ def gcam(update: Update, context: CallbackContext):
     delay_group_preview(update, context,
                         "<u>Google Camera</u>"
                         "\n\n<b>Releases</b>"
-                        "\n· <a href='https://t.me/realme_support/113595'>PXv8.1_GCam-v1.2</a>"
-                        "\n· <a href='https://t.me/realme_support/113609'>Urnyx05-v2.5</a>"
+                        "\n· <a href='https://t.me/realme_offtopic/4177'>PXv8.1_GCam-v1.2</a>"
+                        "\n· <a href='https://t.me/realme_offtopic/4176'>Urnyx05-v2.5</a>"
                         "\n\nUrnyx05's releases work well on most Realme devices. Take a look at @googlecameraport "
                         "for other releases. "
                         "\n\n\n<b>Configurations</b>"
