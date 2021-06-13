@@ -4,6 +4,7 @@ from telegram import Update, ParseMode, InlineKeyboardMarkup, InlineKeyboardButt
     KeyboardButtonPollType
 from telegram.ext import CallbackContext
 
+from config import VERIFIED_USERS
 from main import GROUP, OFFTOPIC_GROUP, ADMINS
 from utils import delay_group, delay_group_button_url, now, delay_group_preview, message_button_url
 
@@ -178,7 +179,7 @@ def form(update: Update, context: CallbackContext):
 
 
 def date(update: Update, context: CallbackContext):
-    if update.message.reply_to_message:
+    if update.message.reply_to_message and update.message.from_user in VERIFIED_USERS:
         delay_group(update, context,
                     "Hey {} 🤖"
                     "\n\n<i>Realme rolls out an Update, if it works as expected - not if a certain date is met. "
@@ -193,7 +194,7 @@ def date(update: Update, context: CallbackContext):
 
 
 def push(update: Update, context: CallbackContext):
-    if update.message.reply_to_message:
+    if update.message.reply_to_message and update.message.from_user in VERIFIED_USERS:
         delay_group(update, context,
                     "Don't worry {} 🤖"
                     "\n\nTo ensure the stability of updates, they have staged rollouts."
