@@ -110,26 +110,26 @@ def experts(update: Update, context: CallbackContext):
 
 
 def gcam(update: Update, context: CallbackContext):
-    delay_group_preview(update, context,
-                        "<u>Google Camera</u>"
-                        "\n\n<b>Releases</b>"
-                        "\n· <a href='https://t.me/realme_offtopic/4177'>PXv8.1_GCam-v1.2</a>"
-                        "\n· <a href='https://t.me/realme_offtopic/4176'>Urnyx05-v2.5</a>"
-                        "\n\nUrnyx05's releases work well on most Realme devices. Take a look at @googlecameraport "
-                        "for other releases. "
-                        "\n\n\n<b>Configurations</b>"
-                        "\nTaken from <a href='https://www.celsoazevedo.com/files/android/google-camera/f/configs"
-                        "-urnyx-02/'>Urnyx05's page</a>. These configurations are optimized for a specific device, "
-                        "but may work for other devices aswell. Just give them a try 😊 "
-                        "\n\n· <a href='https://t.me/realme_support/113610'>Realme 5 & 5 Pro</a>"
-                        "\n· <a href='https://t.me/realme_support/113612'>Realme X2 Pro</a>"
-                        "\n· <a href='https://t.me/realme_support/113614'>Realme X50 & X50 Pro</a>"
-                        "\n· <a href='https://t.me/realme_support/113616'>Realme 6 & 6 Pro</a>"
-                        "\n\nTo enable these configurations, place them in <b>Internal Storage > GCam > Configs7</b>."
-                        "\n\nThen go to your GCam and press on the bottom left (next to the camera switch button) a "
-                        "few times. A dialog should appear where your can select the desired configuration. "
-                        "\n\nFeel free to fiddle around with LibPatcher (in GCam's settings) a little to shape the "
-                        "image output so that it fits your needs.")
+    delay_group(update, context,
+                "<u>Google Camera</u>"
+                "\n\n<b>Releases</b>"
+                "\n· <a href='https://t.me/realme_offtopic/4177'>PXv8.1_GCam-v1.2</a>"
+                "\n· <a href='https://t.me/realme_offtopic/4176'>Urnyx05-v2.5</a>"
+                "\n\nUrnyx05's releases work well on most Realme devices. Take a look at @googlecameraport "
+                "for other releases. "
+                "\n\n\n<b>Configurations</b>"
+                "\nTaken from <a href='https://www.celsoazevedo.com/files/android/google-camera/f/configs"
+                "-urnyx-02/'>Urnyx05's page</a>. These configurations are optimized for a specific device, "
+                "but may work for other devices aswell. Just give them a try 😊 "
+                "\n\n· <a href='https://t.me/realme_support/113610'>Realme 5 & 5 Pro</a>"
+                "\n· <a href='https://t.me/realme_support/113612'>Realme X2 Pro</a>"
+                "\n· <a href='https://t.me/realme_support/113614'>Realme X50 & X50 Pro</a>"
+                "\n· <a href='https://t.me/realme_support/113616'>Realme 6 & 6 Pro</a>"
+                "\n\nTo enable these configurations, place them in <b>Internal Storage > GCam > Configs7</b>."
+                "\n\nThen go to your GCam and press on the bottom left (next to the camera switch button) a "
+                "few times. A dialog should appear where your can select the desired configuration. "
+                "\n\nFeel free to fiddle around with LibPatcher (in GCam's settings) a little to shape the "
+                "image output so that it fits your needs.")
 
 
 def cleaners(update: Update, context: CallbackContext):
@@ -179,7 +179,7 @@ def form(update: Update, context: CallbackContext):
 
 
 def date(update: Update, context: CallbackContext):
-    if update.message.reply_to_message and update.message.from_user in VERIFIED_USERS:
+    if update.message.reply_to_message and update.message.from_user.id in VERIFIED_USERS:
         delay_group(update, context,
                     "Hey {} 🤖"
                     "\n\n<i>Realme rolls out an Update, if it works as expected - not if a certain date is met. "
@@ -194,7 +194,7 @@ def date(update: Update, context: CallbackContext):
 
 
 def push(update: Update, context: CallbackContext):
-    if update.message.reply_to_message and update.message.from_user in VERIFIED_USERS:
+    if update.message.reply_to_message and update.message.from_user.id in VERIFIED_USERS:
         delay_group(update, context,
                     "Don't worry {} 🤖"
                     "\n\nTo ensure the stability of updates, they have staged rollouts."
