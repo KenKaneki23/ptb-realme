@@ -289,12 +289,26 @@ def rant(update: Update, context: CallbackContext):
 
 
 def whatsapp(update: Update, context: CallbackContext):
-    message_button_url(update, context,
-                       "Hey {} 🤖"
-                       "\n\nYou can contact the official support directly on WhatsApp:"
-                       "\n\n+917303420104"
-                       .format(update.message.reply_to_message.from_user.name),
-                       "Message Support 💬", "https://wa.me/+917303420104")
+    update.message.delete()
+
+    text = "\n\nYou can contact the official support directly on WhatsApp:" \
+           "\n\n+917303420104"
+
+    button_text = "Message Support 💬"
+    button_url = "https://wa.me/+917303420104"
+
+    if update.message.reply_to_message:
+        update.message.reply_to_message.reply_text(
+            "Hey {} 🤖" + text.format(update.message.reply_to_message.from_user.name),
+            ParseMode.HTML,
+            reply_markup=InlineKeyboardMarkup.from_button(
+                InlineKeyboardButton(button_text, button_url)))
+    else:
+        context.bot.send_message(update.message.chat_id,
+                                 text,
+                                 ParseMode.HTML,
+                                 reply_markup=InlineKeyboardMarkup.from_button(
+                                     InlineKeyboardButton(button_text, button_url)))
 
 
 def offtopic(update: Update, context: CallbackContext):
