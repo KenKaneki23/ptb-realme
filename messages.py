@@ -6,7 +6,7 @@ from telegram.ext import CallbackContext
 
 from config import VERIFIED_USERS
 from main import GROUP, OFFTOPIC_GROUP, ADMINS
-from utils import delay_group, delay_group_button_url, now, delay_group_preview, message_button_url
+from utils import delay_group, delay_group_button_url, now, delay_group_preview, message_button_url, delete
 
 BAN = "banUser"
 WARN = "warnUser"
@@ -291,7 +291,7 @@ def rant(update: Update, context: CallbackContext):
 def whatsapp(update: Update, context: CallbackContext):
     update.message.delete()
 
-    text = "\n\nYou can contact the official support directly on WhatsApp:" \
+    text = "You can contact the official support directly on WhatsApp:" \
            "\n\n+917303420104"
 
     button_text = "Message Support 💬"
@@ -299,16 +299,17 @@ def whatsapp(update: Update, context: CallbackContext):
 
     if update.message.reply_to_message:
         update.message.reply_to_message.reply_text(
-            "Hey {} 🤖" + text.format(update.message.reply_to_message.from_user.name),
+            "Hey {} 🤖\n\n".format(update.message.reply_to_message.from_user.name)+text,
             ParseMode.HTML,
             reply_markup=InlineKeyboardMarkup.from_button(
                 InlineKeyboardButton(button_text, button_url)))
     else:
-        context.bot.send_message(update.message.chat_id,
-                                 text,
-                                 ParseMode.HTML,
-                                 reply_markup=InlineKeyboardMarkup.from_button(
-                                     InlineKeyboardButton(button_text, button_url)))
+        reply_message = context.bot.send_message(update.message.chat_id,
+                                                 text,
+                                                 ParseMode.HTML,
+                                                 reply_markup=InlineKeyboardMarkup.from_button(
+                                                     InlineKeyboardButton(button_text, button_url)))
+        context.job_queue.run_once(delete, 600, reply_message.chat_id, str(reply_message.message_id))
 
 
 def offtopic(update: Update, context: CallbackContext):
