@@ -54,6 +54,7 @@ if __name__ == '__main__':
     dp.add_handler(CommandHandler("debloat", debloat, Filters.chat(GROUP)))
     dp.add_handler(CommandHandler("ask", ask, Filters.chat(GROUP)))
     dp.add_handler(CommandHandler("form", form, Filters.chat(GROUP)))
+    dp.add_handler(CommandHandler("whatsapp", whatsapp, Filters.chat(GROUP)))
     dp.add_handler(CommandHandler("date", date, Filters.chat(GROUP)))
     dp.add_handler(CommandHandler("rant", rant, Filters.chat(GROUP)))
     dp.add_handler(CommandHandler("push", push, Filters.chat(GROUP)))

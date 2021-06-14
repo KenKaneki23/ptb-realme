@@ -288,6 +288,15 @@ def rant(update: Update, context: CallbackContext):
                                  "\n\nThanks for reading ☺️")
 
 
+def whatsapp(update: Update, context: CallbackContext):
+    message_button_url(update, context,
+                       "Hey {} 🤖"
+                       "\n\nYou can contact the official support directly on WhatsApp:"
+                       "\n\n+917303420104"
+                       .format(update.message.reply_to_message.from_user.name),
+                       "Message Support 💬", "https://wa.me/+917303420104")
+
+
 def offtopic(update: Update, context: CallbackContext):
     if update.message.reply_to_message:
         update.message.delete()
@@ -303,7 +312,7 @@ def offtopic(update: Update, context: CallbackContext):
 
         message_button_url(update, context,
                            "Hey {} 🤖"
-                           "\nThis is getting pretty off-topic now."
+                           "\n\nThis is getting pretty off-topic now."
                            "\n\nI moved the message to @realme_offtopic"
                            "\n\nPlease continue the discussion there."
                            .format(update.message.reply_to_message.from_user.name)
@@ -312,7 +321,7 @@ def offtopic(update: Update, context: CallbackContext):
     else:
         delay_group(update, context,
                     "Hey guys 🤖"
-                    "\nFeel free to join @realme_offtopic to discuss topics not related to Realme or Android."
+                    "\n\nFeel free to join @realme_offtopic to discuss topics not related to Realme or Android."
                     "\n\nYou can also send Links and Stickers there 🥳")
 
 
