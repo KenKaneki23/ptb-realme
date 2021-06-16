@@ -319,7 +319,7 @@ def offtopic(update: Update, context: CallbackContext):
             [[InlineKeyboardButton(text="Original Message ➡️",
                                    url=update.message.reply_to_message.link)]]))
 
-        moved_link = "https://t.me/realme_offtopic/" + original_msg.message_id
+        moved_link = "https://t.me/realme_offtopic/" + str(original_msg.message_id)
 
         message_button_url(update, context,
                            "Hey {} 🤖"
