@@ -299,7 +299,7 @@ def whatsapp(update: Update, context: CallbackContext):
 
     if update.message.reply_to_message:
         update.message.reply_to_message.reply_text(
-            "Hey {} 🤖\n\n".format(update.message.reply_to_message.from_user.name)+text,
+            "Hey {} 🤖\n\n".format(update.message.reply_to_message.from_user.name) + text,
             ParseMode.HTML,
             reply_markup=InlineKeyboardMarkup.from_button(
                 InlineKeyboardButton(button_text, button_url)))
@@ -315,15 +315,11 @@ def whatsapp(update: Update, context: CallbackContext):
 def offtopic(update: Update, context: CallbackContext):
     if update.message.reply_to_message:
         update.message.delete()
-        moved_link = context.bot.send_message(OFFTOPIC_GROUP,
-                                              "{} <a href='{}'>wrote</a>:"
-                                              "\n\n{}"
-                                              .format(
-                                                  update.message.reply_to_message.from_user.name,
-                                                  update.message.reply_to_message.link,
-                                                  update.message.reply_to_message.text),
-                                              ParseMode.HTML,
-                                              True).link
+        original_msg = update.message.copy(OFFTOPIC_GROUP, reply_markup=InlineKeyboardMarkup(
+            [[InlineKeyboardButton(text="Original Message",
+                                   url=update.message.reply_to_message.link)]]))
+
+        moved_link = "https://t.me/realme_offtopic/" + str(original_msg)
 
         message_button_url(update, context,
                            "Hey {} 🤖"
