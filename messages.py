@@ -315,7 +315,7 @@ def whatsapp(update: Update, context: CallbackContext):
 def offtopic(update: Update, context: CallbackContext):
     if update.message.reply_to_message:
         update.message.delete()
-        original_msg = update.message.copy(OFFTOPIC_GROUP, reply_markup=InlineKeyboardMarkup(
+        original_msg = update.message.reply_to_message.copy(OFFTOPIC_GROUP, reply_markup=InlineKeyboardMarkup(
             [[InlineKeyboardButton(text="Original Message",
                                    url=update.message.reply_to_message.link)]]))
 
