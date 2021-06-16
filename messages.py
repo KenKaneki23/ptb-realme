@@ -316,7 +316,7 @@ def offtopic(update: Update, context: CallbackContext):
     if update.message.reply_to_message:
         update.message.delete()
         original_msg = update.message.reply_to_message.copy(OFFTOPIC_GROUP, reply_markup=InlineKeyboardMarkup(
-            [[InlineKeyboardButton(text="Original Message ➡️",
+            [[InlineKeyboardButton(text="Message by " + update.message.reply_to_message.from_user.name,
                                    url=update.message.reply_to_message.link)]]))
 
         moved_link = "https://t.me/realme_offtopic/" + str(original_msg.message_id)
