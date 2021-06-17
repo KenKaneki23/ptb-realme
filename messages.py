@@ -190,8 +190,7 @@ def bug(update: Update, context: CallbackContext):
 
 
 def model(update: Update, context: CallbackContext):
-    context.bot.send_message(update.message.chat_id,
-                             "res: " + str(context.args[0]))
+    context.bot.send_message(update.message.chat_id,"res: " + str(context.args[0]))
 
 
 def date(update: Update, context: CallbackContext):
