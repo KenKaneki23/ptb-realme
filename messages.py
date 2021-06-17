@@ -4,9 +4,6 @@ from telegram import Update, ParseMode, InlineKeyboardMarkup, InlineKeyboardButt
     KeyboardButtonPollType
 from telegram.ext import CallbackContext
 
-import urllib.request
-from bs4 import BeautifulSoup
-
 from config import VERIFIED_USERS
 from main import GROUP, OFFTOPIC_GROUP, ADMINS
 from utils import delay_group, delay_group_button_url, now, delay_group_preview, message_button_url, delete
@@ -193,8 +190,6 @@ def bug(update: Update, context: CallbackContext):
 
 
 def model(update: Update, context: CallbackContext):
-
-
     context.bot.send_message(update.message.chat_id,
                              "res: " + str(context.args[0]))
 
