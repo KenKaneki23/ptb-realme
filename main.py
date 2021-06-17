@@ -41,7 +41,7 @@ if __name__ == '__main__':
     dp = updater.dispatcher
 
     dp.add_handler(MessageHandler(Filters.text(
-        ("/help@CoronaVirusRobot", "/victims@CoronaVirusRobot", "/infect@CoronaVirusRobot", "/victims", "/infect")),
+        ["/help@CoronaVirusRobot", "/victims@CoronaVirusRobot", "/infect@CoronaVirusRobot", "/victims", "/infect"]),
         remove_message))
 
     dp.add_handler(CommandHandler("android11", android11, Filters.chat(GROUP)))
