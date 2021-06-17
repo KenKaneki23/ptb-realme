@@ -4,7 +4,6 @@ from telegram import Update, ParseMode, InlineKeyboardMarkup, InlineKeyboardButt
     KeyboardButtonPollType
 from telegram.ext import CallbackContext
 
-import gsmarena
 from config import VERIFIED_USERS
 from main import GROUP, OFFTOPIC_GROUP, ADMINS
 from utils import delay_group, delay_group_button_url, now, delay_group_preview, message_button_url, delete
@@ -191,10 +190,8 @@ def bug(update: Update, context: CallbackContext):
 
 
 def model(update: Update, context: CallbackContext):
-    res = gsmarena.Gsmarena.crawl_html_page("realme_x2_pro-9904.php")
-
     context.bot.send_message(update.message.chat_id,
-                             "res: " + str(context.args[0]) + " --- " + str(res.text))
+                             "res: " + str(context.args[0]))
 
 
 def date(update: Update, context: CallbackContext):

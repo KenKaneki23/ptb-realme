@@ -42,7 +42,7 @@ if __name__ == '__main__':
 
     dp.add_handler(MessageHandler(Filters.text(
         ("/help@CoronaVirusRobot", "/victims@CoronaVirusRobot", "/infect@CoronaVirusRobot", "/victims", "/infect")),
-                                  remove_message))
+        remove_message))
 
     dp.add_handler(CommandHandler("android11", android11, Filters.chat(GROUP)))
     dp.add_handler(CommandHandler("gcam", gcam, Filters.chat(GROUP)))
@@ -73,5 +73,5 @@ if __name__ == '__main__':
     # add commands above this comment
     #  dp.add_error_handler(error) #comment this one out for full stacktrace
 
-    updater.start_webhook("0.0.0.0", PORT, TOKEN, webhook_url='https://ptb-realme.herokuapp.com/' + TOKEN)
+    # updater.start_webhook("0.0.0.0", PORT, TOKEN, webhook_url='https://ptb-realme.herokuapp.com/' + TOKEN)
     updater.idle()
