@@ -4,6 +4,7 @@ from telegram import Update, ParseMode, InlineKeyboardMarkup, InlineKeyboardButt
     KeyboardButtonPollType
 from telegram.ext import CallbackContext
 
+import gsmarena
 from config import VERIFIED_USERS
 from main import GROUP, OFFTOPIC_GROUP, ADMINS
 from utils import delay_group, delay_group_button_url, now, delay_group_preview, message_button_url, delete
@@ -178,6 +179,24 @@ def form(update: Update, context: CallbackContext):
                            "-VGJasy8VU_BLsFA/viewform")
 
 
+def bug(update: Update, context: CallbackContext):
+    delay_group(update, context,
+                "<u>Bug report</u>\n\n"
+                "<i>If you face an issue that is clearly a bug and can't be resolved by the community after some time, "
+                "you can also let the developers know. Don't abuse this functionality, so that the devs can focus on "
+                "developing.</i> "
+                "\n\nPlease provide as much useful information as possible."
+                "\n\nJust go to your phone app and dial <code>*#800#</code> in."
+                "\n\nAlternatively you can also do that in the feedback section of the toolkit app.")
+
+
+def model(update: Update, context: CallbackContext):
+    res = gsmarena.Gsmarena.crawl_html_page("realme_x2_pro-9904.php")
+
+    context.bot.send_message(update.message.chat_id,
+                             "res: " + str(context.args[0]) + " --- " + str(res.text))
+
+
 def date(update: Update, context: CallbackContext):
     if update.message.reply_to_message and update.message.from_user.id in VERIFIED_USERS:
         delay_group(update, context,
@@ -316,7 +335,7 @@ def offtopic(update: Update, context: CallbackContext):
     if update.message.reply_to_message:
         update.message.delete()
         original_msg = update.message.reply_to_message.copy(OFFTOPIC_GROUP, reply_markup=InlineKeyboardMarkup(
-            [[InlineKeyboardButton(text="Message by " + update.message.reply_to_message.from_user.name,
+            [[InlineKeyboardButton(text="Original Message ➡️",
                                    url=update.message.reply_to_message.link)]]))
 
         moved_link = "https://t.me/realme_offtopic/" + str(original_msg.message_id)

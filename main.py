@@ -40,24 +40,26 @@ if __name__ == '__main__':
 
     dp = updater.dispatcher
 
-    dp.add_handler(MessageHandler(
-        Filters.text(["/help@CoronaVirusRobot", "/victims@CoronaVirusRobot", "/infect@CoronaVirusRobot"]),
-        remove_message))
+    dp.add_handler(MessageHandler(Filters.text(
+        ("/help@CoronaVirusRobot", "/victims@CoronaVirusRobot", "/infect@CoronaVirusRobot", "/victims", "/infect")),
+                                  remove_message))
 
     dp.add_handler(CommandHandler("android11", android11, Filters.chat(GROUP)))
     dp.add_handler(CommandHandler("gcam", gcam, Filters.chat(GROUP)))
     dp.add_handler(CommandHandler("cleaners", cleaners, Filters.chat(GROUP)))
     dp.add_handler(CommandHandler("help", commands, Filters.chat(GROUP)))
     dp.add_handler(CommandHandler("admins", admins, Filters.chat(GROUP)))
-    dp.add_handler(CommandHandler("rules", rules))
     dp.add_handler(CommandHandler("experts", experts, Filters.chat(GROUP)))
     dp.add_handler(CommandHandler("debloat", debloat, Filters.chat(GROUP)))
     dp.add_handler(CommandHandler("ask", ask, Filters.chat(GROUP)))
     dp.add_handler(CommandHandler("form", form, Filters.chat(GROUP)))
+    dp.add_handler(CommandHandler("rules", rules))
+    dp.add_handler(CommandHandler("model", model, Filters.user(ADMINS), pass_args=True))
     dp.add_handler(CommandHandler("whatsapp", whatsapp, Filters.chat(GROUP)))
     dp.add_handler(CommandHandler("date", date, Filters.chat(GROUP)))
     dp.add_handler(CommandHandler("rant", rant, Filters.chat(GROUP)))
     dp.add_handler(CommandHandler("push", push, Filters.chat(GROUP)))
+    dp.add_handler(CommandHandler("bug", bug, Filters.chat(GROUP) & Filters.user(VERIFIED_USERS)))
     dp.add_handler(CommandHandler("offtopic", offtopic, Filters.chat(GROUP) & Filters.user(ADMINS)))
     dp.add_handler(CommandHandler("warn", warn, ))  # Filters.chat(OFFTOPIC_GROUP) & Filters.user(ADMINS)))
     dp.add_handler(CommandHandler("ban", ban, Filters.chat(OFFTOPIC_GROUP) & Filters.user(ADMINS)))
