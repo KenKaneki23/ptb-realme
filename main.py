@@ -36,7 +36,7 @@ def error(update: Update, context: CallbackContext):
 
 if __name__ == '__main__':
     session = start_session()
-    updater = Updater(TOKEN, persistence=PostgresPersistence(session), use_context=True)
+    updater = Updater(TOKEN, persistence=PostgresPersistence(session))
 
     dp = updater.dispatcher
 
@@ -54,7 +54,7 @@ if __name__ == '__main__':
     dp.add_handler(CommandHandler("ask", ask, Filters.chat(GROUP)))
     dp.add_handler(CommandHandler("form", form, Filters.chat(GROUP)))
     dp.add_handler(CommandHandler("rules", rules))
-   # dp.add_handler(CommandHandler("model", model, Filters.user(ADMINS), pass_args=True))
+    dp.add_handler(CommandHandler("model", model, Filters.user(ADMINS), pass_args=True))
     dp.add_handler(CommandHandler("whatsapp", whatsapp, Filters.chat(GROUP)))
     dp.add_handler(CommandHandler("date", date, Filters.chat(GROUP)))
     dp.add_handler(CommandHandler("rant", rant, Filters.chat(GROUP)))
