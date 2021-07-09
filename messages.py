@@ -1,5 +1,5 @@
 import time
-
+import yaml
 from telegram import Update, ParseMode, InlineKeyboardMarkup, InlineKeyboardButton, ReplyKeyboardMarkup, KeyboardButton, \
     KeyboardButtonPollType
 from telegram.ext import CallbackContext
@@ -222,6 +222,19 @@ def model(update: Update, context: CallbackContext):
 
     context.bot.send_message(update.message.chat_id,
                              "res: " + str(context.args[0]))
+
+
+
+
+    with open("devices.yaml", 'r') as stream:
+        try:
+            print(yaml.safe_load(stream))
+
+            context.bot.send_message(update.message.chat_id,str(yaml.safe_load(stream)) )
+        except yaml.YAMLError as exc:
+            print(exc)
+
+
 
 
 def date(update: Update, context: CallbackContext):
