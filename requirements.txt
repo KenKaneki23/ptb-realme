@@ -5,3 +5,4 @@ ujson==4.0.2
 bs4==0.0.1
 lxml
 beautifulsoup4==4.9.3
+pyyaml
