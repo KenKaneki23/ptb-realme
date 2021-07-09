@@ -219,22 +219,12 @@ def model(update: Update, context: CallbackContext):
         print("Name:", name)
         print("Type:", taborphone)
 
-
     context.bot.send_message(update.message.chat_id,
                              "res: " + str(context.args[0]))
 
-
-
-
-    with open("devices.yaml", 'r') as stream:
-        try:
-            print(yaml.safe_load(stream))
-
-            context.bot.send_message(update.message.chat_id,str(yaml.safe_load(stream)) )
-        except yaml.YAMLError as exc:
-            print(exc)
-
-
+    with open("devices.yaml", "r", encoding="utf8") as f:
+        context.bot.send_message(update.message.chat_id,
+                                 "devices: " + str(yaml.safe_load(f)))
 
 
 def date(update: Update, context: CallbackContext):
