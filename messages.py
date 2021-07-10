@@ -206,11 +206,13 @@ def model(update: Update, context: CallbackContext):
             delay_group(update, context, "Sorry! Model {} was not found.".format(arg))
 
     elif len(context.args) > 1:
-        delay_group(update, context, "Too many supplied arguments!"
-                                     "\n\nPlease supply a Model like /model rmx1931")
+        delay_group(update, context, "<b>Too many supplied arguments!</b>"
+                                     "\n\nYou can only look up one device at a time."
+                                     "\n\nPlease supply a Model like <code>/model rmx1931</code>")
 
     else:
-        delay_group(update, context, "Please supply a Model like /model rmx1931")
+        delay_group(update, context, "<b>No argument specified!</b>"
+                                     "You also need to add your model like <code>/model rmx1931</code>")
 
 
 def battery(update: Update, context: CallbackContext):
