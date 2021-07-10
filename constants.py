@@ -34,4 +34,4 @@ MODELS = {
     1821: {'3i', '3'},
     1805: {'C1', '2'},
     1801: '2 Pro'
-} #what about making a map containing lists for every region? or instead just look for 1931EX or so?
+}  # what about making a map containing lists for every region? or instead just look for 1931EX or so?

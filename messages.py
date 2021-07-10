@@ -210,7 +210,7 @@ def rmx(update: Update, context: CallbackContext):
 
                 result = MODELS.get(arg)
 
-                if result is set[str]:
+                if isinstance(result, set):
 
                     text = "\n\nThere's multiple devices with this Model number:"
 
