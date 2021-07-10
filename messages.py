@@ -210,12 +210,12 @@ def rmx(update: Update, context: CallbackContext):
 
                 result = MODELS.get(arg)
 
-                if result is list:
+                if result is list[str]:
 
                     text = "\n\nThere's multiple devices with this Model number:"
 
                     for i in list(result):
-                        text += "realme " + i
+                        text += "· realme " + i
 
                 else:
                     text = "\n\nThe phone you're looking for is the realme {}.".format(result)
