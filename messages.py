@@ -1,4 +1,3 @@
-import os
 import time
 
 from telegram import Update, ParseMode, InlineKeyboardMarkup, InlineKeyboardButton, ReplyKeyboardMarkup, KeyboardButton, \
@@ -88,8 +87,7 @@ def commands(update: Update, context: CallbackContext):
                 "\n\n/date - when stable is released"
                 "\n\n/push - how updates are rolled out"
                 "\n\n/rant - quality over quantitiy"
-                "\n\nMessage @nyx69, if you face any issues with me 🤖"
-                "\nRelease: " + str(os.environ.get('HEROKU_RELEASE_VERSION')))
+                "\n\nMessage @nyx69, if you face any issues with me 🤖")
 
 
 def experts(update: Update, context: CallbackContext):
@@ -215,7 +213,7 @@ def rmx(update: Update, context: CallbackContext):
                     text = "\n\nThere's multiple devices with this Model number:"
 
                     for i in set(result):
-                        text += "· realme " + i
+                        text += "\n· realme " + i
 
                 else:
                     text = "\n\nThe phone you're looking for is the realme {}.".format(result)
@@ -225,7 +223,7 @@ def rmx(update: Update, context: CallbackContext):
                 else:
                     name = update.message.from_user.name
 
-                delay_group(update, context, "Hey {} 🤖" + text.format(name))
+                delay_group(update, context, "Hey {} 🤖".format(name) + text)
 
             else:
                 context.bot.send_message(NYX, "#TODO\n\nAdd RMX {} to list of devices‼️".format(arg))
