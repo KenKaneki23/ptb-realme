@@ -6,6 +6,7 @@ from telegram import Update, ParseMode, InlineKeyboardMarkup, InlineKeyboardButt
 from telegram.ext import CallbackContext
 
 from config import VERIFIED_USERS, NYX
+from constants import DEVICES
 from main import GROUP, OFFTOPIC_GROUP, ADMINS
 from utils import delay_group, delay_group_button_url, now, delay_group_preview, message_button_url, delete
 
@@ -197,38 +198,34 @@ def rmx(update: Update, context: CallbackContext):
     if len(context.args) == 1:
         arg = context.args[0]
 
-        print(arg)
+        if arg.isdigit():
+            arg = int(arg)
 
-        devices: dict[int, str] = bios.read('devices.yaml')
+            if arg == 69:
+                delay_group(update, context, "nice")
 
-        print(devices)
+            elif arg in DEVICES:
 
-        print(arg in devices)
+                result = DEVICES.get(arg)
 
-        if arg in devices:
+                if update.message.reply_to_message is not None and update.message.from_user.id in VERIFIED_USERS:
+                    delay_group(update, context, "Hey {} 🤖"
+                                                 "The phone you're looking for is the Realme {}."
+                                .format(update.message.reply_to_message.from_user.name, result))
+                else:
+                    delay_group(update, context, "Hey {} 🤖"
+                                                 "The phone you're looking for is the Realme {}."
+                                .format(update.message.from_user.name, result))
 
-            if update.message.reply_to_message is not None and update.message.from_user.id in VERIFIED_USERS:
-                delay_group(update, context, "Hey {} 🤖"
-                                             "The phone you're looking for is the Realme {}."
-                            .format(update.message.reply_to_message.from_user.name, devices.get(arg)))
             else:
-                delay_group(update, context, "Hey {} 🤖"
-                                             "The phone you're looking for is the Realme {}."
-                            .format(update.message.from_user.name, devices.get(arg)))
+                context.bot.send_message(NYX, "#TODO\n\nAdd RMX {} to list of devices‼️".format(arg))
+
+                delay_group(update, context, "Sorry! Model {} was not found."
+                                             "\n\nMy human will add it later 🤖".format(arg))
 
         else:
-            if arg.isdigit():
-                if int(arg) == 69:
-                    delay_group(update, context, "nice")
-
-                else:
-                    context.bot.send_message(NYX, "#TODO\n\nAdd RMX {} to list of devices‼️".format(arg))
-
-                    delay_group(update, context, "Sorry! Model {} was not found."
-                                                 "\n\nMy human will add it later 🤖".format(arg))
-            else:
-                delay_group(update, context, "<b>No valid Model number‼️</b>"
-                                             "\n\nPlease supply a Model like <code>/rmx 1931</code>")
+            delay_group(update, context, "<b>No valid Model number‼️</b>"
+                                         "\n\nPlease supply a Model like <code>/rmx 1931</code>")
 
     elif len(context.args) > 1:
         delay_group(update, context, "<b>Too many arguments supplied‼️</b>"
