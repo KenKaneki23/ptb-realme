@@ -199,7 +199,7 @@ def rmx(update: Update, context: CallbackContext):
 
         print(arg)
 
-        devices = bios.read('devices.yaml')
+        devices: dict[int, str] = bios.read('devices.yaml')
 
         if arg in devices:
 
