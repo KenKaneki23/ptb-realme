@@ -199,9 +199,9 @@ def rmx(update: Update, context: CallbackContext):
 
         devices = bios.read('devices.yaml')
 
-        if arg in devices.keys():
+        if arg in devices:
 
-            if update.message.reply_to_message and update.message.from_user.id in VERIFIED_USERS:
+            if update.message.reply_to_message is not None and update.message.from_user.id in VERIFIED_USERS:
                 delay_group(update, context, "Hey {} 🤖"
                                              "The phone you're looking for is the Realme {}."
                             .format(update.message.reply_to_message.from_user.name, devices.get(arg)))
@@ -215,7 +215,7 @@ def rmx(update: Update, context: CallbackContext):
                 context.bot.send_message(NYX, "#TODO\n\nAdd RMX {} to list of devices‼️".format(arg))
 
                 delay_group(update, context, "Sorry! Model {} was not found."
-                                             "\n\nIf My human will add it later 🤖".format(arg))
+                                             "\n\nMy human will add it later 🤖".format(arg))
             else:
                 delay_group(update, context, "<b>Wrong format!</b>"
                                              "\n\nPlease supply a Model like <code>/rmx 1931</code>")
