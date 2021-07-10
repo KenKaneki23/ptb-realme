@@ -211,9 +211,8 @@ def rmx(update: Update, context: CallbackContext):
                             .format(update.message.from_user.name, devices.get(arg)))
 
         else:
-            if arg is int:
-
-                context.bot.send_message(NYX, "#TODO\n\nAdd RMX{} to list of devices‼️".format(arg))
+            if arg.isdigit():
+                context.bot.send_message(NYX, "#TODO\n\nAdd RMX {} to list of devices‼️".format(arg))
 
                 delay_group(update, context, "Sorry! Model {} was not found."
                                              "\n\nIf My human will add it later 🤖".format(arg))
