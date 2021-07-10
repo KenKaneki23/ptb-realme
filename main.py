@@ -56,6 +56,7 @@ if __name__ == '__main__':
     dp.add_handler(CommandHandler("rules", rules))
     dp.add_handler(CommandHandler("model", model, Filters.user(ADMINS), pass_args=True))
     dp.add_handler(CommandHandler("whatsapp", whatsapp, Filters.chat(GROUP)))
+    dp.add_handler(CommandHandler("battery", battery, Filters.chat(GROUP)))
     dp.add_handler(CommandHandler("date", date, Filters.chat(GROUP)))
     dp.add_handler(CommandHandler("rant", rant, Filters.chat(GROUP)))
     dp.add_handler(CommandHandler("push", push, Filters.chat(GROUP)))
