@@ -202,7 +202,7 @@ def model(update: Update, context: CallbackContext):
         with open("devices.yaml", "r", encoding="utf8") as f:
             devices = yaml.safe_load(f)
 
-            device = devices[arg]
+            device = devices.get(arg)
 
             if device is None:
                 delay_group(update, context, "Sorry! Model {} was not found.".format(arg))
