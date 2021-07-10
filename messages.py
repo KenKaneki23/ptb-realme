@@ -197,6 +197,8 @@ def rmx(update: Update, context: CallbackContext):
     if len(context.args) == 1:
         arg = context.args[0]
 
+        print(arg)
+
         devices = bios.read('devices.yaml')
 
         if arg in devices:
@@ -212,21 +214,25 @@ def rmx(update: Update, context: CallbackContext):
 
         else:
             if arg.isdigit():
-                context.bot.send_message(NYX, "#TODO\n\nAdd RMX {} to list of devices‼️".format(arg))
+                if arg == 69:
+                    delay_group(update, context, "nice")
 
-                delay_group(update, context, "Sorry! Model {} was not found."
-                                             "\n\nMy human will add it later 🤖".format(arg))
+                else:
+                    context.bot.send_message(NYX, "#TODO\n\nAdd RMX {} to list of devices‼️".format(arg))
+
+                    delay_group(update, context, "Sorry! Model {} was not found."
+                                                 "\n\nMy human will add it later 🤖".format(arg))
             else:
-                delay_group(update, context, "<b>Wrong format!</b>"
+                delay_group(update, context, "<b>No valid Model number‼️</b>"
                                              "\n\nPlease supply a Model like <code>/rmx 1931</code>")
 
     elif len(context.args) > 1:
-        delay_group(update, context, "<b>Too many supplied arguments!</b>"
+        delay_group(update, context, "<b>Too many arguments supplied‼️</b>"
                                      "\n\nYou can only look up one device at a time."
                                      "\n\nPlease supply a Model like <code>/rmx 1931</code>")
 
     else:
-        delay_group(update, context, "<b>No argument specified!</b>"
+        delay_group(update, context, "<b>No argument specified‼️</b>"
                                      "\n\nYou also need to add your model like <code>/rmx 1931</code>")
 
 
