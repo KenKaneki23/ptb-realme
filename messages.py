@@ -210,13 +210,22 @@ def rmx(update: Update, context: CallbackContext):
 
                 result = MODELS.get(arg)
 
+                if result is list:
+
+                    text = "\n\nThere's multiple devices with this Model number:"
+
+                    for i in list(result):
+                        text += "realme " + i
+
+                else:
+                    text = "\n\nThe phone you're looking for is the realme {}.".format(result)
+
                 if update.message.reply_to_message and update.message.from_user.id in VERIFIED_USERS:
                     name = update.message.reply_to_message.from_user.name
                 else:
                     name = update.message.from_user.name
 
-                delay_group(update, context, "Hey {} 🤖"
-                                             "\n\nThe phone you're looking for is the realme {}.".format(name, result))
+                delay_group(update, context, "Hey {} 🤖" + text.format(name))
 
             else:
                 context.bot.send_message(NYX, "#TODO\n\nAdd RMX {} to list of devices‼️".format(arg))
