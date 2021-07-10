@@ -3,6 +3,9 @@ import yaml
 from telegram import Update, ParseMode, InlineKeyboardMarkup, InlineKeyboardButton, ReplyKeyboardMarkup, KeyboardButton, \
     KeyboardButtonPollType
 from telegram.ext import CallbackContext
+import bios
+
+
 import urllib.request
 
 from bs4 import BeautifulSoup
@@ -199,16 +202,13 @@ def model(update: Update, context: CallbackContext):
     if context.args is not None:
         arg = context.args[0].lower()
 
-        with open("devices.yaml", "r", encoding="utf8") as f:
-            devices = yaml.safe_load(f)
+        devices = bios.read('devices.yaml')
 
-            device = devices.get(arg)
+        if arg in devices:
+            delay_group(update, context, "Model {} is the Realme {}.".format(arg, devices[arg]))
 
-            if device is None:
-                delay_group(update, context, "Sorry! Model {} was not found.".format(arg))
-
-            else:
-                delay_group(update, context, "Model {} is the Realme {}.".format(arg, device))
+        else:
+              delay_group(update, context, "Sorry! Model {} was not found.".format(arg))
 
     elif len(context.args) > 1:
         delay_group(update, context, "Too many supplied arguments!"
