@@ -4,7 +4,7 @@ MODELS = {
     3061: 'C20',
     2195: 'C15 Qualcomm Edition',
     2191: {'7i', 'narzo 20'},
-    2185: {'C11', 'C15', 'C12'},
+    2185: {'C11', 'C12', 'C15'},
     2176: 'X7 5G',
     2170: '7 Pro',
     2151: {'7', 'narzo 20 Pro'},
@@ -31,7 +31,7 @@ MODELS = {
     1861: '1',
     1851: '3 Pro',
     1831: 'U1',
-    1821: {'3i', '3'},
+    1821: {'3', '3i'},
     1805: {'C1', '2'},
     1801: '2 Pro'
 }  # what about making a map containing lists for every region? or instead just look for 1931EX or so?

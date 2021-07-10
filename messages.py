@@ -210,7 +210,7 @@ def rmx(update: Update, context: CallbackContext):
 
                 if isinstance(result, set):
 
-                    text = "\n\nThere's multiple devices with this Model number:"
+                    text = "\n\nThere's multiple devices with Model number RMX{}:".format(arg)
 
                     for i in set(result):
                         text += "\n· realme " + i
