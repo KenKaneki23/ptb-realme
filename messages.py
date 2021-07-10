@@ -193,7 +193,6 @@ def bug(update: Update, context: CallbackContext):
 def model(update: Update, context: CallbackContext):
     # what about doing it inline instead?
     # #will do extra /device to display device info
-    update.message.delete()
 
     if context.args is not None:
         arg = context.args[0].lower()
