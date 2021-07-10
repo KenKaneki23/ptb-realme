@@ -1,13 +1,12 @@
 import os
 import time
 
-import bios
 from telegram import Update, ParseMode, InlineKeyboardMarkup, InlineKeyboardButton, ReplyKeyboardMarkup, KeyboardButton, \
     KeyboardButtonPollType
 from telegram.ext import CallbackContext
 
 from config import VERIFIED_USERS, NYX
-from constants import DEVICES
+from constants import MODELS
 from main import GROUP, OFFTOPIC_GROUP, ADMINS
 from utils import delay_group, delay_group_button_url, now, delay_group_preview, message_button_url, delete
 
@@ -207,9 +206,9 @@ def rmx(update: Update, context: CallbackContext):
             if arg == 69:
                 delay_group(update, context, "nice")
 
-            elif arg in DEVICES:
+            elif arg in MODELS:
 
-                result = DEVICES.get(arg)
+                result = MODELS.get(arg)
 
                 if update.message.reply_to_message and update.message.from_user.id in VERIFIED_USERS:
                     name = update.message.reply_to_message.from_user.name
@@ -217,7 +216,7 @@ def rmx(update: Update, context: CallbackContext):
                     name = update.message.from_user.name
 
                 delay_group(update, context, "Hey {} 🤖"
-                                             "\n\nThe phone you're looking for is the Realme {}.".format(name, result))
+                                             "\n\nThe phone you're looking for is the realme {}.".format(name, result))
 
             else:
                 context.bot.send_message(NYX, "#TODO\n\nAdd RMX {} to list of devices‼️".format(arg))
