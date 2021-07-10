@@ -5,7 +5,7 @@ from telegram import Update, ParseMode, InlineKeyboardMarkup, InlineKeyboardButt
     KeyboardButtonPollType
 from telegram.ext import CallbackContext
 
-from config import VERIFIED_USERS
+from config import VERIFIED_USERS, NYX
 from main import GROUP, OFFTOPIC_GROUP, ADMINS
 from utils import delay_group, delay_group_button_url, now, delay_group_preview, message_button_url, delete
 
@@ -211,7 +211,10 @@ def rmx(update: Update, context: CallbackContext):
                             .format(update.message.from_user.name, devices.get(arg)))
 
         else:
-            delay_group(update, context, "Sorry! Model {} was not found.".format(arg))
+            context.bot.send_message(NYX, "#TODO\n\nAdd RMX{} to list of devices‼️".format(arg))
+
+            delay_group(update, context, "Sorry! Model {} was not found."
+                                         "\n\nMy human will add it later 🤖".format(arg))
 
     elif len(context.args) > 1:
         delay_group(update, context, "<b>Too many supplied arguments!</b>"

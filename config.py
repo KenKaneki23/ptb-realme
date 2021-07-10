@@ -14,7 +14,9 @@ OFFTOPIC_GROUP = -1001415779011
 
 GROUP = -1001374176745  # -1001327617858 for test group
 
-ADMINS = (703453307,  # Nyx
+NYX = 703453307
+
+ADMINS = (NYX,
           806473770,  # BlueBettle
           984010225  # Phoenix
           )
