@@ -194,24 +194,23 @@ def model(update: Update, context: CallbackContext):
     # what about doing it inline instead?
     # #will do extra /device to display device info
 
-    if context.args is not None:
+    if len(context.args) == 1:
         arg = context.args[0].lower()
 
         devices = bios.read('devices.yaml')
 
         if arg in devices:
-            delay_group(update, context, "Model {} is the Realme {}.".format(arg, devices[arg]))
+            delay_group(update, context, "Model {} is the Realme {}.".format(arg, devices.get(arg)))
 
         else:
-              delay_group(update, context, "Sorry! Model {} was not found.".format(arg))
+            delay_group(update, context, "Sorry! Model {} was not found.".format(arg))
 
     elif len(context.args) > 1:
         delay_group(update, context, "Too many supplied arguments!"
                                      "\n\nPlease supply a Model like /model rmx1931")
 
     else:
-        delay_group(update, context, "Too many supplied arguments!"
-                                     "\n\nPlease supply a Model like /model rmx1931")
+        delay_group(update, context, "Please supply a Model like /model rmx1931")
 
 
 def battery(update: Update, context: CallbackContext):
