@@ -1,3 +1,4 @@
+import os
 import time
 
 import bios
@@ -82,12 +83,14 @@ def commands(update: Update, context: CallbackContext):
                 "\nOfficial roadmap for the Early Access of RealmeUI 2.0"
                 "\n\n<b>/ask</b>"
                 "\nHow to ask questions properly"
+                "\n\n<b>/rmx {modelnumber}</b>"
+                "\nGet the device to a supplied model number, eg. <code>/rmx 1931</code>"
                 "\n\n\n\n<b>Utility commands for Admins</b>"
                 "\n\n/date - when stable is released"
                 "\n\n/push - how updates are rolled out"
                 "\n\n/rant - quality over quantitiy"
-                "\n\nMessage @pentexnyx, if you face any issues with me 🤖"
-                "\nRelease ")  # + str(os.environ.get('HEROKU_RELEASE_VERSION')))
+                "\n\nMessage @nyx69, if you face any issues with me 🤖"
+                "\nRelease: " + str(os.environ.get('HEROKU_RELEASE_VERSION')))
 
 
 def experts(update: Update, context: CallbackContext):
