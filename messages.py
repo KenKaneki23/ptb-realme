@@ -201,6 +201,8 @@ def rmx(update: Update, context: CallbackContext):
 
         devices: dict[int, str] = bios.read('devices.yaml')
 
+        print(devices)
+
         if arg in devices:
 
             if update.message.reply_to_message is not None and update.message.from_user.id in VERIFIED_USERS:
