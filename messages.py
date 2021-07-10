@@ -195,7 +195,7 @@ def rmx(update: Update, context: CallbackContext):
     # #will do extra /device to display device info
 
     if len(context.args) == 1:
-        arg = context.args[0].lower()
+        arg = context.args[0]
 
         devices = bios.read('devices.yaml')
 
@@ -204,17 +204,22 @@ def rmx(update: Update, context: CallbackContext):
             if update.message.reply_to_message and update.message.from_user.id in VERIFIED_USERS:
                 delay_group(update, context, "Hey {} 🤖"
                                              "The phone you're looking for is the Realme {}."
-                            .format(update.message.reply_to_message.from_user.name,devices.get(arg)))
+                            .format(update.message.reply_to_message.from_user.name, devices.get(arg)))
             else:
                 delay_group(update, context, "Hey {} 🤖"
                                              "The phone you're looking for is the Realme {}."
                             .format(update.message.from_user.name, devices.get(arg)))
 
         else:
-            context.bot.send_message(NYX, "#TODO\n\nAdd RMX{} to list of devices‼️".format(arg))
+            if arg is int:
 
-            delay_group(update, context, "Sorry! Model {} was not found."
-                                         "\n\nMy human will add it later 🤖".format(arg))
+                context.bot.send_message(NYX, "#TODO\n\nAdd RMX{} to list of devices‼️".format(arg))
+
+                delay_group(update, context, "Sorry! Model {} was not found."
+                                             "\n\nIf My human will add it later 🤖".format(arg))
+            else:
+                delay_group(update, context, "<b>Wrong format!</b>"
+                                             "\n\nPlease supply a Model like <code>/rmx 1931</code>")
 
     elif len(context.args) > 1:
         delay_group(update, context, "<b>Too many supplied arguments!</b>"
