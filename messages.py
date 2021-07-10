@@ -1,14 +1,10 @@
 import time
-import yaml
+
+import bios
 from telegram import Update, ParseMode, InlineKeyboardMarkup, InlineKeyboardButton, ReplyKeyboardMarkup, KeyboardButton, \
     KeyboardButtonPollType
 from telegram.ext import CallbackContext
-import bios
 
-
-import urllib.request
-
-from bs4 import BeautifulSoup
 from config import VERIFIED_USERS
 from main import GROUP, OFFTOPIC_GROUP, ADMINS
 from utils import delay_group, delay_group_button_url, now, delay_group_preview, message_button_url, delete

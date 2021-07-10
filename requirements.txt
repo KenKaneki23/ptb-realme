@@ -1,8 +1,8 @@
 python-telegram-bot==13.7
 psycopg2-binary
-sqlalchemy==1.4.17
+sqlalchemy~=1.4.20
 ujson==4.0.2
 bs4==0.0.1
 lxml
 beautifulsoup4==4.9.3
-pyyaml
+bios~=0.1.2
