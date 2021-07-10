@@ -212,7 +212,7 @@ def model(update: Update, context: CallbackContext):
 
     else:
         delay_group(update, context, "<b>No argument specified!</b>"
-                                     "You also need to add your model like <code>/model rmx1931</code>")
+                                     "\n\nYou also need to add your model like <code>/model rmx1931</code>")
 
 
 def battery(update: Update, context: CallbackContext):
