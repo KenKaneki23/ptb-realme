@@ -190,7 +190,7 @@ def bug(update: Update, context: CallbackContext):
                 "\n\nAlternatively you can also do that in the feedback section of the toolkit app.")
 
 
-def model(update: Update, context: CallbackContext):
+def rmx(update: Update, context: CallbackContext):
     # what about doing it inline instead?
     # #will do extra /device to display device info
 
@@ -200,7 +200,15 @@ def model(update: Update, context: CallbackContext):
         devices = bios.read('devices.yaml')
 
         if arg in devices:
-            delay_group(update, context, "Model {} is the Realme {}.".format(arg, devices.get(arg)))
+
+            if update.message.reply_to_message and update.message.from_user.id in VERIFIED_USERS:
+                delay_group(update, context, "Hey {} 🤖"
+                                             "The phone you're looking for is the Realme {}."
+                            .format(update.message.reply_to_message.from_user.name,devices.get(arg)))
+            else:
+                delay_group(update, context, "Hey {} 🤖"
+                                             "The phone you're looking for is the Realme {}."
+                            .format(update.message.from_user.name, devices.get(arg)))
 
         else:
             delay_group(update, context, "Sorry! Model {} was not found.".format(arg))
@@ -208,11 +216,11 @@ def model(update: Update, context: CallbackContext):
     elif len(context.args) > 1:
         delay_group(update, context, "<b>Too many supplied arguments!</b>"
                                      "\n\nYou can only look up one device at a time."
-                                     "\n\nPlease supply a Model like <code>/model rmx1931</code>")
+                                     "\n\nPlease supply a Model like <code>/rmx 1931</code>")
 
     else:
         delay_group(update, context, "<b>No argument specified!</b>"
-                                     "\n\nYou also need to add your model like <code>/model rmx1931</code>")
+                                     "\n\nYou also need to add your model like <code>/rmx 1931</code>")
 
 
 def battery(update: Update, context: CallbackContext):
