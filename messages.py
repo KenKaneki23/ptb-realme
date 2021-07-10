@@ -208,14 +208,13 @@ def rmx(update: Update, context: CallbackContext):
 
                 result = DEVICES.get(arg)
 
-                if update.message.reply_to_message is not None and update.message.from_user.id in VERIFIED_USERS:
-                    delay_group(update, context, "Hey {} 🤖"
-                                                 "The phone you're looking for is the Realme {}."
-                                .format(update.message.reply_to_message.from_user.name, result))
+                if update.message.reply_to_message and update.message.from_user.id in VERIFIED_USERS:
+                    name = update.message.reply_to_message.from_user.name
                 else:
-                    delay_group(update, context, "Hey {} 🤖"
-                                                 "The phone you're looking for is the Realme {}."
-                                .format(update.message.from_user.name, result))
+                    name = update.message.from_user.name
+
+                delay_group(update, context, "Hey {} 🤖"
+                                             "\n\nThe phone you're looking for is the Realme {}.".format(name, result))
 
             else:
                 context.bot.send_message(NYX, "#TODO\n\nAdd RMX {} to list of devices‼️".format(arg))
