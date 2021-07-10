@@ -214,7 +214,7 @@ def rmx(update: Update, context: CallbackContext):
 
         else:
             if arg.isdigit():
-                if arg == 69:
+                if int(arg) == 69:
                     delay_group(update, context, "nice")
 
                 else:
