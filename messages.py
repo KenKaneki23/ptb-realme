@@ -199,7 +199,7 @@ def rmx(update: Update, context: CallbackContext):
 
         devices = bios.read('devices.yaml')
 
-        if arg in devices:
+        if arg in devices.keys():
 
             if update.message.reply_to_message and update.message.from_user.id in VERIFIED_USERS:
                 delay_group(update, context, "Hey {} 🤖"
