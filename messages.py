@@ -323,8 +323,8 @@ def button_click(update: Update, context: CallbackContext):
 
 def remove_click(update: Update, context: CallbackContext):
     query = update.callback_query
-    msg: Message = update.message
-    query.data.message.delete()
+    msg: Message =  query.data[1]
+
     msg.delete()
 
     if msg.from_user.id in ADMINS:
@@ -343,7 +343,7 @@ def ban(update: Update, context: CallbackContext):
         keyboard = InlineKeyboardMarkup([
             [InlineKeyboardButton("1 hour (test)", callback_data="BAN_1h")],
             [InlineKeyboardButton("1 day", callback_data="BAN_1d")],
-            [InlineKeyboardButton("remove", callback_data="BAN_remove")]
+            [InlineKeyboardButton("remove", callback_data=("BAN_remove",update.message.reply_to_message))]
         ])
 
         update.message.reply_to_message.reply_text("Choose how long to remove this user:", reply_markup=keyboard)
