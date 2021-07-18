@@ -86,6 +86,7 @@ def commands(update: Update, context: CallbackContext):
                 "\n\n\n\n<b>Utility commands for Admins</b>"
                 "\n\n/date - when stable is released"
                 "\n\n/push - how updates are rolled out"
+                "\n\n/battery - how to keep it alive"
                 "\n\n/rant - quality over quantitiy"
                 "\n\nMessage @nyx69, if you face any issues with me 🤖")
 
@@ -323,12 +324,13 @@ def button_click(update: Update, context: CallbackContext):
 def remove_click(update: Update, context: CallbackContext):
     query = update.callback_query
     msg: Message = update.message
+    query.data.message.delete()
     msg.delete()
 
     if msg.from_user.id in ADMINS:
         query.answer()
 
-        context.bot.send_message(msg.chat_id, "you're verified TEST::: " + str(msg.reply_to_message.from_user.username))
+        context.bot.send_message(msg.chat_id, "you're verified TEST::: " + str(query.data.reply_to_message.from_user.username))
 
 
     else:
