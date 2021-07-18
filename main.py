@@ -66,6 +66,10 @@ if __name__ == '__main__':
     dp.add_handler(CommandHandler("ban", ban, Filters.chat(OFFTOPIC_GROUP) & Filters.user(ADMINS)))
     dp.add_handler(CommandHandler("polls", polls))
 
+    dp.add_handler(MessageHandler(Filters.text("@admin"), admin))
+
+    dp.add_handler(CallbackQueryHandler(remove_click, pattern="remove"))
+
     dp.add_handler(CallbackQueryHandler(button_click))
 
     dp.add_handler(MessageHandler(Filters.chat_type.private, private_not_available))

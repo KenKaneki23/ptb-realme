@@ -210,7 +210,7 @@ def rmx(update: Update, context: CallbackContext):
 
                 if isinstance(result, set):
 
-                    text = "\n\nThere's multiple devices with Model number RMX{}:".format(arg)
+                    text = "\n\nThere's multiple devices with Model number RMX{}:\n".format(arg)
 
                     for i in set(result):
                         text += "\n· realme " + i
@@ -319,8 +319,34 @@ def button_click(update: Update, context: CallbackContext):
     elif choice == "BAN_1h":
         context.bot.send_message(chat_id=update.message.chat_id, text="choice: " + choice)
 
+def remove_click(update: Update, context: CallbackContext):
+    query = update.callback_query
+    update.message.delete()
+
+    if update.message.from_user.id in ADMINS:
+        query.answer()
+
+        context.bot.send_message(update.message.chat_id,"you're verified TEST")
+    else:
+        query.answer("You're not an Admin.")
+
 
 def ban(update: Update, context: CallbackContext):
+    if update.message.reply_to_message:
+
+        keyboard = InlineKeyboardMarkup([
+            [InlineKeyboardButton("1 hour (test)", callback_data="BAN_1h")],
+            [InlineKeyboardButton("1 day", callback_data="BAN_1d")],
+            [InlineKeyboardButton("remove", callback_data="BAN_remove")]
+        ])
+
+        update.message.reply_to_message.reply_text("Choose how long to remove this user:", reply_markup=keyboard)
+
+    else:
+        update.message.delete()
+
+
+def admin(update: Update, context: CallbackContext):
     if update.message.reply_to_message:
 
         keyboard = InlineKeyboardMarkup([
