@@ -1,7 +1,7 @@
 import time
 
 from telegram import Update, ParseMode, InlineKeyboardMarkup, InlineKeyboardButton, ReplyKeyboardMarkup, KeyboardButton, \
-    KeyboardButtonPollType
+    KeyboardButtonPollType, Message
 from telegram.ext import CallbackContext
 
 from config import VERIFIED_USERS, NYX
@@ -322,12 +322,15 @@ def button_click(update: Update, context: CallbackContext):
 
 def remove_click(update: Update, context: CallbackContext):
     query = update.callback_query
-    update.message.delete()
+    msg:Message = update.message
+    msg.delete()
 
-    if update.message.from_user.id in ADMINS:
+    if msg.from_user.id in ADMINS:
         query.answer()
 
-        context.bot.send_message(update.message.chat_id, "you're verified TEST")
+        context.bot.send_message(msg.chat_id, "you're verified TEST::: "+ str( msg.reply_to_message.from_user.username))
+
+
     else:
         query.answer("You're not an Admin.")
 
