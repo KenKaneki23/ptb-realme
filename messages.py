@@ -322,13 +322,13 @@ def button_click(update: Update, context: CallbackContext):
 
 def remove_click(update: Update, context: CallbackContext):
     query = update.callback_query
-    msg:Message = update.message
+    msg: Message = update.message
     msg.delete()
 
     if msg.from_user.id in ADMINS:
         query.answer()
 
-        context.bot.send_message(msg.chat_id, "you're verified TEST::: "+ str( msg.reply_to_message.from_user.username))
+        context.bot.send_message(msg.chat_id, "you're verified TEST::: " + str(msg.reply_to_message.from_user.username))
 
 
     else:
