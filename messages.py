@@ -211,13 +211,14 @@ def rmx(update: Update, context: CallbackContext):
 
                 if len(result) > 1:
 
-                    text = "\n\nThere's multiple devices with Model number RMX{}:\n".format(arg)
+                    text = "\n\nThere's multiple devices known as RMX{}:\n".format(arg)
 
-                    for i in result.values():
-                        text += "\n· realme " + i
+                    for k,v in result:
+
+                        text += k+"\n: realme " + v
 
                 else:
-                    text = "\n\nThe phone you're looking for is the realme {}.".format(result)
+                    text = "\n\nThe phone you're looking for is the <b>realme {}</b>.".format(result.)
 
                 if update.message.reply_to_message and update.message.from_user.id in VERIFIED_USERS:
                     name = update.message.reply_to_message.from_user.name
