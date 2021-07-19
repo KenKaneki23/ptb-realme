@@ -249,12 +249,9 @@ def rmx(update: Update, context: CallbackContext):
 
                 if region in result:
 
-                    text = "\n\nThe phone you're looking for is the realme {}.".format(result)
+                    device = result.get(region)
 
-                    text = "\n\nThere's multiple devices with Model number RMX{}:\n".format(model)
-
-                    for i in set(result):
-                        text += "\n· realme " + i
+                    text = "\n\nThe phone you're looking for is the realme {}.".format(device)
 
                 else:
                     text = "\n\nNo device RMX {} in region {} found.".format(model, region)
