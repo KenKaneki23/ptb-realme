@@ -207,13 +207,13 @@ def rmx(update: Update, context: CallbackContext):
 
             elif arg in MODELS:
 
-                result = MODELS.get(arg)
+                result: dict = MODELS.get(arg)
 
-                if isinstance(result, set):
+                if len(result) > 1:
 
                     text = "\n\nThere's multiple devices with Model number RMX{}:\n".format(arg)
 
-                    for i in set(result):
+                    for i in result.values():
                         text += "\n· realme " + i
 
                 else:
