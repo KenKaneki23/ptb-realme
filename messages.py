@@ -236,10 +236,51 @@ def rmx(update: Update, context: CallbackContext):
             delay_group(update, context, "<b>No valid Model number‼️</b>"
                                          "\n\nPlease supply a Model like <code>/rmx 1931</code>")
 
-    elif len(context.args) > 1:
+    elif len(context.args) == 2:
+        model = context.args[0]
+
+        if model.isdigit():
+            model = int(model)
+
+            if model in MODELS:
+
+                result: dict = MODELS.get(model)
+                region = context.args[1]
+
+                if region in result:
+
+                    text = "\n\nThe phone you're looking for is the realme {}.".format(result)
+
+                    text = "\n\nThere's multiple devices with Model number RMX{}:\n".format(model)
+
+                    for i in set(result):
+                        text += "\n· realme " + i
+
+                else:
+                    text = "\n\nNo device RMX {} in region {} found.".format(model, region)
+
+                if update.message.reply_to_message and update.message.from_user.id in VERIFIED_USERS:
+                    name = update.message.reply_to_message.from_user.name
+                else:
+                    name = update.message.from_user.name
+
+                delay_group(update, context, "Hey {} 🤖".format(name) + text)
+
+            else:
+                context.bot.send_message(NYX, "#TODO\n\nAdd RMX {} to list of devices‼️".format(model))
+
+                delay_group(update, context, "Sorry! Model {} was not found."
+                                             "\n\nMy human will add it later 🤖".format(model))
+
+        else:
+            delay_group(update, context, "<b>No valid Model number‼️</b>"
+                                         "\n\nPlease supply a Model like <code>/rmx 1931</code>")
+
+    elif len(context.args) > 2:
         delay_group(update, context, "<b>Too many arguments supplied‼️</b>"
                                      "\n\nYou can only look up one device at a time."
-                                     "\n\nPlease supply a Model like <code>/rmx 1931</code>")
+                                     "\n\nPlease supply a Model like <code>/rmx 1931 EX</code> - Providing the region "
+                                     "is optional.")
 
     else:
         delay_group(update, context, "<b>No argument specified‼️</b>"
@@ -323,15 +364,15 @@ def button_click(update: Update, context: CallbackContext):
 
 def remove_click(update: Update, context: CallbackContext):
     query = update.callback_query
-    msg: Message =  query.data[1]
+    msg: Message = query.data[1]
 
     msg.delete()
 
     if msg.from_user.id in ADMINS:
         query.answer()
 
-        context.bot.send_message(msg.chat_id, "you're verified TEST::: " + str(query.data.reply_to_message.from_user.username))
-
+        context.bot.send_message(msg.chat_id,
+                                 "you're verified TEST::: " + str(query.data.reply_to_message.from_user.username))
 
     else:
         query.answer("You're not an Admin.")
@@ -343,7 +384,7 @@ def ban(update: Update, context: CallbackContext):
         keyboard = InlineKeyboardMarkup([
             [InlineKeyboardButton("1 hour (test)", callback_data="BAN_1h")],
             [InlineKeyboardButton("1 day", callback_data="BAN_1d")],
-            [InlineKeyboardButton("remove", callback_data=("BAN_remove",update.message.reply_to_message))]
+            [InlineKeyboardButton("remove", callback_data=("BAN_remove", update.message.reply_to_message))]
         ])
 
         update.message.reply_to_message.reply_text("Choose how long to remove this user:", reply_markup=keyboard)
