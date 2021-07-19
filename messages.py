@@ -218,7 +218,7 @@ def rmx(update: Update, context: CallbackContext):
 
                 else:
 
-                    text = "\n\nThe phone you're looking for is the <b>realme {}</b>.".format(result.values())
+                    text = "\n\nThe phone you're looking for is the <b>realme {}</b>.".format(list(result.values())[0])
 
                 if update.message.reply_to_message and update.message.from_user.id in VERIFIED_USERS:
                     name = update.message.reply_to_message.from_user.name
