@@ -213,9 +213,8 @@ def rmx(update: Update, context: CallbackContext):
 
                     text = "\n\nThere's multiple devices known as RMX{}:\n".format(arg)
 
-                    for k,v in result:
-
-                        text += k+"\n: realme " + v
+                    for k, v in result.items():
+                        text += k + "\n: realme " + v
 
                 else:
                     text = "\n\nThe phone you're looking for is the <b>realme {}</b>.".format(result)
