@@ -251,7 +251,7 @@ def rmx(update: Update, context: CallbackContext):
 
                     device = result.get(region)
 
-                    text = "\n\nThe phone you're looking for is the realme {}.".format(device)
+                    text = "\n\nThe phone you're looking for is the <b>realme {}</b>.".format(device)
 
                 else:
                     text = "\n\nNo device RMX {} in region {} found.".format(model, region)
