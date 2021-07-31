@@ -214,7 +214,7 @@ def rmx(update: Update, context: CallbackContext):
                     text = "\n\nThere's multiple devices known as RMX{}:\n".format(arg)
 
                     for region, device in result.items():
-                        text += "\n{}: realme {}".format(region, device)
+                        text += "\n· {}: realme {}".format(region, device)
 
                 else:
 
@@ -297,6 +297,43 @@ def battery(update: Update, context: CallbackContext):
                     .format(update.message.reply_to_message.from_user.name))
     else:
         update.message.delete()
+
+
+def benchmark(update: Update, context: CallbackContext):
+    if update.message.reply_to_message and update.message.from_user.id in VERIFIED_USERS:
+        delay_group(update, context,
+                    "Hey {} 🤖"
+                    "\n\nPretty cool that you got the latest Update, huh?"
+                    "\n\nBefore you update to a newer version, please do some benchmarks first to be able to compare "
+                    "what the update really changed in terms of performance. "
+                    "\n\nTHIS WILL BE ADDED LATER #TODO"
+                    .format(update.message.reply_to_message.from_user.name))
+    else:
+        delay_group(update, context,
+                    "Hey {} 🤖"
+                    "\n\n<b>Benchmark you device 💪</b>"
+                    "\n\nFor reference we're using two different benchmarks to compare devices in this group. Please "
+                    "install them via to given links: "
+                    "\n\n· CPU Performance: <a href='https://play.google.com/store/apps/details?id=com.primatelabs"
+                    ".geekbench5'>Geekbench 5</a> "
+                    "\n\n· Gaming Performance: <a href='https://play.google.com/store/apps/details?id=com.futuremark"
+                    ".dmandroid.application'>3DMark (Wild Life)</a> "
+                    "\n\nNow open them and see if they need anything downloaded first. After that switch your phone "
+                    "to maximum performance: "
+                    "\n\n· Disable any energy saving option that's currently active."
+                    "\n· Set your phone to performance mode."
+                    "\n· Close all open Apps via your launchers 'clear all' button"
+                    "\n· Set your phone to airplane mode."
+                    "\n\nLet your phone run Geekbench first."
+                    "\n\nTake a screenshot of the score at the end."
+                    "\n\nRepeat this process three more times. Also take screenshots after each run. This is to test "
+                    "sustained performance. (#TODO might add heat check app here) "
+                    "\n\nDo the same with 3DMark (Wild Life)."
+                    "\n\nOnce you're done with all the screenshots, upload your first and last score of each "
+                    "benchmark (so four images in total) as an album in @realme_offtopic and put #Benchmark the "
+                    "Android-Version, for example #Android11 and your device model, for example #RMX1931 in the "
+                    "caption of this album."
+                    .format(update.message.reply_to_message.from_user.name))
 
 
 def date(update: Update, context: CallbackContext):
