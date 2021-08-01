@@ -428,6 +428,10 @@ def ban(update: Update, context: CallbackContext):
         update.message.delete()
 
 
+def reset(update: Update, context: CallbackContext):
+    context.chat_data.clear()
+
+
 def admin(update: Update, context: CallbackContext):
     update.message.delete()
 
@@ -568,17 +572,17 @@ def polls(update: Update, context: CallbackContext):  # GROUP
 
         print("--- sending new poll")
 
-        current_link = context.bot.send_message(GROUP,
-                                                "Hey Realme Fans!"
-                                                "\n\n<b>It's once again time for Poll-Five 🖐️</b> "
-                                                "\n\nThis idea came up in @realme_offtopic a few days ago and I "
-                                                "immediately implemented it. It could just be interesting to see what "
-                                                "the community thinks about certain topics. "
-                                                "\n\nCredits go to all the ones who brought up the following "
-                                                "questions. "
-                                                "\n\nHope you enjoy it!", ParseMode.HTML).link
+        start_message = context.bot.send_message(GROUP,
+                                                 "Hey Realme Fans!"
+                                                 "\n\n<b>It's once again time for Poll-Five 🖐️</b> "
+                                                 "\n\nThis idea came up in @realme_offtopic a few days ago and I "
+                                                 "immediately implemented it. It could just be interesting to see what "
+                                                 "the community thinks about certain topics. "
+                                                 "\n\nCredits go to all the ones who brought up the following "
+                                                 "questions. "
+                                                 "\n\nHope you enjoy it!", ParseMode.HTML)
 
-        context.bot_data['previous_link'] = current_link
+        context.bot_data['previous_link'] = start_message.link
         context.bot_data['previous_timestamp'] = current_time
 
         question_0 = "How old are you? 🎂"
@@ -606,9 +610,11 @@ def polls(update: Update, context: CallbackContext):  # GROUP
 
         for i in range(4):
             context.bot.send_poll(GROUP, "[Poll {} of 5] · {}".format(i + 1, questions[i]), answers[i])
-            time.sleep(3)
+            time.sleep(1)
 
         context.bot.send_poll(GROUP, "[Poll 5 of 5] · {}".format(question_4), answers_4, allows_multiple_answers=True)
+
+        start_message.pin()
 
     else:
         print("--- sending poll message")

@@ -60,6 +60,7 @@ if __name__ == '__main__':
     dp.add_handler(CommandHandler("date", date, Filters.chat(GROUP)))
     dp.add_handler(CommandHandler("benchmark", benchmark, Filters.chat(GROUP)))
     dp.add_handler(CommandHandler("rant", rant, Filters.chat(GROUP)))
+
     dp.add_handler(CommandHandler("push", push, Filters.chat(GROUP)))
     dp.add_handler(CommandHandler("bug", bug, Filters.chat(GROUP) & Filters.user(VERIFIED_USERS)))
     dp.add_handler(CommandHandler("offtopic", offtopic, Filters.chat(GROUP) & Filters.user(ADMINS)))
@@ -73,6 +74,7 @@ if __name__ == '__main__':
 
     dp.add_handler(CallbackQueryHandler(button_click))
 
+    dp.add_handler(CommandHandler("reset", reset, Filters.chat(NYX)))
     dp.add_handler(MessageHandler(Filters.chat_type.private, private_not_available))
     #  add commands below. follow this scheme:  "command", function
 
