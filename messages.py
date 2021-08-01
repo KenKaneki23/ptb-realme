@@ -328,12 +328,13 @@ def benchmark(update: Update, context: CallbackContext):
                     "\n\nTake a screenshot of the score at the end."
                     "\n\nRepeat this process three more times. Also take screenshots after each run. This is to test "
                     "sustained performance. (#TODO might add heat check app here) "
-                    "\n\nDo the same with 3DMark (Wild Life)."
+                    "\n\nClose all applications again, let your device cool down for a few minutes. Then repeat the "
+                    "process for 3DMark (Wild Life). "
                     "\n\nOnce you're done with all the screenshots, upload your first and last score of each "
                     "benchmark (so four images in total) as an album in @realme_offtopic and put #Benchmark the "
                     "Android-Version, for example #Android11 and your device model, for example #RMX1931 in the "
                     "caption of this album."
-                    .format(update.message.reply_to_message.from_user.name))
+                    .format(update.message.from_user.name))
 
 
 def date(update: Update, context: CallbackContext):
@@ -560,8 +561,6 @@ def debloat(update: Update, context: CallbackContext):
 
 
 def polls(update: Update, context: CallbackContext):  # GROUP
-
-    update.message.delete()
 
     current_time = now()
     previous_timestamp = context.bot_data.get("previous_timestamp", 1000)
