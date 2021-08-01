@@ -560,12 +560,12 @@ def debloat(update: Update, context: CallbackContext):
 
 
 def polls(update: Update, context: CallbackContext):  # GROUP
-
+    update.message.delete()
     current_time = now()
     previous_timestamp = context.bot_data.get("previous_timestamp", 1000)
 
     if update.message.from_user.id in ADMINS and int(previous_timestamp) + 3628800000 <= current_time:
-        update.message.delete()
+
         print("--- sending new poll")
 
         current_link = context.bot.send_message(GROUP,
