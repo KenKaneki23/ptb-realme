@@ -429,7 +429,7 @@ def ban(update: Update, context: CallbackContext):
 
 
 def reset(update: Update, context: CallbackContext):
-    context.chat_data.clear()
+    context.chat_data.clear()  # TODO ask Starry to add that
 
 
 def admin(update: Update, context: CallbackContext):
@@ -566,7 +566,9 @@ def debloat(update: Update, context: CallbackContext):
 def polls(update: Update, context: CallbackContext):  # GROUP
     update.message.delete()
     current_time = now()
+
     previous_timestamp = context.bot_data.get("previous_timestamp", 1000)
+    previous_link = context.bot_data.get("previous_link", "https://t.me/realme_support/135222")
 
     if update.message.from_user.id in ADMINS and int(previous_timestamp) + 3628800000 <= current_time:
 
@@ -580,7 +582,10 @@ def polls(update: Update, context: CallbackContext):  # GROUP
                                                  "the community thinks about certain topics. "
                                                  "\n\nCredits go to all the ones who brought up the following "
                                                  "questions. "
-                                                 "\n\nHope you enjoy it!", ParseMode.HTML)
+                                                 "\n\nHope you enjoy it!",
+                                                 ParseMode.HTML,
+                                                 reply_markup=InlineKeyboardMarkup.from_button(
+                                                     InlineKeyboardButton("📊 Previous Poll 📊", previous_link)))
 
         context.bot_data['previous_link'] = start_message.link
         context.bot_data['previous_timestamp'] = current_time
@@ -618,8 +623,6 @@ def polls(update: Update, context: CallbackContext):  # GROUP
 
     else:
         print("--- sending poll message")
-
-        previous_link = context.bot_data.get("previous_link", "https://t.me/realme_support/135222")
 
         message_button_url(update, context,
                            "<b>Poll-Five</b> 🖐️"

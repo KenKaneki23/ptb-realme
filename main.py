@@ -74,7 +74,7 @@ if __name__ == '__main__':
 
     dp.add_handler(CallbackQueryHandler(button_click))
 
-    dp.add_handler(CommandHandler("reset", reset, Filters.chat(NYX)))
+    #  dp.add_handler(CommandHandler("reset", reset, Filters.chat(NYX)))
     dp.add_handler(MessageHandler(Filters.chat_type.private, private_not_available))
     #  add commands below. follow this scheme:  "command", function
 
