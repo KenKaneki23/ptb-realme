@@ -138,9 +138,9 @@ def gcam(update: Update, context: CallbackContext):
 def cleaners(update: Update, context: CallbackContext):
     delay_group_preview(update, context,
                         "<u>Cleaners</u>"
-                        "\n\n<b>SD Maid</b> · <a href='https://t.me/realme_support/122153'>Download 5.1.1</a>"
+                        "\n\n<b>SD Maid</b> · <a href='https://t.me/realme_offtopic/8103'>Download 5.1.6</a>"
                         "\n\nThis is an excellent cleaning app, which also takes care of databases, duplicates, "
-                        "caches etc. and enables you to freeze the apps you don't need. "
+                        "caches etc. and enables you to freeze the apps you don't need. Oh yes.. and it's open-source 💗"
                         "\n\n\n<b>Phone Manager</b> · <a href='https://t.me/realme_support/126160'>Download 8.6.1</a>"
                         "\n\nOfficial Cleaner by Realme. Requires Android 11.")
 
