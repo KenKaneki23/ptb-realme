@@ -40,7 +40,7 @@ MODELS = {
     2191: ['Narzo 20'],
     2195: ['Narzo C15 Qualcomm Edition'],
     2341: ['8 5G'],
-    3031: ['X7 Max'],
+    3031: ['X7 Max', 'GT Neo'],
     3061: ['C20'],
     3081: ['8 Pro'],
     3085: ['8'],

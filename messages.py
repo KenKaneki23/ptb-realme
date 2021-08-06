@@ -82,8 +82,9 @@ def commands(update: Update, context: CallbackContext):
                 "\nOfficial roadmap for the Early Access of RealmeUI 2.0"
                 "\n\n<b>/ask</b>"
                 "\nHow to ask questions properly"
-                "\n\n<b>/rmx {modelnumber}</b>"
-                "\nGet the device to a supplied model number, eg. <code>/rmx 1931</code>"
+                "\n\n<b>rmx{modelnumber}</b>"
+                "\nGet the device to a supplied model number, eg. <code>rmx1931</code> (can also be part of a message "
+                "and is case-insensitive) "
                 "\n\n\n\n<b>Utility commands for Admins</b>"
                 "\n\n/date - when stable is released"
                 "\n\n/push - how updates are rolled out"
@@ -197,14 +198,13 @@ def rmx(update: Update, context: CallbackContext):
     # will do extra /device to display device info
 
     model = int(str(re.search(r"rmx\d{4}", update.message.text, re.IGNORECASE).group(0))[3:7])
-    print(model)
 
     if model in MODELS:
 
         result: list = MODELS.get(model)
 
         if len(result) > 1:
-            text = "\n\nThere's multiple devices known as RMX{}:".format(model)
+            text = "\n\nDepending on the region there's multiple devices known as RMX{}:".format(model)
 
             for device in result:
                 text += "\n· realme {}".format(device)
@@ -213,18 +213,18 @@ def rmx(update: Update, context: CallbackContext):
             text = "\n\nThe phone you mentioned is the <b>realme {}</b>.".format(result[0])
 
         if update.message.reply_to_message and update.message.from_user.id in VERIFIED_USERS:
-            name = update.message.reply_to_message.from_user.name
+            update.message.reply_text("Hey {} 🤖".format(update.message.reply_to_message.from_user.name) + text,
+                                      parse_mode=ParseMode.HTML)
 
         else:
-            name = update.message.from_user.name
-
-        update.message.reply_text("Hey {} 🤖".format(name) + text, parse_mode=ParseMode.HTML)
+            update.message.reply_text(text, parse_mode=ParseMode.HTML)
 
     else:
         context.bot.send_message(NYX, "#TODO\n\nAdd RMX {} to list of devices‼️".format(model))
 
-        update.message.reply_text("Sorry! Model {} was not found."
-                                  "\n\nMy human will add it later 🤖".format(model),
+        update.message.reply_text("Sorry {}!"
+                                  "\n\nModel <b>RMX{}</b> was not found."
+                                  "\n\nMy human will add it later 🤖".format(update.message.from_user, model),
                                   parse_mode=ParseMode.HTML)
 
 
