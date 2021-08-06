@@ -204,7 +204,7 @@ def rmx(update: Update, context: CallbackContext):
         result: list = MODELS.get(model)
 
         if len(result) > 1:
-            text = "\n\nDepending on the region there's multiple devices known as RMX{}:".format(model)
+            text = "\n\nDepending on the region there's multiple devices known as RMX{}:\n".format(model)
 
             for device in result:
                 text += "\n· realme {}".format(device)
@@ -213,8 +213,9 @@ def rmx(update: Update, context: CallbackContext):
             text = "\n\nThe phone you mentioned is the <b>realme {}</b>.".format(result[0])
 
         if update.message.reply_to_message and update.message.from_user.id in VERIFIED_USERS:
-            update.message.reply_text("Hey {} 🤖".format(update.message.reply_to_message.from_user.name) + text,
-                                      parse_mode=ParseMode.HTML)
+            update.message.reply_to_message.reply_text(
+                "Hey {} 🤖".format(update.message.reply_to_message.from_user.name) + text,
+                parse_mode=ParseMode.HTML)
 
         else:
             update.message.reply_text(text, parse_mode=ParseMode.HTML)
