@@ -218,13 +218,12 @@ def rmx(update: Update, context: CallbackContext):
         else:
             name = update.message.from_user.name
 
-        delay_group(update, context, "Hey {} 🤖".format(name) + text)
+        update.message.reply_text("Hey {} 🤖".format(name) + text)
 
     else:
         context.bot.send_message(NYX, "#TODO\n\nAdd RMX {} to list of devices‼️".format(model))
 
-        delay_group(update, context, "Sorry! Model {} was not found."
-                                     "\n\nMy human will add it later 🤖".format(model))
+        update.message.reply_text("Sorry! Model {} was not found.\n\nMy human will add it later 🤖".format(model))
 
 
 def battery(update: Update, context: CallbackContext):
