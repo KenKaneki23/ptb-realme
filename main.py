@@ -55,7 +55,7 @@ if __name__ == '__main__':
     dp.add_handler(CommandHandler("ask", ask, Filters.chat(GROUP)))
     dp.add_handler(CommandHandler("form", form, Filters.chat(GROUP)))
     dp.add_handler(CommandHandler("rules", rules))
-    dp.add_handler(MessageHandler(Filters.regex(re.match(r"rmx\d{4}", flags=re.IGNORECASE)), rmx))
+    dp.add_handler(MessageHandler(Filters.regex(re.match("rmx\\d{4}", flags=re.IGNORECASE)), rmx))
     dp.add_handler(CommandHandler("whatsapp", whatsapp, Filters.chat(GROUP)))
     dp.add_handler(CommandHandler("battery", battery, Filters.chat(GROUP)))
     dp.add_handler(CommandHandler("date", date, Filters.chat(GROUP)))
