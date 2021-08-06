@@ -1,3 +1,4 @@
+import re
 import time
 
 from telegram import Update, ParseMode, InlineKeyboardMarkup, InlineKeyboardButton, ReplyKeyboardMarkup, KeyboardButton, \
@@ -196,42 +197,36 @@ def rmx(update: Update, context: CallbackContext):
     # what about doing it inline instead?
     # #will do extra /device to display device info
 
-    if len(context.args) == 1:
-        arg = context.args[0]
+    model = str(re.match(r"rmx\d{4}", update.message.text, re.IGNORECASE))[3:7]
 
-        if arg.isdigit():
-            arg = int(arg)
+    print(model)
 
-            if arg == 69:
-                delay_group(update, context, "nice")
+    if model in MODELS:
 
-            elif arg in MODELS:
+        result: dict = MODELS.get(model)
 
-                result: dict = MODELS.get(arg)
+        if len(result) > 1:
 
-                if len(result) > 1:
+            text = "\n\nThere's multiple devices known as RMX{}:\n".format(model)
 
-                    text = "\n\nThere's multiple devices known as RMX{}:\n".format(arg)
+            for region, device in result.items():
+                text += "\n· {}: realme {}".format(region, device)
 
-                    for region, device in result.items():
-                        text += "\n· {}: realme {}".format(region, device)
+        else:
+            text = "\n\nThe phone you mentioned is the <b>realme {}</b>.".format(list(result.values())[0])
 
-                else:
+        if update.message.reply_to_message and update.message.from_user.id in VERIFIED_USERS:
+            name = update.message.reply_to_message.from_user.name
+        else:
+            name = update.message.from_user.name
 
-                    text = "\n\nThe phone you mentioned is the <b>realme {}</b>.".format(list(result.values())[0])
+        delay_group(update, context, "Hey {} 🤖".format(name) + text)
 
-                if update.message.reply_to_message and update.message.from_user.id in VERIFIED_USERS:
-                    name = update.message.reply_to_message.from_user.name
-                else:
-                    name = update.message.from_user.name
+    else:
+        context.bot.send_message(NYX, "#TODO\n\nAdd RMX {} to list of devices‼️".format(model))
 
-                delay_group(update, context, "Hey {} 🤖".format(name) + text)
-
-            else:
-                context.bot.send_message(NYX, "#TODO\n\nAdd RMX {} to list of devices‼️".format(arg))
-
-                delay_group(update, context, "Sorry! Model {} was not found."
-                                             "\n\nMy human will add it later 🤖".format(arg))
+        delay_group(update, context, "Sorry! Model {} was not found."
+                                     "\n\nMy human will add it later 🤖".format(model))
 
 
 def battery(update: Update, context: CallbackContext):
