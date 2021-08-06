@@ -188,7 +188,7 @@ def bug(update: Update, context: CallbackContext):
                 "you can also let the developers know. Don't abuse this functionality, so that the devs can focus on "
                 "developing.</i> "
                 "\n\nPlease provide as much useful information as possible."
-                "\n\nJust go to your phone app and dial <code>*#800#</code> in."
+                "\n\nJust go to your dialer and dial <code>*#800#</code> in."
                 "\n\nAlternatively you can also do that in the feedback section of the toolkit app.")
 
 
@@ -218,7 +218,7 @@ def rmx(update: Update, context: CallbackContext):
 
                 else:
 
-                    text = "\n\nThe phone you're looking for is the <b>realme {}</b>.".format(list(result.values())[0])
+                    text = "\n\nThe phone you mentioned is the <b>realme {}</b>.".format(list(result.values())[0])
 
                 if update.message.reply_to_message and update.message.from_user.id in VERIFIED_USERS:
                     name = update.message.reply_to_message.from_user.name
@@ -232,57 +232,6 @@ def rmx(update: Update, context: CallbackContext):
 
                 delay_group(update, context, "Sorry! Model {} was not found."
                                              "\n\nMy human will add it later 🤖".format(arg))
-
-        else:
-            delay_group(update, context, "<b>No valid Model number‼️</b>"
-                                         "\n\nPlease supply a Model like <code>/rmx 1931</code>")
-
-    elif len(context.args) == 2:
-        model = context.args[0]
-
-        if model.isdigit():
-            model = int(model)
-
-            if model in MODELS:
-
-                result: dict = MODELS.get(model)
-                region = context.args[1]
-
-                if region in result:
-
-                    device = result.get(region)
-
-                    text = "\n\nThe phone you're looking for is the <b>realme {}</b>.".format(device)
-
-                else:
-                    text = "\n\nNo device RMX {} in region {} found.".format(model, region)
-
-                if update.message.reply_to_message and update.message.from_user.id in VERIFIED_USERS:
-                    name = update.message.reply_to_message.from_user.name
-                else:
-                    name = update.message.from_user.name
-
-                delay_group(update, context, "Hey {} 🤖".format(name) + text)
-
-            else:
-                context.bot.send_message(NYX, "#TODO\n\nAdd RMX {} to list of devices‼️".format(model))
-
-                delay_group(update, context, "Sorry! Model {} was not found."
-                                             "\n\nMy human will add it later 🤖".format(model))
-
-        else:
-            delay_group(update, context, "<b>No valid Model number‼️</b>"
-                                         "\n\nPlease supply a Model like <code>/rmx 1931</code>")
-
-    elif len(context.args) > 2:
-        delay_group(update, context, "<b>Too many arguments supplied‼️</b>"
-                                     "\n\nYou can only look up one device at a time."
-                                     "\n\nPlease supply a Model like <code>/rmx 1931 EX</code> - Providing the region "
-                                     "is optional.")
-
-    else:
-        delay_group(update, context, "<b>No argument specified‼️</b>"
-                                     "\n\nYou also need to add your model like <code>/rmx 1931</code>")
 
 
 def battery(update: Update, context: CallbackContext):
@@ -483,10 +432,10 @@ def whatsapp(update: Update, context: CallbackContext):
     update.message.delete()
 
     text = "You can contact the official support directly on WhatsApp:" \
-           "\n\n+917303420104"
+           "\n\n+919711012312 🆕"
 
     button_text = "Message Support 💬"
-    button_url = "https://wa.me/+917303420104"
+    button_url = "https://wa.me/+919711012312"
 
     if update.message.reply_to_message:
         update.message.reply_to_message.reply_text(

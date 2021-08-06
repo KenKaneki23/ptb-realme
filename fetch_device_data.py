@@ -1,6 +1,13 @@
 import urllib
+from collections import OrderedDict
 
 from bs4 import BeautifulSoup
+
+from constants import MODELS
+
+
+def sort_models():
+    print(str(dict(OrderedDict(sorted(MODELS.items(), key=lambda t: t[0])))).replace("(", "").replace(")", ""))
 
 
 def fetch_device_data():
@@ -30,3 +37,7 @@ def fetch_device_data():
             taborphone = "other"
         print("Name:", name)
         print("Type:", taborphone)
+
+
+if __name__ == '__main__':
+    sort_models()
