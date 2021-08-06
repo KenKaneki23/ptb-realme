@@ -197,7 +197,7 @@ def rmx(update: Update, context: CallbackContext):
     # what about doing it inline instead?
     # #will do extra /device to display device info
 
-    model = str(re.search(r"rmx\d{4}", update.message.text, re.IGNORECASE))
+    model = str(re.search(r"rmx\d{4}", update.message.text, re.IGNORECASE).group(1))
 
     print(model[3:7] + " --- "+model)
 
