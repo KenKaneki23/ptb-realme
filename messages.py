@@ -198,8 +198,12 @@ def rmx(update: Update, context: CallbackContext):
 
     text = re.search(r"rmx\d{4}", update.message.text, re.IGNORECASE).groups()
 
+    print(text)
+
     for i in text:
+        print(i)
         model = str(i)[3:7]
+        print(model)
 
         if model in MODELS:
 
@@ -223,8 +227,7 @@ def rmx(update: Update, context: CallbackContext):
             delay_group(update, context, "Hey {} 🤖".format(name) + text)
 
         else:
-            context.bot.send_message(NYX, "#TODO‼️"
-                                          "\n\nAdd RMX {} to list of devices".format(model))
+            context.bot.send_message(NYX, "#TODO\n\nAdd RMX {} to list of devices‼️".format(model))
 
             delay_group(update, context, "Sorry! Model {} was not found."
                                          "\n\nMy human will add it later 🤖".format(model))
