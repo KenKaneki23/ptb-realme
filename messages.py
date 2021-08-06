@@ -196,34 +196,38 @@ def bug(update: Update, context: CallbackContext):
 def rmx(update: Update, context: CallbackContext):
     # will do extra /device to display device info
 
-    model = str(re.search(r"rmx\d{4}", update.message.text, re.IGNORECASE).group(0))[3:7]
+    text = re.search(r"rmx\d{4}", update.message.text, re.IGNORECASE).groups()
 
-    if model in MODELS:
+    for i in text:
+        model = str(i)[3:7]
 
-        result: dict = MODELS.get(model)
+        if model in MODELS:
 
-        if len(result) > 1:
+            result: dict = MODELS.get(model)
 
-            text = "\n\nThere's multiple devices known as RMX{}:\n".format(model)
+            if len(result) > 1:
 
-            for region, device in result.items():
-                text += "\n· {}: realme {}".format(region, device)
+                text = "\n\nThere's multiple devices known as RMX{}:\n".format(model)
+
+                for region, device in result.items():
+                    text += "\n· {}: realme {}".format(region, device)
+
+            else:
+                text = "\n\nThe phone you mentioned is the <b>realme {}</b>.".format(list(result.values())[0])
+
+            if update.message.reply_to_message and update.message.from_user.id in VERIFIED_USERS:
+                name = update.message.reply_to_message.from_user.name
+            else:
+                name = update.message.from_user.name
+
+            delay_group(update, context, "Hey {} 🤖".format(name) + text)
 
         else:
-            text = "\n\nThe phone you mentioned is the <b>realme {}</b>.".format(list(result.values())[0])
+            context.bot.send_message(NYX, "#TODO‼️"
+                                          "\n\nAdd RMX {} to list of devices".format(model))
 
-        if update.message.reply_to_message and update.message.from_user.id in VERIFIED_USERS:
-            name = update.message.reply_to_message.from_user.name
-        else:
-            name = update.message.from_user.name
-
-        delay_group(update, context, "Hey {} 🤖".format(name) + text)
-
-    else:
-        context.bot.send_message(NYX, "#TODO\n\nAdd RMX {} to list of devices‼️".format(model))
-
-        delay_group(update, context, "Sorry! Model {} was not found."
-                                     "\n\nMy human will add it later 🤖".format(model))
+            delay_group(update, context, "Sorry! Model {} was not found."
+                                         "\n\nMy human will add it later 🤖".format(model))
 
 
 def battery(update: Update, context: CallbackContext):
