@@ -3,6 +3,7 @@ import re
 
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, scoped_session
+from telegram import BotCommandScopeAllGroupChats, BotCommandScopeChat
 from telegram.ext import Updater, MessageHandler, Filters, CommandHandler, CallbackQueryHandler
 
 from config import *
@@ -57,29 +58,28 @@ if __name__ == '__main__':
     dp.add_handler(CommandHandler("rules", rules))
     dp.add_handler(CommandHandler("whatsapp", whatsapp, Filters.chat(GROUP)))
     dp.add_handler(CommandHandler("benchmark", benchmark, Filters.chat(GROUP)))
-    dp.add_handler(MessageHandler(Filters.regex(re.compile(r"rmx\d{4}", flags=re.IGNORECASE)), rmx))
+    dp.add_handler(CommandHandler("polls", polls))
+    dp.add_handler(CommandHandler("battery", battery, Filters.chat(GROUP)))
+    dp.add_handler(MessageHandler(Filters.regex(r"(?i)rmx\d{4}"), rmx))
 
     # Verified commands
-    dp.add_handler(CommandHandler("battery", battery, Filters.chat(GROUP)))
-    dp.add_handler(CommandHandler("date", date, Filters.chat(GROUP)))
-    dp.add_handler(CommandHandler("ram", ram, Filters.chat(GROUP)))
+    dp.add_handler(CommandHandler("date", date, Filters.chat(GROUP)))  # TODO restructure all of these
+    dp.add_handler(CommandHandler("push", push, Filters.chat(GROUP)))
+    dp.add_handler(CommandHandler("offtopic", offtopic, Filters.chat(GROUP) & Filters.user(ADMINS)))
+    dp.add_handler(CommandHandler("bug", bug, Filters.chat(GROUP)))
 
+    # Personal opinion
+    dp.add_handler(CommandHandler("ram", ram, Filters.chat(GROUP)))
     dp.add_handler(CommandHandler("rant", rant, Filters.chat(GROUP)))
 
-    dp.add_handler(CommandHandler("push", push, Filters.chat(GROUP)))
-    dp.add_handler(CommandHandler("bug", bug, Filters.chat(GROUP) & Filters.user(VERIFIED_USERS)))
-    dp.add_handler(CommandHandler("offtopic", offtopic, Filters.chat(GROUP) & Filters.user(ADMINS)))
+    # Upcoming
     dp.add_handler(CommandHandler("warn", warn, ))  # Filters.chat(OFFTOPIC_GROUP) & Filters.user(ADMINS)))
     dp.add_handler(CommandHandler("ban", ban, Filters.chat(OFFTOPIC_GROUP) & Filters.user(ADMINS)))
-    dp.add_handler(CommandHandler("polls", polls))
-
     dp.add_handler(MessageHandler(Filters.text("@admin"), admin))
-
     dp.add_handler(CallbackQueryHandler(remove_click, pattern="BAN_remove"))
-
     dp.add_handler(CallbackQueryHandler(button_click))
 
-    dp.add_handler(CommandHandler("reset", reset, Filters.chat(NYX)))
+    dp.add_handler(CommandHandler("reset", reset, Filters.chat(ADMINS)))
     dp.add_handler(MessageHandler(Filters.chat_type.private, private_not_available))
     #  add commands below. follow this scheme:  "command", function
 

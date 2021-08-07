@@ -2,7 +2,7 @@ import re
 import time
 
 from telegram import Update, ParseMode, InlineKeyboardMarkup, InlineKeyboardButton, ReplyKeyboardMarkup, KeyboardButton, \
-    KeyboardButtonPollType, Message
+    KeyboardButtonPollType, Message, BotCommandScopeChat
 from telegram.ext import CallbackContext
 
 from config import VERIFIED_USERS, NYX
@@ -392,6 +392,35 @@ def ban(update: Update, context: CallbackContext):
 
 def reset(update: Update, context: CallbackContext):
     context.chat_data.clear()  # TODO ask Starry to add that
+
+    update.message.reply_text("User dicts were cleared. Resetting commands now.")
+
+    context.bot.set_my_commands(
+        [
+            ('android11', 'Official update roadmap 📲'),
+            ('gcam', 'Latest release and configurations 📷'),
+            ('cleaners', 'The recommended cleaning apps ♻️'),
+            ('polls', ' Take a look at our current polls 📊'),
+            ('debloat', 'Guide to remove unwanted apps 🚫'),
+            ('benchmark', 'How to benchmark your device 💪🏼'),
+            ('rules', 'Show this group\'s rules 📜'),
+            ('experts', 'List experts for different segments 🎓'),
+            ('whatsapp', 'Message the support directly 💬'),
+            ('admins', 'Show this group\'s staff 👷‍♂️'),
+            ('ask', 'How to ask questions properly ❓'),
+            ('help', 'Show commands 🆘"'),
+        ],
+        scope=BotCommandScopeChat(GROUP),
+    )
+
+    context.bot.set_my_commands(
+        [
+            ('rules', 'Show this group\'s rules 📜')
+        ],
+        scope=BotCommandScopeChat(OFFTOPIC_GROUP),
+    )
+
+    update.message.reply_text("Command list was updated.")
 
 
 def admin(update: Update, context: CallbackContext):
