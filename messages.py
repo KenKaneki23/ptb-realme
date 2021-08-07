@@ -228,9 +228,9 @@ def rmx(update: Update, context: CallbackContext):
     else:
         context.bot.send_message(NYX, "#TODO\n\nAdd RMX {} to list of devices‼️".format(model))
 
-        update.message.reply_text("Sorry {}!"
+        update.message.reply_text("Sorry {} 🤖"
                                   "\n\nModel <b>RMX{}</b> was not found."
-                                  "\n\nMy human will add it later 🤖".format(update.message.from_user.name, model),
+                                  "\n\nMy human will add it later 😊".format(update.message.from_user.name, model),
                                   parse_mode=ParseMode.HTML)
 
 
