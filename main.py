@@ -55,11 +55,11 @@ if __name__ == '__main__':
     dp.add_handler(CommandHandler("debloat", debloat, Filters.chat(GROUP)))
     dp.add_handler(CommandHandler("ask", ask, Filters.chat(GROUP)))
     dp.add_handler(CommandHandler("form", form, Filters.chat(GROUP)))
-    dp.add_handler(CommandHandler("rules", rules))
+    dp.add_handler(CommandHandler("battery", battery, Filters.chat(GROUP)))
     dp.add_handler(CommandHandler("whatsapp", whatsapp, Filters.chat(GROUP)))
     dp.add_handler(CommandHandler("benchmark", benchmark, Filters.chat(GROUP)))
     dp.add_handler(CommandHandler("polls", polls))
-    dp.add_handler(CommandHandler("battery", battery, Filters.chat(GROUP)))
+    dp.add_handler(CommandHandler("rules", rules))
     dp.add_handler(MessageHandler(Filters.regex(r"(?i)rmx\d{4}"), rmx))
 
     # Verified commands

@@ -152,28 +152,43 @@ def cleaners(update: Update, context: CallbackContext):
 
 
 def rules(update: Update, context: CallbackContext):
-    delay_group(update, context,
-                "<u>Group's rules</u>"
-                "\n\n<b>1. Language</b>"
-                "\nPlease use English or Hindi as an alternative."
-                "\n\n<b>2. Links</b>"
-                "\nSending links is not permitted."
-                "\n\n<b>3. Forwarding</b>"
-                "\nForwarding messages from other channels is not permitted."
-                "\n\n<b>4. Respect</b>"
-                "\nWe're all one big community. Don't be rude."
-                "\n\n<b>5. Spam</b>"
-                "\nAvoid sending stuff multiple times. Flooding the chat won't give you more attention."
-                "\n\n<b>6. Files</b>"
-                "\nAvoid sending files over 50Mb, if not ultimately needed."
-                "\n\n<b>7. Advertisements</b>"
-                "\nSelf-promotion is not permitted."
-                "\n\n<b>8. Content</b>"
-                "\nGore, porn and anything alike is absolutely prohibited."
-                "\n\n<b>9. Privacy</b>"
-                "\nPlease only contact members of this group only if they permit it. Staff does not require to ask "
-                "for permission. "
-                )
+    if update.message.chat_id == OFFTOPIC_GROUP:
+        delay_group(update, context,
+                    "<u>Group's rules</u>"
+                    "\n\n<b>1. Language</b>"
+                    "\nPlease use English or Hindi as an alternative."
+                    "\n\n<b>2. Respect</b>"
+                    "\nWe're all one big community. Don't be rude."
+                    "\n\n<b>3. Spam</b>"
+                    "\nAvoid sending stuff multiple times. Flooding the chat won't give you more attention."
+                    "\n\n<b>4. Content</b>"
+                    "\nGore, porn and anything alike is absolutely prohibited."
+                    "\n\n<b>5. Privacy</b>"
+                    "\nPlease only contact members of this group only if they permit it. Staff does not require to "
+                    "ask for permission.")
+
+    else:
+        delay_group(update, context,
+                    "<u>Group's rules</u>"
+                    "\n\n<b>1. Language</b>"
+                    "\nPlease use English or Hindi as an alternative."
+                    "\n\n<b>2. Links</b>"
+                    "\nSending links is not permitted."
+                    "\n\n<b>3. Forwarding</b>"
+                    "\nForwarding messages from other channels is not permitted."
+                    "\n\n<b>4. Respect</b>"
+                    "\nWe're all one big community. Don't be rude."
+                    "\n\n<b>5. Spam</b>"
+                    "\nAvoid sending stuff multiple times. Flooding the chat won't give you more attention."
+                    "\n\n<b>6. Files</b>"
+                    "\nAvoid sending files over 50Mb, if not ultimately needed."
+                    "\n\n<b>7. Advertisements</b>"
+                    "\nSelf-promotion is not permitted."
+                    "\n\n<b>8. Content</b>"
+                    "\nGore, porn and anything alike is absolutely prohibited."
+                    "\n\n<b>9. Privacy</b>"
+                    "\nPlease only contact members of this group only if they permit it. Staff does not require to ask "
+                    "for permission.")
 
 
 def form(update: Update, context: CallbackContext):
