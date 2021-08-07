@@ -155,6 +155,7 @@ def rules(update: Update, context: CallbackContext):
     if update.message.chat_id == OFFTOPIC_GROUP:
         delay_group(update, context,
                     "<u>Group's rules</u>"
+                    "\n<i>Offtopic, but not chaotic 😉</i>"
                     "\n\n<b>1. Language</b>"
                     "\nPlease use English or Hindi as an alternative."
                     "\n\n<b>2. Respect</b>"
