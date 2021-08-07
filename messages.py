@@ -86,10 +86,12 @@ def commands(update: Update, context: CallbackContext):
                 "\nGet the device to a supplied model number, eg. <code>rmx1931</code> (can also be part of a message "
                 "and is case-insensitive) "
                 "\n\n\n\n<b>Utility commands for Admins</b>"
-                "\n\n/date - when stable is released"
-                "\n\n/push - how updates are rolled out"
-                "\n\n/battery - how to keep it alive"
-                "\n\n/rant - quality over quantitiy"
+                "\n/date - when stable is released"
+                "\n/push - how updates are rolled out"
+                "\n/battery - how to keep it alive"
+                "\n\npersonal opinion:"
+                "\n/rant - quality over quantitiy"
+                "\n/ram - virtual ram is not amazing"
                 "\n\nMessage @nyx69, if you face any issues with me 🤖")
 
 
@@ -138,13 +140,15 @@ def gcam(update: Update, context: CallbackContext):
 
 
 def cleaners(update: Update, context: CallbackContext):
-    delay_group_preview(update, context,
-                        "<u>Cleaners</u>"
-                        "\n\n<b>SD Maid</b> · <a href='https://t.me/realme_offtopic/8103'>Download 5.1.6</a>"
-                        "\n\nThis is an excellent cleaning app, which also takes care of databases, duplicates, "
-                        "caches etc. and enables you to freeze the apps you don't need. Oh yes.. and it's open-source 💗"
-                        "\n\n\n<b>Phone Manager</b> · <a href='https://t.me/realme_support/126160'>Download 8.6.1</a>"
-                        "\n\nOfficial Cleaner by Realme. Requires Android 11.")
+    delay_group(update, context,
+                "<u>Cleaners</u>"
+                "\n\n<b>SD Maid</b>"
+                "\nThis is an excellent cleaning app, which also takes care of databases, duplicates, "
+                "caches etc. and enables you to freeze the apps you don't need. Oh yes.. and it's open-source 💗"
+                "\n\n<a href='https://t.me/realme_offtopic/8103'>Download 5.1.6</a>"
+                "\n\n\n<b>Phone Manager</b>"
+                "\nOfficial Cleaner by Realme (requires Android 11)."
+                "\n\n<a href='https://t.me/realme_support/126160'>Download 8.6.1</a>")
 
 
 def rules(update: Update, context: CallbackContext):
@@ -213,6 +217,7 @@ def rmx(update: Update, context: CallbackContext):
             text = "\n\nThe phone you mentioned is the <b>realme {}</b>.".format(result[0])
 
         if update.message.reply_to_message and update.message.from_user.id in VERIFIED_USERS:
+            update.message.delete()
             update.message.reply_to_message.reply_text(
                 "Hey {} 🤖".format(update.message.reply_to_message.from_user.name) + text,
                 parse_mode=ParseMode.HTML)
@@ -225,7 +230,7 @@ def rmx(update: Update, context: CallbackContext):
 
         update.message.reply_text("Sorry {}!"
                                   "\n\nModel <b>RMX{}</b> was not found."
-                                  "\n\nMy human will add it later 🤖".format(update.message.from_user, model),
+                                  "\n\nMy human will add it later 🤖".format(update.message.from_user.name, model),
                                   parse_mode=ParseMode.HTML)
 
 
@@ -303,6 +308,19 @@ def push(update: Update, context: CallbackContext):
                     "\n\nThe update will be randomly pushed to a small number of users first."
                     "\n\nIf no critical bugs appear within the next days, the full rollout begins."
                     .format(update.message.reply_to_message.from_user.name))
+    else:
+        update.message.delete()
+
+
+def ram(update: Update, context: CallbackContext):
+    if update.message.reply_to_message and update.message.from_user.id in VERIFIED_USERS:
+        delay_group(update, context,
+                    "<u>Virtual Ram</u>"
+                    "\n\n<i>(personal experience by @nyx69)</i>"
+                    "\n\nBecause I had a comparable principle tested on my J7 2016 with even less Ram."
+                    "\n\nIt worked, but the performance increase is very low as it created a swap-file on my storage, "
+                    "which is not as blazing fast as Ram. "
+                    "\n\nSo I wouldn't really expect a noticeable performance gain. ")
     else:
         update.message.delete()
 

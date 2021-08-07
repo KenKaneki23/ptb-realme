@@ -55,11 +55,15 @@ if __name__ == '__main__':
     dp.add_handler(CommandHandler("ask", ask, Filters.chat(GROUP)))
     dp.add_handler(CommandHandler("form", form, Filters.chat(GROUP)))
     dp.add_handler(CommandHandler("rules", rules))
-    dp.add_handler(MessageHandler(Filters.regex(re.compile(r"rmx\d{4}", flags=re.IGNORECASE)), rmx))
     dp.add_handler(CommandHandler("whatsapp", whatsapp, Filters.chat(GROUP)))
+    dp.add_handler(CommandHandler("benchmark", benchmark, Filters.chat(GROUP)))
+    dp.add_handler(MessageHandler(Filters.regex(re.compile(r"rmx\d{4}", flags=re.IGNORECASE)), rmx))
+
+    # Verified commands
     dp.add_handler(CommandHandler("battery", battery, Filters.chat(GROUP)))
     dp.add_handler(CommandHandler("date", date, Filters.chat(GROUP)))
-    dp.add_handler(CommandHandler("benchmark", benchmark, Filters.chat(GROUP)))
+    dp.add_handler(CommandHandler("ram", ram, Filters.chat(GROUP)))
+
     dp.add_handler(CommandHandler("rant", rant, Filters.chat(GROUP)))
 
     dp.add_handler(CommandHandler("push", push, Filters.chat(GROUP)))
