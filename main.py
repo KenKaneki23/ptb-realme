@@ -58,13 +58,14 @@ if __name__ == '__main__':
     dp.add_handler(CommandHandler("benchmark", benchmark, Filters.chat(SUPPORT_GROUP)))
     dp.add_handler(CommandHandler("polls", polls))
     dp.add_handler(CommandHandler("rules", rules))
+    dp.add_handler(CommandHandler("bug", bug, Filters.chat(SUPPORT_GROUP)))
+    dp.add_handler(CommandHandler("stable", stable, Filters.chat(SUPPORT_GROUP)))
+    dp.add_handler(CommandHandler("push", push, Filters.chat(SUPPORT_GROUP)))
     dp.add_handler(MessageHandler(Filters.regex(r"(?i)rmx\d{4}"), rmx))
 
     # Verified commands
-    dp.add_handler(CommandHandler("date", date, Filters.chat(SUPPORT_GROUP)))  # TODO restructure all of these
-    dp.add_handler(CommandHandler("push", push, Filters.chat(SUPPORT_GROUP)))
+
     dp.add_handler(CommandHandler("offtopic", offtopic, Filters.chat(SUPPORT_GROUP) & Filters.user(ADMINS)))
-    dp.add_handler(CommandHandler("bug", bug, Filters.chat(SUPPORT_GROUP)))
 
     # Personal opinion
     dp.add_handler(CommandHandler("ram", ram, Filters.chat(SUPPORT_GROUP)))
@@ -77,7 +78,8 @@ if __name__ == '__main__':
     dp.add_handler(CallbackQueryHandler(remove_click, pattern="BAN_remove"))
     dp.add_handler(CallbackQueryHandler(button_click))
 
-    dp.add_handler(CommandHandler("reset", reset, Filters.chat(ADMINS)))
+    dp.add_handler(CommandHandler("reset", reset, Filters.chat(LOG_GROUP) & Filters.user(ADMINS)))
+    dp.add_handler(CommandHandler("clear", clear, Filters.chat(LOG_GROUP) & Filters.user(ADMINS)))
     dp.add_handler(MessageHandler(Filters.chat_type.private, private_not_available))
     #  add commands below. follow this scheme:  "command", function
 

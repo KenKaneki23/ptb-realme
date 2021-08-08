@@ -64,6 +64,16 @@ def delay_group(update: Update, context: CallbackContext, text: str):
         context.job_queue.run_once(delete, 600, reply_message.chat_id, str(reply_message.message_id))
 
 
+def delay_group_quote(update: Update, context: CallbackContext, text: str):
+    update.message.delete()
+
+    if update.message.reply_to_message:
+        update.message.reply_to_message.reply_text(text.format(update.message.reply_to_message.from_user.name), ParseMode.HTML, True)
+    else:
+        reply_message = context.bot.send_message(update.message.chat_id, text.format(update.message.from_user.name), ParseMode.HTML, True)
+        context.job_queue.run_once(delete, 600, reply_message.chat_id, str(reply_message.message_id))
+
+
 def delete(context: CallbackContext):
     context.bot.delete_message(str(context.job.context), context.job.name)
 

@@ -8,7 +8,8 @@ from telegram.ext import CallbackContext
 from config import VERIFIED_USERS, LOG_GROUP
 from constants import MODELS
 from main import SUPPORT_GROUP, OFFTOPIC_GROUP, ADMINS
-from utils import delay_group, delay_group_button_url, now, delay_group_preview, message_button_url, delete
+from utils import delay_group, delay_group_button_url, now, delay_group_preview, message_button_url, delete, \
+    delay_group_quote
 
 BAN = "banUser"
 WARN = "warnUser"
@@ -253,17 +254,13 @@ def rmx(update: Update, context: CallbackContext):
 
 
 def battery(update: Update, context: CallbackContext):
-    if update.message.reply_to_message and update.message.from_user.id in VERIFIED_USERS:
-        delay_group(update, context,
-                    "Hey {} 🤖"
-                    "\n\n<b>Some tips for a healthy battery 🔋</b>"
-                    "\n\n1. Maintain a charge between 20 and 85%"
-                    "\n\n2. Give at least 15 minutes break before and after charging"
-                    "\n\n3. Restart your device every 3 days"
-                    "\n\n4. Don't play on higher settings"
-                    .format(update.message.reply_to_message.from_user.name))
-    else:
-        update.message.delete()
+    delay_group_quote(update, context,
+                      "Hey {} 🤖"
+                      "\n\n<b>Some tips for a healthy battery 🔋</b>"
+                      "\n\n1. Maintain a charge between 20 and 85%"
+                      "\n\n2. Give at least 15 minutes break before and after charging"
+                      "\n\n3. Restart your device every 3 days"
+                      "\n\n4. Don't play on higher settings")
 
 
 def benchmark(update: Update, context: CallbackContext):
@@ -303,31 +300,24 @@ def benchmark(update: Update, context: CallbackContext):
                     .format(update.message.from_user.name))
 
 
-def date(update: Update, context: CallbackContext):
-    if update.message.reply_to_message and update.message.from_user.id in VERIFIED_USERS:
-        delay_group(update, context,
-                    "Hey {} 🤖"
-                    "\n\n<i>Realme rolls out an Update, if it works as expected - not if a certain date is met. "
-                    "Therefore an exact date for when you will receive an update doesn't exist.</i> "
-                    "\n\n<b>Estimating the stable release date</b>"
-                    "\nUse /android11 and add a minimum of 6 months after the Early Access date. This is the "
-                    "timeframe developers currently need to go from Beta to Stable. "
-                    "\n\nDevelopers are working very hard currently, but it may still take some time. Please stand by."
-                    .format(update.message.reply_to_message.from_user.name))
-    else:
-        update.message.delete()
+def stable(update: Update, context: CallbackContext):
+    delay_group_quote(update, context,
+                      "Hey {} 🤖"
+                      "\n\n<i>Realme rolls out an Update, if it works as expected - not if a certain date is met. "
+                      "Therefore an exact date for when you will receive an update doesn't exist.</i> "
+                      "\n\n<b>Estimating the stable release date</b>"
+                      "\nUse /android11 and add a minimum of 6 months after the Early Access date. This is the "
+                      "timeframe developers currently need to go from Beta to Stable. "
+                      "\n\nDevelopers are working very hard currently, but it may still take some time. Please stand "
+                      "by.")
 
 
 def push(update: Update, context: CallbackContext):
-    if update.message.reply_to_message and update.message.from_user.id in VERIFIED_USERS:
-        delay_group(update, context,
-                    "Don't worry {} 🤖"
-                    "\n\nTo ensure the stability of updates, they have staged rollouts."
-                    "\n\nThe update will be randomly pushed to a small number of users first."
-                    "\n\nIf no critical bugs appear within the next days, the full rollout begins."
-                    .format(update.message.reply_to_message.from_user.name))
-    else:
-        update.message.delete()
+    delay_group_quote(update, context,
+                      "Don't worry {} 🤖"
+                      "\n\nTo ensure the stability of updates, they have staged rollouts."
+                      "\n\nThe update will be randomly pushed to a small number of users first."
+                      "\n\nIf no critical bugs appear within the next days, the full rollout begins.")
 
 
 def ram(update: Update, context: CallbackContext):
@@ -407,22 +397,28 @@ def ban(update: Update, context: CallbackContext):
         update.message.delete()
 
 
-def reset(update: Update, context: CallbackContext):
+def clear(update: Update, context: CallbackContext):
     context.chat_data.clear()  # TODO ask Starry to add that
+    context.bot.set_my_commands([])
 
-    update.message.reply_text("User dicts were cleared. Resetting commands now.")
+    update.message.reply_text("User dicts and commands were cleared.")
 
+
+def reset(update: Update, context: CallbackContext):
     context.bot.set_my_commands(
         [
             ('android11', 'Official update roadmap 📲'),
             ('gcam', 'Latest release and configurations 📷'),
             ('cleaners', 'The recommended cleaning apps ♻️'),
-            ('polls', ' Take a look at our current polls 📊'),
+            ('whatsapp', 'Message the support directly 💬'),
+            ('but', 'How to report a bug ⚠️'),
+            ('stable', 'Estimate the stable release date 📆'),
+            ('push', 'How an update is pushed 🅿️'),
+            ('polls', 'Take a look at our current polls 📊'),
             ('debloat', 'Guide to remove unwanted apps 🚫'),
             ('benchmark', 'How to benchmark your device 💪🏼'),
             ('rules', 'Show this group\'s rules 📜'),
             ('experts', 'List experts for different segments 🎓'),
-            ('whatsapp', 'Message the support directly 💬'),
             ('admins', 'Show this group\'s staff 👷‍♂️'),
             ('ask', 'How to ask questions properly ❓'),
             ('help', 'Show commands 🆘"'),
