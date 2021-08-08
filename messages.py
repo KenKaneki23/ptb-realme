@@ -399,7 +399,7 @@ def ban(update: Update, context: CallbackContext):
 
 def clear(update: Update, context: CallbackContext):
     context.chat_data.clear()  # TODO ask Starry to add that
-    context.bot.set_my_commands([])
+    context.bot.set_my_commands(list())
 
     update.message.reply_text("User dicts and commands were cleared.")
 
