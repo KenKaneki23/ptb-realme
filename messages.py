@@ -7,7 +7,7 @@ from telegram.ext import CallbackContext
 
 from config import VERIFIED_USERS, NYX
 from constants import MODELS
-from main import GROUP, OFFTOPIC_GROUP, ADMINS
+from main import SUPPORT_GROUP, OFFTOPIC_GROUP, ADMINS
 from utils import delay_group, delay_group_button_url, now, delay_group_preview, message_button_url, delete
 
 BAN = "banUser"
@@ -155,7 +155,7 @@ def rules(update: Update, context: CallbackContext):
     if update.message.chat_id == OFFTOPIC_GROUP:
         delay_group(update, context,
                     "<u>Group's rules</u>"
-                    "\n<i>Offtopic, but not chaotic 😉</i>"
+                    "\n<i>Off-topic, but not chaotic 😉</i>"
                     "\n\n<b>1. Language</b>"
                     "\nPlease use English or Hindi as an alternative."
                     "\n\n<b>2. Respect</b>"
@@ -329,16 +329,16 @@ def push(update: Update, context: CallbackContext):
 
 
 def ram(update: Update, context: CallbackContext):
-    if update.message.reply_to_message and update.message.from_user.id in VERIFIED_USERS:
-        delay_group(update, context,
-                    "<u>Virtual Ram</u>"
-                    "\n\n<i>(personal experience by @nyx69)</i>"
-                    "\n\nBecause I had a comparable principle tested on my J7 2016 with even less Ram."
-                    "\n\nIt worked, but the performance increase is very low as it created a swap-file on my storage, "
-                    "which is not as blazing fast as Ram. "
-                    "\n\nSo I wouldn't really expect a noticeable performance gain. ")
-    else:
-        update.message.delete()
+    delay_group(update, context,
+                "<u>Virtual Ram</u>"
+                "\n\n<i>This is based on personal experience by @nyx69</i>"
+                "\n\nAs 2GB of Ram are not much, I tested a comparable principle on my J7 2016 with even less Ram."
+                "\n\nIt worked, but the performance increase was barely noticeable. It created a swap-file on my "
+                "storage, which is not as blazing fast as Ram."
+                "\n\nThe current Realme devices come with UFS2.0 storage, some even with UFS3.1, and more "
+                "processing power."
+                "\n\nAs the result for virtual Ram I would only expect a very slight performance increase, "
+                "so please don't hype it up that much 😉")
 
 
 def warn(update: Update, context: CallbackContext):
@@ -426,7 +426,7 @@ def reset(update: Update, context: CallbackContext):
             ('ask', 'How to ask questions properly ❓'),
             ('help', 'Show commands 🆘"'),
         ],
-        scope=BotCommandScopeChat(GROUP),
+        scope=BotCommandScopeChat(SUPPORT_GROUP),
     )
 
     context.bot.set_my_commands(
@@ -581,7 +581,7 @@ def polls(update: Update, context: CallbackContext):  # GROUP
 
         print("--- sending new poll")
 
-        start_message = context.bot.send_message(GROUP,
+        start_message = context.bot.send_message(SUPPORT_GROUP,
                                                  "Hey Realme Fans!"
                                                  "\n\n<b>It's once again time for Poll-Five 🖐️</b> "
                                                  "\n\nThis idea came up in @realme_offtopic a few days ago and I "
@@ -621,10 +621,10 @@ def polls(update: Update, context: CallbackContext):  # GROUP
         answers = [answers_0, answers_1, answers_2, answers_3]
 
         for i in range(4):
-            context.bot.send_poll(GROUP, "[Poll {} of 5] · {}".format(i + 1, questions[i]), answers[i])
+            context.bot.send_poll(SUPPORT_GROUP, "[Poll {} of 5] · {}".format(i + 1, questions[i]), answers[i])
             time.sleep(1)
 
-        context.bot.send_poll(GROUP, "[Poll 5 of 5] · {}".format(question_4), answers_4, allows_multiple_answers=True)
+        context.bot.send_poll(SUPPORT_GROUP, "[Poll 5 of 5] · {}".format(question_4), answers_4, allows_multiple_answers=True)
 
         start_message.pin()
 

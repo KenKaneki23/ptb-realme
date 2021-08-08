@@ -1,9 +1,7 @@
 import logging
-import re
 
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, scoped_session
-from telegram import BotCommandScopeAllGroupChats, BotCommandScopeChat
 from telegram.ext import Updater, MessageHandler, Filters, CommandHandler, CallbackQueryHandler
 
 from config import *
@@ -29,7 +27,7 @@ def start_session() -> scoped_session:
 def error(update: Update, context: CallbackContext):
     logger.warning('Update "%s" caused error "%s"', update, context.error)
     if update is Update:
-        context.bot.send_message(-1001338514957,
+        context.bot.send_message(LOG_GROUP,
                                  "<b>🤖 Affected Bot</b>\n@" + context.bot.username +
                                  "\n\n<b>⚠️ Error</b>\n<code>" + str(context.error) +
                                  "</code>\n\n<b>Caused by Update</b>\n<code>" + str(update) + "</code>",
@@ -46,31 +44,31 @@ if __name__ == '__main__':
         ["/help@CoronaVirusRobot", "/victims@CoronaVirusRobot", "/infect@CoronaVirusRobot", "/victims", "/infect"]),
         remove_message))
 
-    dp.add_handler(CommandHandler("android11", android11, Filters.chat(GROUP)))
-    dp.add_handler(CommandHandler("gcam", gcam, Filters.chat(GROUP)))
-    dp.add_handler(CommandHandler("cleaners", cleaners, Filters.chat(GROUP)))
-    dp.add_handler(CommandHandler("help", commands, Filters.chat(GROUP)))
-    dp.add_handler(CommandHandler("admins", admins, Filters.chat(GROUP)))
-    dp.add_handler(CommandHandler("experts", experts, Filters.chat(GROUP)))
-    dp.add_handler(CommandHandler("debloat", debloat, Filters.chat(GROUP)))
-    dp.add_handler(CommandHandler("ask", ask, Filters.chat(GROUP)))
-    dp.add_handler(CommandHandler("form", form, Filters.chat(GROUP)))
-    dp.add_handler(CommandHandler("battery", battery, Filters.chat(GROUP)))
-    dp.add_handler(CommandHandler("whatsapp", whatsapp, Filters.chat(GROUP)))
-    dp.add_handler(CommandHandler("benchmark", benchmark, Filters.chat(GROUP)))
+    dp.add_handler(CommandHandler("android11", android11, Filters.chat(SUPPORT_GROUP)))
+    dp.add_handler(CommandHandler("gcam", gcam, Filters.chat(SUPPORT_GROUP)))
+    dp.add_handler(CommandHandler("cleaners", cleaners, Filters.chat(SUPPORT_GROUP)))
+    dp.add_handler(CommandHandler("help", commands, Filters.chat(SUPPORT_GROUP)))
+    dp.add_handler(CommandHandler("admins", admins, Filters.chat(SUPPORT_GROUP)))
+    dp.add_handler(CommandHandler("experts", experts, Filters.chat(SUPPORT_GROUP)))
+    dp.add_handler(CommandHandler("debloat", debloat, Filters.chat(SUPPORT_GROUP)))
+    dp.add_handler(CommandHandler("ask", ask, Filters.chat(SUPPORT_GROUP)))
+    dp.add_handler(CommandHandler("form", form, Filters.chat(SUPPORT_GROUP)))
+    dp.add_handler(CommandHandler("battery", battery, Filters.chat(SUPPORT_GROUP)))
+    dp.add_handler(CommandHandler("whatsapp", whatsapp, Filters.chat(SUPPORT_GROUP)))
+    dp.add_handler(CommandHandler("benchmark", benchmark, Filters.chat(SUPPORT_GROUP)))
     dp.add_handler(CommandHandler("polls", polls))
     dp.add_handler(CommandHandler("rules", rules))
     dp.add_handler(MessageHandler(Filters.regex(r"(?i)rmx\d{4}"), rmx))
 
     # Verified commands
-    dp.add_handler(CommandHandler("date", date, Filters.chat(GROUP)))  # TODO restructure all of these
-    dp.add_handler(CommandHandler("push", push, Filters.chat(GROUP)))
-    dp.add_handler(CommandHandler("offtopic", offtopic, Filters.chat(GROUP) & Filters.user(ADMINS)))
-    dp.add_handler(CommandHandler("bug", bug, Filters.chat(GROUP)))
+    dp.add_handler(CommandHandler("date", date, Filters.chat(SUPPORT_GROUP)))  # TODO restructure all of these
+    dp.add_handler(CommandHandler("push", push, Filters.chat(SUPPORT_GROUP)))
+    dp.add_handler(CommandHandler("offtopic", offtopic, Filters.chat(SUPPORT_GROUP) & Filters.user(ADMINS)))
+    dp.add_handler(CommandHandler("bug", bug, Filters.chat(SUPPORT_GROUP)))
 
     # Personal opinion
-    dp.add_handler(CommandHandler("ram", ram, Filters.chat(GROUP)))
-    dp.add_handler(CommandHandler("rant", rant, Filters.chat(GROUP)))
+    dp.add_handler(CommandHandler("ram", ram, Filters.chat(SUPPORT_GROUP)))
+    dp.add_handler(CommandHandler("rant", rant, Filters.chat(SUPPORT_GROUP)))
 
     # Upcoming
     dp.add_handler(CommandHandler("warn", warn, ))  # Filters.chat(OFFTOPIC_GROUP) & Filters.user(ADMINS)))
