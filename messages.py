@@ -5,7 +5,7 @@ from telegram import Update, ParseMode, InlineKeyboardMarkup, InlineKeyboardButt
     KeyboardButtonPollType, Message, BotCommandScopeChat
 from telegram.ext import CallbackContext
 
-from config import VERIFIED_USERS, NYX
+from config import VERIFIED_USERS, LOG_GROUP
 from constants import MODELS
 from main import SUPPORT_GROUP, OFFTOPIC_GROUP, ADMINS
 from utils import delay_group, delay_group_button_url, now, delay_group_preview, message_button_url, delete
@@ -242,8 +242,8 @@ def rmx(update: Update, context: CallbackContext):
             update.message.reply_text(text, parse_mode=ParseMode.HTML)
 
     else:
-        context.bot.send_message(NYX, "#TODO - from user: {}"
-                                      "\n\nAdd RMX {} to list of devices‼️"
+        context.bot.send_message(LOG_GROUP, "#TODO - from user: {}"
+                                            "\n\nAdd RMX {} to list of devices‼️"
                                  .format(update.message.from_user.name, model))
 
         update.message.reply_text("Sorry {} 🤖"
