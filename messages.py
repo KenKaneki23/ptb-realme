@@ -410,7 +410,9 @@ def ban(update: Update, context: CallbackContext):
 
 def clear(update: Update, context: CallbackContext):
     context.chat_data.clear()  # TODO ask Starry to add that
-    context.bot.delete_my_commands()
+
+    context.bot.delete_my_commands(BotCommandScopeChat(SUPPORT_GROUP))
+    context.bot.delete_my_commands(BotCommandScopeChat(OFFTOPIC_GROUP))
 
     context.bot.set_my_commands(
         [
