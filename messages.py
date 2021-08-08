@@ -77,19 +77,23 @@ def commands(update: Update, context: CallbackContext):
                 "\nLatest GCam release and configurations"
                 "\n\n<b>/cleaners</b>"
                 "\nCleaners to keep your storage free and more"
+                "\n\n<b>/bug</b>"
+                "\nHow to report a bug or give feedback about RUI2.0"
+                "\n\n<b>/stable</b>"
+                "\nHow to estimate the stable release date"
+                "\n\n<b>/push</b>"
+                "\nHow long it takes for an update to arrive on your device after it got pushed."
                 "\n\n<b>/debloat</b>"
                 "\nHow to remove unwanted Apps"
                 "\n\n<b>/android11</b>"
                 "\nOfficial roadmap for the Early Access of RealmeUI 2.0"
+                "\n\n<b>/battery</b>"
+                "\nTips to keep your battery healthy"
                 "\n\n<b>/ask</b>"
                 "\nHow to ask questions properly"
                 "\n\n<b>rmx{modelnumber}</b>"
                 "\nGet the device to a supplied model number, eg. <code>rmx1931</code> (can also be part of a message "
                 "and is case-insensitive) "
-                "\n\n\n\n<b>Utility commands for Admins</b>"
-                "\n/date - when stable is released"
-                "\n/push - how updates are rolled out"
-                "\n/battery - how to keep it alive"
                 "\n\npersonal opinion:"
                 "\n/rant - quality over quantitiy"
                 "\n/ram - virtual ram is not amazing"
@@ -411,11 +415,12 @@ def reset(update: Update, context: CallbackContext):
             ('gcam', 'Latest release and configurations 📷'),
             ('cleaners', 'The recommended cleaning apps ♻️'),
             ('whatsapp', 'Message the support directly 💬'),
-            ('but', 'How to report a bug ⚠️'),
+            ('bug', 'How to report a bug ⚠️'),
             ('stable', 'Estimate the stable release date 📆'),
             ('push', 'How an update is pushed 🅿️'),
-            ('polls', 'Take a look at our current polls 📊'),
             ('debloat', 'Guide to remove unwanted apps 🚫'),
+            ('battery', 'Keep your battery healthy 🔋'),
+            ('polls', 'Take a look at our current polls 📊'),
             ('benchmark', 'How to benchmark your device 💪🏼'),
             ('rules', 'Show this group\'s rules 📜'),
             ('experts', 'List experts for different segments 🎓'),
