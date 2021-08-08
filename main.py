@@ -5,6 +5,7 @@ from sqlalchemy.orm import sessionmaker, scoped_session
 from telegram.ext import Updater, MessageHandler, Filters, CommandHandler, CallbackQueryHandler
 
 from config import *
+from constants import FORBIDDEN_TEXT
 from messages import *
 from postgres import PostgresPersistence
 from utils import remove_message
@@ -40,9 +41,7 @@ if __name__ == '__main__':
 
     dp = updater.dispatcher
 
-    dp.add_handler(MessageHandler(Filters.text(
-        ["/help@CoronaVirusRobot", "/victims@CoronaVirusRobot", "/infect@CoronaVirusRobot", "/victims", "/infect"]),
-        remove_message))
+    dp.add_handler(MessageHandler(Filters.text(FORBIDDEN_TEXT), remove_message))
 
     dp.add_handler(CommandHandler("android11", android11, Filters.chat(SUPPORT_GROUP)))
     dp.add_handler(CommandHandler("gcam", gcam, Filters.chat(SUPPORT_GROUP)))

@@ -51,3 +51,5 @@ MODELS = {
     3193: ['C25'],
     3201: ['C21']
 }
+
+FORBIDDEN_TEXT =(["/help@CoronaVirusRobot", "/victims@CoronaVirusRobot", "/infect@CoronaVirusRobot", "/victims", "/infect", "#icon", "/translate"])
