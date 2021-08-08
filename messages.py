@@ -97,6 +97,13 @@ def commands(update: Update, context: CallbackContext):
                 "\n\npersonal opinion:"
                 "\n/rant - quality over quantitiy"
                 "\n/ram - virtual ram is not amazing"
+                "\n\n\n\n<b>Who am I?</b>"
+                "\n\nI'm a bot with purpose is to answer frequently asked questions and help the admins doing their "
+                "job. "
+                "\n\nPlease note that I delete my responses after 10 minutes to keep this chat clear. If you quote "
+                "another message and then use a command, the response will stay. "
+                "\n\nOh.. I'm open source by the way: <a href='https://github.com/PXNX/ptb-realme'>Github</a> 💗"
+                "\n\nPlease join @realme_offtopic to suggest new features or improvements."
                 "\n\nMessage @nyx69, if you face any issues with me 🤖")
 
 
