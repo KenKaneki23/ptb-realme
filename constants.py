@@ -52,4 +52,12 @@ MODELS = {
     3201: ['C21']
 }
 
-FORBIDDEN_TEXT =(["/help@CoronaVirusRobot", "/victims@CoronaVirusRobot", "/infect@CoronaVirusRobot", "/victims", "/infect", "#icon", "/translate"])
+FORBIDDEN_TEXT = (
+    "/help@CoronaVirusRobot",
+    "/victims@CoronaVirusRobot",
+    "/infect@CoronaVirusRobot",
+    "/victims",
+    "/infect",
+    "#icon",
+    "/translate",
+    "#icons")
