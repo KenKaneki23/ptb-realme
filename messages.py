@@ -410,7 +410,15 @@ def ban(update: Update, context: CallbackContext):
 
 def clear(update: Update, context: CallbackContext):
     context.chat_data.clear()  # TODO ask Starry to add that
-    context.bot.set_my_commands([False])
+    context.bot.delete_my_commands()
+
+    context.bot.set_my_commands(
+        [
+            ('clear', 'Clears commands and temporary user data.'),
+            ('reset', 'Resets commands. Use if after clearing."')
+        ],
+        scope=BotCommandScopeChat(LOG_GROUP)
+    )
 
     update.message.reply_text("User dicts and commands were cleared.")
 
@@ -435,18 +443,9 @@ def reset(update: Update, context: CallbackContext):
             ('ask', 'How to ask questions properly ❓'),
             ('help', 'Show commands 🆘"'),
         ],
-        scope=BotCommandScopeChat(SUPPORT_GROUP),
-    )
+        scope=BotCommandScopeChat(SUPPORT_GROUP))
 
     context.bot.set_my_commands([('rules', 'Show this group\'s rules 📜')], scope=BotCommandScopeChat(OFFTOPIC_GROUP))
-
-    context.bot.set_my_commands(
-        [
-            ('clear', 'Clears commands and temporary user data.'),
-            ('reset', 'Resets commands. Use if after clearing."')
-        ],
-        scope=BotCommandScopeChat(LOG_GROUP)
-    )
 
     update.message.reply_text("Command list was updated.")
 
