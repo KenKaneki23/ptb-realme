@@ -242,7 +242,9 @@ def rmx(update: Update, context: CallbackContext):
             update.message.reply_text(text, parse_mode=ParseMode.HTML)
 
     else:
-        context.bot.send_message(NYX, "#TODO\n\nAdd RMX {} to list of devices‼️".format(model))
+        context.bot.send_message(NYX, "#TODO - from user: {}"
+                                      "\n\nAdd RMX {} to list of devices‼️"
+                                 .format(update.message.from_user.name, model))
 
         update.message.reply_text("Sorry {} 🤖"
                                   "\n\nModel <b>RMX{}</b> was not found."
@@ -335,10 +337,9 @@ def ram(update: Update, context: CallbackContext):
                 "\n\nAs 2GB of Ram are not much, I tested a comparable principle on my J7 2016 with even less Ram."
                 "\n\nIt worked, but the performance increase was barely noticeable. It created a swap-file on my "
                 "storage, which is not as blazing fast as Ram."
-                "\n\nThe current Realme devices come with UFS2.0 storage, some even with UFS3.1, and more "
-                "processing power."
-                "\n\nAs the result for virtual Ram I would only expect a very slight performance increase, "
-                "so please don't hype it up that much 😉")
+                "\n\nThe current Realme devices come with UFS2.0 storage, some even UFS3.1, and more processing power."
+                "\n\nFor Virtual Ram I only expect a very slight performance increase, so please don't hype it up "
+                "that much 😉")
 
 
 def warn(update: Update, context: CallbackContext):
@@ -624,7 +625,8 @@ def polls(update: Update, context: CallbackContext):  # GROUP
             context.bot.send_poll(SUPPORT_GROUP, "[Poll {} of 5] · {}".format(i + 1, questions[i]), answers[i])
             time.sleep(1)
 
-        context.bot.send_poll(SUPPORT_GROUP, "[Poll 5 of 5] · {}".format(question_4), answers_4, allows_multiple_answers=True)
+        context.bot.send_poll(SUPPORT_GROUP, "[Poll 5 of 5] · {}".format(question_4), answers_4,
+                              allows_multiple_answers=True)
 
         start_message.pin()
 
