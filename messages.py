@@ -426,11 +426,14 @@ def reset(update: Update, context: CallbackContext):
         scope=BotCommandScopeChat(SUPPORT_GROUP),
     )
 
+    context.bot.set_my_commands([('rules', 'Show this group\'s rules 📜')], scope=BotCommandScopeChat(OFFTOPIC_GROUP))
+
     context.bot.set_my_commands(
         [
-            ('rules', 'Show this group\'s rules 📜')
+            ('clear', 'Clears commands and temporary user data.'),
+            ('reset', 'Resets commands. Use if after clearing."')
         ],
-        scope=BotCommandScopeChat(OFFTOPIC_GROUP),
+        scope=BotCommandScopeChat(LOG_GROUP)
     )
 
     update.message.reply_text("Command list was updated.")
