@@ -178,16 +178,16 @@ def rules(update: Update, context: CallbackContext):
                     "\nGore, porn and anything alike is absolutely prohibited. Also be aware that this group is no "
                     "support group. "
                     "\n\n<b>5. Privacy</b>"
-                    "\nPlease only contact members of this group only if they permit it. Staff does not require to "
+                    "\nPlease contact members of this group only if they explicitly permit it. Staff does not require to "
                     "ask for permission.")
 
     else:
         delay_group(update, context,
                     "<u>Group's rules</u>"
                     "\n\n<b>1. Language</b>"
-                    "\nPlease use English or Hindi as an alternative."
+                    "\nPlease use English whenever possible or Hindi as an alternative."
                     "\n\n<b>2. Links</b>"
-                    "\nSending links is not permitted."
+                    "\nSending links is not permitted and will get you banned for a day to avoid scammers."
                     "\n\n<b>3. Forwarding</b>"
                     "\nForwarding messages from other channels is not permitted."
                     "\n\n<b>4. Respect</b>"
@@ -201,7 +201,7 @@ def rules(update: Update, context: CallbackContext):
                     "\n\n<b>8. Content</b>"
                     "\nGore, porn and anything alike is absolutely prohibited."
                     "\n\n<b>9. Privacy</b>"
-                    "\nPlease only contact members of this group only if they permit it. Staff does not require to ask "
+                    "\nPlease contact members of this group only if they explicitly permit it. Staff does not require to ask "
                     "for permission.")
 
 
