@@ -163,6 +163,51 @@ def cleaners(update: Update, context: CallbackContext):
                 "\n\n<a href='https://t.me/realme_support/126160'>Download 8.6.1</a>")
 
 
+def aod(update: Update, context: CallbackContext):
+    delay_group_quote(update, context,
+                      "<u>Always-On-Display"
+                      "\n\n<i>Be aware that the upcoming paragraphs are simplified and won't go over the actual "
+                      "complexity behind those subjects. "
+                      "\n\n\n<b>Why don't I have an Always-On-Display?</b>"
+                      "\n\nIf your device has an LCD display AODs are pointless as the backlight of the LCD will be "
+                      "on - no matter what's been shown on screen. AODs make more sense on an AMOLED, "
+                      "where individual pixels can turn off entriely, thus saving battery. "
+                      "\n\n\n<b>Why can't I customize my AOD?</b>"
+                      "\n\nYour phone's display quite likely doesn't support it. This is often referred to as a "
+                      "\"ramless display\", which isn't something bad at all. It's just the conventional way displays "
+                      "are made.\n\nCurrently only the X50 Pro, X2, X2 Pro and X7 Max support it.")
+
+
+def cool(update: Update, context: CallbackContext):
+    delay_group(update, context,
+                "<u>Cool and useful Apps</u>"
+                "\n\nThe following are Apps I personally use and quite like. This message is meant to accompany /gcam "
+                "and /cleaners. Feel free to suggest more. "
+                "\n\n\n<b>Moment Pro</b>"
+                "\nA solid camera for professionals, who enjoy playing with over- and underexposing subjects."
+                "\n\n<a href='https://t.me/realme_offtopic/5344'>Download 3.2.2</a>"
+                "\n\n\n<b>Aida64</b>"
+                "\nHandy if you want to read all the data about your device."
+                "\n\n<a href='https://t.me/realme_offtopic/9346'>Download 179</a>"
+                "\n\n\n<b>Videoder</b>"
+                "\nAwesome, if you want to download videos and music from YouTube and just about any other website."
+                "\n\n<a href='https://t.me/realme_offtopic/12457'>Download 14.4.2</a>")
+
+
+def manual(update: Update, context: CallbackContext):
+    delay_group_quote(update, context,
+                      "<u>Updating System-Apps manually</u>"
+                      "Updating your System-Apps via Apks you find somewhere on the Internet or here on Telegram is "
+                      "often pointless, as you quite likely have the latest proper and optimized version of these "
+                      "Apps installed on your device anyway. You should therefore not really be in need of flashing "
+                      "them manually. "
+                      "\n\n⚠️Installing these Apps yourself may actually be worse to do so, as those files are very "
+                      "often not explicitly for your device and may therefore lack specific optimization or may not "
+                      "even work as they should. "
+                      "\n\nBe very careful what you install. It's better to wait for the next automatic "
+                      "software-update 😉")
+
+
 def rules(update: Update, context: CallbackContext):
     if update.message.chat_id == OFFTOPIC_GROUP:
         delay_group(update, context,
@@ -427,28 +472,32 @@ def clear(update: Update, context: CallbackContext):
 
 
 def reset(update: Update, context: CallbackContext):
-    context.bot.set_my_commands(
-        [
-            ('android11', 'Official update roadmap 📲'),
-            ('gcam', 'Latest release and configurations 📷'),
-            ('cleaners', 'The recommended cleaning apps ♻️'),
-            ('whatsapp', 'Message the support directly 💬'),
-            ('bug', 'How to report a bug ⚠️'),
-            ('stable', 'Estimate the stable release date 📆'),
-            ('push', 'How an update is pushed 🅿️'),
-            ('debloat', 'Guide to remove unwanted apps 🚫'),
-            ('battery', 'Keep your battery healthy 🔋'),
-            ('polls', 'Take a look at our current polls 📊'),
-            ('benchmark', 'How to benchmark your device 💪🏼'),
-            ('rules', 'Show this group\'s rules 📜'),
-            ('experts', 'List experts for different segments 🎓'),
-            ('admins', 'Show this group\'s staff 👷‍♂️'),
-            ('ask', 'How to ask questions properly ❓'),
-            ('help', 'Show commands 🆘"'),
-        ],
+    context.bot.set_my_commands([
+        ('android11', 'Official update roadmap 📲'),
+        ('gcam', 'Latest release and configurations 📷'),
+        ('cleaners', 'The recommended cleaning apps ♻️'),
+        ('whatsapp', 'Message the support directly 💬'),
+        ('bug', 'How to report a bug ⚠️'),
+        ('stable', 'Estimate the stable release date 📆'),
+        ('push', 'How an update is pushed 🅿️'),
+        ('debloat', 'Guide to remove unwanted apps 🚫'),
+        ('battery', 'Keep your battery healthy 🔋'),
+        ('polls', 'Take a look at our current polls 📊'),
+        ('benchmark', 'How to benchmark your device 💪🏼'),
+        ('cool', 'Cool and useful Apps 😎'),
+        ('aod', 'Why there is no Customization or AOD 🎨'),
+        ('manual', 'Manual updates may be worse 😟'),
+        ('rules', 'Show this group\'s rules 📜'),
+        ('experts', 'List experts for different segments 🎓'),
+        ('admins', 'Show this group\'s staff 👷‍♂️'),
+        ('ask', 'How to ask questions properly ❓'),
+        ('help', 'Show commands 🆘"'), ],
         scope=BotCommandScopeChat(SUPPORT_GROUP))
 
-    context.bot.set_my_commands([('rules', 'Show this group\'s rules 📜')], scope=BotCommandScopeChat(OFFTOPIC_GROUP))
+    context.bot.set_my_commands([
+        ('rules', 'Show this group\'s rules 📜'),
+        ('cool', 'Cool and useful Apps 😎')],
+        scope=BotCommandScopeChat(OFFTOPIC_GROUP))
 
     update.message.reply_text("Command list was updated.")
 
