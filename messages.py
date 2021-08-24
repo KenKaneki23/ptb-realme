@@ -132,8 +132,8 @@ def gcam(update: Update, context: CallbackContext):
     delay_group(update, context,
                 "<u>Google Camera</u>"
                 "\n\n<b>Releases</b>"
-                "\n· <a href='https://t.me/realme_offtopic/4177'>PXv8.1_GCam-v1.2</a>"
-                "\n· <a href='https://t.me/realme_offtopic/4176'>Urnyx05-v2.5</a>"
+                "\n· <a href='https://t.me/realme_offtopic/4177'>PXv8.1_GCam-v1.2 ⬇️ </a>"
+                "\n· <a href='https://t.me/realme_offtopic/4176'>Urnyx05-v2.5 ⬇️ </a>"
                 "\n\nUrnyx05's releases work well on most Realme devices. Take a look at @googlecameraport "
                 "for other releases. "
                 "\n\n\n<b>Configurations</b>"
@@ -154,24 +154,22 @@ def gcam(update: Update, context: CallbackContext):
 def cleaners(update: Update, context: CallbackContext):
     delay_group(update, context,
                 "<u>Cleaners</u>"
-                "\n\n<b>SD Maid</b>"
+                "\n\n<b>SD Maid</b> · <a href='https://t.me/realme_offtopic/8103'>5.1.6 ⬇️ </a>"
                 "\nThis is an excellent cleaning app, which also takes care of databases, duplicates, "
                 "caches etc. and enables you to freeze the apps you don't need. Oh yes.. and it's open-source 💗"
-                "\n\n<a href='https://t.me/realme_offtopic/8103'>Download 5.1.6</a>"
-                "\n\n\n<b>Phone Manager</b>"
-                "\nOfficial Cleaner by Realme (requires Android 11)."
-                "\n\n<a href='https://t.me/realme_support/126160'>Download 8.6.1</a>")
+                "\n\n<b>Phone Manager</b> · <a href='https://t.me/realme_support/126160'>Download 8.6.1 ⬇️ </a>"
+                "\nOfficial Cleaner by Realme (requires Android 11).")
 
 
 def aod(update: Update, context: CallbackContext):
     delay_group_quote(update, context,
-                      "<u>Always-On-Display"
+                      "<u>Always-On-Display</u>"
                       "\n\n<i>Be aware that the upcoming paragraphs are simplified and won't go over the actual "
                       "complexity behind those subjects. "
                       "\n\n\n<b>Why don't I have an Always-On-Display?</b>"
                       "\n\nIf your device has an LCD display AODs are pointless as the backlight of the LCD will be "
                       "on - no matter what's been shown on screen. AODs make more sense on an AMOLED, "
-                      "where individual pixels can turn off entriely, thus saving battery. "
+                      "where individual pixels can turn off entirely, thus saving battery. "
                       "\n\n\n<b>Why can't I customize my AOD?</b>"
                       "\n\nYour phone's display quite likely doesn't support it. This is often referred to as a "
                       "\"ramless display\", which isn't something bad at all. It's just the conventional way displays "
@@ -181,16 +179,13 @@ def aod(update: Update, context: CallbackContext):
 def cool(update: Update, context: CallbackContext):
     delay_group(update, context,
                 "<u>Cool and useful Apps</u>"
-                "\n\nThe following are Apps I personally use and quite like. This message is meant to accompany /gcam "
-                "and /cleaners. Feel free to suggest more. "
-                "\n\n\n<b>Moment Pro</b>"
+                "\n\n<b>Moment Pro</b> · <a href='https://t.me/realme_offtopic/5344'>3.2.2 ⬇️ </a>"
                 "\nA solid camera for professionals, who enjoy playing with over- and underexposing subjects."
-                "\n\n<a href='https://t.me/realme_offtopic/5344'>Download 3.2.2</a>"
-                "\n\n\n<b>Aida64</b>"
+                "\n\n<b>Aida64</b> · <a href='https://t.me/realme_offtopic/9346'>179 ⬇️ </a>"
                 "\nHandy if you want to read all the data about your device."
-                "\n\n<a href='https://t.me/realme_offtopic/9346'>Download 179</a>"
-                "\n\n\n<b>Videoder</b> <a href='https://t.me/realme_offtopic/12457'>⬇️  14.4.2</a>"
-                "\nDownload videos and music from YouTube or any other website.")
+                "\n\n<b>Videoder</b> · <a href='https://t.me/realme_offtopic/12457'>14.4.2 ⬇️ </a>"
+                "\nDownload videos and music from YouTube or any other website."
+                "\n\nFind more at /gcam and /cleaners.")
 
 
 def manual(update: Update, context: CallbackContext):
