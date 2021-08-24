@@ -172,9 +172,10 @@ def aod(update: Update, context: CallbackContext):
                       "\n\nAODs make more sense on an AMOLED, where individual pixels can turn off entirely, "
                       "thus saving battery. "
                       "\n\n\n<b>Why can't I customize my AOD?</b>"
-                      "\n\nYour phone's display quite likely doesn't support it. This is often referred to as a "
-                      "\"ramless display\", which isn't something bad at all. It's just the conventional way displays "
-                      "are made.\n\nCurrently only the X50 Pro, X2, X2 Pro and X7 Max support it.")
+                      "\n\nThis is due to something that's often referred to as a \"ramless display\", which isn't "
+                      "something bad at all. It's just the conventional way displays are made."
+                      "\n\nYour phone's display quite likely simply doesn't support this additional feature. "
+                      "Currently it's only working on the X50 Pro, X2, X2 Pro, X, XT and X7 Max.")
 
 
 def cool(update: Update, context: CallbackContext):
