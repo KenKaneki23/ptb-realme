@@ -53,7 +53,8 @@ MODELS = {
     3171: ['Narzo 30A'],
     3191: ['C25'],
     3193: ['C25'],
-    3201: ['C21']
+    3201: ['C21'],
+    3350: ['GT Neo Flash Edition']
 }
 
 FORBIDDEN_TEXT = (
