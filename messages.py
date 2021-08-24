@@ -189,22 +189,21 @@ def cool(update: Update, context: CallbackContext):
                 "\n\n\n<b>Aida64</b>"
                 "\nHandy if you want to read all the data about your device."
                 "\n\n<a href='https://t.me/realme_offtopic/9346'>Download 179</a>"
-                "\n\n\n<b>Videoder</b>"
-                "\nAwesome, if you want to download videos and music from YouTube and just about any other website."
-                "\n\n<a href='https://t.me/realme_offtopic/12457'>Download 14.4.2</a>")
+                "\n\n\n<b>Videoder</b> <a href='https://t.me/realme_offtopic/12457'>⬇️  14.4.2</a>"
+                "\nDownload videos and music from YouTube or any other website.")
 
 
 def manual(update: Update, context: CallbackContext):
     delay_group_quote(update, context,
                       "<u>Updating System-Apps manually</u>"
-                      "Updating your System-Apps via Apks you find somewhere on the Internet or here on Telegram is "
-                      "often pointless, as you quite likely have the latest proper and optimized version of these "
-                      "Apps installed on your device anyway. You should therefore not really be in need of flashing "
-                      "them manually. "
-                      "\n\n⚠️Installing these Apps yourself may actually be worse to do so, as those files are very "
+                      "\n\nUpdating your System-Apps via Apks you find somewhere on the Internet or here on Telegram "
+                      "is often pointless, as you quite likely have the latest proper and optimized version of these "
+                      "Apps installed on your device anyway. "
+                      "\n\nYou should therefore not really be in need of flashing them manually. "
+                      "\n\n⚠️ Installing these Apps yourself may actually be worse, as those files are very "
                       "often not explicitly for your device and may therefore lack specific optimization or may not "
                       "even work as they should. "
-                      "\n\nBe very careful what you install. It's better to wait for the next automatic "
+                      "\n\nBe very careful with what you install. It's better to wait for the next automatic "
                       "software-update 😉")
 
 
@@ -223,8 +222,8 @@ def rules(update: Update, context: CallbackContext):
                     "\nGore, porn and anything alike is absolutely prohibited. Also be aware that this group is no "
                     "support group. "
                     "\n\n<b>5. Privacy</b>"
-                    "\nPlease contact members of this group only if they explicitly permit it. Staff does not require to "
-                    "ask for permission.")
+                    "\nPlease contact members of this group only if they explicitly permit it. Staff does not require "
+                    "to ask for permission.")
 
     else:
         delay_group(update, context,
@@ -246,8 +245,8 @@ def rules(update: Update, context: CallbackContext):
                     "\n\n<b>8. Content</b>"
                     "\nGore, porn and anything alike is absolutely prohibited."
                     "\n\n<b>9. Privacy</b>"
-                    "\nPlease contact members of this group only if they explicitly permit it. Staff does not require to ask "
-                    "for permission.")
+                    "\nPlease contact members of this group only if they explicitly permit it. Staff does not require "
+                    "to ask for permission.")
 
 
 def form(update: Update, context: CallbackContext):
