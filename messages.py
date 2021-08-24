@@ -157,7 +157,7 @@ def cleaners(update: Update, context: CallbackContext):
                 "\n\n<b>SD Maid</b> · <a href='https://t.me/realme_offtopic/8103'>5.1.6 ⬇️ </a>"
                 "\nThis is an excellent cleaning app, which also takes care of databases, duplicates, "
                 "caches etc. and enables you to freeze the apps you don't need. Oh yes.. and it's open-source 💗"
-                "\n\n<b>Phone Manager</b> · <a href='https://t.me/realme_support/126160'>Download 8.6.1 ⬇️ </a>"
+                "\n\n<b>Phone Manager</b> · <a href='https://t.me/realme_support/126160'>8.6.1 ⬇️ </a>"
                 "\nOfficial Cleaner by Realme (requires Android 11).")
 
 
@@ -165,7 +165,7 @@ def aod(update: Update, context: CallbackContext):
     delay_group_quote(update, context,
                       "<u>Always-On-Display</u>"
                       "\n\n<i>Be aware that the upcoming paragraphs are simplified and won't go over the actual "
-                      "complexity behind those subjects. "
+                      "complexity behind those subjects.</i>"
                       "\n\n\n<b>Why don't I have an Always-On-Display?</b>"
                       "\n\nIf your device has an LCD display AODs are pointless as the backlight of the LCD will be "
                       "on - no matter what's been shown on screen. AODs make more sense on an AMOLED, "
@@ -180,9 +180,9 @@ def cool(update: Update, context: CallbackContext):
     delay_group(update, context,
                 "<u>Cool and useful Apps</u>"
                 "\n\n<b>Moment Pro</b> · <a href='https://t.me/realme_offtopic/5344'>3.2.2 ⬇️ </a>"
-                "\nA solid camera for professionals, who enjoy playing with over- and underexposing subjects."
+                "\nSolid camera for professionals."
                 "\n\n<b>Aida64</b> · <a href='https://t.me/realme_offtopic/9346'>179 ⬇️ </a>"
-                "\nHandy if you want to read all the data about your device."
+                "\nAll the data about your device."
                 "\n\n<b>Videoder</b> · <a href='https://t.me/realme_offtopic/12457'>14.4.2 ⬇️ </a>"
                 "\nDownload videos and music from YouTube or any other website."
                 "\n\nFind more at /gcam and /cleaners.")
