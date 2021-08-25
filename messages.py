@@ -132,9 +132,9 @@ def gcam(update: Update, context: CallbackContext):
     delay_group(update, context,
                 "<u>Google Camera</u>"
                 "\n\n<b>Releases</b>"
-                "\n· <a href='https://t.me/realme_offtopic/4177'>PXv8.1_GCam-v1.2 ⬇️</a>"
-                "\n· <a href='https://t.me/realme_offtopic/4176'>Urnyx05-v2.5 ⬇️</a>"
-                "\n\nUrnyx05's releases work well on most Realme devices. Take a look at @googlecameraport "
+                "\nPXv8.1_GCam · <a href='https://t.me/realme_offtopic/4177'>1.2 ⬇️ </a>"
+                "\n\nUrnyx05 · <a href='https://t.me/realme_offtopic/4176'>2.5 ⬇️ </a>"
+                "\n\n\nUrnyx05's releases work well on most Realme devices. Take a look at @googlecameraport "
                 "for other releases. "
                 "\n\n\n<b>Configurations</b>"
                 "\nTaken from <a href='https://www.celsoazevedo.com/files/android/google-camera/f/configs"
@@ -173,7 +173,7 @@ def aod(update: Update, context: CallbackContext):
                       "\n\nAODs make more sense on an AMOLED, where individual pixels can turn off entirely, "
                       "thus saving battery. "
                       "\n\n\n<b>Why can't I customize my AOD?</b>"
-                      "\n\nThis is due to something that's often referred to as a \"ramless display\", meaning that "
+                      "\n\nThis is due to something that's often referred to as a \"ram-less display\", meaning that "
                       "your display only uses the device's Ram, which limits its capabilities a bit. "
                       "This isn't something bad at all. It's just the conventional way displays are made."
                       "\n\nYour phone's display quite likely simply doesn't support this additional feature. "
@@ -189,7 +189,7 @@ def cool(update: Update, context: CallbackContext):
                 "\nAll the data about your device."
                 "\n\n<b>Videoder</b> · <a href='https://t.me/realme_offtopic/12457'>14.4.2 ⬇️</a>"
                 "\nDownload videos and music from YouTube or any other website."
-                "\n\nFind more at /gcam and /cleaners.")
+                "\n\nMore at /gcam and /cleaners.")
 
 
 def manual(update: Update, context: CallbackContext):
