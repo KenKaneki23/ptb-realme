@@ -2,7 +2,7 @@ import re
 import time
 
 from telegram import Update, ParseMode, InlineKeyboardMarkup, InlineKeyboardButton, ReplyKeyboardMarkup, KeyboardButton, \
-    KeyboardButtonPollType, Message, BotCommandScopeChat
+    KeyboardButtonPollType, Message, BotCommandScopeChat, BotCommandScope, BotCommandScopeChatAdministrators
 from telegram.ext import CallbackContext
 
 from config import VERIFIED_USERS, LOG_GROUP
@@ -194,16 +194,16 @@ def cool(update: Update, context: CallbackContext):
 
 def manual(update: Update, context: CallbackContext):
     delay_group(update, context,
-                      "<u>Updating System-Apps manually</u>"
-                      "\n\nUpdating your System-Apps via Apks you find somewhere on the Internet or here on Telegram "
-                      "is often pointless, as you quite likely have the latest proper and optimized version of these "
-                      "Apps installed on your device anyway. "
-                      "\n\nYou should therefore not really be in need of flashing them manually. "
-                      "\n\n⚠️ Installing these Apps yourself may actually be worse, as those files are very "
-                      "often not explicitly for your device and may therefore lack specific optimization or may not "
-                      "even work as they should. "
-                      "\n\nBe very careful with what you install. It's better to wait for the next automatic "
-                      "software-update 😉")
+                "<u>Updating System-Apps manually</u>"
+                "\n\nUpdating your System-Apps via Apks you find somewhere on the Internet or here on Telegram "
+                "is often pointless, as you quite likely have the latest proper and optimized version of these "
+                "Apps installed on your device anyway. "
+                "\n\nYou should therefore not really be in need of flashing them manually. "
+                "\n\n⚠️ Installing these Apps yourself may actually be worse, as those files are very "
+                "often not explicitly for your device and may therefore lack specific optimization or may not "
+                "even work as they should. "
+                "\n\nBe very careful with what you install. It's better to wait for the next automatic "
+                "software-update 😉")
 
 
 def rules(update: Update, context: CallbackContext):
@@ -491,6 +491,29 @@ def reset(update: Update, context: CallbackContext):
         ('ask', 'How to ask questions properly ❓'),
         ('help', 'Show commands 🆘'), ],
         scope=BotCommandScopeChat(SUPPORT_GROUP))
+
+    context.bot.set_my_commands([
+        ('android11', 'Official update roadmap 📲'),
+        ('gcam', 'Latest release and configurations 📷'),
+        ('cleaners', 'The recommended cleaning apps ♻️'),
+        ('whatsapp', 'Message the support directly 💬'),
+        ('bug', 'How to report a bug ⚠️'),
+        ('stable', 'Estimate the stable release date 📆'),
+        ('push', 'How an update is pushed 🅿️'),
+        ('debloat', 'Guide to remove unwanted apps 🚫'),
+        ('battery', 'Keep your battery healthy 🔋'),
+        ('polls', 'Take a look at our current polls 📊'),
+        ('benchmark', 'How to benchmark your device 💪🏼'),
+        ('cool', 'Cool and useful Apps 😎'),
+        ('aod', 'Why there is no Customization or AOD 🎨'),
+        ('manual', 'Manual updates may be worse 😟'),
+        ('rules', 'Show this group\'s rules 📜'),
+        ('experts', 'List experts for different segments 🎓'),
+        ('admins', 'Show this group\'s staff 👷‍♂️'),
+        ('ask', 'How to ask questions properly ❓'),
+        ('help', 'Show commands 🆘'),
+        ('rant', 'Why updates don\'t have dates.')],
+        scope=BotCommandScopeChatAdministrators(SUPPORT_GROUP))
 
     context.bot.set_my_commands([
         ('rules', 'Show this group\'s rules 📜'),

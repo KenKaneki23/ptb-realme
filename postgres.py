@@ -85,6 +85,6 @@ class PostgresPersistence(DictPersistence):
                 exc_info=excp,
             )
         else:
-            self.logger.info("SUCESS! saved user/chat/bot data into database.")
+            self.logger.info("SUCCESS! saved user/chat/bot data into database.")
 
         self.logger.info("Closing database...")
