@@ -132,8 +132,8 @@ def gcam(update: Update, context: CallbackContext):
     delay_group(update, context,
                 "<u>Google Camera</u>"
                 "\n\n<b>Releases</b>"
-                "\n· <a href='https://t.me/realme_offtopic/4177'>PXv8.1_GCam-v1.2 ⬇️ </a>"
-                "\n· <a href='https://t.me/realme_offtopic/4176'>Urnyx05-v2.5 ⬇️ </a>"
+                "\n· <a href='https://t.me/realme_offtopic/4177'>PXv8.1_GCam-v1.2 ⬇️</a>"
+                "\n· <a href='https://t.me/realme_offtopic/4176'>Urnyx05-v2.5 ⬇️</a>"
                 "\n\nUrnyx05's releases work well on most Realme devices. Take a look at @googlecameraport "
                 "for other releases. "
                 "\n\n\n<b>Configurations</b>"
@@ -154,16 +154,17 @@ def gcam(update: Update, context: CallbackContext):
 def cleaners(update: Update, context: CallbackContext):
     delay_group(update, context,
                 "<u>Cleaners</u>"
-                "\n\n<b>SD Maid</b> · <a href='https://t.me/realme_offtopic/8103'>5.1.6 ⬇️ </a>"
+                "\n\n<b>SD Maid</b> · <a href='https://t.me/realme_offtopic/8103'>5.1.6 ⬇️</a>"
                 "\nThis is an excellent cleaning app, which also takes care of databases, duplicates, "
                 "caches etc. and enables you to freeze the apps you don't need. Oh yes.. and it's open-source 💗"
-                "\n\n<b>Phone Manager</b> · <a href='https://t.me/realme_support/126160'>8.6.1 ⬇️ </a>"
+                "\n\n<b>Phone Manager</b> · <a href='https://t.me/realme_support/126160'>8.6.1 ⬇️</a>"
                 "\nOfficial Cleaner by Realme (requires Android 11).")
 
 
 def aod(update: Update, context: CallbackContext):
     delay_group_quote(update, context,
-                      "<u>Always-On-Display</u>"
+                      "Hey {} 🤖"
+                      "\n\n<u>Always-On-Display</u>"
                       "\n\n<i>Be aware that the upcoming paragraphs are simplified and won't go over the actual "
                       "complexity behind those subjects.</i>"
                       "\n\n\n<b>Why don't I have an Always-On-Display?</b>"
@@ -182,17 +183,17 @@ def aod(update: Update, context: CallbackContext):
 def cool(update: Update, context: CallbackContext):
     delay_group(update, context,
                 "<u>Cool and useful Apps</u>"
-                "\n\n<b>Moment Pro</b> · <a href='https://t.me/realme_offtopic/5344'>3.2.2 ⬇️ </a>"
+                "\n\n<b>Moment Pro</b> · <a href='https://t.me/realme_offtopic/5344'>3.2.2 ⬇️</a>"
                 "\nSolid camera for professionals."
-                "\n\n<b>Aida64</b> · <a href='https://t.me/realme_offtopic/9346'>179 ⬇️ </a>"
+                "\n\n<b>Aida64</b> · <a href='https://t.me/realme_offtopic/9346'>179 ⬇️</a>"
                 "\nAll the data about your device."
-                "\n\n<b>Videoder</b> · <a href='https://t.me/realme_offtopic/12457'>14.4.2 ⬇️ </a>"
+                "\n\n<b>Videoder</b> · <a href='https://t.me/realme_offtopic/12457'>14.4.2 ⬇️</a>"
                 "\nDownload videos and music from YouTube or any other website."
                 "\n\nFind more at /gcam and /cleaners.")
 
 
 def manual(update: Update, context: CallbackContext):
-    delay_group_quote(update, context,
+    delay_group(update, context,
                       "<u>Updating System-Apps manually</u>"
                       "\n\nUpdating your System-Apps via Apks you find somewhere on the Internet or here on Telegram "
                       "is often pointless, as you quite likely have the latest proper and optimized version of these "
@@ -488,7 +489,7 @@ def reset(update: Update, context: CallbackContext):
         ('experts', 'List experts for different segments 🎓'),
         ('admins', 'Show this group\'s staff 👷‍♂️'),
         ('ask', 'How to ask questions properly ❓'),
-        ('help', 'Show commands 🆘"'), ],
+        ('help', 'Show commands 🆘'), ],
         scope=BotCommandScopeChat(SUPPORT_GROUP))
 
     context.bot.set_my_commands([
