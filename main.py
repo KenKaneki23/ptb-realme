@@ -66,7 +66,7 @@ if __name__ == '__main__':
     dp.add_handler(MessageHandler(Filters.regex(r"(?i)rmx\d{4}"), rmx))
 
     # Verified commands
-
+    dp.add_handler(CommandHandler("support", support, Filters.chat(OFFTOPIC_GROUP) & Filters.user(ADMINS)))
     dp.add_handler(CommandHandler("offtopic", offtopic, Filters.chat(SUPPORT_GROUP) & Filters.user(ADMINS)))
 
     # Personal opinion

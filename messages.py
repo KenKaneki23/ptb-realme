@@ -461,7 +461,7 @@ def clear(update: Update, context: CallbackContext):
     context.bot.set_my_commands(
         [
             ('clear', 'Clears commands and temporary user data.'),
-            ('reset', 'Resets commands. Use if after clearing."')
+            ('reset', 'Resets commands. Use if after clearing.')
         ],
         scope=BotCommandScopeChat(LOG_GROUP)
     )
@@ -512,13 +512,22 @@ def reset(update: Update, context: CallbackContext):
         ('admins', 'Show this group\'s staff 👷‍♂️'),
         ('ask', 'How to ask questions properly ❓'),
         ('help', 'Show commands 🆘'),
-        ('rant', 'Why updates don\'t have dates.')],
+        ('rant', 'Why updates don\'t have dates.'),
+        ('offtopic', 'Move messages to Off-Topic ➡️')],
         scope=BotCommandScopeChatAdministrators(SUPPORT_GROUP))
 
     context.bot.set_my_commands([
         ('rules', 'Show this group\'s rules 📜'),
         ('cool', 'Cool and useful Apps 😎')],
         scope=BotCommandScopeChat(OFFTOPIC_GROUP))
+
+    context.bot.set_my_commands([
+        ('rules', 'Show this group\'s rules 📜'),
+        ('cool', 'Cool and useful Apps 😎'),
+        ('gcam', 'Latest release and configurations 📷'),
+        ('cleaners', 'The recommended cleaning apps ♻️'),
+        ('support', 'Move messages to the Support-Group ➡️')],
+        scope=BotCommandScopeChatAdministrators(OFFTOPIC_GROUP))
 
     update.message.reply_text("Command list was updated.")
 
@@ -616,6 +625,29 @@ def offtopic(update: Update, context: CallbackContext):
                     "Hey guys 🤖"
                     "\n\nFeel free to join @realme_offtopic to discuss topics not related to Realme or Android."
                     "\n\nYou can also send Links and Stickers there 🥳")
+
+
+def support(update: Update, context: CallbackContext):
+    if update.message.reply_to_message:
+        update.message.delete()
+        original_msg = update.message.reply_to_message.copy(SUPPORT_GROUP, reply_markup=InlineKeyboardMarkup(
+            [[InlineKeyboardButton(text="Original Message ➡️",
+                                   url=update.message.reply_to_message.link)]]))
+
+        moved_link = "https://t.me/realme_support/" + str(original_msg.message_id)
+
+        message_button_url(update, context,
+                           "Hey {} 🤖"
+                           "\n\nThose things belong in the Support-Group."
+                           "\n\nI moved the message to @realme_support"
+                           "\n\nPlease continue the discussion there."
+                           .format(update.message.reply_to_message.from_user.name)
+                           , "Continue here 😉", moved_link)
+
+    else:
+        delay_group(update, context,
+                    "Hey guys 🤖"
+                    "\n\nIf you need any support regarding your Realme device, please join @realme_support")
 
 
 def android11(update: Update, context: CallbackContext):
