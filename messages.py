@@ -319,28 +319,28 @@ def battery(update: Update, context: CallbackContext):
 
 
 def benchmark(update: Update, context: CallbackContext):
-    text = "\n\n<b>Benchmark your device 💪</b>"
-    "\n\nFor reference we're using two different benchmarks to compare devices in this group. Please "
-    "install them via the below links."
-    "\n\n· CPU Performance:\n<a href='https://play.google.com/store/apps/details?id=com.primatelabs"
-    ".geekbench5'>Geekbench 5 ⬇️</a> "
-    "\n\n· Gaming Performance:\n<a href='https://play.google.com/store/apps/details?id=com.futuremark"
-    ".dmandroid.application'>3DMark (Wild Life) ⬇️</a> "
-    "\n\n\nNow open them and see if they need anything downloaded first. After that switch your phone "
-    "to maximum performance: "
-    "\n\n· Disable any energy saving option that's currently active."
-    "\n\n· Set your phone to performance mode."
-    "\n\n· Close all open Apps via your launchers 'clear all' button"
-    "\n\n· Set your phone to airplane mode."
-    "\n\nLet your phone run Geekbench first and take a screenshot of the score at the end."
-    "\n\n\nRepeat this process three more times. Also take screenshots after each run. This is to test "
-    "sustained performance. (#TODO might add heat check app here) "
-    "\n\n\nClose all applications again, let your device cool down for a few minutes. Then repeat the "
-    "process for 3DMark (Wild Life). "
-    "\n\n\nOnce you're done with all the screenshots, upload your first and last score of each "
-    "benchmark (so four images in total) as an album in @realme_offtopic and put #Benchmark the "
-    "Android-Version, for example #Android11 and your device model, for example #RMX1931 in the "
-    "caption of this album."
+    # TODO save those apps to channel
+    text = "\n\n<b>Benchmark your device 💪</b>" \
+           "\n\nFor reference we're using two different benchmarks to compare devices in this group. Please install " \
+           "them via the below links. " \
+           "\n\n· CPU Performance:\n<a href='https://play.google.com/store/apps/details?id=com.primatelabs.geekbench5" \
+           "'>Geekbench 5 ⬇️</a> " \
+           "\n\n· Gaming Performance:\n<a href='https://play.google.com/store/apps/details?id=com.futuremark" \
+           ".dmandroid.application'>3DMark (Wild Life) ⬇️</a> " \
+           "\n\n\nNow open them and see if they need anything downloaded first. After that switch your phone to " \
+           "maximum performance: " \
+           "\n\n· Disable any energy saving option that's currently active." \
+           "\n\n· Set your phone to performance mode." \
+           "\n\n· Close all open Apps via your launchers 'clear all' button" \
+           "\n\n· Set your phone to airplane mode." \
+           "\n\nLet your phone run Geekbench first and take a screenshot of the score at the end." \
+           "\n\n\nRepeat this process three more times. Also take screenshots after each run. This is to test " \
+           "sustained performance. (#TODO might add heat check app here) " \
+           "\n\n\nClose all applications again, let your device cool down for a few minutes. Then repeat the process " \
+           "for 3DMark (Wild Life). " \
+           "\n\n\nOnce you're done with all the screenshots, upload your first and last score of each benchmark (so " \
+           "four images in total) as an album in @realme_offtopic and put #Benchmark the Android-Version, for example " \
+           "#Android11 and your device model, for example #RMX1931 in the caption of this album. "
 
     if update.message.reply_to_message and update.message.from_user.id in VERIFIED_USERS:
         delay_group(update, context,
