@@ -484,6 +484,7 @@ def reset(update: Update, context: CallbackContext):
         ('benchmark', 'How to benchmark your device 💪🏼'),
         ('cool', 'Cool and useful Apps 😎'),
         ('aod', 'Why there is no Customization or AOD 🎨'),
+        ('ram', 'Virtual Ram performance 💾'),
         ('manual', 'Manual updates may be worse 😟'),
         ('rules', 'Show this group\'s rules 📜'),
         ('experts', 'List experts for different segments 🎓'),
@@ -506,6 +507,7 @@ def reset(update: Update, context: CallbackContext):
         ('benchmark', 'How to benchmark your device 💪🏼'),
         ('cool', 'Cool and useful Apps 😎'),
         ('aod', 'Why there is no Customization or AOD 🎨'),
+        ('ram', 'Virtual Ram performance 💾'),
         ('manual', 'Manual updates may be worse 😟'),
         ('rules', 'Show this group\'s rules 📜'),
         ('experts', 'List experts for different segments 🎓'),
@@ -522,8 +524,8 @@ def reset(update: Update, context: CallbackContext):
         scope=BotCommandScopeChat(OFFTOPIC_GROUP))
 
     context.bot.set_my_commands([
-     #   ('rules', 'Show this group\'s rules 📜'),
-      #  ('cool', 'Cool and useful Apps 😎'),
+        ('rules', 'Show this group\'s rules 📜'),
+        ('cool', 'Cool and useful Apps 😎'),
         ('gcam', 'Latest release and configurations 📷'),
         ('cleaners', 'The recommended cleaning apps ♻️'),
         ('support', 'Move messages to the Support-Group ➡️')],
