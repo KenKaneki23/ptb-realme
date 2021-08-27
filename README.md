@@ -4,8 +4,8 @@
 
 Support-Bot for the Realme-Community groups on Telegram:
 
-[![SupportGroup](https://img.shields.io/static/v1.svg?color=FFC523&labelColor=555555&logoColor=ffffff&style=for-the-badge&label=Telegram&message=Realme-Community-Support&logo=telegram)](https://t.me/realme_support "official updates")
-[![OffTopicGroup](https://img.shields.io/static/v1.svg?color=FFC523&labelColor=555555&logoColor=ffffff&style=for-the-badge&label=Telegram&message=Realme-Off-Topic&logo=telegram)](https://t.me/realme_offtopic "official updates")
+[![SupportGroup](https://img.shields.io/static/v1.svg?color=FFC523&labelColor=555555&logoColor=ffffff&style=for-the-badge&label=Telegram&message=Realme-Community-Support&logo=telegram)](https://t.me/realme_support "Community Support")
+[![OffTopicGroup](https://img.shields.io/static/v1.svg?color=FFC523&labelColor=555555&logoColor=ffffff&style=for-the-badge&label=Telegram&message=Realme-Off-Topic&logo=telegram)](https://t.me/realme_offtopic "Off-Topic discussions")
 
 ## Techstack
 * uses the awesome [Python-Telegram-Bot](https://github.com/python-telegram-bot/python-telegram-bot)
