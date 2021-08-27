@@ -522,8 +522,8 @@ def reset(update: Update, context: CallbackContext):
         scope=BotCommandScopeChat(OFFTOPIC_GROUP))
 
     context.bot.set_my_commands([
-        ('rules', 'Show this group\'s rules 📜'),
-        ('cool', 'Cool and useful Apps 😎'),
+     #   ('rules', 'Show this group\'s rules 📜'),
+      #  ('cool', 'Cool and useful Apps 😎'),
         ('gcam', 'Latest release and configurations 📷'),
         ('cleaners', 'The recommended cleaning apps ♻️'),
         ('support', 'Move messages to the Support-Group ➡️')],
