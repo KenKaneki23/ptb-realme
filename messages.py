@@ -531,6 +531,11 @@ def reset(update: Update, context: CallbackContext):
         ('support', 'Move messages to the Support-Group ➡️')],
         scope=BotCommandScopeChatAdministrators(OFFTOPIC_GROUP))
 
+    # add Contribute/About and a specific message to join the groups here
+    context.bot.set_my_commands([
+        ('rules', 'Show this group\'s rules 📜')],
+        scope=BotCommandScope.ALL_PRIVATE_CHATS)
+
     update.message.reply_text("Command list was updated.")
 
 
