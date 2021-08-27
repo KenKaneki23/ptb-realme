@@ -43,7 +43,7 @@ MODELS = {
     2185: ['C11'],
     2189: ['C12'],
     2191: ['Narzo 20'],
-    2195: ['Narzo C15 Qualcomm Edition'],
+    2195: ['C15 Qualcomm Edition'],
     2341: ['8 5G'],
     3031: ['X7 Max', 'GT Neo'],
     3061: ['C20'],
@@ -58,11 +58,9 @@ MODELS = {
 }
 
 FORBIDDEN_TEXT = (
-    "/help@CoronaVirusRobot",
-    "/victims@CoronaVirusRobot",
-    "/infect@CoronaVirusRobot",
     "/victims",
     "/infect",
     "#icon",
     "/translate",
+    "CoronaVirusRobot",
     "#icons")
