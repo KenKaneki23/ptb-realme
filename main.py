@@ -41,7 +41,8 @@ if __name__ == '__main__':
 
     dp = updater.dispatcher
 
-    dp.add_handler(MessageHandler(Filters.text(FORBIDDEN_TEXT), remove_message))
+    for i in FORBIDDEN_TEXT:
+        dp.add_handler(MessageHandler(Filters.regex(r"(?ig)" + i), remove_message))
 
     dp.add_handler(CommandHandler("android11", android11, Filters.chat(SUPPORT_GROUP)))
     dp.add_handler(CommandHandler("gcam", gcam, Filters.chat(SUPPORT_GROUP)))
