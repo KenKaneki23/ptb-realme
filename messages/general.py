@@ -6,7 +6,7 @@ from telegram.ext import CallbackContext
 
 from config import VERIFIED_USERS, LOG_GROUP
 from constants import MODELS
-from main import SUPPORT_GROUP, OFFTOPIC_GROUP, ADMINS
+from main import SUPPORT_GROUP, OFFTOPIC_GROUP, ADMINS, language_translator
 from utils import delay_group, now, message_button_url
 
 
@@ -230,3 +230,18 @@ def polls(update: Update, context: CallbackContext):
                            "interesting to see what the community thinks about certain topics. "
                            "\n\nCredits go to all the ones who brought up the questions.",
                            "📊 Current Poll 📊", previous_link)
+
+
+def translate(update: Update, context: CallbackContext):
+    if len(context.args) == 1:
+        update.message.reply_text("Translated from {}:\n\n".format(context.args[0]) + language_translator.translate(
+            text=update.message.text,
+            model_id=context.args[0] + '-en').get_result()['translations'][0]['translation'])
+    elif len(context.args) == 2:
+        update.message.reply_text(
+            "Translated from {} to :\n\n".format(context.args[0], context.args[1]) + language_translator.translate(
+                text=update.message.text,
+                model_id=context.args[0] + '-' + context.args[1]).get_result()['translations'][0]['translation'])
+    else:
+        delay_group("Please supply a language-code, for example <code>/translate de</code> to translate from German "
+                    "to English or <code>/translate en it</code> to translate from English to Italian.")

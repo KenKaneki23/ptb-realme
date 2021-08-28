@@ -44,16 +44,8 @@ if __name__ == '__main__':
     session = start_session()
     updater = Updater(TOKEN, persistence=PostgresPersistence(session))
 
-    authenticator = IAMAuthenticator(TRANSLATE_AUTH)
-    language_translator = LanguageTranslatorV3(version='2018-05-01', authenticator=authenticator)
-
+    language_translator = LanguageTranslatorV3('2018-05-01', IAMAuthenticator(TRANSLATE_AUTH))
     language_translator.set_service_url(TRANSLATE_URL)
-
-    translation = language_translator.translate(
-        text='Hello, how are you today?',
-        model_id='en-es').get_result()
-    print(translation['translations'][0]['translation'])
-    print(json.dumps(translation, indent=2, ensure_ascii=False))
 
     dp = updater.dispatcher
 
@@ -82,6 +74,7 @@ if __name__ == '__main__':
     dp.add_handler(CommandHandler("bug", bug, Filters.chat(SUPPORT_GROUP)))
     dp.add_handler(CommandHandler("stable", stable, Filters.chat(SUPPORT_GROUP)))
     dp.add_handler(CommandHandler("push", push, Filters.chat(SUPPORT_GROUP)))
+    dp.add_handler(CommandHandler("translate", translate))
     dp.add_handler(MessageHandler(Filters.regex(r"(?i)rmx\d{4}"), rmx))
 
     # Personal opinion
