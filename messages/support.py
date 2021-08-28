@@ -18,8 +18,8 @@ def admins(update: Update, context: CallbackContext):
                 "\n@Prashant_Choudhary"
                 "\n@PacificPC"
                 "\n\n<b>Moderators</b>"
-                "\n@dark_phoenix6969"
-                "\n@blue_bettle")
+                "\n@darkphoenix_69"
+                "\n@blue_bettle69")
 
 
 def ask(update: Update, context: CallbackContext):
