@@ -236,12 +236,12 @@ def translate(update: Update, context: CallbackContext):
     if update.message.reply_to_message is not None:
         if len(context.args) == 1:
             update.message.reply_text("Translated from {}:\n\n".format(context.args[0]) + language_translator.translate(
-                text=update.message.text,
+                text=update.message.reply_to_message.text,
                 model_id=context.args[0] + '-en').get_result()['translations'][0]['translation'])
         elif len(context.args) == 2:
             update.message.reply_text(
                 "Translated from {} to :\n\n".format(context.args[0], context.args[1]) + language_translator.translate(
-                    text=update.message.text,
+                    text=update.message.reply_to_message.text,
                     model_id=context.args[0] + '-' + context.args[1]).get_result()['translations'][0]['translation'])
         else:
             delay_group(
