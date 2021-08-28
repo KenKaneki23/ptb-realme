@@ -6,13 +6,16 @@ from telegram.ext import Updater, MessageHandler, Filters, CommandHandler, Callb
 
 from config import *
 from constants import FORBIDDEN_TEXT
-from messages import *
+from messages.control import *
+from messages.general import *
+from messages.offtopic import *
+from messages.support import *
 from postgres import PostgresPersistence
 from utils import remove_message
 
 ##########################################
-# this file serves as an entry point to the program.
-# here all the stuff is initialized.
+# This file serves as an entry point to the program.
+# Here all the stuff is initialized and updates being handled.
 ##########################################
 
 
@@ -58,6 +61,8 @@ if __name__ == '__main__':
     dp.add_handler(CommandHandler("benchmark", benchmark, Filters.chat(SUPPORT_GROUP)))
     dp.add_handler(CommandHandler("aod", aod, Filters.chat(SUPPORT_GROUP)))
     dp.add_handler(CommandHandler("manual", manual, Filters.chat(SUPPORT_GROUP)))
+    dp.add_handler(CommandHandler("support", move_to_support, Filters.chat(OFFTOPIC_GROUP)))
+    dp.add_handler(CommandHandler("offtopic", move_to_offtopic, Filters.chat(SUPPORT_GROUP)))
     dp.add_handler(CommandHandler("polls", polls))
     dp.add_handler(CommandHandler("rules", rules))
     dp.add_handler(CommandHandler("cool", cool))
@@ -66,16 +71,12 @@ if __name__ == '__main__':
     dp.add_handler(CommandHandler("push", push, Filters.chat(SUPPORT_GROUP)))
     dp.add_handler(MessageHandler(Filters.regex(r"(?i)rmx\d{4}"), rmx))
 
-    # Verified commands
-    dp.add_handler(CommandHandler("support", support, Filters.chat(OFFTOPIC_GROUP) & Filters.user(ADMINS)))
-    dp.add_handler(CommandHandler("offtopic", offtopic, Filters.chat(SUPPORT_GROUP) & Filters.user(ADMINS)))
-
     # Personal opinion
     dp.add_handler(CommandHandler("ram", ram, Filters.chat(SUPPORT_GROUP)))
     dp.add_handler(CommandHandler("rant", rant, Filters.chat(SUPPORT_GROUP)))
 
     # Upcoming
-    dp.add_handler(CommandHandler("warn", warn, ))  # Filters.chat(OFFTOPIC_GROUP) & Filters.user(ADMINS)))
+    dp.add_handler(CommandHandler("warn", warn))  # Filters.chat(OFFTOPIC_GROUP) & Filters.user(ADMINS)))
     dp.add_handler(CommandHandler("ban", ban, Filters.chat(OFFTOPIC_GROUP) & Filters.user(ADMINS)))
     dp.add_handler(MessageHandler(Filters.text("@admin"), admin))
     dp.add_handler(CallbackQueryHandler(remove_click, pattern="BAN_remove"))
