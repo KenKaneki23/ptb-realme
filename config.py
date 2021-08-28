@@ -7,6 +7,8 @@ import os
 PORT = int(os.environ.get('PORT', 5000))
 DATABASE_URL = os.environ['DATABASE_URL'].replace('postgres', 'postgresql', 1)
 TOKEN = os.environ['TOKEN']
+TRANSLATE_AUTH = os.environ['TRANSLATE-AUTH']
+TRANSLATE_URL = os.environ['TRANSLATE-URL']
 
 LOG_GROUP = -1001228437777
 OFFTOPIC_GROUP = -1001415779011

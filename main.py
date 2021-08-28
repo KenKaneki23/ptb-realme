@@ -1,9 +1,11 @@
+import json
 import logging
 
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, scoped_session
 from telegram.ext import Updater, MessageHandler, Filters, CommandHandler, CallbackQueryHandler
-
+from ibm_watson import LanguageTranslatorV3
+from ibm_cloud_sdk_core.authenticators import IAMAuthenticator
 from config import *
 from constants import FORBIDDEN_TEXT
 from messages.control import *
@@ -41,6 +43,16 @@ def error(update: Update, context: CallbackContext):
 if __name__ == '__main__':
     session = start_session()
     updater = Updater(TOKEN, persistence=PostgresPersistence(session))
+
+    authenticator = IAMAuthenticator(TRANSLATE_AUTH)
+    language_translator = LanguageTranslatorV3(version='2018-05-01', authenticator=authenticator)
+
+    language_translator.set_service_url(TRANSLATE_URL)
+
+    translation = language_translator.translate(
+        text='Hello, how are you today?',
+        model_id='en-es').get_result()
+    print(json.dumps(translation, indent=2, ensure_ascii=False))
 
     dp = updater.dispatcher
 
