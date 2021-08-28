@@ -61,6 +61,5 @@ FORBIDDEN_TEXT = (
     "/victims",
     "/infect",
     "#icon",
-    "/translate",
     "CoronaVirusRobot",
     "#icons")
