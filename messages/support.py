@@ -159,7 +159,7 @@ def aod(update: Update, context: CallbackContext):
                       "your display only uses the device's Ram, which limits its capabilities a bit. "
                       "This isn't something bad at all. It's just the conventional way displays are made."
                       "\n\nYour phone's display quite likely simply doesn't support this additional feature. "
-                      "Currently it's only working on the GT, X50 Pro, X2, X2 Pro, X, XT and X7 Max.")
+                      "Currently it's only working on the GT, GT Neo, X50 Pro, X2, X2 Pro, X, XT and X7 Max.")
 
 
 def manual(update: Update, context: CallbackContext):
