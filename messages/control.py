@@ -1,4 +1,4 @@
-from telegram import BotCommandScopeChat, Update
+from telegram import BotCommandScopeChat, Update, BotCommandScopeChatAdministrators, BotCommandScope
 from telegram.ext import CallbackContext
 
 from config import LOG_GROUP, SUPPORT_GROUP, OFFTOPIC_GROUP
