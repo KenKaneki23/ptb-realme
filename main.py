@@ -52,7 +52,7 @@ if __name__ == '__main__':
     translation = language_translator.translate(
         text='Hello, how are you today?',
         model_id='en-es').get_result()
-    print(translation.json()['translations'][0]['translation'])
+    print(translation['translations'][0]['translation'])
     print(json.dumps(translation, indent=2, ensure_ascii=False))
 
     dp = updater.dispatcher
