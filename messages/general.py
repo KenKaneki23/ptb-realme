@@ -233,15 +233,23 @@ def polls(update: Update, context: CallbackContext):
 
 
 def translate(update: Update, context: CallbackContext):
-    if len(context.args) == 1:
-        update.message.reply_text("Translated from {}:\n\n".format(context.args[0]) + language_translator.translate(
-            text=update.message.text,
-            model_id=context.args[0] + '-en').get_result()['translations'][0]['translation'])
-    elif len(context.args) == 2:
-        update.message.reply_text(
-            "Translated from {} to :\n\n".format(context.args[0], context.args[1]) + language_translator.translate(
+    if update.message.reply_to_message is not None:
+        if len(context.args) == 1:
+            update.message.reply_text("Translated from {}:\n\n".format(context.args[0]) + language_translator.translate(
                 text=update.message.text,
-                model_id=context.args[0] + '-' + context.args[1]).get_result()['translations'][0]['translation'])
+                model_id=context.args[0] + '-en').get_result()['translations'][0]['translation'])
+        elif len(context.args) == 2:
+            update.message.reply_text(
+                "Translated from {} to :\n\n".format(context.args[0], context.args[1]) + language_translator.translate(
+                    text=update.message.text,
+                    model_id=context.args[0] + '-' + context.args[1]).get_result()['translations'][0]['translation'])
+        else:
+            delay_group(
+                "Please supply a language-code, for example <code>/translate de</code> to translate from German "
+                "to English or <code>/translate en it</code> to translate from English to Italian.")
     else:
-        delay_group("Please supply a language-code, for example <code>/translate de</code> to translate from German "
-                    "to English or <code>/translate en it</code> to translate from English to Italian.")
+        delay_group(
+            "Quote the message you want to translate and the use this command, for example <code>/translate de</code> "
+            "to translate from German to English or <code>/translate en it</code> to translate from English to Italian.")
+
+
