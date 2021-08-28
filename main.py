@@ -1,11 +1,11 @@
-import json
 import logging
 
+from ibm_cloud_sdk_core.authenticators import IAMAuthenticator
+from ibm_watson import LanguageTranslatorV3
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, scoped_session
 from telegram.ext import Updater, MessageHandler, Filters, CommandHandler, CallbackQueryHandler
-from ibm_watson import LanguageTranslatorV3
-from ibm_cloud_sdk_core.authenticators import IAMAuthenticator
+
 from config import *
 from constants import FORBIDDEN_TEXT
 from messages.control import *
@@ -23,6 +23,9 @@ from utils import remove_message
 
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO)
 logger = logging.getLogger(__name__)
+
+language_translator = LanguageTranslatorV3('2018-05-01', IAMAuthenticator(TRANSLATE_AUTH))
+language_translator.set_service_url(TRANSLATE_URL)
 
 
 def start_session() -> scoped_session:
@@ -42,11 +45,8 @@ def error(update: Update, context: CallbackContext):
 
 if __name__ == '__main__':
     session = start_session()
+
     updater = Updater(TOKEN, persistence=PostgresPersistence(session))
-
-    language_translator = LanguageTranslatorV3('2018-05-01', IAMAuthenticator(TRANSLATE_AUTH))
-    language_translator.set_service_url(TRANSLATE_URL)
-
     dp = updater.dispatcher
 
     for i in FORBIDDEN_TEXT:
